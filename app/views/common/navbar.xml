@@ -1,0 +1,7 @@
+<Alloy>
+	<View id="main">
+		<View id="left"></View>
+		<View id="title"></View>
+		<View id="right"></View>
+	</View>
+</Alloy>

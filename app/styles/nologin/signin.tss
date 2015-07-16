@@ -1,0 +1,7 @@
+'Window[platform=ios]':{
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	backgroundColor: '#000',
+	navBarHidden: true,
+	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
+}

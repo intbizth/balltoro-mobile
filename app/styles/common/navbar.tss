@@ -1,0 +1,41 @@
+'#main': {
+	top: 0,
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE,
+	backgroundColor: '#549AF7'
+}
+
+'#left': {
+	top: 0,
+	left: 0,
+	width:Ti.UI.SIZE,
+	height: Ti.UI.SIZE
+}
+
+'#left[if=Alloy.Globals.grid]': {
+	borderWidth: 1,
+	borderColor: '#3190A4'
+}
+
+'#title': {
+	top: 0,
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE
+}
+
+'#title[if=Alloy.Globals.grid]': {
+	borderWidth: 1,
+	borderColor: '#3190A4'
+}
+
+'#right': {
+	top: 0,
+	right: 0,
+	width:Ti.UI.SIZE,
+	height: Ti.UI.SIZE
+}
+
+'#right[if=Alloy.Globals.grid]': {
+	borderWidth: 1,
+	borderColor: '#3190A4'
+}

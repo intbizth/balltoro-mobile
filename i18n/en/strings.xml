@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="appname">Balltoro</string>
+	<string name="back">Back</string>
+	<string name="login">Login</string>
+	<string name="nologin.index.button.register">Register</string>
+	<string name="nologin.index.button.signin">Sign In</string>
+	<string name="nologin.index.button.signinwith">Sign In with</string>
+	<string name="nologin.register.title">Register</string>
+	<string name="nologin.signin.title">Sign In</string>
+	<string name="facebook">Facebook</string>
+</resources>

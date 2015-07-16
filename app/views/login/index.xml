@@ -1,0 +1,5 @@
+<Alloy>
+	<Window backgroundColor="#fff">
+		<Label text="L('login')"></Label>
+	</Window>
+</Alloy>

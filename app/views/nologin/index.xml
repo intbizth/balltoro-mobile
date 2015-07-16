@@ -1,0 +1,36 @@
+<Alloy>
+	<NavigationWindow id="main" platform="ios">
+		<Window>
+			<View id="content">
+				<View id="contentTop">
+					<ScrollableView id="slider">
+						<View id="sliderMain">
+							<View id="sliderMainSub">
+								<ImageView id="logoImage"></ImageView>
+								<Label id="labelAppName"></Label>
+							</View>
+						</View>
+					</ScrollableView>
+				</View>
+				<View id="contentBottom">
+					<View class="contentBottomSpace"></View>
+					<View id="registerButton">
+						<Label id="registerLabel"></Label>
+					</View>
+					<View id="signinButton">
+						<Label id="signinLabel"></Label>
+					</View>
+					<View id="signinWithFacebookButton">
+						<View id="signinWithFacebookSubButton">
+							<Label id="signinWithLabel"></Label>
+							<Label id="facebookLabel"></Label>
+						</View>
+					</View>
+					<View class="contentBottomSpace"></View>
+				</View>
+			</View>
+		</Window>
+	</NavigationWindow>
+	<Require id="registerWindow" src="nologin/register"></Require>
+	<Require id="signinWindow" src="nologin/signin"></Require>
+</Alloy>

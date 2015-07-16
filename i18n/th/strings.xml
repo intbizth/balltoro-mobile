@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="appname">บอลโตโล้</string>
+	<string name="back">กลับ</string>
+	<string name="login">เข้าระบบ</string>
+	<string name="nologin.index.button.register">สมัครสมาชิก</string>
+	<string name="nologin.index.button.signin">เข้าระบบ</string>
+	<string name="nologin.index.button.signinwith">เข้าระบบด้วย</string>
+	<string name="nologin.register.title">สมัครสมาชิก</string>
+	<string name="nologin.signin.title">เข้าระบบ</string>
+	<string name="facebook">เฟสบุ๊ค</string>
+</resources>
