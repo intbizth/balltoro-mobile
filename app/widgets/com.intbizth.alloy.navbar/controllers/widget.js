@@ -3,10 +3,6 @@ var global = {
 };
 
 function initialize() {
-	if (Alloy.Globals.isIos7Plus) {
-		$.main.top = 20;
-	}
-
 	$.main.height = global.height;
 	$.title.height = global.height;
 	$.title.width = parseInt(Ti.Platform.displayCaps.platformWidth * 0.6);

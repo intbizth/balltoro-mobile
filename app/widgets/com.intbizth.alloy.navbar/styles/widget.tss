@@ -2,7 +2,7 @@
 	top: 0,
 	width: Ti.UI.FILL,
 	height: Ti.UI.SIZE,
-	backgroundColor: '#549AF7'
+	backgroundColor: '#4687F8'
 }
 
 '#left': {
@@ -38,4 +38,11 @@
 '#right[if=Alloy.Globals.grid]': {
 	borderWidth: 1,
 	borderColor: '#3190A4'
+}
+
+'#line': {
+	bottom: 0,
+	width:Ti.UI.FILL,
+	height: 1,
+	backgroundColor: '#2F579E'
 }
