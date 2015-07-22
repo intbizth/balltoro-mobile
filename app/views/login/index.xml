@@ -1,5 +1,6 @@
 <Alloy>
-	<Window backgroundColor="#fff">
-		<Label text="L('login')"></Label>
-	</Window>
+	<Widget id="main" src="nl.fokkezb.drawer">
+		<Require id="leftMainWindow" src="login/left/index"></Require>
+		<Require id="centerMainWindow" src="login/center/index"></Require>
+	</Widget>
 </Alloy>

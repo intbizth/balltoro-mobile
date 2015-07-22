@@ -1,6 +1,6 @@
 <Alloy>
-	<NavigationWindow id="main" platform="ios">
-		<Window>
+	<NavigationWindow id="navigation" platform="ios">
+		<Window id="main">
 			<View id="content">
 				<View id="contentTop">
 					<ScrollableView id="slider">

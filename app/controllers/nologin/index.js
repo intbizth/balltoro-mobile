@@ -103,11 +103,12 @@ var slider = {
 
 // > event
 $.registerButton.addEventListener('click', function(e) {
-	$.main.openWindow($.registerWindow.getView());
+	$.navigation.openWindow($.registerWindow.getView());
 });
 
 $.signinButton.addEventListener('click', function(e) {
-	$.main.openWindow($.signinWindow.getView());
+	Ti.App.fireEvent('login', {});
+	// $.navigation.openWindow($.signinWindow.getView());
 });
 
 $.signinWithFacebookButton.addEventListener('click', function(e) {

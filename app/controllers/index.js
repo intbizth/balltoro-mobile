@@ -34,4 +34,59 @@
 // Ti.API.info("Ti.Locale.currentLanguage = " + Ti.Locale.currentLanguage);
 // Ti.API.info("Ti.Locale.currentLocale = " + Ti.Locale.currentLocale);
 
-$.nologin.getView().open(); 
+var global = {
+	state : {
+		changeWindow : false
+	}
+};
+
+Alloy.Globals.nologinWindow = $.nologin.getView();
+Alloy.Globals.loginWindow = $.login.getView();
+
+$.nologin.getView().open();
+
+// > event
+$.nologin.getView().addEventListener('open', function(e) {
+	global.state.changeWindow = true;
+});
+
+$.nologin.getView().addEventListener('close', function(e) {
+	_.delay(function() {
+		global.state.changeWindow = false;
+	}, 800);
+});
+
+$.login.getView().addEventListener('open', function(e) {
+	global.state.changeWindow = true;
+});
+
+$.login.getView().addEventListener('close', function(e) {
+	_.delay(function() {
+		global.state.changeWindow = false;
+	}, 800);
+});
+
+Ti.App.addEventListener('login', function(e) {
+	if (global.state.changeWindow) {
+		return;
+	}
+
+	$.login.getView().open();
+
+	_.delay(function() {
+		$.nologin.getView().close();
+	}, 800);
+});
+
+Ti.App.addEventListener('logout', function(e) {
+	if (global.state.changeWindow) {
+		return;
+	}
+
+	$.nologin.getView().open();
+
+	_.delay(function() {
+		$.login.getView().close();
+	}, 800);
+});
+// < event

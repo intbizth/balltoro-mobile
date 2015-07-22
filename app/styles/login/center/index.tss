@@ -1,14 +1,7 @@
-'#main':{
+'#main': {
 	width: Ti.UI.FILL,
 	height: Ti.UI.FILL,
 	backgroundColor: '#0F181E',
 	navBarHidden: true,
 	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
-}
-
-'#content':{
-	top: 0,
-	width: Ti.UI.FILL,
-	height: Ti.UI.FILL,
-	layout: 'vertical'
 }

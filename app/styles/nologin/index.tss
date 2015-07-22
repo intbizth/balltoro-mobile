@@ -1,7 +1,7 @@
-'Window[platform=ios]':{
+'#main[platform=ios]':{
 	width: Ti.UI.FILL,
 	height: Ti.UI.FILL,
-	backgroundColor: '#000',
+	backgroundColor: '#0F181E',
 	backgroundImage: 'images/nologin/bg.png',
 	navBarHidden: true,
 	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
