@@ -1,5 +1,5 @@
 <Alloy>
 	<Window id="main">
-		<Require id="navbarView" src="common/navbar"></Require>
+		<Widget id="navbarView" src="com.intbizth.alloy.navbar"></Widget>
 	</Window>
 </Alloy>
