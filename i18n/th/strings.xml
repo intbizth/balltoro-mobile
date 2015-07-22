@@ -2,7 +2,16 @@
 <resources>
 	<string name="appname">บอลโตโล้</string>
 	<string name="back">กลับ</string>
-	<string name="login">เข้าระบบ</string>
+	<string name="login.menu.1">เมนู 1</string>
+	<string name="login.menu.2">เมนู 2</string>
+	<string name="login.menu.3">เมนู 3</string>
+	<string name="login.menu.4">เมนู 4</string>
+	<string name="login.menu.5">เมนู 5</string>
+	<string name="login.menu.6">เมนู 6</string>
+	<string name="login.menu.7">เมนู 7</string>
+	<string name="login.menu.8">เมนู 8</string>
+	<string name="login.menu.9">เมนู 9</string>
+	<string name="login.menu.10">ล็อกเอาท์</string>
 	<string name="nologin.index.button.register">สมัครสมาชิก</string>
 	<string name="nologin.index.button.signin">เข้าระบบ</string>
 	<string name="nologin.index.button.signinwith">เข้าระบบด้วย</string>
