@@ -1,19 +1,22 @@
-// The contents of this file will be executed before any of
-// your view controllers are ever executed, including the index.
-// You have access to all functionality on the `Alloy` namespace.
-//
-// This is a great place to do any initialization for your app
-// or create any global variables/functions that you'd like to
-// make available throughout your app. You can easily make things
-// accessible globally by attaching them to the `Alloy.Globals`
-// object. For example:
-//
-// Alloy.Globals.someGlobalFunction = function(){};
-
 // > alloy globals
 Alloy.Globals.grid = false;
 Alloy.Globals.isIos7Plus = (OS_IOS && parseInt(Ti.Platform.version.split('.')[0]) >= 7);
 Alloy.Globals.iPhoneTall = (OS_IOS && Ti.Platform.osname == 'iphone' && Ti.Platform.displayCaps.platformHeight == 568);
+Alloy.Globals.navbar = {
+	height : 40,
+	backgroundColor : '#4687f8',
+	lineColor : '#2f579e',
+	titleFontColor : '#fff',
+	buttonLeftFontColor : '#fff',
+	buttonRightFontColor : '#fff'
+};
+Alloy.Globals.powerbar = {
+	height : 30,
+	backgroundColor : '#4990f6',
+	leftColor : '#f3332a',
+	rightColor : '#f7a539',
+	fontColor : '#fff'
+};
 Alloy.Globals.nologin = {};
 Alloy.Globals.login = {};
 

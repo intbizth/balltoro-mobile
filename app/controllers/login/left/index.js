@@ -2,6 +2,8 @@ var global = {
 	selected : 0
 };
 
+$.navbarView.loadConfig(Alloy.Globals.navbar);
+
 // > event
 $.main.addEventListener('open', function(e) {
 	load();

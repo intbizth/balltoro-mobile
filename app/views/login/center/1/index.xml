@@ -2,7 +2,7 @@
 	<Window id="main">
 		<View id="content">
 			<Widget id="navbarView" src="com.intbizth.alloy.navbar"></Widget>
-			<Label>1</Label>
+			<Widget id="powerBarView" src="com.intbizth.balltoro.powerbar"></Widget>
 		</View>
 	</Window>
 </Alloy>

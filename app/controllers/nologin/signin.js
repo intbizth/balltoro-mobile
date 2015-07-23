@@ -1,3 +1,5 @@
+$.navbarView.loadConfig(Alloy.Globals.navbar);
+
 $.navbarView.setTitleView(L('nologin.signin.title'));
 
 $.navbarView.setLeftView({

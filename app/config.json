@@ -9,6 +9,7 @@
     "os:windows": {},
     "dependencies": {
         "nl.fokkezb.drawer": "1.1.1",
-        "com.intbizth.alloy.navbar": "1.0"
+        "com.intbizth.alloy.navbar": "1.0",
+        "com.intbizth.balltoro.powerbar": "1.0"
     }
 }
