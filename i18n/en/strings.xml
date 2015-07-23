@@ -11,7 +11,7 @@
 	<string name="login.menu.7">Menu 7</string>
 	<string name="login.menu.8">Menu 8</string>
 	<string name="login.menu.9">Menu 9</string>
-	<string name="login.menu.10">Logout</string>
+	<string name="login.menu.signout">Sign Out</string>
 	<string name="nologin.index.button.register">Register</string>
 	<string name="nologin.index.button.signin">Sign In</string>
 	<string name="nologin.index.button.signinwith">Sign In with</string>
