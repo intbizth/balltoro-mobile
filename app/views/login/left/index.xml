@@ -2,17 +2,17 @@
 	<Window id="main" module="xp.ui" role="leftWindow">
 		<View id="content">
 			<Widget id="navbarView" src="com.intbizth.alloy.navbar"></Widget>
-			<ListView id="list" defaultItemTemplate="templateInAct">
+			<ListView id="list">
 				<Templates>
-					<ItemTemplate name="templateInAct">
+					<ItemTemplate name="inAct" class="itemTemplate">
 						<Label bindId="title" class="templateInActTitle" />
-						<View class="templateInActBall" />
-						<View class="templateInActLine" />
+						<View class="templateInActBall"></View>
+						<View class="templateInActLine"></View>
 					</ItemTemplate>
-					<ItemTemplate name="templateAct">
+					<ItemTemplate name="act" class="itemTemplate">
 						<Label bindId="title" class="templateActTitle" />
-						<View class="templateActBall" />
-						<View class="templateActLine" />
+						<View class="templateActBall"></View>
+						<View class="templateActLine"></View>
 					</ItemTemplate>
 				</Templates>
 				<ListSection id="section"></ListSection>

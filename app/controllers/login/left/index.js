@@ -1,54 +1,61 @@
-$.list.addEventListener('itemclick', function(e) {
-	for (var i in $.section.getItems()) {
-		var item = $.section.getItemAt(i);
-		item.template = 'templateInAct';
-		$.section.updateItemAt(i, item);
-	}
-
-	var item = $.section.getItemAt(e.itemIndex);
-	item.template = 'templateAct';
-	$.section.updateItemAt(e.itemIndex, item);
-
-	Alloy.Globals.loginWindow.toggleLeftWindow();
-
-	_.delay(function() {
-		if (e.itemIndex === 9) {
-			Ti.App.fireEvent('logout');
-		}
-	}, 600);
-});
+var global = {
+	selected : 0
+};
 
 // > event
 $.main.addEventListener('open', function(e) {
 	load();
+});
+
+$.main.addEventListener('close', function(e) {
+	unload();
+});
+
+$.list.addEventListener('itemclick', function(e) {
+	if (global.selected !== e.itemIndex) {
+		var item = $.section.getItemAt(global.selected);
+		item.template = 'inAct';
+		$.section.updateItemAt(global.selected, item);
+
+		global.selected = e.itemIndex;
+	}
+
+	var item = $.section.getItemAt(e.itemIndex);
+	item.template = 'act';
+	$.section.updateItemAt(e.itemIndex, item);
+
+	Alloy.Globals.login.mainWindow.setMenu(item.name);
 });
 // < event
 
 function load() {
 	Ti.API.debug('leftWindow:load');
 
-	$.section.setItems([]);
+	global.selected = 0;
 
 	var items = [];
 
-	for (var i = 1; i <= 10; i++) {
+	for (var i in Alloy.Globals.login.menus) {
 		var item = {
-			template : (i === 1) ? 'templateAct' : 'templateInAct',
-			properties : {
-				width : Ti.UI.FILL,
-				height : 42,
-				backgroundColor : 'transparent',
-				selectedBackgroundColor : '#244675'
-			},
+			template : (i == 0) ? 'act' : 'inAct',
+			name : Alloy.Globals.login.menus[i],
 			title : {
-				text : L('login.menu.' + i)
+				text : L('login.menu.' + Alloy.Globals.login.menus[i])
 			}
 		};
 
 		items.push(item);
 	}
 
-	$.section.setItems(items);
+	$.section.items = items;
+};
+
+function unload() {
+	Ti.API.debug('leftWindow:unload');
+
+	global.selected = 0;
+
+	$.section.items = [];
 };
 
 function initialize() {

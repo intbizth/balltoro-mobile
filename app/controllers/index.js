@@ -35,39 +35,70 @@
 // Ti.API.info("Ti.Locale.currentLocale = " + Ti.Locale.currentLocale);
 
 var global = {
-	state : {
-		changeWindow : false
-	}
+	changeWindow : false
 };
 
-Alloy.Globals.nologinWindow = $.nologin.getView();
-Alloy.Globals.loginWindow = $.login.getView();
+Alloy.Globals.nologin.mainWindow = $.nologin.getView();
+Alloy.Globals.login.mainWindow = $.login.getView();
+Alloy.Globals.login.menuWindows = {};
+
+for (var i in Alloy.Globals.login.menus) {
+	var menuWindow = Alloy.createController('login/center/' + Alloy.Globals.login.menus[i] + '/index');
+	Alloy.Globals.login.menuWindows[Alloy.Globals.login.menus[i]] = menuWindow.getView();
+}
+
+Alloy.Globals.login.mainWindow.lock = function() {
+	Alloy.Globals.login.mainWindow.openDrawerGestureMode = 'OPEN_MODE_NONE';
+};
+
+Alloy.Globals.login.mainWindow.unlock = function() {
+	Alloy.Globals.login.mainWindow.openDrawerGestureMode = 'OPEN_MODE_ALL';
+};
+
+Alloy.Globals.login.mainWindow.setMenu = function(menu) {
+	Ti.API.debug('loginWindow:setMenu:' + menu);
+	Alloy.Globals.login.mainWindow.toggleLeftWindow();
+	Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[menu]);
+
+	Alloy.Globals.login.menu = menu;
+};
 
 $.nologin.getView().open();
 
 // > event
 $.nologin.getView().addEventListener('open', function(e) {
-	global.state.changeWindow = true;
+	Ti.API.debug('nologinWindow:open');
+
+	global.changeWindow = true;
 });
 
 $.nologin.getView().addEventListener('close', function(e) {
+	Ti.API.debug('nologinWindow:close');
+
 	_.delay(function() {
-		global.state.changeWindow = false;
+		global.changeWindow = false;
 	}, 800);
 });
 
 $.login.getView().addEventListener('open', function(e) {
-	global.state.changeWindow = true;
+	Ti.API.debug('loginWindow:open');
+
+	global.changeWindow = true;
+
+	Alloy.Globals.login.mainWindow.unlock();
+	Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[Alloy.Globals.login.menu]);
 });
 
 $.login.getView().addEventListener('close', function(e) {
+	Ti.API.debug('loginWindow:close');
+
 	_.delay(function() {
-		global.state.changeWindow = false;
+		global.changeWindow = false;
 	}, 800);
 });
 
 Ti.App.addEventListener('login', function(e) {
-	if (global.state.changeWindow) {
+	if (global.changeWindow) {
 		return;
 	}
 
@@ -79,13 +110,17 @@ Ti.App.addEventListener('login', function(e) {
 });
 
 Ti.App.addEventListener('logout', function(e) {
-	if (global.state.changeWindow) {
+	if (global.changeWindow) {
 		return;
 	}
+
+	Alloy.Globals.login.menu = Alloy.Globals.login.defaultMenu;
 
 	$.nologin.getView().open();
 
 	_.delay(function() {
+		Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[Alloy.Globals.login.menu]);
+
 		$.login.getView().close();
 	}, 800);
 });

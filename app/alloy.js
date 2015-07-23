@@ -14,6 +14,12 @@
 Alloy.Globals.grid = false;
 Alloy.Globals.isIos7Plus = (OS_IOS && parseInt(Ti.Platform.version.split('.')[0]) >= 7);
 Alloy.Globals.iPhoneTall = (OS_IOS && Ti.Platform.osname == 'iphone' && Ti.Platform.displayCaps.platformHeight == 568);
+Alloy.Globals.nologin = {};
+Alloy.Globals.login = {};
+
+Alloy.Globals.login.menus = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'signout'];
+Alloy.Globals.login.defaultMenu = '1';
+Alloy.Globals.login.menu = '1';
 // < alloy globals
 
 // > alloy loading

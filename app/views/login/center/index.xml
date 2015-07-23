@@ -3,7 +3,6 @@
 		<Window id="main">
 			<View id="content">
 				<Widget id="navbarView" src="com.intbizth.alloy.navbar"></Widget>
-				<Label>I am center</Label>
 			</View>
 		</Window>
 	</NavigationWindow>

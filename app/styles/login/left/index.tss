@@ -18,13 +18,16 @@
 	separatorStyle: Ti.UI.iPhone.ListViewSeparatorStyle.NONE
 }
 
+'.itemTemplate':{
+	backgroundColor: 'transparent',
+	selectedBackgroundColor: '#244675'
+}
+
 '.templateInActTitle':{
 	left: 10,
 	width: Ti.UI.FILL,
 	height: 42,
 	color: '#fff',
-	colorAct: '#0C64FF',
-	colorInAct: '#fff',
 	textAlign: 'left'
 }
 
@@ -40,6 +43,7 @@
 
 '.templateInActLine':{
 	bottom: 0,
+	left: 0,
 	width: Ti.UI.FILL,
 	height: 1,
 	backgroundColor: '#244675'
@@ -63,6 +67,7 @@
 
 '.templateActLine':{
 	bottom: 0,
+	left: 0,
 	width: Ti.UI.FILL,
 	height: 1,
 	backgroundColor: '#244675'
