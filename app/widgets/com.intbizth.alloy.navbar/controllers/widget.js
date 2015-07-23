@@ -87,8 +87,11 @@ function initialize() {
 
 initialize();
 
+/**
+ *
+ * @param {Object} args
+ */
 exports.loadConfig = function(args) {
-	Ti.API.error('loadConfig:', args);
 	if (args.height) {
 		global.height = args.height;
 		$.left.height = global.height;
@@ -117,6 +120,10 @@ exports.loadConfig = function(args) {
 	}
 };
 
+/**
+ *
+ * @param {Object|String} view
+ */
 exports.setTitleView = function(view) {
 	if (!view) {
 		return;
@@ -140,6 +147,10 @@ exports.setTitleView = function(view) {
 	$.title.add(view);
 };
 
+/**
+ *
+ * @param {Object} view
+ */
 exports.setLeftView = function(view) {
 	if (!view) {
 		return;
@@ -192,6 +203,10 @@ exports.setLeftView = function(view) {
 	$.left.add(view);
 };
 
+/**
+ *
+ * @param {Object} view
+ */
 exports.setRightView = function(view) {
 	if (!view) {
 		return;
