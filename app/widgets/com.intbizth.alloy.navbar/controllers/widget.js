@@ -1,11 +1,20 @@
 var global = {
-	height : 40
+	height : 40,
+	buttonWidth : 64,
+	backgroundColor : '#000',
+	lineColor : '#fff',
+	titleFontColor : '#fff',
+	buttonLeftFontColor : '#fff',
+	buttonRightFontColor : '#fff'
 };
 
 function initialize() {
 	$.main.height = global.height;
+	$.main.backgroundColor = global.backgroundColor;
+	$.line.backgroundColor = global.lineColor;
+
 	$.title.height = global.height;
-	$.title.width = parseInt(Ti.Platform.displayCaps.platformWidth * 0.6);
+	$.title.width = parseInt(Ti.Platform.displayCaps.platformWidth - (global.buttonWidth * 2));
 	$.title.addEventListener('click', function() {
 		$.main.fireEvent('title:click');
 	});
@@ -14,7 +23,7 @@ function initialize() {
 	});
 
 	$.left.height = global.height;
-	$.left.width = parseInt(Ti.Platform.displayCaps.platformWidth * 0.2);
+	$.left.width = global.buttonWidth;
 
 	$.left.addEventListener('click', function() {
 		$.main.fireEvent('left:click');
@@ -78,6 +87,36 @@ function initialize() {
 
 initialize();
 
+exports.loadConfig = function(args) {
+	Ti.API.error('loadConfig:', args);
+	if (args.height) {
+		global.height = args.height;
+		$.left.height = global.height;
+	}
+
+	if (args.backgroundColor) {
+		global.backgroundColor = args.backgroundColor;
+		$.main.backgroundColor = global.backgroundColor;
+	}
+
+	if (args.lineColor) {
+		global.lineColor = args.lineColor;
+		$.line.backgroundColor = global.lineColor;
+	}
+
+	if (args.titleFontColor) {
+		global.titleFontColor = args.titleFontColor;
+	}
+
+	if (args.buttonLeftFontColor) {
+		global.buttonLeftFontColor = args.buttonLeftFontColor;
+	}
+
+	if (args.buttonRightFontColor) {
+		global.buttonRightFontColor = args.buttonRightFontColor;
+	}
+};
+
 exports.setTitleView = function(view) {
 	if (!view) {
 		return;
@@ -89,7 +128,7 @@ exports.setTitleView = function(view) {
 		view = Ti.UI.createLabel({
 			width : $.title.width,
 			height : $.title.height,
-			color : '#fff',
+			color : global.titleFontColor,
 			font : {
 				fontSize : 16
 			},
@@ -137,7 +176,7 @@ exports.setLeftView = function(view) {
 		if (view.title) {
 			var title = Ti.UI.createLabel({
 				height : 22,
-				color : '#fff',
+				color : global.buttonLeftFontColor,
 				font : {
 					fontSize : 14
 				},
@@ -189,7 +228,7 @@ exports.setRightView = function(view) {
 		if (view.title) {
 			var title = Ti.UI.createLabel({
 				height : 22,
-				color : '#fff',
+				color : global.buttonRightFontColor,
 				font : {
 					fontSize : 14
 				},

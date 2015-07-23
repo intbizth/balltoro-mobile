@@ -1,8 +1,7 @@
 '#main': {
 	top: 0,
 	width: Ti.UI.FILL,
-	height: Ti.UI.SIZE,
-	backgroundColor: '#4687F8'
+	height: Ti.UI.SIZE
 }
 
 '#left': {
@@ -14,7 +13,7 @@
 
 '#left[if=Alloy.Globals.grid]': {
 	borderWidth: 1,
-	borderColor: '#3190A4'
+	borderColor: '#3190a4'
 }
 
 '#title': {
@@ -25,7 +24,7 @@
 
 '#title[if=Alloy.Globals.grid]': {
 	borderWidth: 1,
-	borderColor: '#3190A4'
+	borderColor: '#3190a4'
 }
 
 '#right': {
@@ -37,12 +36,11 @@
 
 '#right[if=Alloy.Globals.grid]': {
 	borderWidth: 1,
-	borderColor: '#3190A4'
+	borderColor: '#3190a4'
 }
 
 '#line': {
 	bottom: 0,
 	width:Ti.UI.FILL,
-	height: 1,
-	backgroundColor: '#2F579E'
+	height: 1
 }
