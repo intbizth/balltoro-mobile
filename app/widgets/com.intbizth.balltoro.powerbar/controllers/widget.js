@@ -75,7 +75,21 @@ exports.setLeftValue = function(value) {
 	$.rightLabel.text = percentRight.toFixed(2) + '%';
 	$.rightBarView.width = parseInt(percentRight * ($.centerView.width / 100));
 
-	Ti.API.error($.leftLabel.text, $.rightLabel.text, (parseInt($.leftLabel.text) + parseInt($.rightLabel.text)));
+	$.centerBarView.transform = Ti.UI.create2DMatrix().rotate(45);
+
+	if (percentLeft === 50) {
+		$.centerBarView.visible = false;
+	} else if (percentLeft > 50) {
+		$.centerBarView.visible = true;
+		$.centerBarView.backgroundColor = $.leftBarView.backgroundColor;
+	} else if (percentLeft < 50) {
+		$.centerBarView.visible = true;
+		$.centerBarView.backgroundColor = $.rightBarView.backgroundColor;
+	}
+
+	$.centerBarView.left = parseInt(percentLeft * ($.centerView.width / 100)) - 6;
+
+	Ti.API.error('2', percentLeft.toFixed(2), '+', percentRight.toFixed(2), '=', (parseFloat(percentLeft.toFixed(2)) + parseFloat(percentRight.toFixed(2))));
 };
 
 /**
@@ -91,5 +105,19 @@ exports.setRightValue = function(value) {
 	$.rightLabel.text = percentRight.toFixed(2) + '%';
 	$.rightBarView.width = parseInt(percentRight * ($.centerView.width / 100));
 
-	Ti.API.error($.leftLabel.text, $.rightLabel.text, (parseInt($.leftLabel.text) + parseInt($.rightLabel.text)));
+	$.centerBarView.transform = Ti.UI.create2DMatrix().rotate(45);
+
+	if (percentLeft === 50) {
+		$.centerBarView.visible = false;
+	} else if (percentLeft > 50) {
+		$.centerBarView.visible = true;
+		$.centerBarView.backgroundColor = $.leftBarView.backgroundColor;
+	} else if (percentLeft < 50) {
+		$.centerBarView.visible = true;
+		$.centerBarView.backgroundColor = $.rightBarView.backgroundColor;
+	}
+
+	$.centerBarView.left = parseInt(percentLeft * ($.centerView.width / 100)) - 6;
+
+	Ti.API.error('2', percentLeft.toFixed(2), '+', percentRight.toFixed(2), '=', (parseFloat(percentLeft.toFixed(2)) + parseFloat(percentRight.toFixed(2))));
 };

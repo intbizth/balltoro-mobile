@@ -2,15 +2,15 @@
 	<View id="main">
 		<View id="content">
 			<View id="leftView">
-				<Label id="leftLabel" class="label" text="0%"></Label>
+				<Label id="leftLabel" class="label" text="0%" />
 			</View>
 			<View id="centerView">
-				<View id="leftBarView"></View>
-				<!-- <View id="centerBarView"></View> -->
-				<View id="rightBarView"></View>
+				<View id="leftBarView" />
+				<View id="rightBarView" />
+				<View id="centerBarView" />
 			</View>
 			<View id="rightView">
-				<Label id="rightLabel" class="label" text="0%"></Label>
+				<Label id="rightLabel" class="label" text="0%" />
 			</View>
 		</View>
 	</View>

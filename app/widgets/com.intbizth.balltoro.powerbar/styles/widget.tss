@@ -38,3 +38,10 @@
 	width: Ti.UI.FILL,
 	height: Ti.UI.FILL
 }
+
+'#centerBarView':{
+	top: -7,
+	width: 14,
+	height: 14,
+	visible: false
+}
