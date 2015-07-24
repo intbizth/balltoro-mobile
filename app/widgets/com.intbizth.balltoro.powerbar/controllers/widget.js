@@ -3,7 +3,9 @@ var global = {
 	backgroundColor : '#000',
 	leftColor : '#f4564f',
 	rightColor : '#f8b92a',
-	fontColor : '#fff'
+	fontColor : '#fff',
+	leftValue : 0,
+	rightValue : 0
 };
 
 function initialize() {
@@ -71,6 +73,9 @@ exports.setLeftValue = function(value) {
 	var percentLeft = value * (100 / 1);
 	var percentRight = 100 - percentLeft;
 
+	global.leftValue = percentLeft;
+	global.rightValue = percentRight;
+
 	$.leftLabel.text = percentLeft.toFixed(2) + '%';
 	$.rightLabel.text = percentRight.toFixed(2) + '%';
 	$.rightBarView.width = parseInt(percentRight * ($.centerView.width / 100));
@@ -88,8 +93,6 @@ exports.setLeftValue = function(value) {
 	}
 
 	$.centerBarView.left = parseInt(percentLeft * ($.centerView.width / 100)) - 6;
-
-	Ti.API.error('2', percentLeft.toFixed(2), '+', percentRight.toFixed(2), '=', (parseFloat(percentLeft.toFixed(2)) + parseFloat(percentRight.toFixed(2))));
 };
 
 /**
@@ -101,6 +104,9 @@ exports.setRightValue = function(value) {
 	var percentRight = value * (100 / 1);
 	var percentLeft = 100 - percentRight;
 
+	global.leftValue = percentLeft;
+	global.rightValue = percentRight;
+
 	$.leftLabel.text = percentLeft.toFixed(2) + '%';
 	$.rightLabel.text = percentRight.toFixed(2) + '%';
 	$.rightBarView.width = parseInt(percentRight * ($.centerView.width / 100));
@@ -118,6 +124,18 @@ exports.setRightValue = function(value) {
 	}
 
 	$.centerBarView.left = parseInt(percentLeft * ($.centerView.width / 100)) - 6;
+};
 
-	Ti.API.error('2', percentLeft.toFixed(2), '+', percentRight.toFixed(2), '=', (parseFloat(percentLeft.toFixed(2)) + parseFloat(percentRight.toFixed(2))));
+/**
+ * return {Integer}
+ */
+exports.getLeftValue = function() {
+	return global.leftValue;
+};
+
+/**
+ * return {Integer}
+ */
+exports.getRightValue = function() {
+	return global.rightValue;
 };
