@@ -2,15 +2,6 @@ var global = {
 	timer : null
 };
 
-$.navbarView.loadConfig(Alloy.Globals.navbar);
-$.powerBarView.loadConfig(Alloy.Globals.powerbar);
-
-// > event
-$.main.addEventListener('open', function(e) {
-	test();
-});
-// < event
-
 function test() {
 	clearInterval(global.timer);
 	global.timer = null;
@@ -29,7 +20,17 @@ function test() {
 				fixed : 7
 			}));
 		}
-	}, 400);
+	}, 2000);
+};
+
+function loadEvent() {
+	$.main.addEventListener('open', function(e) {
+		test();
+	});
+
+	$.main.addEventListener('close', function(e) {
+		destroy();
+	});
 };
 
 function initialize() {
@@ -37,7 +38,19 @@ function initialize() {
 		$.content.top = 20;
 	}
 
-	test();
+	$.navbarView.loadConfig(Alloy.Globals.navbar);
+	$.powerBarView.loadConfig(Alloy.Globals.powerbar);
+
+	loadEvent();
 };
 
 initialize();
+
+function destroy() {
+	clearInterval(global.timer);
+	global.timer = null;
+};
+
+exports.destroy = function() {
+	destroy();
+};

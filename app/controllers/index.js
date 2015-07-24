@@ -44,7 +44,7 @@ Alloy.Globals.login.menuWindows = {};
 
 for (var i in Alloy.Globals.login.menus) {
 	var menuWindow = Alloy.createController('login/center/' + Alloy.Globals.login.menus[i] + '/index');
-	Alloy.Globals.login.menuWindows[Alloy.Globals.login.menus[i]] = menuWindow.getView();
+	Alloy.Globals.login.menuWindows[Alloy.Globals.login.menus[i]] = menuWindow;
 }
 
 Alloy.Globals.login.mainWindow.lock = function() {
@@ -58,7 +58,8 @@ Alloy.Globals.login.mainWindow.unlock = function() {
 Alloy.Globals.login.mainWindow.setMenu = function(menu) {
 	Ti.API.debug('loginWindow:setMenu:' + menu);
 	Alloy.Globals.login.mainWindow.toggleLeftWindow();
-	Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[menu]);
+	Alloy.Globals.login.menuWindows[Alloy.Globals.login.menu].destroy();
+	Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[menu].getView());
 
 	Alloy.Globals.login.menu = menu;
 };
@@ -86,7 +87,7 @@ $.login.getView().addEventListener('open', function(e) {
 	global.changeWindow = true;
 
 	Alloy.Globals.login.mainWindow.unlock();
-	Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[Alloy.Globals.login.menu]);
+	Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[Alloy.Globals.login.menu].getView());
 });
 
 $.login.getView().addEventListener('close', function(e) {
@@ -119,7 +120,7 @@ Ti.App.addEventListener('logout', function(e) {
 	$.nologin.getView().open();
 
 	_.delay(function() {
-		Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[Alloy.Globals.login.menu]);
+		Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[Alloy.Globals.login.menu].getView());
 
 		$.login.getView().close();
 	}, 800);

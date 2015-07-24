@@ -24,3 +24,11 @@ function initialize() {
 };
 
 initialize();
+
+function destroy() {
+
+};
+
+exports.destroy = function() {
+	destroy();
+}; 
