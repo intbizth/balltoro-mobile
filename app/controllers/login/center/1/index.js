@@ -1,14 +1,65 @@
 var global = {
-	load : false,
-	timer : null
+	load : false
+};
+
+var timer = [null, null];
+
+$.gamelabelView.test = function() {
+	var placehold = require('placehold.it');
+
+	clearInterval(timer[0]);
+	timer[0] = null;
+
+	timer[0] = setInterval(function() {
+		Ti.API.error('timer[0]', timer[0]);
+
+		var random = _.random(0, 4);
+
+		random = 0;
+		if (random === 0) {
+			var data = {
+				datetime : Vendor.Chance.timestamp(),
+				title : [Vendor.Chance.name(), Vendor.Chance.name()],
+				image : [placehold.createURL({
+					width : 70,
+					height : 70
+				}).image, placehold.createURL({
+					width : 70,
+					height : 70
+				}).image]
+			};
+
+			$.gamelabelView.setBefore(data);
+		} else if (random === 1) {
+			var data = {};
+
+			$.gamelabelView.setGameBefore(data);
+		} else if (random === 2) {
+			var data = {};
+
+			$.gamelabelView.setGameLive(data);
+		} else if (random === 3) {
+			var data = {};
+
+			$.gamelabelView.setGameAfter(data);
+		} else {
+			var data = {};
+
+			$.gamelabelView.setAfter(data);
+		}
+	}, 2000);
 };
 
 $.powerBarView.test = function() {
-	clearInterval(global.timer);
-	global.timer = null;
+	clearInterval(timer[1]);
+	timer[1] = null;
 
-	global.timer = setInterval(function() {
-		if (_.random(0, 1) === 1) {
+	timer[1] = setInterval(function() {
+		Ti.API.error('timer[1]', timer[1]);
+
+		var random = _.random(0, 1);
+
+		if (random === 1) {
 			$.powerBarView.setLeftValue(Vendor.Chance.floating({
 				min : 0,
 				max : 1,
@@ -46,6 +97,7 @@ function loadEvent() {
 
 	$.main.addEventListener('open', function(e) {
 		Ti.API.debug('1:main:open');
+
 		global.load = true;
 	});
 
@@ -70,6 +122,9 @@ function initialize() {
 initialize();
 
 function load() {
+	Ti.API.debug('1:load');
+
+	$.gamelabelView.test();
 	$.powerBarView.test();
 	$.winloseordrawView.test();
 };
@@ -78,8 +133,13 @@ function destroy() {
 	Ti.API.debug('1:destroy');
 
 	global.load = false;
-	clearInterval(global.timer);
-	global.timer = null;
+
+	for (var i in timer) {
+		clearInterval(timer[i]);
+		timer[i] = null;
+	}
+
+	Ti.API.error(timer);
 
 	$.winloseordrawTestSubView.removeAllChildren();
 };
