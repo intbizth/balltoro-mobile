@@ -129,8 +129,6 @@ Ti.App.addEventListener('logout', function(e) {
 			Alloy.Globals.login.menuWindows[i].destroy();
 		}
 
-		Alloy.Globals.login.mainWindow.setMenu(Alloy.Globals.login.menu, true);
-
 		$.login.getView().close();
 	}, 800);
 });

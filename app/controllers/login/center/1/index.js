@@ -7,12 +7,12 @@ var timer = [null, null];
 $.gamelabelView.test = function() {
 	var placehold = require('placehold.it');
 
+	Ti.API.error('before:timer[0]', timer[0]);
+
 	clearInterval(timer[0]);
 	timer[0] = null;
 
 	timer[0] = setInterval(function() {
-		Ti.API.error('timer[0]', timer[0]);
-
 		var random = _.random(0, 4);
 
 		random = 0;
@@ -48,15 +48,17 @@ $.gamelabelView.test = function() {
 			$.gamelabelView.setAfter(data);
 		}
 	}, 2000);
+
+	Ti.API.error('after:timer[0]', timer[0]);
 };
 
 $.powerBarView.test = function() {
+	Ti.API.error('before:timer[1]', timer[1]);
+
 	clearInterval(timer[1]);
 	timer[1] = null;
 
 	timer[1] = setInterval(function() {
-		Ti.API.error('timer[1]', timer[1]);
-
 		var random = _.random(0, 1);
 
 		if (random === 1) {
@@ -73,6 +75,8 @@ $.powerBarView.test = function() {
 			}));
 		}
 	}, 500);
+
+	Ti.API.error('after:timer[1]', timer[1]);
 };
 
 $.winloseordrawView.test = function() {
@@ -96,9 +100,7 @@ function loadEvent() {
 	Ti.API.debug('1:loadEvent');
 
 	$.main.addEventListener('open', function(e) {
-		Ti.API.debug('1:main:open');
 
-		global.load = true;
 	});
 
 	$.main.addEventListener('close', function(e) {
@@ -124,6 +126,8 @@ initialize();
 function load() {
 	Ti.API.debug('1:load');
 
+	global.load = true;
+
 	$.gamelabelView.test();
 	$.powerBarView.test();
 	$.winloseordrawView.test();
@@ -138,8 +142,6 @@ function destroy() {
 		clearInterval(timer[i]);
 		timer[i] = null;
 	}
-
-	Ti.API.error(timer);
 
 	$.winloseordrawTestSubView.removeAllChildren();
 };
