@@ -2,7 +2,7 @@ var global = {
 	timer : null
 };
 
-function test() {
+$.powerBarView.test = function() {
 	clearInterval(global.timer);
 	global.timer = null;
 
@@ -25,7 +25,7 @@ function test() {
 
 function loadEvent() {
 	$.main.addEventListener('open', function(e) {
-		test();
+		$.powerBarView.test();
 	});
 
 	$.main.addEventListener('close', function(e) {
@@ -35,7 +35,7 @@ function loadEvent() {
 
 function initialize() {
 	if (Alloy.Globals.isIos7Plus) {
-		$.content.top = 20;
+		$.navbarView.getView().top = 20;
 	}
 
 	$.navbarView.loadConfig(Alloy.Globals.navbar);

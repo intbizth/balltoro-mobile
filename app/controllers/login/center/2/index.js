@@ -1,9 +1,15 @@
+function loadEvent() {
+
+};
+
 function initialize() {
 	if (Alloy.Globals.isIos7Plus) {
-		$.content.top = 20;
+		$.navbarView.getView().top = 20;
 	}
-	
+
 	$.navbarView.loadConfig(Alloy.Globals.navbar);
+
+	loadEvent();
 };
 
 initialize();

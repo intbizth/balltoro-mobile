@@ -101,26 +101,26 @@ var slider = {
 	},
 };
 
-// > event
-$.registerButton.addEventListener('click', function(e) {
-	$.navigation.openWindow($.registerWindow.getView());
-});
+function loadEvent() {
+	$.registerButton.addEventListener('click', function(e) {
+		$.navigation.openWindow($.registerWindow.getView());
+	});
 
-$.signinButton.addEventListener('click', function(e) {
-	Ti.App.fireEvent('login', {});
-	// $.navigation.openWindow($.signinWindow.getView());
-});
+	$.signinButton.addEventListener('click', function(e) {
+		Ti.App.fireEvent('login', {});
+		// $.navigation.openWindow($.signinWindow.getView());
+	});
 
-$.signinWithFacebookButton.addEventListener('click', function(e) {
-	Ti.API.error('Alloy.Facebook.loggedIn', typeof Alloy.Facebook.loggedIn, Alloy.Facebook.loggedIn);
+	$.signinWithFacebookButton.addEventListener('click', function(e) {
+		Ti.API.error('Alloy.Facebook.loggedIn', typeof Alloy.Facebook.loggedIn, Alloy.Facebook.loggedIn);
 
-	if (!Alloy.Facebook.loggedIn) {
-		Alloy.Facebook.authorize();
-	} else {
-		Alloy.Facebook.logout();
-	}
-});
-// < event
+		if (!Alloy.Facebook.loggedIn) {
+			Alloy.Facebook.authorize();
+		} else {
+			Alloy.Facebook.logout();
+		}
+	});
+};
 
 function initialize() {
 	Alloy.Facebook.permissions = ['publish_stream', 'read_stream'];
@@ -224,6 +224,8 @@ function initialize() {
 
 	slider.initialize();
 	// slider.test();
+
+	loadEvent();
 };
 
 initialize();

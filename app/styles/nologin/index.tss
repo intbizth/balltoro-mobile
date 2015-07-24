@@ -1,7 +1,7 @@
 '#main[platform=ios]':{
 	width: Ti.UI.FILL,
 	height: Ti.UI.FILL,
-	backgroundColor: '#0F181E',
+	backgroundColor: '#0f181e',
 	backgroundImage: 'images/nologin/bg.png',
 	navBarHidden: true,
 	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
@@ -39,7 +39,7 @@
 
 '#sliderMainSub[if=Alloy.Globals.grid]': {
 	borderWidth: 1,
-	borderColor: '#3190A4'
+	borderColor: '#3190a4'
 }
 
 '#logoImage':{
@@ -50,7 +50,7 @@
 
 '#logoImage[if=Alloy.Globals.grid]': {
 	borderWidth: 1,
-	borderColor: '#3190A4'
+	borderColor: '#3190a4'
 }
 
 '#labelAppName':{
@@ -67,7 +67,7 @@
 
 '#labelAppName[if=Alloy.Globals.grid]': {
 	borderWidth: 1,
-	borderColor: '#3190A4'
+	borderColor: '#3190a4'
 }
 
 '#contentBottom': {
@@ -78,7 +78,7 @@
 
 '#contentBottom[if=Alloy.Globals.grid]': {
 	borderWidth: 1,
-	borderColor: '#3190A4'
+	borderColor: '#3190a4'
 }
 
 '.contentBottomSpace': {
@@ -88,7 +88,7 @@
 }
 
 '.contentBottomSpace[if=Alloy.Globals.grid]': {
-	backgroundColor: '#DD7F28'
+	backgroundColor: '#dd7f28'
 }
 
 '#registerButton': {
@@ -139,9 +139,9 @@
 	top: 10,
 	width: '86%',
 	height: 36,
-	backgroundColor: '#39579A',
+	backgroundColor: '#39579a',
 	borderWidth: 1,
-	borderColor: '#39579A'
+	borderColor: '#39579a'
 }
 
 '#signinWithFacebookSubButton':{

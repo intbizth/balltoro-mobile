@@ -6,31 +6,31 @@
 					<ScrollableView id="slider">
 						<View id="sliderMain">
 							<View id="sliderMainSub">
-								<ImageView id="logoImage"></ImageView>
-								<Label id="labelAppName"></Label>
+								<ImageView id="logoImage" />
+								<Label id="labelAppName" />
 							</View>
 						</View>
 					</ScrollableView>
 				</View>
 				<View id="contentBottom">
-					<View class="contentBottomSpace"></View>
+					<View class="contentBottomSpace" />
 					<View id="registerButton">
-						<Label id="registerLabel"></Label>
+						<Label id="registerLabel" />
 					</View>
 					<View id="signinButton">
-						<Label id="signinLabel"></Label>
+						<Label id="signinLabel" />
 					</View>
 					<View id="signinWithFacebookButton">
 						<View id="signinWithFacebookSubButton">
-							<Label id="signinWithLabel"></Label>
-							<Label id="facebookLabel"></Label>
+							<Label id="signinWithLabel" />
+							<Label id="facebookLabel" />
 						</View>
 					</View>
-					<View class="contentBottomSpace"></View>
+					<View class="contentBottomSpace" />
 				</View>
 			</View>
 		</Window>
 	</NavigationWindow>
-	<Require id="registerWindow" src="nologin/register"></Require>
-	<Require id="signinWindow" src="nologin/signin"></Require>
+	<Require id="registerWindow" src="nologin/register" />
+	<Require id="signinWindow" src="nologin/signin" />
 </Alloy>

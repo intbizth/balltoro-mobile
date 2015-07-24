@@ -2,33 +2,31 @@ var global = {
 	selected : 0
 };
 
-$.navbarView.loadConfig(Alloy.Globals.navbar);
+function loadEvent() {
+	$.main.addEventListener('open', function(e) {
+		load();
+	});
 
-// > event
-$.main.addEventListener('open', function(e) {
-	load();
-});
+	$.main.addEventListener('close', function(e) {
+		unload();
+	});
 
-$.main.addEventListener('close', function(e) {
-	unload();
-});
+	$.list.addEventListener('itemclick', function(e) {
+		if (global.selected !== e.itemIndex) {
+			var item = $.section.getItemAt(global.selected);
+			item.template = 'inAct';
+			$.section.updateItemAt(global.selected, item);
 
-$.list.addEventListener('itemclick', function(e) {
-	if (global.selected !== e.itemIndex) {
-		var item = $.section.getItemAt(global.selected);
-		item.template = 'inAct';
-		$.section.updateItemAt(global.selected, item);
+			global.selected = e.itemIndex;
+		}
 
-		global.selected = e.itemIndex;
-	}
+		var item = $.section.getItemAt(e.itemIndex);
+		item.template = 'act';
+		$.section.updateItemAt(e.itemIndex, item);
 
-	var item = $.section.getItemAt(e.itemIndex);
-	item.template = 'act';
-	$.section.updateItemAt(e.itemIndex, item);
-
-	Alloy.Globals.login.mainWindow.setMenu(item.name);
-});
-// < event
+		Alloy.Globals.login.mainWindow.setMenu(item.name);
+	});
+};
 
 function load() {
 	Ti.API.debug('leftWindow:load');
@@ -56,14 +54,17 @@ function unload() {
 	Ti.API.debug('leftWindow:unload');
 
 	global.selected = 0;
-
 	$.section.items = [];
 };
 
 function initialize() {
 	if (Alloy.Globals.isIos7Plus) {
-		$.content.top = 20;
+		$.navbarView.getView().top = 20;
 	}
+
+	$.navbarView.loadConfig(Alloy.Globals.navbar);
+
+	loadEvent();
 };
 
 initialize();

@@ -1,8 +1,8 @@
 <Alloy>
 	<Window id="main">
+		<Widget id="navbarView" src="com.intbizth.alloy.navbar" />
 		<View id="content">
-			<Widget id="navbarView" src="com.intbizth.alloy.navbar"></Widget>
-			<ActivityIndicator id="activityIndicator"/>
+			<ActivityIndicator id="activityIndicator" />
 		</View>
 	</Window>
 </Alloy>

@@ -20,7 +20,7 @@ Alloy.Globals.powerbar = {
 Alloy.Globals.nologin = {};
 Alloy.Globals.login = {};
 
-Alloy.Globals.login.menus = ['1', '2', '3', '4', '5', '6', '7', '8', '9', 'signout'];
+Alloy.Globals.login.menus = ['1', '2', 'signout'];
 Alloy.Globals.login.defaultMenu = '1';
 Alloy.Globals.login.menu = '1';
 // < alloy globals
