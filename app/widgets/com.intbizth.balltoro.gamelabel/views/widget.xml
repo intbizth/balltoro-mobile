@@ -1,0 +1,17 @@
+<Alloy>
+	<View id="main">
+		<View id="leftView">
+			<Label id="leftLabel" />
+			<View id="leftImage">
+				<ImageView id="leftImageView" />
+			</View>
+		</View>
+		<View id="centerView"></View>
+		<View id="rightView">
+			<Label id="rightLabel" />
+			<View id="rightImage">
+				<ImageView id="rightImageView" />
+			</View>
+		</View>
+	</View>
+</Alloy>

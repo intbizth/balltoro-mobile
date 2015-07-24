@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="com.intbizth.balltoro.gamelabel.vs">VS</string>
+	<string name="com.intbizth.balltoro.gamelabel.live">Live</string>
+	<string name="com.intbizth.balltoro.gamelabel.halftime">HT</string>
+	<string name="com.intbizth.balltoro.gamelabel.FT">FT</string>
+</resources>

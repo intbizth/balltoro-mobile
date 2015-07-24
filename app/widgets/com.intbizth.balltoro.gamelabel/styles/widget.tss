@@ -1,0 +1,37 @@
+'#main':{
+	width: Ti.UI.FILL,
+	height: 0,
+	backgroundColor: '#fff'
+}
+
+'#leftView':{
+	left: 0,
+	width: Ti.UI.SIZE,
+	height: Ti.UI.FILL,
+	backgroundColor: 'red'
+}
+
+'#leftLabel':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.FILL,
+	backgroundColor: '#000'
+}
+
+'#leftImage':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.FILL,
+	backgroundColor: '#fff'
+}
+
+'#centerView':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.FILL,
+	backgroundColor: 'yellow'
+}
+
+'#rightView':{
+	right: 0,
+	width: Ti.UI.SIZE,
+	height: Ti.UI.FILL,
+	backgroundColor: 'green'
+}
