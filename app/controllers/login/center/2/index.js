@@ -1,3 +1,7 @@
+var global = {
+	load : false
+};
+
 function loadEvent() {
 
 };
@@ -14,8 +18,19 @@ function initialize() {
 
 initialize();
 
-function destroy() {
+function load() {
+};
 
+function destroy() {
+	global.load = false;
+};
+
+exports.getLoad = function() {
+	return global.load;
+};
+
+exports.load = function() {
+	load();
 };
 
 exports.destroy = function() {

@@ -1,8 +1,12 @@
 <Alloy>
 	<Window id="main">
+		<Widget id="navbarView" src="com.intbizth.alloy.navbar" />
 		<View id="content">
-			<Widget id="navbarView" src="com.intbizth.alloy.navbar"></Widget>
-			<Widget id="powerBarView" src="com.intbizth.balltoro.powerbar"></Widget>
+			<Widget id="powerBarView" src="com.intbizth.balltoro.powerbar" />
+			<View id="winloseordrawTestView">
+				<View id="winloseordrawTestSubView" />
+			</View>
 		</View>
+		<Widget id="winloseordrawView" src="com.intbizth.balltoro.winloseordraw" />
 	</Window>
 </Alloy>

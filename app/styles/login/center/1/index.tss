@@ -13,3 +13,16 @@
 	height: Ti.UI.FILL,
 	layout: 'vertical'
 }
+
+'#winloseordrawTestView':{
+	top: 10,
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE
+}
+
+'#winloseordrawTestSubView':{
+	top: 10,
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: 'horizontal'
+}

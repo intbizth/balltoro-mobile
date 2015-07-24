@@ -1,15 +1,16 @@
 {
-    "global": {},
-    "env:development": {},
-    "env:test": {},
-    "env:production": {},
-    "os:android": {},
-    "os:ios": {},
-    "os:mobileweb": {},
-    "os:windows": {},
-    "dependencies": {
-        "nl.fokkezb.drawer": "1.1.1",
-        "com.intbizth.alloy.navbar": "1.0",
-        "com.intbizth.balltoro.powerbar": "1.0"
-    }
+	"global": {},
+	"env:development": {},
+	"env:test": {},
+	"env:production": {},
+	"os:android": {},
+	"os:ios": {},
+	"os:mobileweb": {},
+	"os:windows": {},
+	"dependencies": {
+		"nl.fokkezb.drawer": "1.1.1",
+		"com.intbizth.alloy.navbar": "1.0",
+		"com.intbizth.balltoro.powerbar": "1.0",
+		"com.intbizth.balltoro.winloseordraw": "1.0"
+	}
 }
