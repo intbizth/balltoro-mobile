@@ -7,15 +7,12 @@ var timer = [null, null];
 $.gamelabelView.test = function() {
 	var placehold = require('placehold.it');
 
-	Ti.API.error('before:timer[0]', timer[0]);
-
 	clearInterval(timer[0]);
 	timer[0] = null;
 
 	timer[0] = setInterval(function() {
-		var random = _.random(0, 4);
+		var random = _.random(0, 5);
 
-		random = 0;
 		if (random === 0) {
 			var data = {
 				datetime : Vendor.Chance.timestamp(),
@@ -31,30 +28,112 @@ $.gamelabelView.test = function() {
 
 			$.gamelabelView.setBefore(data);
 		} else if (random === 1) {
-			var data = {};
+			var data = {
+				datetime : Vendor.Chance.timestamp(),
+				title : [Vendor.Chance.name(), Vendor.Chance.name()],
+				image : [placehold.createURL({
+					width : 70,
+					height : 70
+				}).image, placehold.createURL({
+					width : 70,
+					height : 70
+				}).image]
+			};
 
 			$.gamelabelView.setGameBefore(data);
 		} else if (random === 2) {
-			var data = {};
+			var data = {
+				datetime : Vendor.Chance.timestamp(),
+				title : [Vendor.Chance.name(), Vendor.Chance.name()],
+				image : [placehold.createURL({
+					width : 70,
+					height : 70
+				}).image, placehold.createURL({
+					width : 70,
+					height : 70
+				}).image],
+				score : [Vendor.Chance.integer({
+					min : 0,
+					max : 99
+				}), Vendor.Chance.integer({
+					min : 0,
+					max : 99
+				})],
+				time : Vendor.Chance.integer({
+					min : 1,
+					max : 60 * 60 * 10
+				})
+			};
 
 			$.gamelabelView.setGameLive(data);
 		} else if (random === 3) {
-			var data = {};
+			var data = {
+				datetime : Vendor.Chance.timestamp(),
+				title : [Vendor.Chance.name(), Vendor.Chance.name()],
+				image : [placehold.createURL({
+					width : 70,
+					height : 70
+				}).image, placehold.createURL({
+					width : 70,
+					height : 70
+				}).image],
+				score : [Vendor.Chance.integer({
+					min : 0,
+					max : 99
+				}), Vendor.Chance.integer({
+					min : 0,
+					max : 99
+				})]
+			};
+
+			$.gamelabelView.setGameLiveHT(data);
+		} else if (random === 4) {
+			var data = {
+				datetime : Vendor.Chance.timestamp(),
+				title : [Vendor.Chance.name(), Vendor.Chance.name()],
+				image : [placehold.createURL({
+					width : 70,
+					height : 70
+				}).image, placehold.createURL({
+					width : 70,
+					height : 70
+				}).image],
+				score : [Vendor.Chance.integer({
+					min : 0,
+					max : 99
+				}), Vendor.Chance.integer({
+					min : 0,
+					max : 99
+				})]
+			};
 
 			$.gamelabelView.setGameAfter(data);
 		} else {
-			var data = {};
+			var data = {
+				datetime : Vendor.Chance.timestamp(),
+				title : [Vendor.Chance.name(), Vendor.Chance.name()],
+				image : [placehold.createURL({
+					width : 70,
+					height : 70
+				}).image, placehold.createURL({
+					width : 70,
+					height : 70
+				}).image],
+				score : [Vendor.Chance.integer({
+					min : 0,
+					max : 99
+				}), Vendor.Chance.integer({
+					min : 0,
+					max : 99
+				})]
+			};
 
 			$.gamelabelView.setAfter(data);
 		}
-	}, 2000);
-
-	Ti.API.error('after:timer[0]', timer[0]);
+	}, 4000);
 };
 
 $.powerBarView.test = function() {
-	Ti.API.error('before:timer[1]', timer[1]);
-
 	clearInterval(timer[1]);
 	timer[1] = null;
 
@@ -75,8 +154,6 @@ $.powerBarView.test = function() {
 			}));
 		}
 	}, 500);
-
-	Ti.API.error('after:timer[1]', timer[1]);
 };
 
 $.winloseordrawView.test = function() {
