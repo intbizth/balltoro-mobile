@@ -2,56 +2,54 @@ var global = {
 	load : false
 };
 
-var timer = [null, null];
+var timer = [null, null, null];
 
-$.gamelabelView.test = function() {
-	var placehold = require('placehold.it');
+var placehold = require('placehold.it');
 
+$.matchlabelView.test = function() {
 	clearInterval(timer[0]);
 	timer[0] = null;
 
 	timer[0] = setInterval(function() {
-		var random = _.random(0, 5);
+		var random = _.random(0, 1);
+
+		var imageSize = $.matchlabelView.setImageSize();
+		$.matchlabelView.setImage(placehold.createURL(imageSize).image);
+		$.matchlabelView.setTitle(Vendor.Chance.sentence());
+	}, 5000);
+};
+
+$.gamelabelView.test = function() {
+	clearInterval(timer[1]);
+	timer[1] = null;
+
+	timer[1] = setInterval(function() {
+		var random = _.random(0, 6);
 
 		if (random === 0) {
+			var imageSize = $.gamelabelView.getBeforeImageSize();
 			var data = {
 				datetime : Vendor.Chance.timestamp(),
 				title : [Vendor.Chance.name(), Vendor.Chance.name()],
-				image : [placehold.createURL({
-					width : 70,
-					height : 70
-				}).image, placehold.createURL({
-					width : 70,
-					height : 70
-				}).image]
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image]
 			};
 
 			$.gamelabelView.setBefore(data);
 		} else if (random === 1) {
+			var imageSize = $.gamelabelView.getGameBeforeImageSize();
 			var data = {
 				datetime : Vendor.Chance.timestamp(),
 				title : [Vendor.Chance.name(), Vendor.Chance.name()],
-				image : [placehold.createURL({
-					width : 70,
-					height : 70
-				}).image, placehold.createURL({
-					width : 70,
-					height : 70
-				}).image]
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image]
 			};
 
 			$.gamelabelView.setGameBefore(data);
 		} else if (random === 2) {
+			var imageSize = $.gamelabelView.getGameLiveImageSize();
 			var data = {
 				datetime : Vendor.Chance.timestamp(),
 				title : [Vendor.Chance.name(), Vendor.Chance.name()],
-				image : [placehold.createURL({
-					width : 70,
-					height : 70
-				}).image, placehold.createURL({
-					width : 70,
-					height : 70
-				}).image],
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image],
 				score : [Vendor.Chance.integer({
 					min : 0,
 					max : 99
@@ -67,16 +65,11 @@ $.gamelabelView.test = function() {
 
 			$.gamelabelView.setGameLive(data);
 		} else if (random === 3) {
+			var imageSize = $.gamelabelView.getGameLiveHTImageSize();
 			var data = {
 				datetime : Vendor.Chance.timestamp(),
 				title : [Vendor.Chance.name(), Vendor.Chance.name()],
-				image : [placehold.createURL({
-					width : 70,
-					height : 70
-				}).image, placehold.createURL({
-					width : 70,
-					height : 70
-				}).image],
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image],
 				score : [Vendor.Chance.integer({
 					min : 0,
 					max : 99
@@ -88,16 +81,11 @@ $.gamelabelView.test = function() {
 
 			$.gamelabelView.setGameLiveHT(data);
 		} else if (random === 4) {
+			var imageSize = $.gamelabelView.getGameAfterImageSize();
 			var data = {
 				datetime : Vendor.Chance.timestamp(),
 				title : [Vendor.Chance.name(), Vendor.Chance.name()],
-				image : [placehold.createURL({
-					width : 70,
-					height : 70
-				}).image, placehold.createURL({
-					width : 70,
-					height : 70
-				}).image],
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image],
 				score : [Vendor.Chance.integer({
 					min : 0,
 					max : 99
@@ -108,17 +96,12 @@ $.gamelabelView.test = function() {
 			};
 
 			$.gamelabelView.setGameAfter(data);
-		} else {
+		} else if (random === 5) {
+			var imageSize = $.gamelabelView.getAfterImageSize();
 			var data = {
 				datetime : Vendor.Chance.timestamp(),
 				title : [Vendor.Chance.name(), Vendor.Chance.name()],
-				image : [placehold.createURL({
-					width : 70,
-					height : 70
-				}).image, placehold.createURL({
-					width : 70,
-					height : 70
-				}).image],
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image],
 				score : [Vendor.Chance.integer({
 					min : 0,
 					max : 99
@@ -129,15 +112,23 @@ $.gamelabelView.test = function() {
 			};
 
 			$.gamelabelView.setAfter(data);
+		} else {
+			var imageSize = $.gamelabelView.getGameVSImageSize();
+			var data = {
+				title : [Vendor.Chance.name(), Vendor.Chance.name()],
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image]
+			};
+
+			$.gamelabelView.setGameVS(data);
 		}
-	}, 4000);
+	}, 5000);
 };
 
 $.powerBarView.test = function() {
-	clearInterval(timer[1]);
-	timer[1] = null;
+	clearInterval(timer[2]);
+	timer[2] = null;
 
-	timer[1] = setInterval(function() {
+	timer[2] = setInterval(function() {
 		var random = _.random(0, 1);
 
 		if (random === 1) {
@@ -205,6 +196,7 @@ function load() {
 
 	global.load = true;
 
+	$.matchlabelView.test();
 	$.gamelabelView.test();
 	$.powerBarView.test();
 	$.winloseordrawView.test();
