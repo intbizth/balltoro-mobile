@@ -286,6 +286,16 @@ exports.setBefore = function(args) {
 };
 
 /**
+ * return {width:Integer, height:Integer}
+ */
+exports.getBeforeImageSize = function() {
+	return {
+		width : $.leftImageBeforeTemplate.width,
+		height : $.leftImageBeforeTemplate.height
+	};
+};
+
+/**
  *
  * @param {Object} args
  * state: gamebefore
@@ -303,6 +313,16 @@ exports.setGameBefore = function(args) {
 	$.rightImageGameBeforeTemplate.image = args.image[1];
 	$.vsLabelGameBeforeTemplate.text = L('com.intbizth.balltoro.gamelabel.vs');
 	$.timeLabelGameBeforeTemplate.text = Alloy.Moment.unix(args.datetime).format('HH:mm');
+};
+
+/**
+ * return {width:Integer, height:Integer}
+ */
+exports.getGameBeforeImageSize = function() {
+	return {
+		width : $.leftImageGameBeforeTemplate.width,
+		height : $.leftImageGameBeforeTemplate.height
+	};
 };
 
 /**
@@ -341,6 +361,16 @@ exports.setGameLive = function(args) {
 };
 
 /**
+ * return {width:Integer, height:Integer}
+ */
+exports.getGameLiveImageSize = function() {
+	return {
+		width : $.leftImageGameLiveTemplate.width,
+		height : $.leftImageGameLiveTemplate.height
+	};
+};
+
+/**
  *
  * @param {Object} args
  * state: gameliveht
@@ -359,6 +389,16 @@ exports.setGameLiveHT = function(args) {
 	$.liveLabelGameLiveHTTemplate.text = L('com.intbizth.balltoro.gamelabel.live');
 	$.scoreLabelGameLiveHTTemplate.text = args.score[0] + '-' + args.score[1];
 	$.statusLabelGameLiveHTTemplate.text = L('com.intbizth.balltoro.gamelabel.halftime');
+};
+
+/**
+ * return {width:Integer, height:Integer}
+ */
+exports.getGameLiveHTImageSize = function() {
+	return {
+		width : $.leftImageGameLiveHTTemplate.width,
+		height : $.leftImageGameLiveHTTemplate.height
+	};
 };
 
 /**
@@ -383,6 +423,16 @@ exports.setGameAfter = function(args) {
 };
 
 /**
+ * return {width:Integer, height:Integer}
+ */
+exports.getGameAfterImageSize = function() {
+	return {
+		width : $.leftImageGameAfterTemplate.width,
+		height : $.leftImageGameAfterTemplate.height
+	};
+};
+
+/**
  *
  * @param {Object} args
  * state: after
@@ -403,6 +453,16 @@ exports.setAfter = function(args) {
 };
 
 /**
+ * return {width:Integer, height:Integer}
+ */
+exports.getAfterImageSize = function() {
+	return {
+		width : $.leftImageAfterTemplate.width,
+		height : $.leftImageAfterTemplate.height
+	};
+};
+
+/**
  *
  * @param {Object} args
  * state: gamevs
@@ -419,4 +479,14 @@ exports.setGameVS = function(args) {
 	$.rightLabelGameVSTemplate.text = args.title[1];
 	$.rightImageGameVSTemplate.image = args.image[1];
 	$.vsLabelGameVSTemplate.text = L('com.intbizth.balltoro.gamelabel.vs');
+};
+
+/**
+ * return {width:Integer, height:Integer}
+ */
+exports.getGameVSImageSize = function() {
+	return {
+		width : $.leftImageGameVSTemplate.width,
+		height : $.leftImageGameVSTemplate.height
+	};
 };
