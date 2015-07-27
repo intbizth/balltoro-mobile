@@ -205,7 +205,6 @@
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 22,
-	color: '#0088cf',
 	font: {
 		fontSize: 20
 	},
@@ -216,7 +215,6 @@
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 10,
-	color: '#58595b',
 	font: {
 		fontSize: 8
 	},
@@ -229,15 +227,10 @@
 	visible: false
 }
 
-'#centerViewGameVSTemplate':{
-	backgroundColor: '#4188c7'
-}
-
 '#vsLabelGameVSTemplate':{
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 22,
-	color: '#fff',
 	font: {
 		fontSize: 20
 	},
