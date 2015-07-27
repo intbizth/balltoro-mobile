@@ -1,0 +1,32 @@
+'#main':{
+	width: Ti.UI.FILL,
+	height: 30,
+	backgroundColor: '#fff'
+}
+
+'#imageView':{
+	left: 0
+}
+
+'#titleView':{
+	right: 0
+}
+
+'#image':{
+	defaultImage: ''
+}
+
+'#title':{
+	color: '#000',
+	font: {
+		fontSize: 14
+	},
+	textAlign: 'left'
+}
+
+'#line':{
+	bottom: 0,
+	width: Ti.UI.FILL,
+	height: 1,
+	backgroundColor: '#c5c5c5'
+}
