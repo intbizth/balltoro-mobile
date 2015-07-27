@@ -2,21 +2,6 @@
 Alloy.Globals.grid = false;
 Alloy.Globals.isIos7Plus = (OS_IOS && parseInt(Ti.Platform.version.split('.')[0]) >= 7);
 Alloy.Globals.iPhoneTall = (OS_IOS && Ti.Platform.osname == 'iphone' && Ti.Platform.displayCaps.platformHeight == 568);
-Alloy.Globals.navbar = {
-	height : 40,
-	backgroundColor : '#4687f8',
-	lineColor : '#2f579e',
-	titleFontColor : '#fff',
-	buttonLeftFontColor : '#fff',
-	buttonRightFontColor : '#fff'
-};
-Alloy.Globals.powerbar = {
-	height : 30,
-	backgroundColor : '#4990f6',
-	leftColor : '#f3332a',
-	rightColor : '#f7a539',
-	fontColor : '#fff'
-};
 Alloy.Globals.nologin = {};
 Alloy.Globals.login = {};
 
@@ -46,3 +31,16 @@ Vendor.Tinycolor = require('tinycolor');
 // > collections & models
 Alloy.Models.user = Alloy.createModel('user');
 // > collections & models
+
+Alloy.Widgets = {
+	loads : ['com.intbizth.alloy.navbar', 'com.intbizth.balltoro.gamelabel', 'com.intbizth.balltoro.matchlabel', 'com.intbizth.balltoro.powerbar', 'com.intbizth.balltoro.winloseordraw'],
+	configs : {}
+};
+
+for (var i in Alloy.Widgets.loads) {
+	try {
+		var config = require('config/' + Alloy.Widgets.loads[i]);
+		Alloy.Widgets.configs[Alloy.Widgets.loads[i]] = config.config;
+	} catch(e) {
+	}
+}

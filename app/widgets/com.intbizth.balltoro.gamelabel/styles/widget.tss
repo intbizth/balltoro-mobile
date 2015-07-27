@@ -1,13 +1,11 @@
 '#main':{
 	width: Ti.UI.FILL,
-	height: 0,
-	backgroundColor: '#fff'
+	height: 0
 }
 
 '.title':{
 	width: Ti.UI.SIZE,
 	height: Ti.UI.FILL,
-	color: '#000',
 	font: {
 		fontSize: 14
 	},
@@ -42,8 +40,8 @@
 '#timeLabelBeforeTemplate':{
 	top: 0,
 	width: Ti.UI.SIZE,
+	width: Ti.UI.SIZE,
 	height: 16,
-	color: '#0088cf',
 	font: {
 		fontSize: 14
 	},
@@ -54,7 +52,6 @@
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 10,
-	color: '#58595b',
 	font: {
 		fontSize: 8
 	},
@@ -67,15 +64,10 @@
 	visible: false
 }
 
-'#centerViewGameBeforeTemplate':{
-	backgroundColor: '#4188c7'
-}
-
 '#vsLabelGameBeforeTemplate':{
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 28,
-	color: '#fff',
 	font: {
 		fontSize: 26
 	},
@@ -86,7 +78,6 @@
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 16,
-	color: '#fff',
 	font: {
 		fontSize: 14
 	},
@@ -99,15 +90,10 @@
 	visible: false
 }
 
-'#centerViewGameLiveTemplate':{
-	backgroundColor: '#4188c7'
-}
-
 '#liveLabelGameLiveTemplate':{
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 16,
-	color: '#caf906',
 	font: {
 		fontSize: 14,
 		fontWeight: 'bold'
@@ -119,7 +105,6 @@
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 22,
-	color: '#fff',
 	font: {
 		fontSize: 20
 	},
@@ -130,7 +115,6 @@
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 16,
-	color: '#fff',
 	font: {
 		fontSize: 14
 	},
@@ -143,15 +127,10 @@
 	visible: false
 }
 
-'#centerViewGameLiveHTTemplate':{
-	backgroundColor: '#4188c7'
-}
-
 '#liveLabelGameLiveHTTemplate':{
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 16,
-	color: '#caf906',
 	font: {
 		fontSize: 14,
 		fontWeight: 'bold'
@@ -163,7 +142,6 @@
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 22,
-	color: '#fff',
 	font: {
 		fontSize: 20
 	},
@@ -174,7 +152,6 @@
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 16,
-	color: '#fff',
 	font: {
 		fontSize: 14
 	},
@@ -187,15 +164,10 @@
 	visible: false
 }
 
-'#centerViewGameAfterTemplate':{
-	backgroundColor: '#4188c7'
-}
-
 '#liveLabelGameAfterTemplate':{
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 16,
-	color: '#caf906',
 	font: {
 		fontSize: 14,
 		fontWeight: 'bold'
@@ -207,7 +179,6 @@
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 22,
-	color: '#fff',
 	font: {
 		fontSize: 20
 	},
@@ -218,7 +189,6 @@
 	top: 0,
 	width: Ti.UI.SIZE,
 	height: 16,
-	color: '#fff',
 	font: {
 		fontSize: 14
 	},

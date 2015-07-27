@@ -8,6 +8,70 @@ var global = {
 	buttonRightFontColor : '#fff'
 };
 
+$.title.addEventListener('click', function() {
+	$.main.fireEvent('title:click');
+});
+
+$.title.addEventListener('dblclick', function() {
+	$.main.fireEvent('title:dblclick');
+});
+
+$.left.addEventListener('click', function() {
+	$.main.fireEvent('left:click');
+});
+
+$.left.addEventListener('dblclick', function() {
+	$.main.fireEvent('left:dblclick');
+});
+
+$.left.addEventListener('touchstart', function() {
+	if (this.children.length > 0) {
+		this.children[0].act();
+	}
+});
+
+$.left.addEventListener('touchmove', function() {
+	this.fireEvent('touchstart');
+});
+
+$.left.addEventListener('touchend', function() {
+	if (this.children.length > 0) {
+		this.children[0].inact();
+	}
+});
+
+$.left.addEventListener('touchcancel', function() {
+	this.fireEvent('touchend');
+});
+
+$.right.addEventListener('click', function() {
+	$.main.fireEvent('right:click');
+});
+
+$.right.addEventListener('dblclick', function() {
+	$.main.fireEvent('right:dblclick');
+});
+
+$.right.addEventListener('touchstart', function() {
+	if (this.children.length > 0) {
+		this.children[0].act();
+	}
+});
+
+$.right.addEventListener('touchmove', function() {
+	this.fireEvent('touchstart');
+});
+
+$.right.addEventListener('touchend', function() {
+	if (this.children.length > 0) {
+		this.children[0].inact();
+	}
+});
+
+$.right.addEventListener('touchcancel', function() {
+	this.fireEvent('touchend');
+});
+
 function initialize() {
 	$.main.height = global.height;
 	$.main.backgroundColor = global.backgroundColor;
@@ -15,74 +79,12 @@ function initialize() {
 
 	$.title.height = global.height;
 	$.title.width = parseInt(Ti.Platform.displayCaps.platformWidth - (global.buttonWidth * 2));
-	$.title.addEventListener('click', function() {
-		$.main.fireEvent('title:click');
-	});
-	$.title.addEventListener('dblclick', function() {
-		$.main.fireEvent('title:dblclick');
-	});
 
 	$.left.height = global.height;
 	$.left.width = global.buttonWidth;
 
-	$.left.addEventListener('click', function() {
-		$.main.fireEvent('left:click');
-	});
-
-	$.left.addEventListener('dblclick', function() {
-		$.main.fireEvent('left:dblclick');
-	});
-
-	$.left.addEventListener('touchstart', function() {
-		if (this.children.length > 0) {
-			this.children[0].act();
-		}
-	});
-
-	$.left.addEventListener('touchmove', function() {
-		this.fireEvent('touchstart');
-	});
-
-	$.left.addEventListener('touchend', function() {
-		if (this.children.length > 0) {
-			this.children[0].inact();
-		}
-	});
-
-	$.left.addEventListener('touchcancel', function() {
-		this.fireEvent('touchend');
-	});
-
 	$.right.height = global.height;
-	$.right.width = parseInt(Ti.Platform.displayCaps.platformWidth * 0.2);
-
-	$.right.addEventListener('click', function() {
-		$.main.fireEvent('right:click');
-	});
-
-	$.right.addEventListener('dblclick', function() {
-		$.main.fireEvent('right:dblclick');
-	});
-
-	$.right.addEventListener('touchstart', function() {
-		if (this.children.length > 0) {
-			this.children[0].act();
-		}
-	});
-
-	$.right.addEventListener('touchmove', function() {
-		this.fireEvent('touchstart');
-	});
-
-	$.right.addEventListener('touchend', function() {
-		if (this.children.length > 0) {
-			this.children[0].inact();
-		}
-	});
-
-	$.right.addEventListener('touchcancel', function() {
-		this.fireEvent('touchend');
-	});
+	$.right.width = global.buttonWidth;
 };
 
 initialize();
@@ -92,32 +94,13 @@ initialize();
  * @param {Object} args
  */
 exports.loadConfig = function(args) {
-	if (args.height) {
-		global.height = args.height;
-		$.left.height = global.height;
+	for (var i in global) {
+		if (args[i]) {
+			global[i] = args[i];
+		}
 	}
 
-	if (args.backgroundColor) {
-		global.backgroundColor = args.backgroundColor;
-		$.main.backgroundColor = global.backgroundColor;
-	}
-
-	if (args.lineColor) {
-		global.lineColor = args.lineColor;
-		$.line.backgroundColor = global.lineColor;
-	}
-
-	if (args.titleFontColor) {
-		global.titleFontColor = args.titleFontColor;
-	}
-
-	if (args.buttonLeftFontColor) {
-		global.buttonLeftFontColor = args.buttonLeftFontColor;
-	}
-
-	if (args.buttonRightFontColor) {
-		global.buttonRightFontColor = args.buttonRightFontColor;
-	}
+	initialize();
 };
 
 /**

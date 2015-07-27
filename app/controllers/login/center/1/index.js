@@ -2,30 +2,40 @@ var global = {
 	load : false
 };
 
-var timer = [null, null, null];
+var timer = [null, null, null, null];
 
 var placehold = require('placehold.it');
 
 $.matchlabelView.test = function() {
+	run();
+
 	clearInterval(timer[0]);
 	timer[0] = null;
 
 	timer[0] = setInterval(function() {
-		var random = _.random(0, 1);
+		run();
+	}, 5000);
 
+	function run() {
 		var imageSize = $.matchlabelView.setImageSize();
 		$.matchlabelView.setImage(placehold.createURL(imageSize).image);
 		$.matchlabelView.setTitle(Vendor.Chance.sentence());
-	}, 5000);
+	};
 };
 
 $.gamelabelView.test = function() {
+	run();
+
 	clearInterval(timer[1]);
 	timer[1] = null;
 
 	timer[1] = setInterval(function() {
-		var random = _.random(0, 6);
+		run();
+	}, 5000);
 
+	function run() {
+		var random = _.random(0, 6);
+		
 		if (random === 0) {
 			var imageSize = $.gamelabelView.getBeforeImageSize();
 			var data = {
@@ -121,14 +131,20 @@ $.gamelabelView.test = function() {
 
 			$.gamelabelView.setGameVS(data);
 		}
-	}, 5000);
+	};
 };
 
 $.powerBarView.test = function() {
+	run();
+
 	clearInterval(timer[2]);
 	timer[2] = null;
 
 	timer[2] = setInterval(function() {
+		run();
+	}, 500);
+
+	function run() {
 		var random = _.random(0, 1);
 
 		if (random === 1) {
@@ -144,24 +160,37 @@ $.powerBarView.test = function() {
 				fixed : 7
 			}));
 		}
-	}, 500);
+	};
 };
 
 $.winloseordrawView.test = function() {
-	var lists = ['createWin', 'createLose', 'createDraw'];
+	run();
 
-	var rand = _.random(1, 10);
+	clearInterval(timer[3]);
+	timer[3] = null;
 
-	for (var i = 1; i <= rand; i++) {
-		$.winloseordrawTestSubView.add($.winloseordrawView[Vendor.Chance.pick(lists)]());
+	timer[3] = setInterval(function() {
+		run();
+	}, 5000);
 
-		if (i < rand) {
-			$.winloseordrawTestSubView.add(Ti.UI.createView({
-				width : 2,
-				height : 1
-			}));
+	function run() {
+		$.winloseordrawTestSubView.removeAllChildren();
+
+		var lists = ['createWin', 'createLose', 'createDraw'];
+
+		var rand = _.random(1, 10);
+
+		for (var i = 1; i <= rand; i++) {
+			$.winloseordrawTestSubView.add($.winloseordrawView[Vendor.Chance.pick(lists)]());
+
+			if (i < rand) {
+				$.winloseordrawTestSubView.add(Ti.UI.createView({
+					width : 2,
+					height : 1
+				}));
+			}
 		}
-	}
+	};
 };
 
 function loadEvent() {
@@ -183,8 +212,11 @@ function initialize() {
 		$.navbarView.getView().top = 20;
 	}
 
-	$.navbarView.loadConfig(Alloy.Globals.navbar);
-	$.powerBarView.loadConfig(Alloy.Globals.powerbar);
+	$.navbarView.loadConfig(Alloy.Widgets.configs['com.intbizth.alloy.navbar']);
+	$.gamelabelView.loadConfig(Alloy.Widgets.configs['com.intbizth.balltoro.gamelabel']);
+	$.matchlabelView.loadConfig(Alloy.Widgets.configs['com.intbizth.balltoro.matchlabel']);
+	$.powerBarView.loadConfig(Alloy.Widgets.configs['com.intbizth.balltoro.powerbar']);
+	$.winloseordrawView.loadConfig(Alloy.Widgets.configs['com.intbizth.balltoro.winloseordraw']);
 
 	loadEvent();
 };

@@ -1,15 +1,69 @@
+var global = {
+	width : 15,
+	height : 15,
+	winBackgroundColor : '#32ac41',
+	winFontColor : '#000',
+	loseBackgroundColor : '#ff332b',
+	loseFontColor : '#000',
+	drawBackgroundColor : '#f4d01e',
+	drawFontColor : '#000'
+};
+
+/**
+ *
+ * @param {Object} args
+ */
+exports.loadConfig = function(args) {
+	if (args.width) {
+		global.width = args.width;
+	}
+
+	if (args.height) {
+		global.height = args.height;
+	}
+
+	if (args.winBackgroundColor) {
+		global.winBackgroundColor = args.winBackgroundColor;
+	}
+
+	if (args.winFontColor) {
+		global.winFontColor = args.winFontColor;
+	}
+
+	if (args.loseBackgroundColor) {
+		global.loseBackgroundColor = args.loseBackgroundColor;
+	}
+
+	if (args.loseFontColor) {
+		global.loseFontColor = args.loseFontColor;
+	}
+
+	if (args.drawBackgroundColor) {
+		global.drawBackgroundColor = args.drawBackgroundColor;
+	}
+
+	if (args.drawFontColor) {
+		global.drawFontColor = args.drawFontColor;
+	}
+};
+
+/**
+ * return {UIView}
+ */
 exports.createWin = function() {
 	var view = Ti.UI.createView({
-		width : 30,
-		height : 30,
-		backgroundColor : '#32ac41'
+		width : global.width,
+		height : global.height,
+		backgroundColor : global.winBackgroundColor
 	});
 
 	var label = Ti.UI.createLabel({
+		width : global.width,
+		height : global.height,
 		font : {
-			fontSize : 14
+			fontSize : 10
 		},
-		color : '#000',
+		color : global.winFontColor,
 		text : 'W',
 		textAlign : 'center'
 	});
@@ -19,18 +73,23 @@ exports.createWin = function() {
 	return view;
 };
 
+/**
+ * return {UIView}
+ */
 exports.createLose = function() {
 	var view = Ti.UI.createView({
-		width : 30,
-		height : 30,
-		backgroundColor : '#ff332b'
+		width : global.width,
+		height : global.height,
+		backgroundColor : global.loseBackgroundColor
 	});
 
 	var label = Ti.UI.createLabel({
+		width : global.width,
+		height : global.height,
 		font : {
-			fontSize : 14
+			fontSize : 10
 		},
-		color : '#000',
+		color : global.loseFontColor,
 		text : 'L',
 		textAlign : 'center'
 	});
@@ -40,18 +99,23 @@ exports.createLose = function() {
 	return view;
 };
 
+/**
+ * return {UIView}
+ */
 exports.createDraw = function() {
 	var view = Ti.UI.createView({
-		width : 30,
-		height : 30,
-		backgroundColor : '#f4d01e'
+		width : global.width,
+		height : global.height,
+		backgroundColor : global.drawBackgroundColor
 	});
 
 	var label = Ti.UI.createLabel({
+		width : global.width,
+		height : global.height,
 		font : {
-			fontSize : 14
+			fontSize : 10
 		},
-		color : '#000',
+		color : global.drawFontColor,
 		text : 'D',
 		textAlign : 'center'
 	});

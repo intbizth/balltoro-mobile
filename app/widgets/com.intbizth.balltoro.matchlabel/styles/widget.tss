@@ -1,7 +1,5 @@
 '#main':{
-	width: Ti.UI.FILL,
-	height: 30,
-	backgroundColor: '#fff'
+	width: Ti.UI.FILL
 }
 
 '#imageView':{
@@ -17,7 +15,6 @@
 }
 
 '#title':{
-	color: '#000',
 	font: {
 		fontSize: 14
 	},
@@ -27,6 +24,5 @@
 '#line':{
 	bottom: 0,
 	width: Ti.UI.FILL,
-	height: 1,
-	backgroundColor: '#c5c5c5'
+	height: 1
 }

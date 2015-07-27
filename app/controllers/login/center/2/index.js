@@ -11,7 +11,7 @@ function initialize() {
 		$.navbarView.getView().top = 20;
 	}
 
-	$.navbarView.loadConfig(Alloy.Globals.navbar);
+	$.navbarView.loadConfig(Alloy.Widgets.configs['com.intbizth.alloy.navbar']);
 
 	loadEvent();
 };
