@@ -253,3 +253,36 @@
 	textAlign: 'center'
 }
 // < afterTemplate
+
+// > gameVSTemplate
+'#gameVSTemplate':{
+	visible: false
+}
+
+'#centerViewGameVSTemplate':{
+	backgroundColor: '#4188c7'
+}
+
+'#vsLabelGameVSTemplate':{
+	top: 0,
+	width: Ti.UI.SIZE,
+	height: 22,
+	color: '#fff',
+	font: {
+		fontSize: 20
+	},
+	textAlign: 'center'
+}
+
+'#leftLabelGameVSTemplate':{
+	font: {
+		fontSize: 12
+	}
+}
+
+'#rightLabelGameVSTemplate':{
+	font: {
+		fontSize: 12
+	}
+}
+// < gameVSTemplate

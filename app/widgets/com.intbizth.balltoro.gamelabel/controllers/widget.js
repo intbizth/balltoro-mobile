@@ -1,6 +1,7 @@
 var global = {
 	height1 : 60,
-	height2 : 85
+	height2 : 85,
+	height3 : 30
 };
 
 var params = {
@@ -19,136 +20,165 @@ function initialize() {
 	var rightWidth = parseInt(Ti.Platform.displayCaps.platformWidth * 0.41);
 
 	// > beforeTemplate
+	$.beforeTemplate.height = global.height1;
 	$.leftViewBeforeTemplate.width = leftWidth;
 	$.centerViewBeforeTemplate.width = centerWidth;
 	$.rightViewBeforeTemplate.width = rightWidth;
 
 	$.leftLabelViewBeforeTemplate.right = 0;
-	$.leftLabelViewBeforeTemplate.width = $.leftViewBeforeTemplate.width * 0.6;
-	$.leftLabelBeforeTemplate.width = $.leftLabelViewBeforeTemplate.width * 0.9;
+	$.leftLabelViewBeforeTemplate.width = $.leftViewBeforeTemplate.width - $.leftLabelViewBeforeTemplate.right - $.beforeTemplate.height;
+	$.leftLabelBeforeTemplate.width = $.leftLabelViewBeforeTemplate.width - 4;
 	$.leftImageViewBeforeTemplate.left = 0;
-	$.leftImageViewBeforeTemplate.width = $.leftViewBeforeTemplate.width * 0.4;
-	$.leftImageBeforeTemplate.width = $.leftImageViewBeforeTemplate.width * 0.9;
+	$.leftImageViewBeforeTemplate.width = $.beforeTemplate.height;
+	$.leftImageBeforeTemplate.width = $.leftImageViewBeforeTemplate.width - 4;
 	$.leftImageBeforeTemplate.height = $.leftImageBeforeTemplate.width;
 
 	$.rightLabelViewBeforeTemplate.left = 0;
-	$.rightLabelViewBeforeTemplate.width = $.rightViewBeforeTemplate.width * 0.6;
-	$.rightLabelBeforeTemplate.width = $.rightLabelViewBeforeTemplate.width * 0.9;
+	$.rightLabelViewBeforeTemplate.width = $.rightViewBeforeTemplate.width - $.rightLabelViewBeforeTemplate.left - $.beforeTemplate.height;
+	$.rightLabelBeforeTemplate.width = $.rightLabelViewBeforeTemplate.width - 4;
 	$.rightImageViewBeforeTemplate.right = 0;
-	$.rightImageViewBeforeTemplate.width = $.rightViewBeforeTemplate.width * 0.4;
-	$.rightImageBeforeTemplate.width = $.rightImageViewBeforeTemplate.width * 0.9;
+	$.rightImageViewBeforeTemplate.width = $.beforeTemplate.height;
+	$.rightImageBeforeTemplate.width = $.rightImageViewBeforeTemplate.width - 4;
 	$.rightImageBeforeTemplate.height = $.rightImageBeforeTemplate.width;
 	// < beforeTemplate
 
 	// > gameBeforeTemplate
+	$.gameBeforeTemplate.height = global.height1;
 	$.leftViewGameBeforeTemplate.width = leftWidth;
 	$.centerViewGameBeforeTemplate.width = centerWidth;
 	$.rightViewGameBeforeTemplate.width = rightWidth;
 
 	$.leftLabelViewGameBeforeTemplate.left = 0;
-	$.leftLabelViewGameBeforeTemplate.width = $.leftViewGameBeforeTemplate.width * 0.6;
-	$.leftLabelGameBeforeTemplate.width = $.leftLabelViewGameBeforeTemplate.width * 0.9;
+	$.leftLabelViewGameBeforeTemplate.width = $.leftViewGameBeforeTemplate.width - $.leftLabelViewGameBeforeTemplate.left - $.gameBeforeTemplate.height;
+	$.leftLabelGameBeforeTemplate.width = $.leftLabelViewGameBeforeTemplate.width - 4;
 	$.leftImageViewGameBeforeTemplate.right = 0;
-	$.leftImageViewGameBeforeTemplate.width = $.leftViewGameBeforeTemplate.width * 0.4;
-	$.leftImageGameBeforeTemplate.width = $.leftImageViewGameBeforeTemplate.width * 0.9;
+	$.leftImageViewGameBeforeTemplate.width = $.gameBeforeTemplate.height;
+	$.leftImageGameBeforeTemplate.width = $.leftImageViewGameBeforeTemplate.width - 4;
 	$.leftImageGameBeforeTemplate.height = $.leftImageGameBeforeTemplate.width;
 
 	$.rightLabelViewGameBeforeTemplate.right = 0;
-	$.rightLabelViewGameBeforeTemplate.width = $.rightViewGameBeforeTemplate.width * 0.6;
-	$.rightLabelGameBeforeTemplate.width = $.rightLabelViewGameBeforeTemplate.width * 0.9;
+	$.rightLabelViewGameBeforeTemplate.width = $.rightViewGameBeforeTemplate.width - $.rightLabelViewGameBeforeTemplate.right - $.gameBeforeTemplate.height;
+	$.rightLabelGameBeforeTemplate.width = $.rightLabelViewGameBeforeTemplate.width - 4;
 	$.rightImageViewGameBeforeTemplate.left = 0;
-	$.rightImageViewGameBeforeTemplate.width = $.rightViewGameBeforeTemplate.width * 0.4;
-	$.rightImageGameBeforeTemplate.width = $.rightImageViewGameBeforeTemplate.width * 0.9;
+	$.rightImageViewGameBeforeTemplate.width = $.gameBeforeTemplate.height;
+	$.rightImageGameBeforeTemplate.width = $.rightImageViewGameBeforeTemplate.width - 4;
 	$.rightImageGameBeforeTemplate.height = $.rightImageGameBeforeTemplate.width;
 	// < gameBeforeTemplate
 
 	// > gameLiveTemplate
+	$.gameLiveTemplate.height = global.height1;
 	$.leftViewGameLiveTemplate.width = leftWidth;
 	$.centerViewGameLiveTemplate.width = centerWidth;
 	$.rightViewGameLiveTemplate.width = rightWidth;
 
 	$.leftLabelViewGameLiveTemplate.left = 0;
-	$.leftLabelViewGameLiveTemplate.width = $.leftViewGameLiveTemplate.width * 0.6;
-	$.leftLabelGameLiveTemplate.width = $.leftLabelViewGameLiveTemplate.width * 0.9;
+	$.leftLabelViewGameLiveTemplate.width = $.leftViewGameLiveTemplate.width - $.leftLabelViewGameLiveTemplate.left - $.gameLiveTemplate.height;
+	$.leftLabelGameLiveTemplate.width = $.leftLabelViewGameLiveTemplate.width - 4;
 	$.leftImageViewGameLiveTemplate.right = 0;
-	$.leftImageViewGameLiveTemplate.width = $.leftViewGameLiveTemplate.width * 0.4;
-	$.leftImageGameLiveTemplate.width = $.leftImageViewGameLiveTemplate.width * 0.9;
+	$.leftImageViewGameLiveTemplate.width = $.gameLiveTemplate.height;
+	$.leftImageGameLiveTemplate.width = $.leftImageViewGameLiveTemplate.width - 4;
 	$.leftImageGameLiveTemplate.height = $.leftImageGameLiveTemplate.width;
 
 	$.rightLabelViewGameLiveTemplate.right = 0;
-	$.rightLabelViewGameLiveTemplate.width = $.rightViewGameLiveTemplate.width * 0.6;
-	$.rightLabelGameLiveTemplate.width = $.rightLabelViewGameLiveTemplate.width * 0.9;
+	$.rightLabelViewGameLiveTemplate.width = $.rightViewGameLiveTemplate.width - $.leftLabelViewGameLiveTemplate.left - $.gameLiveTemplate.height;
+	$.rightLabelGameLiveTemplate.width = $.rightLabelViewGameLiveTemplate.width - 4;
 	$.rightImageViewGameLiveTemplate.left = 0;
-	$.rightImageViewGameLiveTemplate.width = $.rightViewGameLiveTemplate.width * 0.4;
-	$.rightImageGameLiveTemplate.width = $.rightImageViewGameLiveTemplate.width * 0.9;
+	$.rightImageViewGameLiveTemplate.width = $.gameLiveTemplate.height;
+	$.rightImageGameLiveTemplate.width = $.rightImageViewGameLiveTemplate.width - 4;
 	$.rightImageGameLiveTemplate.height = $.rightImageGameLiveTemplate.width;
 	// < gameLiveTemplate
 
 	// > gameLiveHTTemplate
+	$.gameLiveHTTemplate.height = global.height1;
 	$.leftViewGameLiveHTTemplate.width = leftWidth;
 	$.centerViewGameLiveHTTemplate.width = centerWidth;
 	$.rightViewGameLiveHTTemplate.width = rightWidth;
 
 	$.leftLabelViewGameLiveHTTemplate.left = 0;
-	$.leftLabelViewGameLiveHTTemplate.width = $.leftViewGameLiveHTTemplate.width * 0.6;
-	$.leftLabelGameLiveHTTemplate.width = $.leftLabelViewGameLiveHTTemplate.width * 0.9;
+	$.leftLabelViewGameLiveHTTemplate.width = $.leftViewGameLiveHTTemplate.width - $.leftLabelViewGameLiveHTTemplate.left - $.gameLiveHTTemplate.height;
+	$.leftLabelGameLiveHTTemplate.width = $.leftLabelViewGameLiveHTTemplate.width - 4;
 	$.leftImageViewGameLiveHTTemplate.right = 0;
-	$.leftImageViewGameLiveHTTemplate.width = $.leftViewGameLiveHTTemplate.width * 0.4;
-	$.leftImageGameLiveHTTemplate.width = $.leftImageViewGameLiveHTTemplate.width * 0.9;
+	$.leftImageViewGameLiveHTTemplate.width = $.gameLiveHTTemplate.height;
+	$.leftImageGameLiveHTTemplate.width = $.leftImageViewGameLiveHTTemplate.width - 4;
 	$.leftImageGameLiveHTTemplate.height = $.leftImageGameLiveHTTemplate.width;
 
 	$.rightLabelViewGameLiveHTTemplate.right = 0;
-	$.rightLabelViewGameLiveHTTemplate.width = $.rightViewGameLiveHTTemplate.width * 0.6;
-	$.rightLabelGameLiveHTTemplate.width = $.rightLabelViewGameLiveHTTemplate.width * 0.9;
+	$.rightLabelViewGameLiveHTTemplate.width = $.rightViewGameLiveHTTemplate.width - $.leftLabelViewGameLiveHTTemplate.left - $.gameLiveHTTemplate.height;
+	$.rightLabelGameLiveHTTemplate.width = $.rightLabelViewGameLiveHTTemplate.width - 4;
 	$.rightImageViewGameLiveHTTemplate.left = 0;
-	$.rightImageViewGameLiveHTTemplate.width = $.rightViewGameLiveHTTemplate.width * 0.4;
-	$.rightImageGameLiveHTTemplate.width = $.rightImageViewGameLiveHTTemplate.width * 0.9;
+	$.rightImageViewGameLiveHTTemplate.width = $.gameLiveHTTemplate.height;
+	$.rightImageGameLiveHTTemplate.width = $.rightImageViewGameLiveHTTemplate.width - 4;
 	$.rightImageGameLiveHTTemplate.height = $.rightImageGameLiveHTTemplate.width;
 	// < gameLiveHTTemplate
 
 	// > gameAfterTemplate
+	$.gameAfterTemplate.height = global.height1;
 	$.leftViewGameAfterTemplate.width = leftWidth;
 	$.centerViewGameAfterTemplate.width = centerWidth;
 	$.rightViewGameAfterTemplate.width = rightWidth;
 
 	$.leftLabelViewGameAfterTemplate.left = 0;
-	$.leftLabelViewGameAfterTemplate.width = $.leftViewGameAfterTemplate.width * 0.6;
-	$.leftLabelGameAfterTemplate.width = $.leftLabelViewGameAfterTemplate.width * 0.9;
+	$.leftLabelViewGameAfterTemplate.width = $.leftViewGameAfterTemplate.width - $.leftLabelViewGameAfterTemplate.left - $.gameAfterTemplate.height;
+	$.leftLabelGameAfterTemplate.width = $.leftLabelViewGameAfterTemplate.width - 4;
 	$.leftImageViewGameAfterTemplate.right = 0;
-	$.leftImageViewGameAfterTemplate.width = $.leftViewGameAfterTemplate.width * 0.4;
-	$.leftImageGameAfterTemplate.width = $.leftImageViewGameAfterTemplate.width * 0.9;
+	$.leftImageViewGameAfterTemplate.width = $.gameAfterTemplate.height;
+	$.leftImageGameAfterTemplate.width = $.leftImageViewGameAfterTemplate.width - 4;
 	$.leftImageGameAfterTemplate.height = $.leftImageGameAfterTemplate.width;
 
 	$.rightLabelViewGameAfterTemplate.right = 0;
-	$.rightLabelViewGameAfterTemplate.width = $.rightViewGameAfterTemplate.width * 0.6;
-	$.rightLabelGameAfterTemplate.width = $.rightLabelViewGameAfterTemplate.width * 0.9;
+	$.rightLabelViewGameAfterTemplate.width = $.rightViewGameAfterTemplate.width - $.leftLabelViewGameAfterTemplate.left - $.gameAfterTemplate.height;
+	$.rightLabelGameAfterTemplate.width = $.rightLabelViewGameAfterTemplate.width - 4;
 	$.rightImageViewGameAfterTemplate.left = 0;
-	$.rightImageViewGameAfterTemplate.width = $.rightViewGameAfterTemplate.width * 0.4;
-	$.rightImageGameAfterTemplate.width = $.rightImageViewGameAfterTemplate.width * 0.9;
+	$.rightImageViewGameAfterTemplate.width = $.gameAfterTemplate.height;
+	$.rightImageGameAfterTemplate.width = $.rightImageViewGameAfterTemplate.width - 4;
 	$.rightImageGameAfterTemplate.height = $.rightImageGameAfterTemplate.width;
 	// < gameAfterTemplate
 
 	// > afterTemplate
+	$.afterTemplate.height = global.height1;
 	$.leftViewAfterTemplate.width = leftWidth;
 	$.centerViewAfterTemplate.width = centerWidth;
 	$.rightViewAfterTemplate.width = rightWidth;
 
 	$.leftLabelViewAfterTemplate.left = 0;
-	$.leftLabelViewAfterTemplate.width = $.leftViewAfterTemplate.width * 0.6;
-	$.leftLabelAfterTemplate.width = $.leftLabelViewAfterTemplate.width * 0.9;
+	$.leftLabelViewAfterTemplate.width = $.leftViewAfterTemplate.width - $.leftLabelViewAfterTemplate.left - $.afterTemplate.height;
+	$.leftLabelAfterTemplate.width = $.leftLabelViewAfterTemplate.width - 4;
 	$.leftImageViewAfterTemplate.right = 0;
-	$.leftImageViewAfterTemplate.width = $.leftViewAfterTemplate.width * 0.4;
-	$.leftImageAfterTemplate.width = $.leftImageViewAfterTemplate.width * 0.9;
+	$.leftImageViewAfterTemplate.width = $.afterTemplate.height;
+	$.leftImageAfterTemplate.width = $.leftImageViewAfterTemplate.width - 4;
 	$.leftImageAfterTemplate.height = $.leftImageAfterTemplate.width;
 
 	$.rightLabelViewAfterTemplate.right = 0;
-	$.rightLabelViewAfterTemplate.width = $.rightViewAfterTemplate.width * 0.6;
-	$.rightLabelAfterTemplate.width = $.rightLabelViewAfterTemplate.width * 0.9;
+	$.rightLabelViewAfterTemplate.width = $.rightViewAfterTemplate.width - $.leftLabelViewAfterTemplate.left - $.afterTemplate.height;
+	$.rightLabelAfterTemplate.width = $.rightLabelViewAfterTemplate.width - 4;
 	$.rightImageViewAfterTemplate.left = 0;
-	$.rightImageViewAfterTemplate.width = $.rightViewAfterTemplate.width * 0.4;
-	$.rightImageAfterTemplate.width = $.rightImageViewAfterTemplate.width * 0.9;
+	$.rightImageViewAfterTemplate.width = $.afterTemplate.height;
+	$.rightImageAfterTemplate.width = $.rightImageViewAfterTemplate.width - 4;
 	$.rightImageAfterTemplate.height = $.rightImageAfterTemplate.width;
 	// < afterTemplate
+
+	// > gameVSTemplate
+	$.gameVSTemplate.height = global.height3;
+	$.leftViewGameVSTemplate.width = leftWidth;
+	$.centerViewGameVSTemplate.width = centerWidth;
+	$.rightViewGameVSTemplate.width = rightWidth;
+
+	$.leftLabelViewGameVSTemplate.left = 2;
+	$.leftLabelViewGameVSTemplate.width = $.leftViewGameVSTemplate.width - $.leftLabelViewGameVSTemplate.left - $.gameVSTemplate.height;
+	$.leftLabelGameVSTemplate.width = $.leftLabelViewGameVSTemplate.width - 4;
+	$.leftImageViewGameVSTemplate.right = 0;
+	$.leftImageViewGameVSTemplate.width = $.gameVSTemplate.height;
+	$.leftImageGameVSTemplate.width = $.gameVSTemplate.height - 4;
+	$.leftImageGameVSTemplate.height = $.leftImageGameVSTemplate.width;
+
+	$.rightLabelViewGameVSTemplate.right = 2;
+	$.rightLabelViewGameVSTemplate.width = $.rightViewGameVSTemplate.width - $.rightLabelViewGameVSTemplate.right - $.gameVSTemplate.height;
+	$.rightLabelGameVSTemplate.width = $.rightLabelViewGameVSTemplate.width - 4;
+	$.rightImageViewGameVSTemplate.left = 0;
+	$.rightImageViewGameVSTemplate.width = $.gameVSTemplate.height;
+	$.rightImageGameVSTemplate.width = $.gameVSTemplate.height - 4;
+	$.rightImageGameVSTemplate.height = $.rightImageGameVSTemplate.width;
+	// < gameVSTemplate
 };
 
 initialize();
@@ -216,6 +246,15 @@ function cleanAfter() {
 	$.dateLabelAfterTemplate.text = '';
 };
 
+function cleanGameVS() {
+	$.gameVSTemplate.visible = false;
+	$.leftLabelGameVSTemplate.text = '';
+	$.leftImageGameVSTemplate.image = '';
+	$.rightLabelGameVSTemplate.text = '';
+	$.rightImageGameVSTemplate.image = '';
+	$.vsLabelGameVSTemplate.text = '';
+};
+
 function cleanAll() {
 	cleanBefore();
 	cleanGameBefore();
@@ -223,6 +262,7 @@ function cleanAll() {
 	cleanGameLiveHT();
 	cleanGameAfter();
 	cleanAfter();
+	cleanGameVS();
 };
 
 /**
@@ -235,9 +275,8 @@ exports.setBefore = function(args) {
 
 	cleanAll();
 
-	$.main.height = global.height1;
+	$.main.height = $.beforeTemplate.height;
 	$.beforeTemplate.visible = true;
-
 	$.leftLabelBeforeTemplate.text = args.title[0];
 	$.leftImageBeforeTemplate.image = args.image[0];
 	$.rightLabelBeforeTemplate.text = args.title[1];
@@ -256,9 +295,8 @@ exports.setGameBefore = function(args) {
 
 	cleanAll();
 
-	$.main.height = global.height1;
+	$.main.height = $.gameBeforeTemplate.height;
 	$.gameBeforeTemplate.visible = true;
-
 	$.leftLabelGameBeforeTemplate.text = args.title[0];
 	$.leftImageGameBeforeTemplate.image = args.image[0];
 	$.rightLabelGameBeforeTemplate.text = args.title[1];
@@ -277,7 +315,7 @@ exports.setGameLive = function(args) {
 
 	cleanAll();
 
-	$.main.height = global.height1;
+	$.main.height = $.gameLiveTemplate.height;
 	$.gameLiveTemplate.visible = true;
 	$.leftLabelGameLiveTemplate.text = args.title[0];
 	$.leftImageGameLiveTemplate.image = args.image[0];
@@ -312,7 +350,7 @@ exports.setGameLiveHT = function(args) {
 
 	cleanAll();
 
-	$.main.height = global.height1;
+	$.main.height = $.gameLiveHTTemplate.height;
 	$.gameLiveHTTemplate.visible = true;
 	$.leftLabelGameLiveHTTemplate.text = args.title[0];
 	$.leftImageGameLiveHTTemplate.image = args.image[0];
@@ -333,7 +371,7 @@ exports.setGameAfter = function(args) {
 
 	cleanAll();
 
-	$.main.height = global.height1;
+	$.main.height = $.gameAfterTemplate.height;
 	$.gameAfterTemplate.visible = true;
 	$.leftLabelGameAfterTemplate.text = args.title[0];
 	$.leftImageGameAfterTemplate.image = args.image[0];
@@ -354,7 +392,7 @@ exports.setAfter = function(args) {
 
 	cleanAll();
 
-	$.main.height = global.height1;
+	$.main.height = $.afterTemplate.height;
 	$.afterTemplate.visible = true;
 	$.leftLabelAfterTemplate.text = args.title[0];
 	$.leftImageAfterTemplate.image = args.image[0];
@@ -362,4 +400,23 @@ exports.setAfter = function(args) {
 	$.rightImageAfterTemplate.image = args.image[1];
 	$.scoreLabelAfterTemplate.text = args.score[0] + '-' + args.score[1];
 	$.dateLabelAfterTemplate.text = Alloy.Moment.unix(args.datetime).format('D MMM YYYY');
+};
+
+/**
+ *
+ * @param {Object} args
+ * state: gamevs
+ */
+exports.setGameVS = function(args) {
+	Ti.API.error('setGameVS:', args);
+
+	cleanAll();
+
+	$.main.height = $.gameVSTemplate.height;
+	$.gameVSTemplate.visible = true;
+	$.leftLabelGameVSTemplate.text = args.title[0];
+	$.leftImageGameVSTemplate.image = args.image[0];
+	$.rightLabelGameVSTemplate.text = args.title[1];
+	$.rightImageGameVSTemplate.image = args.image[1];
+	$.vsLabelGameVSTemplate.text = L('com.intbizth.balltoro.gamelabel.vs');
 };

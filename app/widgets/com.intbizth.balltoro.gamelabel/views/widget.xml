@@ -147,5 +147,28 @@
 				</View>
 			</View>
 		</View>
+		<View id="gameVSTemplate">
+			<View id="leftViewGameVSTemplate" class="leftView">
+				<View id="leftLabelViewGameVSTemplate">
+					<Label id="leftLabelGameVSTemplate" class="title" />
+				</View>
+				<View id="leftImageViewGameVSTemplate">
+					<ImageView id="leftImageGameVSTemplate" class="image" />
+				</View>
+			</View>
+			<View id="centerViewGameVSTemplate" class="centerView">
+				<View id="centerSubViewBeforeTemplate" class="centerSubView">
+					<Label id="vsLabelGameVSTemplate" />
+				</View>
+			</View>
+			<View id="rightViewGameVSTemplate" class="rightView">
+				<View id="rightLabelViewGameVSTemplate">
+					<Label id="rightLabelGameVSTemplate" class="title" />
+				</View>
+				<View id="rightImageViewGameVSTemplate">
+					<ImageView id="rightImageGameVSTemplate" class="image" />
+				</View>
+			</View>
+		</View>
 	</View>
 </Alloy>
