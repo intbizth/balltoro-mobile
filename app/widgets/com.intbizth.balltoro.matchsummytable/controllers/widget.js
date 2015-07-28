@@ -617,7 +617,7 @@ function createTeamTable(data) {
 					height : global.rowHeight
 				},
 				rankingImage : {
-					image : (data.data[i].ranking === -1) ? 'images/static/btn_down.png' : ((data.data[i].ranking === 1) ? 'images/static/btn_up.png' : '')
+					image : (data.data[i].ranking === -1) ? 'images/com.intbizth.balltoro.matchsummytable/btn_down.png' : ((data.data[i].ranking === 1) ? 'images/com.intbizth.balltoro.matchsummytable/btn_up.png' : '')
 				}
 			});
 		}
@@ -655,8 +655,6 @@ exports.loadConfig = function(args) {
  * @param {Object} datas
  */
 exports.setData = function(datas) {
-	Ti.API.error('datas:', datas);
-
 	var sections = [];
 
 	for (var i in datas) {
