@@ -32,36 +32,13 @@ initialize();
  * @param {Object} args
  */
 exports.loadConfig = function(args) {
-	if (args.height) {
-		global.height = args.height;
-		$.main.height = global.height;
+	for (var i in global) {
+		if (args[i]) {
+			global[i] = args[i];
+		}
 	}
 
-	if (args.backgroundColor) {
-		global.backgroundColor = args.backgroundColor;
-		$.main.backgroundColor = global.backgroundColor;
-	}
-
-	if (args.leftColor) {
-		global.leftColor = args.leftColor;
-		$.leftBarView.backgroundColor = global.leftColor;
-	}
-
-	if (args.rightColor) {
-		global.rightColor = args.rightColor;
-		$.rightBarView.backgroundColor = global.rightColor;
-	}
-
-	if (args.rightColor) {
-		global.rightColor = args.rightColor;
-		$.rightBarView.backgroundColor = global.rightColor;
-	}
-
-	if (args.fontColor) {
-		global.fontColor = args.fontColor;
-		$.leftLabel.color = global.fontColor;
-		$.rightLabel.color = global.fontColor;
-	}
+	initialize();
 };
 
 /**
