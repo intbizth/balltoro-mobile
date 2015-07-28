@@ -33,7 +33,7 @@ Alloy.Models.user = Alloy.createModel('user');
 // > collections & models
 
 Alloy.Widgets = {
-	loads : ['com.intbizth.alloy.navbar', 'com.intbizth.balltoro.gamelabel', 'com.intbizth.balltoro.matchlabel', 'com.intbizth.balltoro.powerbar', 'com.intbizth.balltoro.winloseordraw'],
+	loads : ['com.intbizth.alloy.navbar', 'com.intbizth.balltoro.gamelabel', 'com.intbizth.balltoro.matchlabel', 'com.intbizth.balltoro.matchsummytable', 'com.intbizth.balltoro.powerbar', 'com.intbizth.balltoro.winloseordraw'],
 	configs : {}
 };
 

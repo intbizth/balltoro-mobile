@@ -8,6 +8,7 @@
 			<View id="winloseordrawTestView">
 				<View id="winloseordrawTestSubView" />
 			</View>
+			<Widget id="matchsummytableView" src="com.intbizth.balltoro.matchsummytable" />
 		</View>
 		<Widget id="winloseordrawView" src="com.intbizth.balltoro.winloseordraw" />
 	</Window>
