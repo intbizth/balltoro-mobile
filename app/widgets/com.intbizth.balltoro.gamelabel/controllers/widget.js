@@ -103,11 +103,11 @@ function initialize() {
 	$.rightViewGameBeforeTemplate.width = rightWidth;
 	$.rightViewGameBeforeTemplate.backgroundColor = global.gameBeforeRightBackgroundColor;
 
-	$.leftLabelViewGameBeforeTemplate.left = 0;
-	$.leftLabelViewGameBeforeTemplate.width = $.leftViewGameBeforeTemplate.width - $.leftLabelViewGameBeforeTemplate.left - $.gameBeforeTemplate.height;
+	$.leftLabelViewGameBeforeTemplate.right = 0;
+	$.leftLabelViewGameBeforeTemplate.width = $.leftViewGameBeforeTemplate.width - $.leftLabelViewGameBeforeTemplate.right - $.gameBeforeTemplate.height;
 	$.leftLabelGameBeforeTemplate.width = $.leftLabelViewGameBeforeTemplate.width - 4;
 	$.leftLabelGameBeforeTemplate.color = global.gameBeforeLeftFontColor;
-	$.leftImageViewGameBeforeTemplate.right = 0;
+	$.leftImageViewGameBeforeTemplate.left = 0;
 	$.leftImageViewGameBeforeTemplate.width = $.gameBeforeTemplate.height;
 	$.leftImageGameBeforeTemplate.width = $.leftImageViewGameBeforeTemplate.width - 4;
 	$.leftImageGameBeforeTemplate.height = $.leftImageGameBeforeTemplate.width;
@@ -115,11 +115,11 @@ function initialize() {
 	$.vsLabelGameBeforeTemplate.color = global.gameBeforeVsFontColor;
 	$.timeLabelGameBeforeTemplate.color = global.gameBeforeTimeFontColor;
 
-	$.rightLabelViewGameBeforeTemplate.right = 0;
-	$.rightLabelViewGameBeforeTemplate.width = $.rightViewGameBeforeTemplate.width - $.rightLabelViewGameBeforeTemplate.right - $.gameBeforeTemplate.height;
+	$.rightLabelViewGameBeforeTemplate.left = 0;
+	$.rightLabelViewGameBeforeTemplate.width = $.rightViewGameBeforeTemplate.width - $.rightLabelViewGameBeforeTemplate.left - $.gameBeforeTemplate.height;
 	$.rightLabelGameBeforeTemplate.width = $.rightLabelViewGameBeforeTemplate.width - 4;
 	$.rightLabelGameBeforeTemplate.color = global.gameBeforeRightFontColor;
-	$.rightImageViewGameBeforeTemplate.left = 0;
+	$.rightImageViewGameBeforeTemplate.right = 0;
 	$.rightImageViewGameBeforeTemplate.width = $.gameBeforeTemplate.height;
 	$.rightImageGameBeforeTemplate.width = $.rightImageViewGameBeforeTemplate.width - 4;
 	$.rightImageGameBeforeTemplate.height = $.rightImageGameBeforeTemplate.width;
@@ -134,11 +134,11 @@ function initialize() {
 	$.rightViewGameLiveTemplate.width = rightWidth;
 	$.rightViewGameLiveTemplate.backgroundColor = global.gameLiveRightBackgroundColor;
 
-	$.leftLabelViewGameLiveTemplate.left = 0;
-	$.leftLabelViewGameLiveTemplate.width = $.leftViewGameLiveTemplate.width - $.leftLabelViewGameLiveTemplate.left - $.gameLiveTemplate.height;
+	$.leftLabelViewGameLiveTemplate.right = 0;
+	$.leftLabelViewGameLiveTemplate.width = $.leftViewGameLiveTemplate.width - $.leftLabelViewGameLiveTemplate.right - $.gameLiveTemplate.height;
 	$.leftLabelGameLiveTemplate.width = $.leftLabelViewGameLiveTemplate.width - 4;
 	$.leftLabelGameLiveTemplate.color = global.gameLiveLeftFontColor;
-	$.leftImageViewGameLiveTemplate.right = 0;
+	$.leftImageViewGameLiveTemplate.left = 0;
 	$.leftImageViewGameLiveTemplate.width = $.gameLiveTemplate.height;
 	$.leftImageGameLiveTemplate.width = $.leftImageViewGameLiveTemplate.width - 4;
 	$.leftImageGameLiveTemplate.height = $.leftImageGameLiveTemplate.width;
@@ -146,12 +146,12 @@ function initialize() {
 	$.liveLabelGameLiveTemplate.color = global.gameLiveLiveFontColor;
 	$.scoreLabelGameLiveTemplate.color = global.gameLiveScoreFontColor;
 	$.timeLabelGameLiveTemplate.color = global.gameLiveTimeFontColor;
-
-	$.rightLabelViewGameLiveTemplate.right = 0;
-	$.rightLabelViewGameLiveTemplate.width = $.rightViewGameLiveTemplate.width - $.leftLabelViewGameLiveTemplate.left - $.gameLiveTemplate.height;
+	
+	$.rightLabelViewGameLiveTemplate.left = 0;
+	$.rightLabelViewGameLiveTemplate.width = $.rightViewGameLiveTemplate.width - $.rightLabelViewGameLiveTemplate.left - $.gameLiveTemplate.height;
 	$.rightLabelGameLiveTemplate.width = $.rightLabelViewGameLiveTemplate.width - 4;
 	$.rightLabelGameLiveTemplate.color = global.gameLiveRightFontColor;
-	$.rightImageViewGameLiveTemplate.left = 0;
+	$.rightImageViewGameLiveTemplate.right = 0;
 	$.rightImageViewGameLiveTemplate.width = $.gameLiveTemplate.height;
 	$.rightImageGameLiveTemplate.width = $.rightImageViewGameLiveTemplate.width - 4;
 	$.rightImageGameLiveTemplate.height = $.rightImageGameLiveTemplate.width;
@@ -166,11 +166,11 @@ function initialize() {
 	$.rightViewGameLiveHTTemplate.width = rightWidth;
 	$.rightViewGameLiveHTTemplate.backgroundColor = global.gameLiveHTRightBackgroundColor;
 
-	$.leftLabelViewGameLiveHTTemplate.left = 0;
-	$.leftLabelViewGameLiveHTTemplate.width = $.leftViewGameLiveHTTemplate.width - $.leftLabelViewGameLiveHTTemplate.left - $.gameLiveHTTemplate.height;
+	$.leftLabelViewGameLiveHTTemplate.right = 0;
+	$.leftLabelViewGameLiveHTTemplate.width = $.leftViewGameLiveHTTemplate.width - $.leftLabelViewGameLiveHTTemplate.right - $.gameLiveHTTemplate.height;
 	$.leftLabelGameLiveHTTemplate.width = $.leftLabelViewGameLiveHTTemplate.width - 4;
 	$.leftLabelGameLiveHTTemplate.color = global.gameLiveHTLeftFontColor;
-	$.leftImageViewGameLiveHTTemplate.right = 0;
+	$.leftImageViewGameLiveHTTemplate.left = 0;
 	$.leftImageViewGameLiveHTTemplate.width = $.gameLiveHTTemplate.height;
 	$.leftImageGameLiveHTTemplate.width = $.leftImageViewGameLiveHTTemplate.width - 4;
 	$.leftImageGameLiveHTTemplate.height = $.leftImageGameLiveHTTemplate.width;
@@ -179,11 +179,11 @@ function initialize() {
 	$.scoreLabelGameLiveHTTemplate.color = global.gameLiveHTScoreFontColor;
 	$.statusLabelGameLiveHTTemplate.color = global.gameLiveHTStatusFontColor;
 
-	$.rightLabelViewGameLiveHTTemplate.right = 0;
-	$.rightLabelViewGameLiveHTTemplate.width = $.rightViewGameLiveHTTemplate.width - $.leftLabelViewGameLiveHTTemplate.left - $.gameLiveHTTemplate.height;
+	$.rightLabelViewGameLiveHTTemplate.left = 0;
+	$.rightLabelViewGameLiveHTTemplate.width = $.rightViewGameLiveHTTemplate.width - $.rightLabelViewGameLiveHTTemplate.left - $.gameLiveHTTemplate.height;
 	$.rightLabelGameLiveHTTemplate.width = $.rightLabelViewGameLiveHTTemplate.width - 4;
 	$.rightLabelGameLiveHTTemplate.color = global.gameLiveHTRightFontColor;
-	$.rightImageViewGameLiveHTTemplate.left = 0;
+	$.rightImageViewGameLiveHTTemplate.right = 0;
 	$.rightImageViewGameLiveHTTemplate.width = $.gameLiveHTTemplate.height;
 	$.rightImageGameLiveHTTemplate.width = $.rightImageViewGameLiveHTTemplate.width - 4;
 	$.rightImageGameLiveHTTemplate.height = $.rightImageGameLiveHTTemplate.width;
@@ -198,11 +198,11 @@ function initialize() {
 	$.rightViewGameAfterTemplate.width = rightWidth;
 	$.rightViewGameAfterTemplate.backgroundColor = global.gameAfterRightBackgroundColor;
 
-	$.leftLabelViewGameAfterTemplate.left = 0;
-	$.leftLabelViewGameAfterTemplate.width = $.leftViewGameAfterTemplate.width - $.leftLabelViewGameAfterTemplate.left - $.gameAfterTemplate.height;
+	$.leftLabelViewGameAfterTemplate.right = 0;
+	$.leftLabelViewGameAfterTemplate.width = $.leftViewGameAfterTemplate.width - $.leftLabelViewGameAfterTemplate.right - $.gameAfterTemplate.height;
 	$.leftLabelGameAfterTemplate.width = $.leftLabelViewGameAfterTemplate.width - 4;
 	$.leftLabelGameAfterTemplate.color = global.gameAfterLeftFontColor;
-	$.leftImageViewGameAfterTemplate.right = 0;
+	$.leftImageViewGameAfterTemplate.left = 0;
 	$.leftImageViewGameAfterTemplate.width = $.gameAfterTemplate.height;
 	$.leftImageGameAfterTemplate.width = $.leftImageViewGameAfterTemplate.width - 4;
 	$.leftImageGameAfterTemplate.height = $.leftImageGameAfterTemplate.width;
@@ -210,11 +210,11 @@ function initialize() {
 	$.scoreLabelGameAfterTemplate.color = global.gameAfterScoreFontColor;
 	$.statusLabelGameAfterTemplate.color = global.gameAfterStatusFontColor;
 
-	$.rightLabelViewGameAfterTemplate.right = 0;
-	$.rightLabelViewGameAfterTemplate.width = $.rightViewGameAfterTemplate.width - $.leftLabelViewGameAfterTemplate.left - $.gameAfterTemplate.height;
+	$.rightLabelViewGameAfterTemplate.left = 0;
+	$.rightLabelViewGameAfterTemplate.width = $.rightViewGameAfterTemplate.width - $.rightLabelViewGameAfterTemplate.left - $.gameAfterTemplate.height;
 	$.rightLabelGameAfterTemplate.width = $.rightLabelViewGameAfterTemplate.width - 4;
 	$.rightLabelGameAfterTemplate.color = global.gameAfterRightFontColor;
-	$.rightImageViewGameAfterTemplate.left = 0;
+	$.rightImageViewGameAfterTemplate.right = 0;
 	$.rightImageViewGameAfterTemplate.width = $.gameAfterTemplate.height;
 	$.rightImageGameAfterTemplate.width = $.rightImageViewGameAfterTemplate.width - 4;
 	$.rightImageGameAfterTemplate.height = $.rightImageGameAfterTemplate.width;
@@ -229,11 +229,11 @@ function initialize() {
 	$.rightViewAfterTemplate.width = rightWidth;
 	$.rightViewAfterTemplate.backgroundColor = global.afterRightBackgroundColor;
 
-	$.leftLabelViewAfterTemplate.left = 0;
-	$.leftLabelViewAfterTemplate.width = $.leftViewAfterTemplate.width - $.leftLabelViewAfterTemplate.left - $.afterTemplate.height;
+	$.leftLabelViewAfterTemplate.right = 0;
+	$.leftLabelViewAfterTemplate.width = $.leftViewAfterTemplate.width - $.leftLabelViewAfterTemplate.right - $.afterTemplate.height;
 	$.leftLabelAfterTemplate.width = $.leftLabelViewAfterTemplate.width - 4;
 	$.leftLabelAfterTemplate.color = global.afterLeftFontColor;
-	$.leftImageViewAfterTemplate.right = 0;
+	$.leftImageViewAfterTemplate.left = 0;
 	$.leftImageViewAfterTemplate.width = $.afterTemplate.height;
 	$.leftImageAfterTemplate.width = $.leftImageViewAfterTemplate.width - 4;
 	$.leftImageAfterTemplate.height = $.leftImageAfterTemplate.width;
@@ -241,11 +241,11 @@ function initialize() {
 	$.scoreLabelAfterTemplate.color = global.afterScoreFontColor;
 	$.dateLabelAfterTemplate.color = global.afterDateFontColor;
 
-	$.rightLabelViewAfterTemplate.right = 0;
-	$.rightLabelViewAfterTemplate.width = $.rightViewAfterTemplate.width - $.leftLabelViewAfterTemplate.left - $.afterTemplate.height;
+	$.rightLabelViewAfterTemplate.left = 0;
+	$.rightLabelViewAfterTemplate.width = $.rightViewAfterTemplate.width - $.rightLabelViewAfterTemplate.left - $.afterTemplate.height;
 	$.rightLabelAfterTemplate.width = $.rightLabelViewAfterTemplate.width - 4;
 	$.rightLabelAfterTemplate.color = global.afterRightFontColor;
-	$.rightImageViewAfterTemplate.left = 0;
+	$.rightImageViewAfterTemplate.right = 0;
 	$.rightImageViewAfterTemplate.width = $.afterTemplate.height;
 	$.rightImageAfterTemplate.width = $.rightImageViewAfterTemplate.width - 4;
 	$.rightImageAfterTemplate.height = $.rightImageAfterTemplate.width;
@@ -260,22 +260,22 @@ function initialize() {
 	$.rightViewGameVSTemplate.width = rightWidth;
 	$.rightViewGameVSTemplate.backgroundColor = global.gameVSRightBackgroundColor;
 
-	$.leftLabelViewGameVSTemplate.left = 2;
-	$.leftLabelViewGameVSTemplate.width = $.leftViewGameVSTemplate.width - $.leftLabelViewGameVSTemplate.left - $.gameVSTemplate.height;
+	$.leftLabelViewGameVSTemplate.right = 0;
+	$.leftLabelViewGameVSTemplate.width = $.leftViewGameVSTemplate.width - $.leftLabelViewGameVSTemplate.right - $.gameVSTemplate.height;
 	$.leftLabelGameVSTemplate.width = $.leftLabelViewGameVSTemplate.width - 4;
 	$.leftLabelGameVSTemplate.color = global.gameVSLeftFontColor;
-	$.leftImageViewGameVSTemplate.right = 0;
+	$.leftImageViewGameVSTemplate.left = 2;
 	$.leftImageViewGameVSTemplate.width = $.gameVSTemplate.height;
 	$.leftImageGameVSTemplate.width = $.gameVSTemplate.height - 4;
 	$.leftImageGameVSTemplate.height = $.leftImageGameVSTemplate.width;
 
 	$.vsLabelGameVSTemplate.color = global.gameVSVsFontColor;
 
-	$.rightLabelViewGameVSTemplate.right = 2;
-	$.rightLabelViewGameVSTemplate.width = $.rightViewGameVSTemplate.width - $.rightLabelViewGameVSTemplate.right - $.gameVSTemplate.height;
+	$.rightLabelViewGameVSTemplate.left = 0;
+	$.rightLabelViewGameVSTemplate.width = $.rightViewGameVSTemplate.width - $.rightLabelViewGameVSTemplate.left - $.gameVSTemplate.height;
 	$.rightLabelGameVSTemplate.width = $.rightLabelViewGameVSTemplate.width - 4;
 	$.rightLabelGameVSTemplate.color = global.gameVSRightFontColor;
-	$.rightImageViewGameVSTemplate.left = 0;
+	$.rightImageViewGameVSTemplate.right = 2;
 	$.rightImageViewGameVSTemplate.width = $.gameVSTemplate.height;
 	$.rightImageGameVSTemplate.width = $.gameVSTemplate.height - 4;
 	$.rightImageGameVSTemplate.height = $.rightImageGameVSTemplate.width;
