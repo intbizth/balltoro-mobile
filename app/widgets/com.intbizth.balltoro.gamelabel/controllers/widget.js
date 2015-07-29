@@ -1,4 +1,7 @@
 var global = {
+	test : {
+		timer : null
+	},
 	beforeHeight : 60,
 	beforeLeftBackgroundColor : '#fff',
 	beforeLeftFontColor : '#000',
@@ -146,7 +149,7 @@ function initialize() {
 	$.liveLabelGameLiveTemplate.color = global.gameLiveLiveFontColor;
 	$.scoreLabelGameLiveTemplate.color = global.gameLiveScoreFontColor;
 	$.timeLabelGameLiveTemplate.color = global.gameLiveTimeFontColor;
-	
+
 	$.rightLabelViewGameLiveTemplate.left = 0;
 	$.rightLabelViewGameLiveTemplate.width = $.rightViewGameLiveTemplate.width - $.rightLabelViewGameLiveTemplate.left - $.gameLiveTemplate.height;
 	$.rightLabelGameLiveTemplate.width = $.rightLabelViewGameLiveTemplate.width - 4;
@@ -366,26 +369,7 @@ function cleanAll() {
 	cleanGameVS();
 };
 
-/**
- *
- * @param {Object} args
- */
-exports.loadConfig = function(args) {
-	for (var i in global) {
-		if (args[i]) {
-			global[i] = args[i];
-		}
-	}
-
-	initialize();
-};
-
-/**
- *
- * @param {Object} args
- * state: before
- */
-exports.setBefore = function(args) {
+function setBefore(args) {
 	cleanAll();
 
 	$.main.height = $.beforeTemplate.height;
@@ -398,22 +382,14 @@ exports.setBefore = function(args) {
 	$.dateLabelBeforeTemplate.text = Alloy.Moment.unix(args.datetime).format('D MMM YYYY');
 };
 
-/**
- * return {width:Integer, height:Integer}
- */
-exports.getBeforeImageSize = function() {
+function getBeforeImageSize() {
 	return {
 		width : $.leftImageBeforeTemplate.width,
 		height : $.leftImageBeforeTemplate.height
 	};
 };
 
-/**
- *
- * @param {Object} args
- * state: gamebefore
- */
-exports.setGameBefore = function(args) {
+function setGameBefore(args) {
 	cleanAll();
 
 	$.main.height = $.gameBeforeTemplate.height;
@@ -426,22 +402,14 @@ exports.setGameBefore = function(args) {
 	$.timeLabelGameBeforeTemplate.text = Alloy.Moment.unix(args.datetime).format('HH:mm');
 };
 
-/**
- * return {width:Integer, height:Integer}
- */
-exports.getGameBeforeImageSize = function() {
+function getGameBeforeImageSize() {
 	return {
 		width : $.leftImageGameBeforeTemplate.width,
 		height : $.leftImageGameBeforeTemplate.height
 	};
 };
 
-/**
- *
- * @param {Object} args
- * state: gamelive
- */
-exports.setGameLive = function(args) {
+function setGameLive(args) {
 	cleanAll();
 
 	$.main.height = $.gameLiveTemplate.height;
@@ -469,22 +437,14 @@ exports.setGameLive = function(args) {
 	$.timeLabelGameLiveTemplate.text = minutes + ':' + seconds;
 };
 
-/**
- * return {width:Integer, height:Integer}
- */
-exports.getGameLiveImageSize = function() {
+function getGameLiveImageSize() {
 	return {
 		width : $.leftImageGameLiveTemplate.width,
 		height : $.leftImageGameLiveTemplate.height
 	};
 };
 
-/**
- *
- * @param {Object} args
- * state: gameliveht
- */
-exports.setGameLiveHT = function(args) {
+function setGameLiveHT(args) {
 	cleanAll();
 
 	$.main.height = $.gameLiveHTTemplate.height;
@@ -498,22 +458,14 @@ exports.setGameLiveHT = function(args) {
 	$.statusLabelGameLiveHTTemplate.text = L('com.intbizth.balltoro.gamelabel.halftime');
 };
 
-/**
- * return {width:Integer, height:Integer}
- */
-exports.getGameLiveHTImageSize = function() {
+function getGameLiveHTImageSize() {
 	return {
 		width : $.leftImageGameLiveHTTemplate.width,
 		height : $.leftImageGameLiveHTTemplate.height
 	};
 };
 
-/**
- *
- * @param {Object} args
- * state: gameafter
- */
-exports.setGameAfter = function(args) {
+function setGameAfter(args) {
 	cleanAll();
 
 	$.main.height = $.gameAfterTemplate.height;
@@ -527,22 +479,14 @@ exports.setGameAfter = function(args) {
 	$.statusLabelGameAfterTemplate.text = L('com.intbizth.balltoro.gamelabel.fulltime');
 };
 
-/**
- * return {width:Integer, height:Integer}
- */
-exports.getGameAfterImageSize = function() {
+function getGameAfterImageSize() {
 	return {
 		width : $.leftImageGameAfterTemplate.width,
 		height : $.leftImageGameAfterTemplate.height
 	};
 };
 
-/**
- *
- * @param {Object} args
- * state: after
- */
-exports.setAfter = function(args) {
+function setAfter(args) {
 	cleanAll();
 
 	$.main.height = $.afterTemplate.height;
@@ -555,22 +499,14 @@ exports.setAfter = function(args) {
 	$.dateLabelAfterTemplate.text = Alloy.Moment.unix(args.datetime).format('D MMM YYYY');
 };
 
-/**
- * return {width:Integer, height:Integer}
- */
-exports.getAfterImageSize = function() {
+function getAfterImageSize() {
 	return {
 		width : $.leftImageAfterTemplate.width,
 		height : $.leftImageAfterTemplate.height
 	};
 };
 
-/**
- *
- * @param {Object} args
- * state: gamevs
- */
-exports.setGameVS = function(args) {
+function setGameVS(args) {
 	cleanAll();
 
 	$.main.height = $.gameVSTemplate.height;
@@ -582,12 +518,257 @@ exports.setGameVS = function(args) {
 	$.vsLabelGameVSTemplate.text = L('com.intbizth.balltoro.gamelabel.vs');
 };
 
-/**
- * return {width:Integer, height:Integer}
- */
-exports.getGameVSImageSize = function() {
+function getGameVSImageSize() {
 	return {
 		width : $.leftImageGameVSTemplate.width,
 		height : $.leftImageGameVSTemplate.height
 	};
+};
+
+/**
+ *
+ * @param {Object} args
+ */
+exports.loadConfig = function(args) {
+	for (var i in global) {
+		if (args[i]) {
+			global[i] = args[i];
+		}
+	}
+
+	initialize();
+};
+
+/**
+ * @param {Integer} duration
+ */
+exports.startTest = function(duration) {
+	var chance = require('chance.min'),
+	    chance = new chance();
+	var placehold = require('placehold.it');
+
+	var teams = [chance.name(), chance.name()];
+
+	run();
+
+	global.timer = setInterval(function() {
+		run();
+	}, duration);
+
+	function run() {
+		var random = _.random(0, 6);
+
+		if (random === 0) {
+			var imageSize = getBeforeImageSize();
+			var data = {
+				datetime : chance.timestamp(),
+				title : [teams[0], teams[1]],
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image]
+			};
+
+			setBefore(data);
+		} else if (random === 1) {
+			var imageSize = getGameBeforeImageSize();
+			var data = {
+				datetime : chance.timestamp(),
+				title : [teams[0], teams[1]],
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image]
+			};
+
+			setGameBefore(data);
+		} else if (random === 2) {
+			var imageSize = getGameLiveImageSize();
+			var data = {
+				datetime : chance.timestamp(),
+				title : [teams[0], teams[1]],
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image],
+				score : [chance.integer({
+					min : 0,
+					max : 99
+				}), chance.integer({
+					min : 0,
+					max : 99
+				})],
+				time : chance.integer({
+					min : 1,
+					max : 60 * 60 * 10
+				})
+			};
+
+			setGameLive(data);
+		} else if (random === 3) {
+			var imageSize = getGameLiveHTImageSize();
+			var data = {
+				datetime : chance.timestamp(),
+				title : [teams[0], teams[1]],
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image],
+				score : [chance.integer({
+					min : 0,
+					max : 99
+				}), chance.integer({
+					min : 0,
+					max : 99
+				})]
+			};
+
+			setGameLiveHT(data);
+		} else if (random === 4) {
+			var imageSize = getGameAfterImageSize();
+			var data = {
+				datetime : chance.timestamp(),
+				title : [teams[0], teams[1]],
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image],
+				score : [chance.integer({
+					min : 0,
+					max : 99
+				}), chance.integer({
+					min : 0,
+					max : 99
+				})]
+			};
+
+			setGameAfter(data);
+		} else if (random === 5) {
+			var imageSize = getAfterImageSize();
+			var data = {
+				datetime : chance.timestamp(),
+				title : [teams[0], teams[1]],
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image],
+				score : [chance.integer({
+					min : 0,
+					max : 99
+				}), chance.integer({
+					min : 0,
+					max : 99
+				})]
+			};
+
+			setAfter(data);
+		} else {
+			var imageSize = getGameVSImageSize();
+			var data = {
+				title : [teams[0], teams[1]],
+				image : [placehold.createURL(imageSize).image, placehold.createURL(imageSize).image]
+			};
+
+			setGameVS(data);
+		}
+	};
+};
+
+exports.stopTest = function() {
+	clearInterval(global.timer);
+	global.timer = null;
+};
+
+/**
+ *
+ * @param {Object} args
+ * state: before
+ */
+exports.setBefore = function(args) {
+	setBefore(args);
+};
+
+/**
+ * return {width:Integer, height:Integer}
+ */
+exports.getBeforeImageSize = function() {
+	return getBeforeImageSize();
+};
+
+/**
+ *
+ * @param {Object} args
+ * state: gamebefore
+ */
+exports.setGameBefore = function(args) {
+	setGameBefore(args);
+};
+
+/**
+ * return {width:Integer, height:Integer}
+ */
+exports.getGameBeforeImageSize = function() {
+	return getGameBeforeImageSize();
+};
+
+/**
+ *
+ * @param {Object} args
+ * state: gamelive
+ */
+exports.setGameLive = function(args) {
+	setGameLive(args);
+};
+
+/**
+ * return {width:Integer, height:Integer}
+ */
+exports.getGameLiveImageSize = function() {
+	return getGameLiveImageSize();
+};
+
+/**
+ *
+ * @param {Object} args
+ * state: gameliveht
+ */
+exports.setGameLiveHT = function(args) {
+	setGameLiveHT(args);
+};
+
+/**
+ * return {width:Integer, height:Integer}
+ */
+exports.getGameLiveHTImageSize = function() {
+	return getGameLiveHTImageSize();
+};
+
+/**
+ *
+ * @param {Object} args
+ * state: gameafter
+ */
+exports.setGameAfter = function(args) {
+	setGameAfter(args);
+};
+
+/**
+ * return {width:Integer, height:Integer}
+ */
+exports.getGameAfterImageSize = function() {
+	return getGameAfterImageSize();
+};
+
+/**
+ *
+ * @param {Object} args
+ * state: after
+ */
+exports.setAfter = function(args) {
+	setAfter(args);
+};
+
+/**
+ * return {width:Integer, height:Integer}
+ */
+exports.getAfterImageSize = function() {
+	return getAfterImageSize();
+};
+
+/**
+ *
+ * @param {Object} args
+ * state: gamevs
+ */
+exports.setGameVS = function(args) {
+	setGameVS(args);
+};
+
+/**
+ * return {width:Integer, height:Integer}
+ */
+exports.getGameVSImageSize = function() {
+	return getGameVSImageSize();
 };
