@@ -90,8 +90,8 @@
 				<View bindId="playedView">
 					<Label bindId="playedLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.played')" />
 				</View>
-				<View bindId="goalGifferenceView">
-					<Label bindId="goalGifferenceLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.goal_difference')" />
+				<View bindId="goalDifferenceView">
+					<Label bindId="goalDifferenceLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.goal_difference')" />
 				</View>
 				<View bindId="pointsView">
 					<Label bindId="pointsLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.points')" />
@@ -110,8 +110,8 @@
 				<View bindId="playedView">
 					<Label bindId="playedLabel" class="rowLabel" />
 				</View>
-				<View bindId="goalGifferenceView">
-					<Label bindId="goalGifferenceLabel" class="rowLabel" />
+				<View bindId="goalDifferenceView">
+					<Label bindId="goalDifferenceLabel" class="rowLabel" />
 				</View>
 				<View bindId="pointsView">
 					<Label bindId="pointsLabel" class="rowLabel" />
@@ -144,8 +144,8 @@
 				<View bindId="loseView">
 					<Label bindId="loseLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.lose')" />
 				</View>
-				<View bindId="goalGifferenceView">
-					<Label bindId="goalGifferenceLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.goal_gifference')" />
+				<View bindId="goalDifferenceView">
+					<Label bindId="goalDifferenceLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.goal_difference')" />
 				</View>
 				<View bindId="pointsView">
 					<Label bindId="pointsLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.points')" />
@@ -154,7 +154,35 @@
 					<Label bindId="rankingLabel" class="headerLabel" text="" />
 				</View>
 			</ItemTemplate>
-			<ItemTemplate name="leagueTableRow"></ItemTemplate>
+			<ItemTemplate name="leagueTableRow">
+				<View bindId="positionView">
+					<Label bindId="positionLabel" class="rowLabel" />
+				</View>
+				<View bindId="teamView">
+					<Label bindId="teamLabel" class="rowLabel" />
+				</View>
+				<View bindId="playedView">
+					<Label bindId="playedLabel" class="rowLabel" />
+				</View>
+				<View bindId="winView">
+					<Label bindId="winLabel" class="rowLabel" />
+				</View>
+				<View bindId="drawView">
+					<Label bindId="drawLabel" class="rowLabel" />
+				</View>
+				<View bindId="loseView">
+					<Label bindId="loseLabel" class="rowLabel" />
+				</View>
+				<View bindId="goalDifferenceView">
+					<Label bindId="goalDifferenceLabel" class="rowLabel" />
+				</View>
+				<View bindId="pointsView">
+					<Label bindId="pointsLabel" class="rowLabel" />
+				</View>
+				<View bindId="rankingView">
+					<ImageView bindId="rankingImage" class="rankingImage" />
+				</View>
+			</ItemTemplate>
 		</Templates>
 	</ListView>
 </Alloy>
