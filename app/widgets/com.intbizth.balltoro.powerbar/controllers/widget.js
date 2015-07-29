@@ -105,6 +105,8 @@ exports.startTest = function(duration) {
 	var chance = require('chance.min'),
 	    chance = new chance();
 
+	run();
+
 	global.timer = setInterval(function() {
 		run();
 	}, duration);
