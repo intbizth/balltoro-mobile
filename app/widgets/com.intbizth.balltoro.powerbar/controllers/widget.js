@@ -1,4 +1,7 @@
 var global = {
+	test : {
+		timer : null
+	},
 	height : 30,
 	backgroundColor : '#000',
 	leftColor : '#f4564f',
@@ -27,25 +30,7 @@ function initialize() {
 
 initialize();
 
-/**
- *
- * @param {Object} args
- */
-exports.loadConfig = function(args) {
-	for (var i in global) {
-		if (args[i]) {
-			global[i] = args[i];
-		}
-	}
-
-	initialize();
-};
-
-/**
- *
- * @param {Float} value
- */
-exports.setLeftValue = function(value) {
+function setLeftValue(value) {
 	// 0 -------> 1
 	var percentLeft = value * (100 / 1);
 	var percentRight = 100 - percentLeft;
@@ -72,11 +57,7 @@ exports.setLeftValue = function(value) {
 	$.centerBarView.left = parseInt(percentLeft * ($.centerView.width / 100)) - 6;
 };
 
-/**
- *
- * @param {Float} value
- */
-exports.setRightValue = function(value) {
+function setRightValue(value) {
 	// 1 <------- 0
 	var percentRight = value * (100 / 1);
 	var percentLeft = 100 - percentRight;
@@ -101,6 +82,71 @@ exports.setRightValue = function(value) {
 	}
 
 	$.centerBarView.left = parseInt(percentLeft * ($.centerView.width / 100)) - 6;
+};
+
+/**
+ *
+ * @param {Object} args
+ */
+exports.loadConfig = function(args) {
+	for (var i in global) {
+		if (args[i]) {
+			global[i] = args[i];
+		}
+	}
+
+	initialize();
+};
+
+/**
+ * @param {Integer} duration
+ */
+exports.startTest = function(duration) {
+	var chance = require('chance.min'),
+	    chance = new chance();
+
+	global.timer = setInterval(function() {
+		run();
+	}, duration);
+
+	function run() {
+		var random = _.random(0, 1);
+
+		if (random === 1) {
+			setLeftValue(chance.floating({
+				min : 0,
+				max : 1,
+				fixed : 7
+			}));
+		} else {
+			setRightValue(chance.floating({
+				min : 0,
+				max : 1,
+				fixed : 7
+			}));
+		}
+	};
+};
+
+exports.stopTest = function() {
+	clearInterval(global.timer);
+	global.timer = null;
+};
+
+/**
+ *
+ * @param {Float} value
+ */
+exports.setLeftValue = function(value) {
+	setLeftValue(value);
+};
+
+/**
+ *
+ * @param {Float} value
+ */
+exports.setRightValue = function(value) {
+	setRightValue(value);
 };
 
 /**
