@@ -1,0 +1,34 @@
+'#main':{
+	width:	Ti.UI.FILL,
+	height: 0,
+	backgroundColor: 'green'
+}
+
+'.title':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.FILL,
+	font: {
+		fontSize: 14
+	},
+	textAlign: 'center'
+}
+
+'.image':{
+	defaultImage: ''
+}
+
+'.leftView':{
+	left: 0
+}
+
+'.centerView':{}
+
+'.centerSubView':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: 'vertical'
+}
+
+'.rightView':{
+	right: 0
+}

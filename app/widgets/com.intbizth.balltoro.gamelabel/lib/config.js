@@ -1,4 +1,20 @@
-exports.config = {
+module.exports = {
+	before : {
+		height : 60,
+		left : {
+			backgroundColor : '#fff',
+			color : '#000',
+		},
+		center : {
+			backgroundColor : '#fff',
+			timeColor : '#0088cf',
+			dateColor : '#58595b',
+		},
+		right : {
+			backgroundColor : '#fff',
+			fontColor : '#000',
+		}
+	},
 	beforeHeight : 60,
 	beforeLeftBackgroundColor : '#fff',
 	beforeLeftFontColor : '#000',
