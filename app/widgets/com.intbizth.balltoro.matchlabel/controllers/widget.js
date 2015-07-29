@@ -1,4 +1,7 @@
 var global = {
+	test : {
+		timer : null
+	},
 	height : 30,
 	backgroundColor : '#fff',
 	fontColor : '#000',
@@ -40,6 +43,35 @@ exports.loadConfig = function(args) {
 };
 
 /**
+ * @param {Integer} duration
+ */
+exports.startTest = function(duration) {
+	var chance = require('chance.min'),
+	    chance = new chance();
+	var placehold = require('placehold.it');
+
+	run();
+
+	global.timer = setInterval(function() {
+		run();
+	}, duration);
+
+	function run() {
+		var imageSize = {
+			width : $.image.width,
+			height : $.image.height
+		};
+		$.image.image = placehold.createURL(imageSize).image;
+		$.title.text = chance.sentence();
+	};
+};
+
+exports.stopTest = function() {
+	clearInterval(global.timer);
+	global.timer = null;
+};
+
+/**
  *
  * @param {String} value
  */
@@ -50,7 +82,7 @@ exports.setImage = function(value) {
 /**
  * return {width:Integer, height:Integer}
  */
-exports.setImageSize = function() {
+exports.getImageSize = function() {
 	return {
 		width : $.image.width,
 		height : $.image.height
