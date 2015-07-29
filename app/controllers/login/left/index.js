@@ -1,16 +1,9 @@
 var global = {
+	load : false,
 	selected : 0
 };
 
 function loadEvent() {
-	$.main.addEventListener('open', function(e) {
-		load();
-	});
-
-	$.main.addEventListener('close', function(e) {
-		unload();
-	});
-
 	$.list.addEventListener('itemclick', function(e) {
 		if (global.selected !== e.itemIndex) {
 			var item = $.section.getItemAt(global.selected);
@@ -28,9 +21,20 @@ function loadEvent() {
 	});
 };
 
-function load() {
-	Ti.API.debug('leftWindow:load');
+function initialize() {
+	if (Alloy.Globals.isIos7Plus) {
+		$.navbarView.getView().top = 20;
+	}
 
+	$.navbarView.loadConfig(Alloy.Widgets.configs['com.intbizth.alloy.navbar']);
+
+	loadEvent();
+};
+
+initialize();
+
+function load() {
+	global.load = true;
 	global.selected = 0;
 
 	var items = [];
@@ -50,21 +54,19 @@ function load() {
 	$.section.items = items;
 };
 
-function unload() {
-	Ti.API.debug('leftWindow:unload');
-
+function destroy() {
 	global.selected = 0;
 	$.section.items = [];
 };
 
-function initialize() {
-	if (Alloy.Globals.isIos7Plus) {
-		$.navbarView.getView().top = 20;
-	}
-
-	$.navbarView.loadConfig(Alloy.Widgets.configs['com.intbizth.alloy.navbar']);
-
-	loadEvent();
+exports.getLoad = function() {
+	return global.load;
 };
 
-initialize();
+exports.load = function() {
+	load();
+};
+
+exports.destroy = function() {
+	destroy();
+};

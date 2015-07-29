@@ -1,3 +1,7 @@
+'#navigation':{
+	opacity: 0
+}
+
 '#main[platform=ios]':{
 	width: Ti.UI.FILL,
 	height: Ti.UI.FILL,

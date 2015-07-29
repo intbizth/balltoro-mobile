@@ -9,6 +9,7 @@ function loadEvent() {
 		_.delay(function() {
 			Ti.App.fireEvent('logout', {});
 		}, _.random(800, 4000));
+		// Ti.App.fireEvent('logout', {});
 	});
 };
 

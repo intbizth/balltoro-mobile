@@ -40,6 +40,8 @@ var global = {
 
 Alloy.Globals.nologin.mainWindow = $.nologin.getView();
 Alloy.Globals.login.mainWindow = $.login.getView();
+Alloy.Globals.login.leftWindow = Alloy.createController('login/left/index');
+Alloy.Globals.login.mainWindow.setLeftWindow(Alloy.Globals.login.leftWindow.getView());
 Alloy.Globals.login.menuWindows = {};
 
 for (var i in Alloy.Globals.login.menus) {
@@ -69,49 +71,28 @@ Alloy.Globals.login.mainWindow.setMenu = function(menu, noToggle) {
 	}
 };
 
+$.login.getView().open();
 $.nologin.getView().open();
 
+$.nologin.getView().opacity = 1;
+
 // > event
-$.nologin.getView().addEventListener('open', function(e) {
-	Ti.API.debug('nologinWindow:open');
-
-	global.changeWindow = true;
-});
-
-$.nologin.getView().addEventListener('close', function(e) {
-	Ti.API.debug('nologinWindow:close');
-
-	_.delay(function() {
-		global.changeWindow = false;
-	}, 800);
-});
-
-$.login.getView().addEventListener('open', function(e) {
-	Ti.API.debug('loginWindow:open');
-
-	global.changeWindow = true;
-
-	Alloy.Globals.login.mainWindow.unlock();
-	Alloy.Globals.login.mainWindow.setMenu(Alloy.Globals.login.menu, true);
-});
-
-$.login.getView().addEventListener('close', function(e) {
-	Ti.API.debug('loginWindow:close');
-
-	_.delay(function() {
-		global.changeWindow = false;
-	}, 800);
-});
-
 Ti.App.addEventListener('login', function(e) {
 	if (global.changeWindow) {
 		return;
 	}
 
-	$.login.getView().open();
+	global.changeWindow = true;
+
+	Alloy.Globals.login.leftWindow.load();
+	Alloy.Globals.login.mainWindow.unlock();
+	Alloy.Globals.login.mainWindow.setMenu(Alloy.Globals.login.menu, true);
+
+	$.login.getView().opacity = 1;
+	$.nologin.getView().opacity = 0;
 
 	_.delay(function() {
-		$.nologin.getView().close();
+		global.changeWindow = false;
 	}, 800);
 });
 
@@ -120,16 +101,25 @@ Ti.App.addEventListener('logout', function(e) {
 		return;
 	}
 
+	global.changeWindow = true;
+
 	Alloy.Globals.login.menu = Alloy.Globals.login.defaultMenu;
 
-	$.nologin.getView().open();
+	$.nologin.getView().animate({
+		opacity : 1,
+		duration : 800
+	}, function() {
+		$.login.getView().opacity = 0;
+	});
 
 	_.delay(function() {
+		global.changeWindow = false;
+
+		Alloy.Globals.login.leftWindow.destroy();
+
 		for (var i in Alloy.Globals.login.menuWindows) {
 			Alloy.Globals.login.menuWindows[i].destroy();
 		}
-
-		$.login.getView().close();
 	}, 800);
 });
 // < event
