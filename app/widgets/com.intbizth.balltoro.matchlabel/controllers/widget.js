@@ -1,50 +1,23 @@
-var global = {
-	test : {
-		timer : null
-	},
-	height : 30,
-	backgroundColor : '#fff',
-	fontColor : '#000',
-	lineColor : '#c5c5c5'
-};
+var config = require(WPATH('config'));
+Widget.Models.matchlabel = Widget.createModel('matchlabel');
+var timer = null;
 
-function initialize() {
-	$.main.height = global.height;
-	$.main.backgroundColor = global.backgroundColor;
+$.main.height = config.height;
+$.main.backgroundColor = config.backgroundColor;
 
-	$.imageView.width = $.main.height;
-	$.imageView.height = $.main.height;
-	$.image.width = $.imageView.width - 4;
-	$.image.height = $.image.width;
+$.imageView.width = $.main.height;
+$.imageView.height = $.main.height;
+$.image.width = $.imageView.width - 4;
+$.image.height = $.image.width;
 
-	$.titleView.width = Ti.Platform.displayCaps.platformWidth - $.imageView.width;
-	$.titleView.height = $.main.height;
-	$.title.width = $.titleView.width - 4;
-	$.title.height = $.titleView.height;
-	$.title.color = global.fontColor;
+$.titleView.width = Ti.Platform.displayCaps.platformWidth - $.imageView.width;
+$.titleView.height = $.main.height;
+$.title.width = $.titleView.width - 4;
+$.title.height = $.titleView.height;
+$.title.color = config.fontColor;
 
-	$.line.backgroundColor = global.lineColor;
-};
+$.line.backgroundColor = config.lineColor;
 
-initialize();
-
-/**
- *
- * @param {Object} args
- */
-exports.loadConfig = function(args) {
-	for (var i in global) {
-		if (args[i]) {
-			global[i] = args[i];
-		}
-	}
-
-	initialize();
-};
-
-/**
- * @param {Integer} duration
- */
 exports.startTest = function(duration) {
 	var chance = require('chance.min'),
 	    chance = new chance();
@@ -52,47 +25,79 @@ exports.startTest = function(duration) {
 
 	run();
 
-	global.timer = setInterval(function() {
+	timer = setInterval(function() {
 		run();
 	}, duration);
 
 	function run() {
-		var imageSize = {
-			width : $.image.width,
-			height : $.image.height
+		var data = {
+			image : placehold.createURL(getImageSize()).image,
+			title : chance.sentence()
 		};
-		$.image.image = placehold.createURL(imageSize).image;
-		$.title.text = chance.sentence();
+
+		setData(data);
 	};
 };
 
 exports.stopTest = function() {
-	clearInterval(global.timer);
-	global.timer = null;
+	clearInterval(timer);
+	timer = null;
 };
 
-/**
- *
- * @param {String} value
- */
+function setImage(value) {
+	Widget.Models.matchlabel.set({
+		image : image
+	});
+	Widget.Models.matchlabel.save();
+	Widget.Models.matchlabel.fetch();
+
+	var data = Widget.Models.matchlabel.toJSON();
+
+	$.image.image = data.image;
+};
+
 exports.setImage = function(value) {
-	$.image.image = value;
+	setImage(value);
 };
 
-/**
- * return {width:Integer, height:Integer}
- */
-exports.getImageSize = function() {
+function getImageSize() {
 	return {
 		width : $.image.width,
 		height : $.image.height
 	};
 };
 
-/**
- *
- * @param {String} value
- */
+exports.getImageSize = function() {
+	return getImageSize();
+};
+
+function setTitle(value) {
+	Widget.Models.matchlabel.set({
+		title : value
+	});
+	Widget.Models.matchlabel.save();
+	Widget.Models.matchlabel.fetch();
+
+	var data = Widget.Models.matchlabel.toJSON();
+
+	$.title.text = data.title;
+};
+
 exports.setTitle = function(value) {
-	$.title.text = value;
+	setTitle(value);
+};
+
+function setData(args) {
+	Widget.Models.matchlabel.set(args);
+	Widget.Models.matchlabel.save();
+	Widget.Models.matchlabel.fetch();
+
+	var data = Widget.Models.matchlabel.toJSON();
+
+	$.image.image = data.image;
+	$.title.text = data.title;
+};
+
+exports.setData = function(args) {
+	setData(args);
 };
