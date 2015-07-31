@@ -1,12 +1,17 @@
-var global = {
-	height : 40,
-	buttonWidth : 64,
-	backgroundColor : '#000',
-	lineColor : '#fff',
-	titleFontColor : '#fff',
-	buttonLeftFontColor : '#fff',
-	buttonRightFontColor : '#fff'
-};
+var config = require(WPATH('config'));
+
+$.main.height = config.height;
+$.main.backgroundColor = config.backgroundColor;
+$.line.backgroundColor = config.lineColor;
+
+$.title.height = config.height;
+$.title.width = parseInt(Ti.Platform.displayCaps.platformWidth - (config.button.width * 2));
+
+$.left.height = config.height;
+$.left.width = config.button.width;
+
+$.right.height = config.height;
+$.right.width = config.button.width;
 
 $.title.addEventListener('click', function() {
 	$.main.fireEvent('title:click');
@@ -72,41 +77,6 @@ $.right.addEventListener('touchcancel', function() {
 	this.fireEvent('touchend');
 });
 
-function initialize() {
-	$.main.height = global.height;
-	$.main.backgroundColor = global.backgroundColor;
-	$.line.backgroundColor = global.lineColor;
-
-	$.title.height = global.height;
-	$.title.width = parseInt(Ti.Platform.displayCaps.platformWidth - (global.buttonWidth * 2));
-
-	$.left.height = global.height;
-	$.left.width = global.buttonWidth;
-
-	$.right.height = global.height;
-	$.right.width = global.buttonWidth;
-};
-
-initialize();
-
-/**
- *
- * @param {Object} args
- */
-exports.loadConfig = function(args) {
-	for (var i in global) {
-		if (args[i]) {
-			global[i] = args[i];
-		}
-	}
-
-	initialize();
-};
-
-/**
- *
- * @param {Object|String} view
- */
 exports.setTitleView = function(view) {
 	if (!view) {
 		return;
@@ -118,7 +88,7 @@ exports.setTitleView = function(view) {
 		view = Ti.UI.createLabel({
 			width : $.title.width,
 			height : $.title.height,
-			color : global.titleFontColor,
+			color : config.color,
 			font : {
 				fontSize : 16
 			},
@@ -130,10 +100,6 @@ exports.setTitleView = function(view) {
 	$.title.add(view);
 };
 
-/**
- *
- * @param {Object} view
- */
 exports.setLeftView = function(view) {
 	if (!view) {
 		return;
@@ -161,7 +127,7 @@ exports.setLeftView = function(view) {
 			var icon = Ti.UI.createImageView({
 				width : 21,
 				height : 21,
-				image : 'images/navbar/' + view.icon + '.png'
+				image : WPATH('images/' + view.icon + '.png')
 			});
 
 			subView.add(icon);
@@ -170,7 +136,7 @@ exports.setLeftView = function(view) {
 		if (view.title) {
 			var title = Ti.UI.createLabel({
 				height : 22,
-				color : global.buttonLeftFontColor,
+				color : config.button.left.color,
 				font : {
 					fontSize : 14
 				},
@@ -186,10 +152,6 @@ exports.setLeftView = function(view) {
 	$.left.add(view);
 };
 
-/**
- *
- * @param {Object} view
- */
 exports.setRightView = function(view) {
 	if (!view) {
 		return;
@@ -217,7 +179,7 @@ exports.setRightView = function(view) {
 			var icon = Ti.UI.createImageView({
 				width : 21,
 				height : 21,
-				image : 'images/navbar/' + view.icon + '.png'
+				image : WPATH('images/' + view.icon + '.png')
 			});
 
 			subView.add(icon);
@@ -226,7 +188,7 @@ exports.setRightView = function(view) {
 		if (view.title) {
 			var title = Ti.UI.createLabel({
 				height : 22,
-				color : global.buttonRightFontColor,
+				color : config.button.right.color,
 				font : {
 					fontSize : 14
 				},
