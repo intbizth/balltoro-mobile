@@ -1,0 +1,14 @@
+<Alloy>
+	<View id="main">
+		<View id="previous">
+			<View class="subView">
+				<Label id="previousLabel" text="L('com.intbizth.balltoro.matchsummytable.previous')" />
+			</View>
+		</View>
+		<View id="next">
+			<View class="subView">
+				<Label id="nextLabel" text="L('com.intbizth.balltoro.matchsummytable.next')" />
+			</View>
+		</View>
+	</View>
+</Alloy>

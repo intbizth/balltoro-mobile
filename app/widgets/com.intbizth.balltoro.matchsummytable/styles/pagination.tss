@@ -1,0 +1,10 @@
+'#main':{
+	width: 120,
+	height: 26,
+	backgroundColor: 'black'
+}
+
+'.subView':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE
+}

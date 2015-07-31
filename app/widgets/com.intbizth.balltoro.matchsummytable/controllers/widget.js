@@ -19,8 +19,8 @@ exports.startTest = function(duration) {
 			table : 'vs',
 			headerTitle : chance.sentence(),
 			data : [],
-			paginationPrevious : chance.pick([chance.url(), null]),
-			paginationNext : chance.pick([chance.url(), null])
+			paginationPrevious : null,
+			paginationNext : null
 		};
 
 		var random = _.random(0, 10);
@@ -59,6 +59,9 @@ exports.startTest = function(duration) {
 			}
 
 			data.data = _.sortBy(data.data, 'datatime');
+
+			data.paginationPrevious = chance.pick([chance.url(), null]);
+			data.paginationNext = chance.pick([chance.url(), null]);
 		}
 
 		return data;
@@ -69,8 +72,8 @@ exports.startTest = function(duration) {
 			table : 'match',
 			headerTitle : chance.sentence(),
 			data : [],
-			paginationPrevious : chance.pick([chance.url(), null]),
-			paginationNext : chance.pick([chance.url(), null])
+			paginationPrevious : null,
+			paginationNext : null
 		};
 
 		var random = _.random(0, 10);
@@ -114,6 +117,9 @@ exports.startTest = function(duration) {
 			}
 
 			data.data = _.sortBy(data.data, 'datatime');
+
+			data.paginationPrevious = chance.pick([chance.url(), null]);
+			data.paginationNext = chance.pick([chance.url(), null]);
 		}
 
 		return data;
@@ -124,8 +130,8 @@ exports.startTest = function(duration) {
 			table : 'team',
 			headerTitle : chance.sentence(),
 			data : [],
-			paginationPrevious : chance.pick([chance.url(), null]),
-			paginationNext : chance.pick([chance.url(), null])
+			paginationPrevious : null,
+			paginationNext : null
 		};
 
 		var random = _.random(0, 1);
@@ -158,6 +164,9 @@ exports.startTest = function(duration) {
 			}
 
 			data.data = _.sortBy(data.data, 'position');
+
+			data.paginationPrevious = chance.pick([chance.url(), null]);
+			data.paginationNext = chance.pick([chance.url(), null]);
 		}
 
 		return data;
@@ -168,8 +177,8 @@ exports.startTest = function(duration) {
 			table : 'league',
 			headerTitle : chance.sentence(),
 			data : [],
-			paginationPrevious : chance.pick([chance.url(), null]),
-			paginationNext : chance.pick([chance.url(), null])
+			paginationPrevious : null,
+			paginationNext : null
 		};
 
 		var random = _.random(0, 1);
@@ -254,6 +263,9 @@ exports.startTest = function(duration) {
 			}
 
 			data.data = _.sortBy(data.data, 'position');
+
+			data.paginationPrevious = chance.pick([chance.url(), null]);
+			data.paginationNext = chance.pick([chance.url(), null]);
 		}
 
 		return data;

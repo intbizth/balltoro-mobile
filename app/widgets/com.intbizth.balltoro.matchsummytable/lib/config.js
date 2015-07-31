@@ -32,6 +32,17 @@ module.exports = {
 			backgroundColor : '#162a38',
 			color : '#fff',
 			highlightColor : '#549af7'
+		},
+		pagination : {
+			backgroundColor : '#162a38',
+			inAct : {
+				backgroundColor : '#162a38',
+				color : '#fff'
+			},
+			act : {
+				backgroundColor : '#1a3c54',
+				color : '#fff'
+			}
 		}
 	},
 	match : {
@@ -58,6 +69,17 @@ module.exports = {
 			backgroundColor : '#162a38',
 			color : '#fff',
 			highlightColor : '#549af7'
+		},
+		pagination : {
+			backgroundColor : '#162a38',
+			inAct : {
+				backgroundColor : '#162a38',
+				color : '#fff'
+			},
+			act : {
+				backgroundColor : '#1a3c54',
+				color : '#fff'
+			}
 		}
 	},
 	team : {
@@ -84,6 +106,17 @@ module.exports = {
 			backgroundColor : '#162a38',
 			color : '#fff',
 			highlightColor : '#549af7'
+		},
+		pagination : {
+			backgroundColor : '#162a38',
+			inAct : {
+				backgroundColor : '#162a38',
+				color : '#fff'
+			},
+			act : {
+				backgroundColor : '#1a3c54',
+				color : '#fff'
+			}
 		}
 	},
 	league : {
@@ -110,6 +143,17 @@ module.exports = {
 			backgroundColor : '#162a38',
 			color : '#fff',
 			highlightColor : '#549af7'
+		},
+		pagination : {
+			backgroundColor : '#162a38',
+			inAct : {
+				backgroundColor : '#162a38',
+				color : '#fff'
+			},
+			act : {
+				backgroundColor : '#1a3c54',
+				color : '#fff'
+			}
 		}
 	}
 };

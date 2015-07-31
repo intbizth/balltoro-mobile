@@ -19,7 +19,8 @@ exports.createTable = function(data) {
 			fontSize : 14
 		},
 		text : (data.headerTitle) ? data.headerTitle : '',
-		textAlign : 'left'
+		textAlign : 'left',
+		backgroundColor : 'pink'
 	});
 
 	headerView.add(headerLabel);
@@ -32,6 +33,14 @@ exports.createTable = function(data) {
 	});
 
 	headerView.add(headerLine);
+
+	if (data.paginationPrevious || data.paginationNext) {
+		headerLabel.width = headerLabel.width - 120;
+
+		var pagination = Widget.createController('pagination');
+		pagination.getView().right = headerLabel.left;
+		headerView.add(pagination.getView());
+	}
 
 	var section = Ti.UI.createListSection({
 		headerView : headerView
