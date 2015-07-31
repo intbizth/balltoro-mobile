@@ -1,5 +1,5 @@
 var collection = Widget.Collections.instance('gamelabel');
-var model = Widget.createModel('gamelabel');
+Widget.Models.gamelabel = Widget.createModel('gamelabel');
 var timer = null;
 
 exports.startTest = function(duration) {
@@ -60,11 +60,11 @@ exports.getImageSize = function(template) {
 };
 
 function setData(args) {
-	model.set(args);
-	model.save();
-	model.fetch();
+	Widget.Models.gamelabel.set(args);
+	Widget.Models.gamelabel.save();
+	Widget.Models.gamelabel.fetch();
 
-	var data = model.toJSON();
+	var data = Widget.Models.gamelabel.toJSON();
 
 	$.main.removeAllChildren();
 	$.main.add(Widget.createController('template/' + data.template, data).getView());
