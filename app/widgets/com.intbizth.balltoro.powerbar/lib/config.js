@@ -1,14 +1,14 @@
 module.exports = {
 	height : 30,
-	backgroundColor : '#000',
+	backgroundColor : '#549af7',
 	left : {
 		color : '#fff',
-		barColor : '#f4564f',
+		barColor : '#ff3b30',
 		value : 0
 	},
 	right : {
 		color : '#fff',
-		barColor : '#f8b92a',
+		barColor : '#faaf40',
 		value : 0
 	}
 };
