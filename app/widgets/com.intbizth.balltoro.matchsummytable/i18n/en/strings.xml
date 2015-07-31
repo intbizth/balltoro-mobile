@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+	<string name="com.intbizth.balltoro.matchsummytable.previous">Previous</string>
+	<string name="com.intbizth.balltoro.matchsummytable.next">Next</string>
 	<string name="com.intbizth.balltoro.matchsummytable.nodata">No Data</string>
 	<string name="com.intbizth.balltoro.matchsummytable.competition">Comp</string>
 	<string name="com.intbizth.balltoro.matchsummytable.date">Date</string>

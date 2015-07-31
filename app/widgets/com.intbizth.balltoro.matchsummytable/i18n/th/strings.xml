@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
+	<string name="com.intbizth.balltoro.matchsummytable.previous">ก่อนหน้า</string>
+	<string name="com.intbizth.balltoro.matchsummytable.next">หน้าถัดไป</string>
 	<string name="com.intbizth.balltoro.matchsummytable.nodata">ไม่พบข้อมูล</string>
 	<string name="com.intbizth.balltoro.matchsummytable.competition">รายการ</string>
 	<string name="com.intbizth.balltoro.matchsummytable.date">วันที่</string>
