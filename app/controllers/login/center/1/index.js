@@ -21,13 +21,6 @@ function initialize() {
 		$.navbarView.getView().top = 20;
 	}
 
-	// $.navbarView.loadConfig(Alloy.Widgets.configs['com.intbizth.alloy.navbar']);
-	// $.gamelabelView.loadConfig(Alloy.Widgets.configs['com.intbizth.balltoro.gamelabel']);
-	// $.matchlabelView.loadConfig(Alloy.Widgets.configs['com.intbizth.balltoro.matchlabel']);
-	// $.powerBarView.loadConfig(Alloy.Widgets.configs['com.intbizth.balltoro.powerbar']);
-	// $.winloseordrawView.loadConfig(Alloy.Widgets.configs['com.intbizth.balltoro.winloseordraw']);
-	// $.matchsummytableView.loadConfig(Alloy.Widgets.configs['com.intbizth.balltoro.matchsummytable']);
-
 	loadEvent();
 };
 
@@ -38,23 +31,23 @@ function load() {
 
 	global.load = true;
 
-	// $.matchlabelView.startTest(8000);
-	// $.gamelabelView.startTest(8000);
-	// $.powerBarView.startTest(500);
-	// $.winloseordrawView.startTest(8000, $.winloseordrawTestSubView);
-	// $.matchsummytableView.startTest(8000);
+	$.matchlabelView.startTest(8000);
+	$.gamelabelView.startTest(8000);
+	$.powerBarView.startTest(500);
+	$.winloseordrawView.startTest(8000, $.winloseordrawTestSubView);
+	$.matchsummytableView.startTest(8000);
 };
 
 function destroy() {
 	Ti.API.debug('1:destroy');
 
 	global.load = false;
-	
-	// $.matchlabelView.stopTest();
-	// $.gamelabelView.stopTest();
-	// $.powerBarView.stopTest();
-	// $.winloseordrawView.stopTest($.winloseordrawTestSubView);
-	// $.matchsummytableView.stopTest();
+
+	$.matchlabelView.stopTest();
+	$.gamelabelView.stopTest();
+	$.powerBarView.stopTest();
+	$.winloseordrawView.stopTest($.winloseordrawTestSubView);
+	$.matchsummytableView.stopTest();
 };
 
 exports.getLoad = function() {

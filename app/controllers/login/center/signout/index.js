@@ -18,7 +18,6 @@ function initialize() {
 		$.navbarView.getView().top = 20;
 	}
 
-	$.navbarView.loadConfig(Alloy.Widgets.configs['com.intbizth.alloy.navbar']);
 	$.navbarView.setTitleView(L('login.menu.signout'));
 
 	$.activityIndicator.show();

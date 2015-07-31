@@ -31,16 +31,3 @@ Vendor.Tinycolor = require('tinycolor');
 // > collections & models
 Alloy.Models.user = Alloy.createModel('user');
 // > collections & models
-
-Alloy.Widgets = {
-	loads : ['com.intbizth.alloy.navbar', 'com.intbizth.balltoro.gamelabel', 'com.intbizth.balltoro.matchlabel', 'com.intbizth.balltoro.matchsummytable', 'com.intbizth.balltoro.powerbar', 'com.intbizth.balltoro.winloseordraw'],
-	configs : {}
-};
-
-for (var i in Alloy.Widgets.loads) {
-	try {
-		var config = require('config/' + Alloy.Widgets.loads[i]);
-		Alloy.Widgets.configs[Alloy.Widgets.loads[i]] = config.config;
-	} catch(e) {
-	}
-}
