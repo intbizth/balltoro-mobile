@@ -1,5 +1,4 @@
 '#main':{
 	width: Ti.UI.FILL,
-	height: 100,
-	backgroundColor: 'red'
+	height: Ti.UI.SIZE
 }

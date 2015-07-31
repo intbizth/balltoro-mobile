@@ -32,23 +32,33 @@
 	right: 0
 }
 
-'#timeLabel':{
+'#liveLabel':{
 	top: 0,
-	width: Ti.UI.SIZE,
 	width: Ti.UI.SIZE,
 	height: 16,
 	font: {
-		fontSize: 14
+		fontSize: 14,
+		fontWeight: 'bold'
 	},
 	textAlign: 'center'
 }
 
-'#dateLabel':{
+'#scoreLabel':{
 	top: 0,
 	width: Ti.UI.SIZE,
-	height: 10,
+	height: 22,
 	font: {
-		fontSize: 8
+		fontSize: 20
+	},
+	textAlign: 'center'
+}
+
+'#timeLabel':{
+	top: 0,
+	width: Ti.UI.SIZE,
+	height: 16,
+	font: {
+		fontSize: 14
 	},
 	textAlign: 'center'
 }

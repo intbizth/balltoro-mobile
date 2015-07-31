@@ -1,5 +1,5 @@
 var moment = require('alloy/moment');
-var config = require(WPATH('config')).before;
+var config = require(WPATH('config')).gamebeforesmall;
 var args = arguments[0] || {};
 
 var leftWidth = Ti.Platform.displayCaps.platformWidth * 0.4;
@@ -23,8 +23,7 @@ $.leftImageView.width = $.main.height;
 $.leftImage.width = $.leftImageView.width - 4;
 $.leftImage.height = $.leftImage.width;
 
-$.timeLabel.color = config.center.timeColor;
-$.dateLabel.color = config.center.dateColor;
+$.vsLabel.color = config.center.vsColor;
 
 $.rightLabelView.left = 0;
 $.rightLabelView.width = $.rightView.width - $.rightLabelView.left - $.main.height;
@@ -45,10 +44,7 @@ if (args.awayClub) {
 	$.rightImage.image = args.awayClub.logo;
 }
 
-if (args.datetime) {
-	$.timeLabel.text = moment.unix(args.datetime).format('HH:mm');
-	$.dateLabel.text = moment.unix(args.datetime).format('D MMM YYYY');
-}
+$.vsLabel.text = L('com.intbizth.balltoro.gamelabel.vs');
 
 exports.getImageSize = function() {
 	return {

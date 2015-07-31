@@ -1,5 +1,5 @@
 var moment = require('alloy/moment');
-var config = require(WPATH('config')).before;
+var config = require(WPATH('config')).gameliveht;
 var args = arguments[0] || {};
 
 var leftWidth = Ti.Platform.displayCaps.platformWidth * 0.4;
@@ -23,8 +23,9 @@ $.leftImageView.width = $.main.height;
 $.leftImage.width = $.leftImageView.width - 4;
 $.leftImage.height = $.leftImage.width;
 
-$.timeLabel.color = config.center.timeColor;
-$.dateLabel.color = config.center.dateColor;
+$.liveLabel.color = config.center.liveColor;
+$.scoreLabel.color = config.center.scoreColor;
+$.statusLabel.color = config.center.statusColor;
 
 $.rightLabelView.left = 0;
 $.rightLabelView.width = $.rightView.width - $.rightLabelView.left - $.main.height;
@@ -45,10 +46,13 @@ if (args.awayClub) {
 	$.rightImage.image = args.awayClub.logo;
 }
 
-if (args.datetime) {
-	$.timeLabel.text = moment.unix(args.datetime).format('HH:mm');
-	$.dateLabel.text = moment.unix(args.datetime).format('D MMM YYYY');
+$.liveLabel.text = L('com.intbizth.balltoro.gamelabel.live');
+
+if (args.homeClub && args.awayClub) {
+	$.scoreLabel.text = args.homeClub.score + '-' + args.awayClub.score;
 }
+
+$.statusLabel.text = L('com.intbizth.balltoro.gamelabel.halftime');
 
 exports.getImageSize = function() {
 	return {

@@ -15,61 +15,102 @@ module.exports = {
 			fontColor : '#000',
 		}
 	},
-	beforeHeight : 60,
-	beforeLeftBackgroundColor : '#fff',
-	beforeLeftFontColor : '#000',
-	beforeCenterBackgroundColor : '#fff',
-	beforeRightBackgroundColor : '#fff',
-	beforeRightFontColor : '#000',
-	beforeTimeFontColor : '#0088cf',
-	beforeDateFontColor : '#58595b',
-	gameBeforeHeight : 60,
-	gameBeforeLeftBackgroundColor : '#fff',
-	gameBeforeLeftFontColor : '#000',
-	gameBeforeCenterBackgroundColor : '#4188c7',
-	gameBeforeRightBackgroundColor : '#fff',
-	gameBeforeRightFontColor : '#000',
-	gameBeforeVsFontColor : '#fff',
-	gameBeforeTimeFontColor : '#fff',
-	gameLiveHeight : 60,
-	gameLiveLeftBackgroundColor : '#fff',
-	gameLiveLeftFontColor : '#000',
-	gameLiveCenterBackgroundColor : '#4188c7',
-	gameLiveRightBackgroundColor : '#fff',
-	gameLiveRightFontColor : '#000',
-	gameLiveLiveFontColor : '#caf906',
-	gameLiveScoreFontColor : '#fff',
-	gameLiveTimeFontColor : '#fff',
-	gameLiveHTHeight : 60,
-	gameLiveHTLeftBackgroundColor : '#fff',
-	gameLiveHTLeftFontColor : '#000',
-	gameLiveHTCenterBackgroundColor : '#4188c7',
-	gameLiveHTRightBackgroundColor : '#fff',
-	gameLiveHTRightFontColor : '#000',
-	gameLiveHTLiveFontColor : '#caf906',
-	gameLiveHTScoreFontColor : '#fff',
-	gameLiveHTStatusFontColor : '#fff',
-	gameAfterHeight : 60,
-	gameAfterLeftBackgroundColor : '#fff',
-	gameAfterLeftFontColor : '#000',
-	gameAfterCenterBackgroundColor : '#4188c7',
-	gameAfterRightBackgroundColor : '#fff',
-	gameAfterRightFontColor : '#000',
-	gameAfterScoreFontColor : '#fff',
-	gameAfterStatusFontColor : '#fff',
-	afterHeight : 60,
-	afterLeftBackgroundColor : '#fff',
-	afterLeftFontColor : '#000',
-	afterCenterBackgroundColor : '#fff',
-	afterRightBackgroundColor : '#fff',
-	afterRightFontColor : '#000',
-	afterScoreFontColor : '#4188c7',
-	afterDateFontColor : '#58595b',
-	gameVSHeight : 30,
-	gameVSLeftBackgroundColor : '#fff',
-	gameVSLeftFontColor : '#000',
-	gameVSCenterBackgroundColor : '#4188c7',
-	gameVSRightBackgroundColor : '#fff',
-	gameVSRightFontColor : '#000',
-	gameVSVsFontColor : '#fff'
+	gamebefore : {
+		height : 60,
+		left : {
+			backgroundColor : '#fff',
+			color : '#000',
+		},
+		center : {
+			backgroundColor : '#4188c7',
+			vsColor : '#fff',
+			timeColor : '#fff',
+		},
+		right : {
+			backgroundColor : '#fff',
+			fontColor : '#000',
+		}
+	},
+	gamebeforesmall : {
+		height : 30,
+		left : {
+			backgroundColor : '#fff',
+			color : '#000',
+		},
+		center : {
+			backgroundColor : '#4188c7',
+			vsColor : '#fff'
+		},
+		right : {
+			backgroundColor : '#fff',
+			fontColor : '#000',
+		}
+	},
+	gamelive : {
+		height : 60,
+		left : {
+			backgroundColor : '#fff',
+			color : '#000',
+		},
+		center : {
+			backgroundColor : '#4188c7',
+			liveColor : '#caf906',
+			scoreColor : '#fff',
+			timeColor : '#fff',
+		},
+		right : {
+			backgroundColor : '#fff',
+			fontColor : '#000',
+		}
+	},
+	gameliveht : {
+		height : 60,
+		left : {
+			backgroundColor : '#fff',
+			color : '#000',
+		},
+		center : {
+			backgroundColor : '#4188c7',
+			liveColor : '#caf906',
+			scoreColor : '#fff',
+			statusColor : '#fff',
+		},
+		right : {
+			backgroundColor : '#fff',
+			fontColor : '#000',
+		}
+	},
+	gameafter : {
+		height : 60,
+		left : {
+			backgroundColor : '#fff',
+			color : '#000',
+		},
+		center : {
+			backgroundColor : '#4188c7',
+			liveColor : '#caf906',
+			scoreColor : '#fff',
+			statusColor : '#fff',
+		},
+		right : {
+			backgroundColor : '#fff',
+			fontColor : '#000',
+		}
+	},
+	after : {
+		height : 60,
+		left : {
+			backgroundColor : '#fff',
+			color : '#000',
+		},
+		center : {
+			backgroundColor : '#fff',
+			scoreColor : '#4188c7',
+			dateColor : '#58595b',
+		},
+		right : {
+			backgroundColor : '#fff',
+			fontColor : '#000',
+		}
+	}
 };

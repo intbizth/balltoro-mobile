@@ -32,23 +32,12 @@
 	right: 0
 }
 
-'#timeLabel':{
+'#vsLabel':{
 	top: 0,
 	width: Ti.UI.SIZE,
-	width: Ti.UI.SIZE,
-	height: 16,
+	height: 22,
 	font: {
-		fontSize: 14
-	},
-	textAlign: 'center'
-}
-
-'#dateLabel':{
-	top: 0,
-	width: Ti.UI.SIZE,
-	height: 10,
-	font: {
-		fontSize: 8
+		fontSize: 20
 	},
 	textAlign: 'center'
 }

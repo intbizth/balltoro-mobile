@@ -32,13 +32,12 @@
 	right: 0
 }
 
-'#timeLabel':{
+'#scoreLabel':{
 	top: 0,
 	width: Ti.UI.SIZE,
-	width: Ti.UI.SIZE,
-	height: 16,
+	height: 22,
 	font: {
-		fontSize: 14
+		fontSize: 20
 	},
 	textAlign: 'center'
 }

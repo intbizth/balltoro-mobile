@@ -1,5 +1,5 @@
 var moment = require('alloy/moment');
-var config = require(WPATH('config')).before;
+var config = require(WPATH('config')).after;
 var args = arguments[0] || {};
 
 var leftWidth = Ti.Platform.displayCaps.platformWidth * 0.4;
@@ -23,7 +23,7 @@ $.leftImageView.width = $.main.height;
 $.leftImage.width = $.leftImageView.width - 4;
 $.leftImage.height = $.leftImage.width;
 
-$.timeLabel.color = config.center.timeColor;
+$.scoreLabel.color = config.center.scoreColor;
 $.dateLabel.color = config.center.dateColor;
 
 $.rightLabelView.left = 0;
@@ -45,8 +45,11 @@ if (args.awayClub) {
 	$.rightImage.image = args.awayClub.logo;
 }
 
+if (args.homeClub && args.awayClub) {
+	$.scoreLabel.text = args.homeClub.score + '-' + args.awayClub.score;
+}
+
 if (args.datetime) {
-	$.timeLabel.text = moment.unix(args.datetime).format('HH:mm');
 	$.dateLabel.text = moment.unix(args.datetime).format('D MMM YYYY');
 }
 
