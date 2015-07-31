@@ -1,55 +1,21 @@
-var global = {
-	test : {
-		timer : null
-	},
-	width : 15,
-	height : 15,
-	winBackgroundColor : '#32ac41',
-	winFontColor : '#000',
-	loseBackgroundColor : '#ff332b',
-	loseFontColor : '#000',
-	drawBackgroundColor : '#f4d01e',
-	drawFontColor : '#000'
-};
+var config = require(WPATH('config'));
+var timer = null;
 
 function createWin() {
 	var view = Ti.UI.createView({
-		width : global.width,
-		height : global.height,
-		backgroundColor : global.winBackgroundColor
+		width : config.width,
+		height : config.height,
+		backgroundColor : config.win.backgroundColor
 	});
 
 	var label = Ti.UI.createLabel({
-		width : global.width,
-		height : global.height,
+		width : config.width,
+		height : config.height,
 		font : {
 			fontSize : 10
 		},
-		color : global.winFontColor,
-		text : 'W',
-		textAlign : 'center'
-	});
-
-	view.add(label);
-
-	return view;
-};
-
-function createLose() {
-	var view = Ti.UI.createView({
-		width : global.width,
-		height : global.height,
-		backgroundColor : global.loseBackgroundColor
-	});
-
-	var label = Ti.UI.createLabel({
-		width : global.width,
-		height : global.height,
-		font : {
-			fontSize : 10
-		},
-		color : global.loseFontColor,
-		text : 'L',
+		color : config.win.color,
+		text : L('com.intbizth.balltoro.winloseordraw.win'),
 		textAlign : 'center'
 	});
 
@@ -60,19 +26,19 @@ function createLose() {
 
 function createDraw() {
 	var view = Ti.UI.createView({
-		width : global.width,
-		height : global.height,
-		backgroundColor : global.drawBackgroundColor
+		width : config.width,
+		height : config.height,
+		backgroundColor : config.draw.backgroundColor
 	});
 
 	var label = Ti.UI.createLabel({
-		width : global.width,
-		height : global.height,
+		width : config.width,
+		height : config.height,
 		font : {
 			fontSize : 10
 		},
-		color : global.drawFontColor,
-		text : 'D',
+		color : config.draw.color,
+		text : L('com.intbizth.balltoro.winloseordraw.draw'),
 		textAlign : 'center'
 	});
 
@@ -81,25 +47,33 @@ function createDraw() {
 	return view;
 };
 
-/**
- *
- * @param {Object} args
- */
-exports.loadConfig = function(args) {
-	for (var i in global) {
-		if (args[i]) {
-			global[i] = args[i];
-		}
-	}
+function createLose() {
+	var view = Ti.UI.createView({
+		width : config.width,
+		height : config.height,
+		backgroundColor : config.lose.backgroundColor
+	});
+
+	var label = Ti.UI.createLabel({
+		width : config.width,
+		height : config.height,
+		font : {
+			fontSize : 10
+		},
+		color : config.lose.color,
+		text : L('com.intbizth.balltoro.winloseordraw.lose'),
+		textAlign : 'center'
+	});
+
+	view.add(label);
+
+	return view;
 };
 
-/**
- * @param {Integer} duration
- */
 exports.startTest = function(duration, element) {
 	run();
 
-	global.timer = setInterval(function() {
+	timer = setInterval(function() {
 		run();
 	}, duration);
 
@@ -130,29 +104,20 @@ exports.startTest = function(duration, element) {
 };
 
 exports.stopTest = function(element) {
-	clearInterval(global.timer);
-	global.timer = null;
+	clearInterval(timer);
+	timer = null;
 
 	element.removeAllChildren();
 };
 
-/**
- * return {UIView}
- */
 exports.createWin = function() {
 	return createWin();
 };
 
-/**
- * return {UIView}
- */
 exports.createLose = function() {
 	return createLose();
 };
 
-/**
- * return {UIView}
- */
 exports.createDraw = function() {
 	return createDraw();
 };
