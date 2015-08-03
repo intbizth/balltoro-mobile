@@ -1,0 +1,13 @@
+<Alloy>
+	<View id="main">
+		<View id="subView">
+			<View id="iconView">
+				<ImageView id="iconImage"></ImageView>
+			</View>
+			<View id="labelView">
+				<Label id="label"></Label>
+			</View>
+		</View>
+		<View id="lineView"></View>
+	</View>
+</Alloy>

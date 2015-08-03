@@ -1,0 +1,66 @@
+'#main':{
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL
+}
+
+'#subView':{
+	top: 0,
+	left: 0,
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	opacity: 1,
+	opacityAct: 0.2,
+	opacityInAct: 1
+}
+
+'#dataView':{
+	width: 0,
+	height: 0,
+	heightMin: 0,
+	heightMax: 0,
+	layout: 'vertical',
+	backgroundColor: 'pink'
+}
+
+'#iconView':{
+	left: 0
+}
+
+'#iconImage':{
+	defaultImage: ''
+}
+
+'#labelView':{
+	left: 0,
+	backgroundColor: 'brown'
+}
+
+'#label':{
+	textAlign: 'left',
+	backgroundColor: 'green'
+}
+
+'#lineView':{
+	bottom: 0,
+	width: Ti.UI.FILL,
+	height: 1
+}
+
+'#arrowView':{
+	top: 0,
+	right: 0,
+	visible: false,
+	backgroundColor: 'yellow'
+}
+
+'#arrowLineView':{
+	left: 0,
+	width: 1,
+	height: Ti.UI.FILL
+}
+
+'#arrowImage':{
+	width: 15,
+	height: 15,
+	image: WPATH( 'images/arrow/down.png')
+}
