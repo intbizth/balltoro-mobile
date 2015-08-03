@@ -33,6 +33,22 @@ exports.createTable = function(data) {
 
 	headerView.add(headerLine);
 
+	if (data.paginationPrevious || data.paginationNext) {
+		headerLabel.width = headerLabel.width - headerLabel.left - 120;
+
+		var pagination = Widget.createController('pagination', config[tablename].pagination);
+		pagination.getView().right = headerLabel.left;
+		headerView.add(pagination.getView());
+
+		pagination.getView().addEventListener('click:previous', function(e) {
+			section.fireEvent('click:previous', e);
+		});
+
+		pagination.getView().addEventListener('click:next', function(e) {
+			section.fireEvent('click:next', e);
+		});
+	}
+
 	var section = Ti.UI.createListSection({
 		headerView : headerView
 	});

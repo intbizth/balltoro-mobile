@@ -35,11 +35,11 @@ module.exports = {
 		},
 		pagination : {
 			backgroundColor : '#162a38',
-			inAct : {
+			previous : {
 				backgroundColor : '#162a38',
 				color : '#fff'
 			},
-			act : {
+			next : {
 				backgroundColor : '#1a3c54',
 				color : '#fff'
 			}
@@ -72,11 +72,11 @@ module.exports = {
 		},
 		pagination : {
 			backgroundColor : '#162a38',
-			inAct : {
+			previous : {
 				backgroundColor : '#162a38',
 				color : '#fff'
 			},
-			act : {
+			next : {
 				backgroundColor : '#1a3c54',
 				color : '#fff'
 			}
@@ -109,11 +109,11 @@ module.exports = {
 		},
 		pagination : {
 			backgroundColor : '#162a38',
-			inAct : {
+			previous : {
 				backgroundColor : '#162a38',
 				color : '#fff'
 			},
-			act : {
+			next : {
 				backgroundColor : '#1a3c54',
 				color : '#fff'
 			}
@@ -146,11 +146,11 @@ module.exports = {
 		},
 		pagination : {
 			backgroundColor : '#162a38',
-			inAct : {
+			previous : {
 				backgroundColor : '#162a38',
 				color : '#fff'
 			},
-			act : {
+			next : {
 				backgroundColor : '#1a3c54',
 				color : '#fff'
 			}

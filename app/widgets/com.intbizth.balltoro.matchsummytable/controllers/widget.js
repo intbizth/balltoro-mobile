@@ -293,7 +293,17 @@ function setData(datas) {
 	var sections = [];
 
 	for (var i in datas) {
-		sections.push(Widget.createController('table/' + datas[i].table).createTable(datas[i]));
+		var section = Widget.createController('table/' + datas[i].table).createTable(datas[i]);
+
+		section.addEventListener('click:previous', function(e) {
+			Ti.API.error(e);
+		});
+
+		section.addEventListener('click:next', function(e) {
+			Ti.API.error(e);
+		});
+
+		sections.push(section);
 	}
 
 	$.list.sections = sections;
