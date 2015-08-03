@@ -26,6 +26,8 @@ Alloy.String = require('alloy/string');
 var Vendor = {};
 Vendor.Chance = require('chance.min'), Vendor.Chance = new Vendor.Chance();
 Vendor.Tinycolor = require('tinycolor');
+Vendor.underscoreString = require('underscore.string.min');
+_.mixin(Vendor.underscoreString.exports());
 // < vendor loading
 
 // > collections & models

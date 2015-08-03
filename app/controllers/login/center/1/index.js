@@ -31,11 +31,11 @@ function load() {
 
 	global.load = true;
 
-	$.matchlabelView.startTest(8000);
-	$.gamelabelView.startTest(8000);
-	$.powerBarView.startTest(500);
-	$.winloseordrawView.startTest(8000, $.winloseordrawTestSubView);
-	$.matchsummytableView.startTest(8000);
+	// $.matchlabelView.startTest(8000);
+	// $.gamelabelView.startTest(8000);
+	// $.powerBarView.startTest(500);
+	// $.winloseordrawView.startTest(8000, $.winloseordrawTestSubView);
+	// $.matchsummytableView.startTest(8000);
 };
 
 function destroy() {
@@ -43,11 +43,11 @@ function destroy() {
 
 	global.load = false;
 
-	$.matchlabelView.stopTest();
-	$.gamelabelView.stopTest();
-	$.powerBarView.stopTest();
-	$.winloseordrawView.stopTest($.winloseordrawTestSubView);
-	$.matchsummytableView.stopTest();
+	// $.matchlabelView.stopTest();
+	// $.gamelabelView.stopTest();
+	// $.powerBarView.stopTest();
+	// $.winloseordrawView.stopTest($.winloseordrawTestSubView);
+	// $.matchsummytableView.stopTest();
 };
 
 exports.getLoad = function() {
