@@ -115,7 +115,7 @@ Ti.App.addEventListener('logout', function(e) {
 	_.delay(function() {
 		global.changeWindow = false;
 
-		Alloy.Globals.login.leftWindow.destroy();
+		Alloy.Globals.login.leftWindow.unLoad();
 
 		for (var i in Alloy.Globals.login.menuWindows) {
 			Alloy.Globals.login.menuWindows[i].destroy();
