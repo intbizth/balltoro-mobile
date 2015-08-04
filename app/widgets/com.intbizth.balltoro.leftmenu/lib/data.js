@@ -6,7 +6,7 @@ module.exports = [{
 	open : false,
 	api : {
 		url : 'http://boon.dockertester.com/balltoro/web/app_dev.php/api/programs/',
-		template : 'leaguegame',
+		template : 'program',
 		act : false,
 		dataBinding : {
 			name : 'code',

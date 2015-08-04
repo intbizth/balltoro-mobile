@@ -73,7 +73,7 @@ function findKey(name) {
 	var key = '';
 
 	if (_.contains(itemsKey, name)) {
-		key = 'main';
+		key = 'items';
 	} else if (_.contains(sectionsKey, name)) {
 		key = 'sections';
 	} else if (_.contains(sectionItemsKey, name)) {
@@ -84,11 +84,18 @@ function findKey(name) {
 };
 
 function select(value) {
-	for (var key in items) {
-		for (var name in items[key]) {
-			items[key][name][(name === value) ?'act' : 'inact']();
-		}
+	var key1 = findKey(selected);
+	var key2 = findKey(value);
+
+	if (key1 !== '') {
+		items[key1][selected].inact();
 	}
+
+	if (key2 !== '') {
+		items[key2][value].act();
+	}
+
+	selected = value;
 };
 
 exports.startTest = function(duration) {

@@ -121,12 +121,12 @@ if (args.data.data || args.data.api) {
 				});
 				var view = main.getView();
 
-				items[itemsApi[i].name] = main;
+				items[itemsApi[i].template + ':' + itemsApi[i].name] = main;
 
 				$.item.add(view);
 				$.item.heightMax += view.height;
 			}
-			
+
 			args.loadItems();
 		});
 

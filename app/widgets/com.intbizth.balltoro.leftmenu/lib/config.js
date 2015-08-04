@@ -42,7 +42,7 @@ module.exports = {
 			verticalColor : '#213f53'
 		}
 	},
-	leaguegame : {
+	program : {
 		height : 40,
 		backgroundColor : '#ffffff',
 		backgroundColorInAct : '#ffffff',

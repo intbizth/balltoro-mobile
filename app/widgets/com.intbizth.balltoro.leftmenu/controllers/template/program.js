@@ -1,9 +1,9 @@
 var args = arguments[0] || {};
 var config = require(WPATH('config'));
-var template = 'leaguegame';
+var template = 'program';
 var left = 30;
 
-$.main.name = $.subView.name = $.iconView.name = $.iconImage.name = $.labelView.name = $.label.name = $.lineView.name = args.data.name;
+$.main.name = $.subView.name = $.iconView.name = $.iconImage.name = $.labelView.name = $.label.name = $.lineView.name = template + ':' + args.data.name;
 $.main.width = config.width;
 $.main.height = config[template].height;
 $.main.backgroundColor = config[template][(args.data.act) ? 'backgroundColorAct' : 'backgroundColorInAct'];
