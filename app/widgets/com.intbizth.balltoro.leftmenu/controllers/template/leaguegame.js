@@ -1,6 +1,6 @@
 var args = arguments[0] || {};
 var config = require(WPATH('config'));
-var template = 'setting';
+var template = 'leaguegame';
 var left = 30;
 
 $.main.name = $.subView.name = $.iconView.name = $.iconImage.name = $.labelView.name = $.label.name = $.lineView.name = args.data.name;
@@ -17,7 +17,7 @@ if (args.data.icon !== '') {
 	$.iconView.left = left;
 	$.iconView.width = config[template].height;
 	$.iconView.height = config[template].height;
-	$.iconImage.image = WPATH(args.data.icon);
+	$.iconImage.image = args.data.icon;
 	$.labelView.left = $.iconView.left + $.iconView.width;
 	$.labelView.height = config[template].height;
 	$.labelView.width = config.width - ($.iconView.left + $.iconView.width);

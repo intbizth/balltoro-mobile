@@ -6,11 +6,16 @@ module.exports = {
 		backgroundColor : '#ffffff',
 		backgroundColorInAct : '#ffffff',
 		backgroundColorAct : '#d1d3d4',
-		color : '#000'
+		color : '#000',
+		line : {
+			verticalColor : '#fff'
+		}
 	},
 	section : {
 		height : 50,
 		backgroundColor : '#f1f2f2',
+		backgroundColorInAct : '#f1f2f2',
+		backgroundColorAct : '#d1d3d4',
 		color : '#6d6e71',
 		line : {
 			horizontalColor : '#000',
@@ -22,10 +27,13 @@ module.exports = {
 		backgroundColor : '#ffffff',
 		backgroundColorInAct : '#ffffff',
 		backgroundColorAct : '#d1d3d4',
-		color : '#000'
+		color : '#000',
+		line : {
+			verticalColor : '#fff'
+		}
 	},
 	setting : {
-		height : 30,
+		height : 40,
 		backgroundColor : '#162a37',
 		backgroundColorInAct : '#162a37',
 		backgroundColorAct : '#101f29',
@@ -33,4 +41,15 @@ module.exports = {
 		line : {
 			verticalColor : '#213f53'
 		}
-	}};
+	},
+	leaguegame : {
+		height : 40,
+		backgroundColor : '#ffffff',
+		backgroundColorInAct : '#ffffff',
+		backgroundColorAct : '#d1d3d4',
+		color : '#000',
+		line : {
+			verticalColor : '#fff'
+		}
+	}
+};

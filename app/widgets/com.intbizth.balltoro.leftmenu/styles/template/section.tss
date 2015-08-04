@@ -1,6 +1,15 @@
 '#main':{
 	width: Ti.UI.FILL,
-	height: Ti.UI.FILL
+	height: Ti.UI.SIZE,
+	layout: 'vertical',
+	duration: 180,
+	animating: false
+}
+
+'#content':{
+	top: 0,
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE
 }
 
 '#subView':{
@@ -13,31 +22,33 @@
 	opacityInAct: 1
 }
 
-'#dataView':{
+'#item':{
+	top: 0,
 	width: 0,
 	height: 0,
 	heightMin: 0,
 	heightMax: 0,
-	layout: 'vertical',
-	backgroundColor: 'pink'
+	layout: 'vertical'
 }
 
 '#iconView':{
-	left: 0
+	left: 0,
+	// backgroundColor: 'orange'
 }
 
 '#iconImage':{
-	defaultImage: ''
+	defaultImage: '',
+	// backgroundColor: 'blue'
 }
 
 '#labelView':{
 	left: 0,
-	backgroundColor: 'brown'
+	// backgroundColor: 'red'
 }
 
 '#label':{
 	textAlign: 'left',
-	backgroundColor: 'green'
+	// backgroundColor: 'yellow'
 }
 
 '#lineView':{
@@ -49,8 +60,7 @@
 '#arrowView':{
 	top: 0,
 	right: 0,
-	visible: false,
-	backgroundColor: 'yellow'
+	visible: false
 }
 
 '#arrowLineView':{

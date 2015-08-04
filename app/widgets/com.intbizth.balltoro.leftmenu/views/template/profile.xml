@@ -8,5 +8,6 @@
 				<Label id="label"></Label>
 			</View>
 		</View>
+		<View id="lineView"></View>
 	</View>
 </Alloy>

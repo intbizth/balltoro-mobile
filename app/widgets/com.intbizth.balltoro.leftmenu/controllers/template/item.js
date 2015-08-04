@@ -2,20 +2,20 @@ var args = arguments[0] || {};
 var config = require(WPATH('config'));
 var template = 'item';
 
-$.main.name = args.name;
+$.main.name = $.subView.name = $.iconView.name = $.iconImage.name = $.labelView.name = $.label.name = args.data.name;
 $.main.width = config.width;
 $.main.height = config[template].height;
-$.main.backgroundColor = config[template][(args.act) ? 'backgroundColorAct' : 'backgroundColorInAct'];
+$.main.backgroundColor = config[template][(args.data.act) ? 'backgroundColorAct' : 'backgroundColorInAct'];
 $.main.backgroundColorInAct = config[template].backgroundColorInAct;
 $.main.backgroundColorAct = config[template].backgroundColorAct;
 
 $.subView.width = $.main.width;
 $.subView.height = $.main.height;
 
-if (args.icon !== '') {
+if (args.data.icon !== '') {
 	$.iconView.width = config[template].height;
 	$.iconView.height = config[template].height;
-	$.iconImage.image = WPATH(args.icon);
+	$.iconImage.image = WPATH(args.data.icon);
 	$.labelView.height = config[template].height;
 	$.labelView.width = config.width - $.iconView.width;
 	$.label.width = $.labelView.width - 8;
@@ -25,7 +25,8 @@ if (args.icon !== '') {
 }
 
 $.label.color = config[template].color;
-$.label.text = args.title;
+$.label.text = args.data.title;
+$.lineView.backgroundColor = config[template].line.verticalColor;
 
 $.main.addEventListener('touchstart', function() {
 	$.subView.opacity = $.subView.opacityAct;
@@ -42,6 +43,10 @@ $.main.addEventListener('touchend', function() {
 $.main.addEventListener('touchcancel', function() {
 	this.fireEvent('touchend');
 });
+
+exports.getAct = function() {
+	return args.data.act;
+};
 
 exports.act = function(value) {
 	$.main.backgroundColor = $.main.backgroundColorAct;

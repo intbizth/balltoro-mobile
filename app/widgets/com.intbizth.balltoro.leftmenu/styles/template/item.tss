@@ -26,3 +26,9 @@
 '#label':{
 	textAlign: 'left'
 }
+
+'#lineView':{
+	bottom: 0,
+	width: Ti.UI.FILL,
+	height: 1
+}
