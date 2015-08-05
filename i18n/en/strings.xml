@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?><resources>
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
 	<string name="appname">Balltoro</string>
 	<string name="back">Back</string>
-	<string name="login.menu.1">Menu 1</string>
-	<string name="login.menu.2">Menu 2</string>
+	<string name="login.menu.tester">Tester</string>
+	<string name="login.menu.match">Match</string>
 	<string name="login.menu.signout">Sign Out</string>
 	<string name="nologin.index.button.register">Register</string>
 	<string name="nologin.index.button.signin">Sign In</string>
