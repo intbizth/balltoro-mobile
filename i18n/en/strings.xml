@@ -3,6 +3,7 @@
 	<string name="appname">Balltoro</string>
 	<string name="back">Back</string>
 	<string name="login.menu.tester">Tester</string>
+	<string name="login.menu.league_game">League Game</string>
 	<string name="login.menu.match">Match</string>
 	<string name="login.menu.signout">Sign Out</string>
 	<string name="nologin.index.button.register">Register</string>
