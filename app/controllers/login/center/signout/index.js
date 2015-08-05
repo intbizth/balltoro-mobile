@@ -1,17 +1,6 @@
-var global = {
-	load : false
-};
-
-function loadEvent() {
-	$.main.addEventListener('open', function(e) {
-		Alloy.Globals.login.mainWindow.lock();
-
-		_.delay(function() {
-			Ti.App.fireEvent('logout', {});
-		}, _.random(800, 4000));
-		// Ti.App.fireEvent('logout', {});
-	});
-};
+var loaded = false;
+var args = {};
+var openedWindow = false;
 
 function initialize() {
 	if (Alloy.Globals.isIos7Plus) {
@@ -20,29 +9,51 @@ function initialize() {
 
 	$.navbarView.setTitleView(L('login.menu.signout'));
 
+	$.main.addEventListener('open', function(e) {
+		load();
+
+		Alloy.Globals.login.mainWindow.lock();
+
+		_.delay(function() {
+			Alloy.Globals.nologin.force();
+		}, _.random(800, 4000));
+
+		Ti.API.debug($.main.name + ':' + e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
+	});
+
+	$.main.addEventListener('close', function(e) {
+		unLoad();
+
+		Ti.API.debug($.main.name + ':' + e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
+	});
+
 	$.activityIndicator.show();
-
-	loadEvent();
 };
-
-initialize();
 
 function load() {
-
+	loaded = true;
+	openedWindow = false;
 };
 
-function destroy() {
-	global.load = false;
+function unLoad() {
+	loaded = false;
+	openedWindow = false;
 };
 
 exports.getLoad = function() {
-	return global.load;
+	return loaded;
 };
 
 exports.load = function() {
 	load();
 };
 
-exports.destroy = function() {
-	destroy();
+exports.unLoad = function() {
+	unLoad();
 };
+
+exports.setArgs = function(value) {
+	args = value;
+};
+
+initialize();

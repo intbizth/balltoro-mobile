@@ -34,20 +34,15 @@
 // Ti.API.info("Ti.Locale.currentLanguage = " + Ti.Locale.currentLanguage);
 // Ti.API.info("Ti.Locale.currentLocale = " + Ti.Locale.currentLocale);
 
-var global = {
-	changeWindow : false
-};
+var animating = false;
 
 Alloy.Globals.nologin.mainWindow = $.nologin.getView();
+Alloy.Globals.nologin.stackWindows = [];
+Alloy.Globals.login.stackWindows = [];
 Alloy.Globals.login.mainWindow = $.login.getView();
 Alloy.Globals.login.leftWindow = Alloy.createController('login/left/index');
 Alloy.Globals.login.mainWindow.setLeftWindow(Alloy.Globals.login.leftWindow.getView());
 Alloy.Globals.login.menuWindows = {};
-
-for (var i in Alloy.Globals.login.menus) {
-	var menuWindow = Alloy.createController('login/center/' + Alloy.Globals.login.menus[i] + '/index');
-	Alloy.Globals.login.menuWindows[Alloy.Globals.login.menus[i]] = menuWindow;
-}
 
 Alloy.Globals.login.mainWindow.lock = function() {
 	Alloy.Globals.login.mainWindow.openDrawerGestureMode = 'OPEN_MODE_NONE';
@@ -57,14 +52,26 @@ Alloy.Globals.login.mainWindow.unlock = function() {
 	Alloy.Globals.login.mainWindow.openDrawerGestureMode = 'OPEN_MODE_ALL';
 };
 
-Alloy.Globals.login.mainWindow.setMenu = function(menu, noToggle) {
+Alloy.Globals.login.mainWindow.setMenu = function(menu, args, noToggle) {
 	Ti.API.debug('loginWindow:setMenu:' + menu);
+
+	Alloy.Globals.login.stackWindows = [];
+
+	if (!Alloy.Globals.login.menuWindows[menu]) {
+		var menuWindow = Alloy.createController('login/center/' + menu + '/index');
+		Alloy.Globals.login.menuWindows[menu] = menuWindow;
+	}
+
+	if (args) {
+		Alloy.Globals.login.menuWindows[menu].setArgs(args);
+	}
+
 	Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[menu].getView());
 	Alloy.Globals.login.menu = menu;
 
-	if (!Alloy.Globals.login.menuWindows[Alloy.Globals.login.menu].getLoad()) {
-		Alloy.Globals.login.menuWindows[Alloy.Globals.login.menu].load();
-	}
+	// if (!Alloy.Globals.login.menuWindows[Alloy.Globals.login.menu].getLoad()) {
+	// Alloy.Globals.login.menuWindows[Alloy.Globals.login.menu].load();
+	// }
 
 	if (!noToggle) {
 		Alloy.Globals.login.mainWindow.toggleLeftWindow();
@@ -77,31 +84,43 @@ $.nologin.getView().open();
 $.nologin.getView().opacity = 1;
 
 // > event
-Ti.App.addEventListener('login', function(e) {
-	if (global.changeWindow) {
+Alloy.Globals.login.force = function(fn) {
+	if (animating) {
 		return;
 	}
 
-	global.changeWindow = true;
+	animating = true;
 
 	Alloy.Globals.login.leftWindow.load();
 	Alloy.Globals.login.mainWindow.unlock();
-	Alloy.Globals.login.mainWindow.setMenu(Alloy.Globals.login.menu, true);
+	Alloy.Globals.login.mainWindow.setMenu(Alloy.Globals.login.menu, {}, true);
 
 	$.login.getView().opacity = 1;
 	$.nologin.getView().opacity = 0;
 
-	_.delay(function() {
-		global.changeWindow = false;
-	}, 800);
-});
+	if (fn) {
+		fn();
+	}
 
-Ti.App.addEventListener('logout', function(e) {
-	if (global.changeWindow) {
+	_.delay(function() {
+		animating = false;
+
+		for (var i in Alloy.Globals.nologin.stackWindows) {
+			i = parseInt(i);
+
+			if (i !== 0) {
+				Alloy.Globals.nologin.stackWindows[i].close();
+			}
+		}
+	}, 800);
+};
+
+Alloy.Globals.nologin.force = function(fn) {
+	if (animating) {
 		return;
 	}
 
-	global.changeWindow = true;
+	animating = true;
 
 	Alloy.Globals.login.menu = Alloy.Globals.login.defaultMenu;
 
@@ -112,14 +131,18 @@ Ti.App.addEventListener('logout', function(e) {
 		$.login.getView().opacity = 0;
 	});
 
+	if (fn) {
+		fn();
+	}
+
 	_.delay(function() {
-		global.changeWindow = false;
+		animating = false;
 
 		Alloy.Globals.login.leftWindow.unLoad();
 
 		for (var i in Alloy.Globals.login.menuWindows) {
-			Alloy.Globals.login.menuWindows[i].destroy();
+			Alloy.Globals.login.menuWindows[i].unLoad();
 		}
 	}, 800);
-});
+};
 // < event

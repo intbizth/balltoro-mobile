@@ -1,63 +1,65 @@
-var global = {
-	load : false
-};
-
-function loadEvent() {
-	Ti.API.debug('1:loadEvent');
-
-	$.main.addEventListener('open', function(e) {
-
-	});
-
-	$.main.addEventListener('close', function(e) {
-
-	});
-};
+var loaded = false;
+var args = {};
+var openedWindow = false;
 
 function initialize() {
-	Ti.API.debug('1:initialize');
-
 	if (Alloy.Globals.isIos7Plus) {
 		$.navbarView.getView().top = 20;
 	}
 
-	loadEvent();
-};
+	$.main.addEventListener('open', function(e) {
+		load();
 
-initialize();
+		Alloy.Globals.login.stackWindows.push($.main);
+
+		Ti.API.debug($.main.name + ':' + e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
+	});
+
+	$.main.addEventListener('close', function(e) {
+		unLoad();
+
+		Alloy.Globals.login.stackWindows.pop();
+
+		Ti.API.debug($.main.name + ':' + e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
+	});
+};
 
 function load() {
-	Ti.API.debug('1:load');
+	loaded = true;
+	openedWindow = false;
 
-	global.load = true;
-
-	// $.matchlabelView.startTest(8000);
-	// $.gamelabelView.startTest(8000);
-	// $.powerBarView.startTest(500);
-	// $.winloseordrawView.startTest(8000, $.winloseordrawTestSubView);
-	// $.matchsummytableView.startTest(8000);
+	$.matchlabelView.startTest(8000);
+	$.gamelabelView.startTest(8000);
+	$.powerBarView.startTest(2000);
+	$.winloseordrawView.startTest(8000, $.winloseordrawTestSubView);
+	$.matchsummytableView.startTest(8000);
 };
 
-function destroy() {
-	Ti.API.debug('1:destroy');
+function unLoad() {
+	loaded = false;
+	openedWindow = false;
 
-	global.load = false;
-
-	// $.matchlabelView.stopTest();
-	// $.gamelabelView.stopTest();
-	// $.powerBarView.stopTest();
-	// $.winloseordrawView.stopTest($.winloseordrawTestSubView);
-	// $.matchsummytableView.stopTest();
+	$.matchlabelView.stopTest();
+	$.gamelabelView.stopTest();
+	$.powerBarView.stopTest();
+	$.winloseordrawView.stopTest($.winloseordrawTestSubView);
+	$.matchsummytableView.stopTest();
 };
 
 exports.getLoad = function() {
-	return global.load;
+	return loaded;
 };
 
 exports.load = function() {
 	load();
 };
 
-exports.destroy = function() {
-	destroy();
+exports.unLoad = function() {
+	unLoad();
 };
+
+exports.setArgs = function(value) {
+	args = value;
+};
+
+initialize();

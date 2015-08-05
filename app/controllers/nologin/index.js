@@ -1,3 +1,7 @@
+var loaded = false;
+var args = {};
+var openedWindow = false;
+
 var slider = {
 	initialize : function() {
 		var height = parseInt(Ti.Platform.displayCaps.platformHeight - 160);
@@ -103,12 +107,31 @@ var slider = {
 
 function loadEvent() {
 	$.registerButton.addEventListener('click', function(e) {
+		if (openedWindow) {
+			return;
+		}
+
+		openedWindow = true;
+
 		$.navigation.openWindow($.registerWindow.getView());
+
+		$.registerWindow.getView().addEventListener('close', function(e) {
+			openedWindow = false;
+		});
 	});
 
 	$.signinButton.addEventListener('click', function(e) {
-		Ti.App.fireEvent('login', {});
-		// $.navigation.openWindow($.signinWindow.getView());
+		if (openedWindow) {
+			return;
+		}
+
+		openedWindow = true;
+
+		$.navigation.openWindow($.signinWindow.getView());
+
+		$.signinWindow.getView().addEventListener('close', function(e) {
+			openedWindow = false;
+		});
 	});
 
 	$.signinWithFacebookButton.addEventListener('click', function(e) {
@@ -119,6 +142,17 @@ function loadEvent() {
 		} else {
 			Alloy.Facebook.logout();
 		}
+	});
+};
+
+function unLoadEvent() {
+	$.registerButton.removeEventListener('click', function(e) {
+	});
+
+	$.signinButton.removeEventListener('click', function(e) {
+	});
+
+	$.signinWithFacebookButton.removeEventListener('click', function(e) {
 	});
 };
 
@@ -137,6 +171,18 @@ function initialize() {
 
 	Alloy.Facebook.addEventListener('logout', function(e) {
 		alert('Logged out');
+	});
+
+	$.main.addEventListener('open', function() {
+		load();
+
+		Alloy.Globals.nologin.stackWindows.push($.main);
+	});
+
+	$.main.addEventListener('close', function() {
+		unLoad();
+
+		Alloy.Globals.nologin.stackWindows.pop();
 	});
 
 	$.logoImage.width = Ti.Platform.displayCaps.platformWidth * 0.40;
@@ -224,16 +270,38 @@ function initialize() {
 
 	slider.initialize();
 	// slider.test();
+};
 
+function load() {
+	loaded = true;
+	openedWindow = false;
 	loadEvent();
+
+	Ti.API.debug($.main.name + ':load');
+};
+
+function unLoad() {
+	loaded = false;
+	openedWindow = false;
+	unLoadEvent();
+
+	Ti.API.debug($.main.name + ':unLoad');
+};
+
+exports.getLoad = function() {
+	return loaded;
+};
+
+exports.load = function() {
+	load();
+};
+
+exports.unLoad = function() {
+	unLoad();
+};
+
+exports.setArgs = function(value) {
+	args = value;
 };
 
 initialize();
-
-function destroy() {
-
-};
-
-exports.destroy = function() {
-	destroy();
-};

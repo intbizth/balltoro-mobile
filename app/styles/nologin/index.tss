@@ -3,6 +3,7 @@
 }
 
 '#main[platform=ios]':{
+	name: 'nologin',
 	width: Ti.UI.FILL,
 	height: Ti.UI.FILL,
 	backgroundColor: '#0f181e',
