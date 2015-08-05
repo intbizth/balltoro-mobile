@@ -1,0 +1,23 @@
+<Alloy>
+	<View id="main">
+		<View id="content">
+			<View id="subView">
+				<View id="iconView">
+					<ImageView id="iconImage"></ImageView>
+				</View>
+				<View id="labelView">
+					<Label id="label"></Label>
+				</View>
+				<View id="arrowView">
+					<View id="arrowLineView"></View>
+					<ImageView id="arrowImage"></ImageView>
+				</View>
+				<View id="activityIndicatorView">
+					<ActivityIndicator id="activityIndicator" />
+				</View>
+			</View>
+			<View id="lineView"></View>
+		</View>
+		<View id="item"></View>
+	</View>
+</Alloy>

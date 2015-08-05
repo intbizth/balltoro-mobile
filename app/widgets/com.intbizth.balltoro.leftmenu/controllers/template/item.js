@@ -1,5 +1,5 @@
 var args = arguments[0] || {};
-var config = require(WPATH('config'));
+var config = Widget.config;
 var template = 'item';
 
 $.main.name = $.subView.name = $.iconView.name = $.iconImage.name = $.labelView.name = $.label.name = args.data.name;

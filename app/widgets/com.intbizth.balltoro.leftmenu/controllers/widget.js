@@ -1,6 +1,4 @@
 var string = require('alloy/string');
-var config = require(WPATH('config'));
-var data = require(WPATH('data'));
 var timer = null;
 var selected = null;
 var items = {
@@ -8,6 +6,8 @@ var items = {
 	sections : {},
 	sectionItems : {}
 };
+Widget.config = require(WPATH('config'));
+Widget.data = require(WPATH('data'));
 Widget.webservice = require('webservice');
 
 function loadItems() {
@@ -23,13 +23,13 @@ function loadItems() {
 };
 
 function load() {
-	for (var i in data) {
+	for (var i in Widget.data) {
 		var args = {
 			loadItems : loadItems,
-			data : data[i]
+			data : Widget.data[i]
 		};
 
-		var main = Widget.createController('template/' + data[i].template, args);
+		var main = Widget.createController('template/' + Widget.data[i].template, args);
 		var view = main.getView();
 
 		$.main.add(view);
@@ -42,14 +42,14 @@ function load() {
 			select(e.source.name);
 		});
 
-		if (data[i].template === 'section') {
-			items.sections[data[i].name] = main;
+		if (Widget.data[i].template === 'section') {
+			items.sections[Widget.data[i].name] = main;
 
 			for (var j in main.getItems()) {
 				items.sectionItems[j] = main.getItems()[j];
 			}
 		} else {
-			items.items[data[i].name] = main;
+			items.items[Widget.data[i].name] = main;
 		}
 	}
 

@@ -70,3 +70,13 @@
 	height: 15,
 	image: WPATH( 'images/arrow/down.png')
 }
+
+'#activityIndicatorView':{
+	top: 0,
+	right: 0,
+	visible: false
+}
+
+'#activityIndicator[platform=ios]':{
+	style:Ti.UI.iPhone.ActivityIndicatorStyle.DARK
+}

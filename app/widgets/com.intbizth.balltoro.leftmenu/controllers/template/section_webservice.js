@@ -3,6 +3,10 @@ var config = Widget.config;
 var template = 'section';
 var items = {};
 var accordion = false;
+var webservice = {
+	loading : false,
+	loaded : false
+};
 
 $.main.open = function() {
 };
@@ -41,7 +45,7 @@ $.lineView.backgroundColor = config[template].line.verticalColor;
 $.arrowLineView.height = config[template].height - 12;
 $.arrowLineView.backgroundColor = config[template].line.horizontalColor;
 
-if (args.data.data) {
+if (args.data.api) {
 	accordion = true;
 
 	$.main.open = function() {
@@ -87,22 +91,11 @@ if (args.data.data) {
 	$.arrowView.height = $.arrowView.width;
 	$.arrowView.visible = true;
 
+	$.activityIndicatorView.width = $.arrowView.width;
+	$.activityIndicatorView.height = $.arrowView.height;
+	$.activityIndicator.show();
+
 	$.item.width = $.content.width;
-
-	if (args.data.data) {
-		for (var i in args.data.data) {
-			var main = Widget.createController('template/' + args.data.data[i].template, {
-				data : args.data.data[i],
-				loadItems : args.loadItems
-			});
-			var view = main.getView();
-
-			items[args.data.data[i].name] = main;
-
-			$.item.add(view);
-			$.item.heightMax += view.height;
-		}
-	}
 
 	if ($.main.opened) {
 		$.arrowImage.transform = Ti.UI.create2DMatrix().rotate(180);
@@ -110,8 +103,60 @@ if (args.data.data) {
 	}
 
 	$.content.addEventListener('click', function() {
-		$.main.opened = !$.main.opened;
-		$.main[($.main.opened) ? 'open': 'close']();
+		if (webservice.loaded) {
+			$.main.opened = !$.main.opened;
+			$.main[($.main.opened) ? 'open': 'close']();
+		} else {
+			if (webservice.loading) {
+				return;
+			}
+
+			webservice.loading = true;
+
+			$.arrowView.visible = false;
+			$.activityIndicatorView.visible = true;
+
+			Widget.webservice.get(args.data.api.url, {});
+
+			Widget.webservice.success(function(data) {
+				var itemsApi = [];
+
+				if (data._embedded && data._embedded.items) {
+					itemsApi = dataBinding(args.data.api.dataBinding, data._embedded.items, args.data.api);
+				}
+
+				for (var i in itemsApi) {
+					var main = Widget.createController('template/' + itemsApi[i].template, {
+						data : itemsApi[i],
+						loadItems : args.loadItems
+					});
+					var view = main.getView();
+
+					items[itemsApi[i].template + ':' + itemsApi[i].name] = main;
+
+					$.item.add(view);
+					$.item.heightMax += view.height;
+				}
+
+				args.loadItems();
+
+				$.activityIndicatorView.visible = false;
+				$.arrowView.visible = true;
+
+				$.main.opened = !$.main.opened;
+				$.main.open();
+
+				webservice.loaded = true;
+				webservice.loading = false;
+			});
+
+			Widget.webservice.error(function(data) {
+				$.activityIndicatorView.visible = false;
+				$.arrowView.visible = true;
+
+				webservice.loading = false;
+			});
+		}
 	});
 } else {
 	$.main.name = $.content.name = $.subView.name = $.iconView.name = $.iconImage.name = $.labelView.name = $.label.name = $.arrowView.name = $.arrowLineView.name = $.arrowImage.name = $.lineView.name = args.data.name;
@@ -132,6 +177,40 @@ $.content.addEventListener('touchend', function() {
 $.content.addEventListener('touchcancel', function() {
 	this.fireEvent('touchend');
 });
+
+function dataBinding(dataBinding, items, options) {
+	var data = [];
+
+	for (var i in items) {
+		var item = {
+			template : options.template,
+			act : (_.isNumber(options.act) && options.act == i) ? options.act : false
+		};
+
+		for (var j in dataBinding) {
+			if (dataBinding[j] !== '') {
+				var value = items[i];
+				var keys = dataBinding[j].split('.');
+
+				for (var k in keys) {
+					if (value[keys[k]]) {
+						value = value[keys[k]];
+					} else {
+						value = '';
+					}
+				}
+
+				item[j] = value;
+			} else {
+				item[j] = false;
+			}
+		}
+
+		data.push(item);
+	}
+
+	return data;
+};
 
 exports.getAct = function() {
 	return args.data.act;

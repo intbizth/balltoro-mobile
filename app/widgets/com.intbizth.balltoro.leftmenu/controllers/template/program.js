@@ -1,5 +1,5 @@
 var args = arguments[0] || {};
-var config = require(WPATH('config'));
+var config = Widget.config;
 var template = 'program';
 var left = 30;
 
