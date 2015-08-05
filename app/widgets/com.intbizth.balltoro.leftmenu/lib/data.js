@@ -22,6 +22,32 @@ module.exports = [{
 	}
 }, {
 	template : 'section',
+	name : 'settings',
+	icon : '',
+	title : L('com.intbizth.balltoro.leftmenu.settings'),
+	act : false,
+	open : false,
+	data : [{
+		template : 'setting',
+		name : 'profileSetting',
+		icon : 'images/profile_setting.png',
+		title : L('com.intbizth.balltoro.leftmenu.profile_setting'),
+		act : false
+	}, {
+		template : 'setting',
+		name : 'gameSetting',
+		icon : 'images/game_setting.png',
+		title : L('com.intbizth.balltoro.leftmenu.game_setting'),
+		act : false
+	}, {
+		template : 'setting',
+		name : 'appSetting',
+		icon : 'images/app_setting.png',
+		title : L('com.intbizth.balltoro.leftmenu.app_setting'),
+		act : false
+	}]
+}, {
+	template : 'section',
 	name : 'signout',
 	icon : '',
 	title : L('com.intbizth.balltoro.leftmenu.sign_out'),
@@ -36,7 +62,7 @@ module.exports = [{
 // act : false
 // }, {
 // template : 'item',
-// name : 'homeFeed',
+// name : 'homefeed',
 // icon : 'images/home_feed.png',
 // title : L('com.intbizth.balltoro.leftmenu.home_feed'),
 // act : false
@@ -53,14 +79,14 @@ module.exports = [{
 // title : L('com.intbizth.balltoro.leftmenu.match'),
 // act : false
 // }, {
-// template : 'section',
-// name : 'leagueGame',
+// template : 'section_webservice',
+// name : 'program',
 // icon : 'images/league_game.png',
 // title : L('com.intbizth.balltoro.leftmenu.league_game'),
 // open : false,
 // api : {
 // url : 'http://boon.dockertester.com/balltoro/web/app_dev.php/api/programs/',
-// template : 'leaguegame',
+// template : 'program',
 // act : false,
 // dataBinding : {
 // name : 'code',
@@ -70,7 +96,7 @@ module.exports = [{
 // }
 // }, {
 // template : 'item',
-// name : 'peopleRanking',
+// name : 'peopleranking',
 // icon : 'images/people_ranking.png',
 // title : L('com.intbizth.balltoro.leftmenu.people_ranking'),
 // act : false
@@ -95,19 +121,19 @@ module.exports = [{
 // open : false,
 // data : [{
 // template : 'setting',
-// name : 'profileSetting',
+// name : 'profilesetting',
 // icon : 'images/profile_setting.png',
 // title : L('com.intbizth.balltoro.leftmenu.profile_setting'),
 // act : false
 // }, {
 // template : 'setting',
-// name : 'gameSetting',
+// name : 'gamesetting',
 // icon : 'images/game_setting.png',
 // title : L('com.intbizth.balltoro.leftmenu.game_setting'),
 // act : false
 // }, {
 // template : 'setting',
-// name : 'appSetting',
+// name : 'appsetting',
 // icon : 'images/app_setting.png',
 // title : L('com.intbizth.balltoro.leftmenu.app_setting'),
 // act : false
@@ -120,7 +146,7 @@ module.exports = [{
 // act : false
 // }, {
 // template : 'section',
-// name : 'signOut',
+// name : 'signout',
 // icon : '',
 // title : L('com.intbizth.balltoro.leftmenu.sign_out'),
 // act : false
