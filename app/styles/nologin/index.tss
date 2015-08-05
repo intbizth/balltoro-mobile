@@ -181,3 +181,15 @@
 	text: L( 'facebook'),
 	textAlign: 'center'
 }
+
+'#versionLabel':{
+	bottom: 1,
+	right: 1,
+	width: Ti.UI.SIZE,
+	height:Ti.UI.SIZE,
+	color: '#fff',
+	font: {
+		fontSize: 8
+	},
+	textAlign: 'right'
+}

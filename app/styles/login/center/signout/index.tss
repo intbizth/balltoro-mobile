@@ -13,3 +13,7 @@
 	width: Ti.UI.FILL,
 	height: Ti.UI.FILL
 }
+
+'#activityIndicator[platform=ios]':{
+	style:Ti.UI.iPhone.ActivityIndicatorStyle.PLAIN
+}

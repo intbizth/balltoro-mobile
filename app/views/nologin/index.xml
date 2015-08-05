@@ -29,6 +29,7 @@
 					<View class="contentBottomSpace" />
 				</View>
 			</View>
+			<Label id="versionLabel" text="Ti.App.version"></Label>
 		</Window>
 	</NavigationWindow>
 	<Require id="registerWindow" src="nologin/register" />
