@@ -22,32 +22,6 @@ module.exports = [{
 	}
 }, {
 	template : 'section',
-	name : 'settings',
-	icon : '',
-	title : L('com.intbizth.balltoro.leftmenu.settings'),
-	act : false,
-	open : false,
-	data : [{
-		template : 'setting',
-		name : 'profileSetting',
-		icon : 'images/profile_setting.png',
-		title : L('com.intbizth.balltoro.leftmenu.profile_setting'),
-		act : false
-	}, {
-		template : 'setting',
-		name : 'gameSetting',
-		icon : 'images/game_setting.png',
-		title : L('com.intbizth.balltoro.leftmenu.game_setting'),
-		act : false
-	}, {
-		template : 'setting',
-		name : 'appSetting',
-		icon : 'images/app_setting.png',
-		title : L('com.intbizth.balltoro.leftmenu.app_setting'),
-		act : false
-	}]
-}, {
-	template : 'section',
 	name : 'signout',
 	icon : '',
 	title : L('com.intbizth.balltoro.leftmenu.sign_out'),
