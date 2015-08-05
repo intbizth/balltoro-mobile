@@ -121,24 +121,26 @@ if (args.data.api) {
 			Widget.webservice.success(function(data) {
 				var itemsApi = [];
 
-				if (data._embedded && data._embedded.items) {
-					itemsApi = dataBinding(args.data.api.dataBinding, data._embedded.items, args.data.api);
+				if (data.total > 0) {
+					if (data._embedded && data._embedded.items) {
+						itemsApi = transformData(args.data.api.dataBinding, data._embedded.items, args.data.api);
+					}
+
+					for (var i in itemsApi) {
+						var main = Widget.createController('template/' + itemsApi[i].template, {
+							data : itemsApi[i],
+							loadItems : args.loadItems
+						});
+						var view = main.getView();
+
+						items[itemsApi[i].template + ':' + itemsApi[i].name] = main;
+
+						$.item.add(view);
+						$.item.heightMax += view.height;
+					}
+
+					args.loadItems();
 				}
-
-				for (var i in itemsApi) {
-					var main = Widget.createController('template/' + itemsApi[i].template, {
-						data : itemsApi[i],
-						loadItems : args.loadItems
-					});
-					var view = main.getView();
-
-					items[itemsApi[i].template + ':' + itemsApi[i].name] = main;
-
-					$.item.add(view);
-					$.item.heightMax += view.height;
-				}
-
-				args.loadItems();
 
 				$.activityIndicatorView.visible = false;
 				$.arrowView.visible = true;
@@ -178,7 +180,7 @@ $.content.addEventListener('touchcancel', function() {
 	this.fireEvent('touchend');
 });
 
-function dataBinding(dataBinding, items, options) {
+function transformData(dataBinding, items, options) {
 	var data = [];
 
 	for (var i in items) {

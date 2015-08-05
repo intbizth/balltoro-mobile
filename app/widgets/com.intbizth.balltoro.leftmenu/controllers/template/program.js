@@ -4,6 +4,7 @@ var template = 'program';
 var left = 30;
 
 $.main.name = $.subView.name = $.iconView.name = $.iconImage.name = $.labelView.name = $.label.name = $.lineView.name = template + ':' + args.data.name;
+$.main.data = $.subView.data = $.iconView.data = $.iconImage.data = $.labelView.data = $.label.data = $.lineView.data = args.data;
 $.main.width = config.width;
 $.main.height = config[template].height;
 $.main.backgroundColor = config[template][(args.data.act) ? 'backgroundColorAct' : 'backgroundColorInAct'];

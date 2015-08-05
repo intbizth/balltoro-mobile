@@ -5,6 +5,12 @@ module.exports = [{
 	title : 'Tester',
 	act : false
 }, {
+	template : 'item',
+	name : 'match',
+	icon : 'images/match.png',
+	title : L('com.intbizth.balltoro.leftmenu.match'),
+	act : false
+}, {
 	template : 'section_webservice',
 	name : 'program',
 	icon : 'images/league_game.png',
