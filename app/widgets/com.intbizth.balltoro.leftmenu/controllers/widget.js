@@ -24,32 +24,34 @@ function loadItems() {
 
 function load() {
 	for (var i in Widget.data) {
-		var args = {
-			loadItems : loadItems,
-			data : Widget.data[i]
-		};
+		if (_.isObject(Widget.data[i])) {
+			var args = {
+				loadItems : loadItems,
+				data : Widget.data[i]
+			};
 
-		var main = Widget.createController('template/' + Widget.data[i].template, args);
-		var view = main.getView();
+			var main = Widget.createController('template/' + Widget.data[i].template, args);
+			var view = main.getView();
 
-		$.main.add(view);
+			$.main.add(view);
 
-		view.addEventListener('click', function(e) {
-			if (!e.source.name) {
-				return;
+			view.addEventListener('click', function(e) {
+				if (!e.source.name) {
+					return;
+				}
+
+				select(e.source.name);
+			});
+
+			if (Widget.data[i].template === 'section') {
+				items.sections[Widget.data[i].name] = main;
+
+				for (var j in main.getItems()) {
+					items.sectionItems[j] = main.getItems()[j];
+				}
+			} else {
+				items.items[Widget.data[i].name] = main;
 			}
-
-			select(e.source.name);
-		});
-
-		if (Widget.data[i].template === 'section') {
-			items.sections[Widget.data[i].name] = main;
-
-			for (var j in main.getItems()) {
-				items.sectionItems[j] = main.getItems()[j];
-			}
-		} else {
-			items.items[Widget.data[i].name] = main;
 		}
 	}
 
