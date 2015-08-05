@@ -1,8 +1,0 @@
-<Alloy>
-	<Window id="main">
-		<Widget id="navbarView" src="com.intbizth.alloy.navbar"></Widget>
-		<View id="content">
-			<Label>2</Label>
-		</View>
-	</Window>
-</Alloy>

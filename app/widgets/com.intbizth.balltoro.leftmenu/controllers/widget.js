@@ -8,7 +8,7 @@ var items = {
 	sections : {},
 	sectionItems : {}
 };
-Widget.webservice = $.webservice;
+Widget.webservice = require('webservice');
 
 function loadItems() {
 	for (var key in items.sections) {
@@ -17,9 +17,9 @@ function loadItems() {
 		}
 	}
 
-	// for (var key in items) {
-	// Ti.API.info('loadItems:', key, JSON.stringify(_.keys(items[key])));
-	// }
+	for (var key in items) {
+		Ti.API.info('1 loadItems:', key, JSON.stringify(_.keys(items[key])));
+	};
 };
 
 function load() {
@@ -35,15 +35,11 @@ function load() {
 		$.main.add(view);
 
 		view.addEventListener('click', function(e) {
-			if (_.isUndefined(e.source.name)) {
+			if (!e.source.name) {
 				return;
 			}
 
 			select(e.source.name);
-
-			Ti.API.debug('');
-			Ti.API.debug('click:' + e.source.name, JSON.stringify(e.source));
-			Ti.API.debug('');
 		});
 
 		if (data[i].template === 'section') {
@@ -57,9 +53,9 @@ function load() {
 		}
 	}
 
-	// for (var key in items) {
-	// Ti.API.info('load:', key, JSON.stringify(_.keys(items[key])));
-	// }
+	for (var key in items) {
+		Ti.API.info('1 load:', key, JSON.stringify(_.keys(items[key])));
+	}
 };
 
 function unLoad() {
@@ -162,6 +158,10 @@ exports.getItems = function() {
 	return items;
 };
 
+exports.getEvents = function() {
+	return events;
+};
+
 exports.select = function(name) {
 	select(name);
 };
@@ -181,4 +181,3 @@ exports.load = function() {
 exports.unLoad = function() {
 	unLoad();
 };
-

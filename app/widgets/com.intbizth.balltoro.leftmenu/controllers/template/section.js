@@ -4,8 +4,6 @@ var template = 'section';
 var items = {};
 var accordion = false;
 
-Ti.API.error(args);
-
 $.main.open = function() {
 };
 $.main.close = function() {

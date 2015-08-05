@@ -1,4 +1,3 @@
 <Alloy>
-	<Require id="webservice" src="com.intbizth.alloy.webservice" type="widget" />
 	<ScrollView id="main" />
 </Alloy>

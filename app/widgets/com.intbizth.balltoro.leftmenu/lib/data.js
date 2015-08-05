@@ -1,4 +1,10 @@
 module.exports = [{
+	template : 'item',
+	name : 'tester',
+	icon : '',
+	title : 'Tester',
+	act : false
+}, {
 	template : 'section',
 	name : 'leagueGame',
 	icon : 'images/league_game.png',
@@ -16,7 +22,7 @@ module.exports = [{
 	}
 }, {
 	template : 'section',
-	name : 'signOut',
+	name : 'signout',
 	icon : '',
 	title : L('com.intbizth.balltoro.leftmenu.sign_out'),
 	act : false
