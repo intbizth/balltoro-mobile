@@ -9,7 +9,6 @@ Alloy.Globals.login.menu = 'tester';
 // < alloy globals
 
 // > alloy loading
-var _ = require('alloy/underscore')._;
 Alloy.Animation = require('alloy/animation');
 Alloy.Dialogs = require('alloy/dialogs');
 Alloy.Facebook = require('facebook');

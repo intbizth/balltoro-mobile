@@ -28,6 +28,13 @@ function initialize() {
 				programCode : menu.replace('program:', '')
 			};
 
+			if (e.source.data) {
+				args.matchlabel = {
+					image : e.source.data.icon,
+					title : e.source.data.title
+				};
+			}
+
 			Alloy.Globals.login.mainWindow.setMenu(menu, args);
 		} else {
 			Alloy.Globals.login.mainWindow.setMenu(menu);
@@ -40,7 +47,7 @@ function load() {
 	openedWindow = false;
 
 	$.leftmenuView.load();
-	$.leftmenuView.act(Alloy.Globals.login.defaultMenu);
+	$.leftmenuView.select(Alloy.Globals.login.defaultMenu);
 };
 
 function unLoad() {
