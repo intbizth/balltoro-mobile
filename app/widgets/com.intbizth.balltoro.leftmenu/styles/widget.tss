@@ -1,5 +1,207 @@
-'#main':{
+'#table':{
 	width: Ti.UI.FILL,
-	height: Ti.UI.FILL,
-	layout: 'vertical'
+	height: Ti.UI.FILL
+}
+
+'#table[platform=ios]':{
+	separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE
+}
+
+'#item_rowTemplate':{
+	height: 50,
+	backgroundColor: '#ffffff',
+	selectedBackgroundColor: '#d1d3d4'
+}
+
+'#item_subview':{
+	layout: 'horizontal'
+}
+
+'#item_iconView':{
+	left: 0,
+	width: 50,
+	height: 50
+}
+
+'#item_icon':{
+	width: 25,
+	height: 25
+}
+
+'#item_labelView':{
+	left: 0
+}
+
+'#item_label':{
+	left: 10,
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	textAlign: 'left',
+	color: '#000',
+	font: {
+		fontSize: 14
+	}
+}
+
+'#section_rowTemplate':{
+	height: 50,
+	backgroundColor: '#f1f2f2',
+	selectedBackgroundColor: '#d1d3d4'
+}
+
+'#section_subview':{
+	layout: 'horizontal'
+}
+
+'#section_iconView':{
+	left: 0,
+	width: 50,
+	height: 50
+}
+
+'#section_icon':{
+	width: 25,
+	height: 25
+}
+
+'#section_labelView':{
+	left: 0
+}
+
+'#section_label':{
+	left: 10,
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	textAlign: 'left',
+	color: '#000',
+	font: {
+		fontSize: 14
+	}
+}
+
+'#section_lineView':{
+	bottom: 0,
+	width: Ti.UI.FILL,
+	height: 1,
+	image: WPATH( 'images/color/ffffff.png'),
+	backgroundRepeat: true
+}
+
+'#section_accordion_rowTemplate':{
+	height: 50,
+	backgroundColor: '#f1f2f2',
+	selectedBackgroundColor: '#d1d3d4'
+}
+
+'#section_accordion_subview':{
+	layout: 'horizontal'
+}
+
+'#section_accordion_iconView':{
+	left: 0,
+	width: 50,
+	height: 50
+}
+
+'#section_accordion_icon':{
+	width: 25,
+	height: 25
+}
+
+'#section_accordion_labelView':{
+	left: 0
+}
+
+'#section_accordion_label':{
+	left: 10,
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	textAlign: 'left',
+	color: '#000',
+	font: {
+		fontSize: 14
+	}
+}
+
+'#section_accordion_buttonView':{
+	right: 0,
+	width: 50,
+	height: 50
+}
+
+'#section_accordion_buttonLineView':{
+	left: 0,
+	width: 1,
+	height: 40,
+	image: WPATH( 'images/color/000000.png'),
+	backgroundRepeat: true
+}
+
+'#section_accordion_arrow':{
+	width: 15,
+	height: 15,
+	image: WPATH( 'images/down.png')
+}
+
+'#section_accordion_activityIndicatorView':{
+	right: 0,
+	width: 50,
+	height: 50,
+	visible: true
+}
+
+'#section_accordion_activityIndicator':{
+	visible: true
+}
+
+'#section_accordion_lineView':{
+	bottom: 0,
+	width: Ti.UI.FILL,
+	height: 1,
+	image: WPATH( 'images/color/ffffff.png'),
+	backgroundRepeat: true
+}
+
+'#setting_rowTemplate':{
+	height: 40,
+	backgroundColor: '#162a37',
+	selectedBackgroundColor: '#101f29'
+}
+
+'#setting_subview':{
+	layout: 'horizontal'
+}
+
+'#setting_iconView':{
+	left: 30,
+	width: 40,
+	height: 40
+}
+
+'#setting_icon':{
+	width: 25,
+	height: 25
+}
+
+'#setting_labelView':{
+	left: 0
+}
+
+'#setting_label':{
+	left: 10,
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	textAlign: 'left',
+	color: '#fff',
+	font: {
+		fontSize: 14
+	}
+}
+
+'#setting_lineView':{
+	bottom: 0,
+	width: Ti.UI.FILL,
+	height: 1,
+	image: WPATH( 'images/color/213f53.png'),
+	backgroundRepeat: true
 }

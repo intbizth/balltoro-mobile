@@ -1,3 +1,55 @@
 <Alloy>
-	<ScrollView id="main" />
+	<Collection src="menus" />
+	<TableView id="table" dataCollection="menus" onSingletap="doClick" onDoubletap="doDblclick" dataTransform="transformData">
+		<TableViewRow if="checker.template.item" id="item_rowTemplate" dataID="{id}" dataTemplate="{template}">
+			<View id="item_subview">
+				<View if="checker.icon" id="item_iconView">
+					<ImageView id="item_icon" image="{icon}" />
+				</View>
+				<View id="item_labelView">
+					<Label id="item_label" text="{title}" />
+				</View>
+			</View>
+		</TableViewRow>
+		<TableViewRow if="checker.template.section" id="section_rowTemplate" dataID="{id}" dataTemplate="{template}">
+			<View id="section_subview">
+				<View if="checker.icon" id="section_iconView">
+					<ImageView id="section_icon" image="{icon}" />
+				</View>
+				<View id="section_labelView">
+					<Label id="section_label" text="{title}" />
+				</View>
+			</View>
+			<ImageView id="section_lineView" />
+		</TableViewRow>
+		<TableViewRow if="checker.template.section_accordion" id="section_accordion_rowTemplate" dataID="{id}" dataTemplate="{template}">
+			<View id="section_accordion_subview">
+				<View if="checker.icon" id="section_accordion_iconView">
+					<ImageView id="section_accordion_icon" image="{icon}" />
+				</View>
+				<View id="section_accordion_labelView">
+					<Label id="section_accordion_label" text="{title}" />
+				</View>
+			</View>
+			<View id="section_accordion_buttonView">
+				<ImageView id="section_accordion_buttonLineView" />
+				<ImageView id="section_accordion_arrow" />
+			</View>
+			<View id="section_accordion_activityIndicatorView">
+				<ActivityIndicator id="section_accordion_activityIndicator" />
+			</View>
+			<ImageView id="section_accordion_lineView" />
+		</TableViewRow>
+		<TableViewRow if="checker.template.setting" id="setting_rowTemplate" dataID="{id}" dataTemplate="{template}">
+			<View id="setting_subview">
+				<View if="checker.icon" id="setting_iconView">
+					<ImageView id="setting_icon" image="{icon}" />
+				</View>
+				<View id="setting_labelView">
+					<Label id="setting_label" text="{title}" />
+				</View>
+			</View>
+			<ImageView id="setting_lineView" />
+		</TableViewRow>
+	</TableView>
 </Alloy>

@@ -1,185 +1,141 @@
-var string = require('alloy/string');
-var timer = null;
-var selected = null;
-var items = {
-	items : {},
-	sections : {},
-	sectionItems : {}
-};
+Widget.string = require('alloy/string');
 Widget.config = require(WPATH('config'));
-Widget.data = require(WPATH('data'));
-Widget.webservice = require('webservice');
 
-function loadItems() {
-	for (var key in items.sections) {
-		for (var j in items.sections[key].getItems()) {
-			items.sectionItems[j] = items.sections[key].getItems()[j];
+Alloy.Collections.menus = Widget.createCollection('menus');
+Alloy.Collections.programs = Alloy.Collections.instance('programs');
+
+var checker = {
+	template : {
+		item : false,
+		section : false,
+		section_accordion : false,
+		setting : false
+	},
+	icon : false
+};
+
+Widget.Collections.menus.reset([{
+	id : 'tester',
+	template : 'item',
+	icon : '',
+	title : 'Tester'
+}, {
+	id : 'profile',
+	template : 'item',
+	icon : WPATH('images/photo.png'),
+	title : 'Demo Demo'
+}, {
+	id : 'homefeed',
+	template : 'item',
+	icon : WPATH('images/home_feed.png'),
+	title : L('com.intbizth.balltoro.leftmenu.home_feed')
+}, {
+	id : 'news',
+	template : 'item',
+	icon : WPATH('images/news.png'),
+	title : L('com.intbizth.balltoro.leftmenu.news')
+}, {
+	id : 'match',
+	template : 'item',
+	icon : WPATH('images/match.png'),
+	title : L('com.intbizth.balltoro.leftmenu.match')
+}, {
+	id : 'program',
+	template : 'section',
+	icon : WPATH('images/league_game.png'),
+	title : L('com.intbizth.balltoro.leftmenu.league_game'),
+	items : []
+}, {
+	id : 'peopleranking',
+	template : 'item',
+	icon : WPATH('images/people_ranking.png'),
+	title : L('com.intbizth.balltoro.leftmenu.people_ranking')
+}, {
+	id : 'fanzone',
+	template : 'item',
+	icon : WPATH('images/fanzone.png'),
+	title : L('com.intbizth.balltoro.leftmenu.fanzone')
+}, {
+	id : 'reward',
+	template : 'item',
+	icon : WPATH('images/reward.png'),
+	title : L('com.intbizth.balltoro.leftmenu.reward')
+}, {
+	id : 'settings',
+	section : 'settings',
+	template : 'section_accordion',
+	icon : '',
+	title : L('com.intbizth.balltoro.leftmenu.settings')
+}, {
+	id : 'setting:profile',
+	parent : 'settings',
+	template : 'setting',
+	icon : WPATH('images/profile_setting.png'),
+	title : L('com.intbizth.balltoro.leftmenu.profile_setting')
+}, {
+	id : 'setting:game',
+	parent : 'settings',
+	template : 'setting',
+	icon : WPATH('images/game_setting.png'),
+	title : L('com.intbizth.balltoro.leftmenu.game_setting')
+}, {
+	id : 'setting:app',
+	parent : 'settings',
+	template : 'setting',
+	icon : WPATH('images/app_setting.png'),
+	title : L('com.intbizth.balltoro.leftmenu.app_setting')
+}, {
+	id : 'more',
+	template : 'section',
+	icon : '',
+	title : L('com.intbizth.balltoro.leftmenu.more')
+}, {
+	id : 'signout',
+	template : 'section',
+	icon : '',
+	title : L('com.intbizth.balltoro.leftmenu.sign_out')
+}]);
+
+function doClick(e) {
+	e.name = e.row.dataID;
+	e.template = e.row.dataTemplate;
+	$.trigger('click:' + e.name, e);
+	Ti.API.error(e);
+};
+
+function doDblclick(e) {
+	e.name = e.row.dataID;
+	e.template = e.row.dataTemplate;
+	$.trigger('dblclick:' + e.name);
+	Ti.API.error(e);
+};
+
+function transformData(model) {
+	var attrs = model.toJSON();
+
+	changeChecker('template', attrs.template);
+	changeChecker('icon', (attrs.icon !== ''));
+
+	return attrs;
+};
+
+function changeChecker(key, value) {
+	if (_.isString(value)) {
+		for (var i in checker[key]) {
+			checker[key][i] = (i === value);
 		}
-	}
-
-	for (var key in items) {
-		Ti.API.info('1 loadItems:', key, JSON.stringify(_.keys(items[key])));
-	};
-};
-
-function load() {
-	for (var i in Widget.data) {
-		if (_.isObject(Widget.data[i])) {
-			var args = {
-				loadItems : loadItems,
-				data : Widget.data[i]
-			};
-
-			var main = Widget.createController('template/' + Widget.data[i].template, args);
-			var view = main.getView();
-
-			$.main.add(view);
-
-			view.addEventListener('click', function(e) {
-				if (!e.source.name) {
-					return;
-				}
-
-				select(e.source.name);
-			});
-
-			if (Widget.data[i].template === 'section') {
-				items.sections[Widget.data[i].name] = main;
-
-				for (var j in main.getItems()) {
-					items.sectionItems[j] = main.getItems()[j];
-				}
-			} else {
-				items.items[Widget.data[i].name] = main;
-			}
-		}
-	}
-
-	for (var key in items) {
-		Ti.API.info('1 load:', key, JSON.stringify(_.keys(items[key])));
+	} else if (_.isBoolean(value)) {
+		checker[key] = value;
 	}
 };
 
-function unLoad() {
-	$.main.removeAllChildren();
-};
-
-function findKey(name) {
-	var itemsKey = _.keys(items.items);
-	var sectionsKey = _.keys(items.sections);
-	var sectionItemsKey = _.keys(items.sectionItems);
-	var key = '';
-
-	if (_.contains(itemsKey, name)) {
-		key = 'items';
-	} else if (_.contains(sectionsKey, name)) {
-		key = 'sections';
-	} else if (_.contains(sectionItemsKey, name)) {
-		key = 'sectionItems';
-	}
-
-	return key;
-};
-
-function select(value) {
-	var key1 = findKey(selected);
-	var key2 = findKey(value);
-
-	if (key1 !== '') {
-		items[key1][selected].inact();
-	}
-
-	if (key2 !== '') {
-		items[key2][value].act();
-	}
-
-	selected = value;
-};
-
-exports.startTest = function(duration) {
-	var chance = require('chance.min'),
-	    chance = new chance();
-
-	run();
-
-	timer = setInterval(function() {
-		run();
-	}, duration);
-
-	function run() {
-		var names = [];
-
-		for (var key in items) {
-			for (var name in items[key]) {
-				names.push(name);
-			}
-		}
-
-		select(chance.pick(names));
-	};
-};
-
-exports.stopTest = function() {
-	clearInterval(timer);
-	timer = null;
-};
-
-exports.act = function(name) {
-	var key = findKey(name);
-
-	if (key !== '') {
-		items[key][name].act();
-	}
-};
-
-exports.inact = function(name) {
-	var key = findKey(name);
-
-	if (key !== '') {
-		items[key][name].inact();
-	}
-};
-
-exports.setIcon = function(name, value) {
-	var key = findKey(name);
-
-	if (key !== '') {
-		items[key][name].setIcon(value);
-	}
-};
-
-exports.setTitle = function(name, value) {
-	var key = findKey(name);
-
-	if (key !== '') {
-		items[key][name].setTitle(value);
-	}
-};
-
-exports.getItems = function() {
-	return items;
-};
-
-exports.getEvents = function() {
-	return events;
-};
-
-exports.select = function(name) {
-	select(name);
-};
-
-exports.open = function(name) {
-	items.sectionItems[name].open();
-};
-
-exports.close = function(name) {
-	items.sectionItems[name].close();
-};
-
-exports.load = function() {
-	load();
-};
-
-exports.unLoad = function() {
-	unLoad();
-};
+// Widget.Collections.programs.fetch({
+// timeout : 60000,
+// success : function(model, response) {
+// Ti.API.info('success:model', JSON.stringify(model));
+// // updateUi();
+// },
+// error : function(model, response) {
+// Ti.API.error('error:model', JSON.stringify(model));
+// }
+// });
