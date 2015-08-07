@@ -1,6 +1,10 @@
-var collection = Widget.Collections.instance('gamelabel');
-Widget.Models.gamelabel = Widget.createModel('gamelabel');
+Widget.config = require(WPATH('config'));
+Widget.moment = require('alloy/moment');
 var timer = null;
+
+if ($.args && $.args.dataModel) {
+	setData($.args.dataModel);
+}
 
 exports.startTest = function(duration) {
 	var chance = require('chance.min'),
@@ -17,6 +21,10 @@ exports.startTest = function(duration) {
 
 	function run() {
 		var data = {
+			id : chance.integer({
+				min : 0,
+				max : 9999
+			}),
 			template : chance.pick(['before', 'gamebefore', 'gamebeforesmall', 'gamelive', 'gameliveht', 'gameafter', 'after']),
 			homeClub : {
 				name : chance.name(),
@@ -60,14 +68,7 @@ exports.getImageSize = function(template) {
 };
 
 function setData(args) {
-	Widget.Models.gamelabel.set(args);
-	Widget.Models.gamelabel.save();
-	Widget.Models.gamelabel.fetch();
-
-	var data = Widget.Models.gamelabel.toJSON();
-
-	$.main.removeAllChildren();
-	$.main.add(Widget.createController('template/' + data.template, data).getView());
+	$.main.add(Widget.createController('template/' + args.template, args).getView());
 };
 
 exports.setData = function(args) {

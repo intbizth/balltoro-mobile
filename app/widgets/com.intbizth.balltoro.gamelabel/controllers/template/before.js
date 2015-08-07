@@ -1,5 +1,4 @@
-var moment = require('alloy/moment');
-var config = require(WPATH('config')).before;
+var config = Widget.config.before;
 var args = arguments[0] || {};
 
 var leftWidth = Ti.Platform.displayCaps.platformWidth * 0.4;
@@ -46,8 +45,8 @@ if (args.awayClub) {
 }
 
 if (args.datetime) {
-	$.timeLabel.text = moment.unix(args.datetime).format('HH:mm');
-	$.dateLabel.text = moment.unix(args.datetime).format('D MMM YYYY');
+	$.timeLabel.text = Widget.moment.unix(args.datetime).format('HH:mm');
+	$.dateLabel.text = Widget.moment.unix(args.datetime).format('D MMM YYYY');
 }
 
 exports.getImageSize = function() {

@@ -1,5 +1,4 @@
-var moment = require('alloy/moment');
-var config = require(WPATH('config')).gamelive;
+var config = Widget.config.gamelive;
 var args = arguments[0] || {};
 
 var leftWidth = Ti.Platform.displayCaps.platformWidth * 0.4;
@@ -53,7 +52,7 @@ if (args.homeClub && args.awayClub) {
 }
 
 if (args.time) {
-	var d = moment.duration(args.time, 'seconds');
+	var d = Widget.moment.duration(args.time, 'seconds');
 	var minutes = d.minutes();
 
 	if (d.hours() > 0) {

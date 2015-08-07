@@ -1,5 +1,4 @@
-var moment = require('alloy/moment');
-var config = require(WPATH('config')).gameafter;
+var config = Widget.config.gameafter;
 var args = arguments[0] || {};
 
 var leftWidth = Ti.Platform.displayCaps.platformWidth * 0.4;

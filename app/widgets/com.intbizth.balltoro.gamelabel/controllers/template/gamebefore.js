@@ -1,5 +1,4 @@
-var moment = require('alloy/moment');
-var config = require(WPATH('config')).gamebefore;
+var config = Widget.config.gamebefore;
 var args = arguments[0] || {};
 
 var leftWidth = Ti.Platform.displayCaps.platformWidth * 0.4;
@@ -48,7 +47,7 @@ if (args.awayClub) {
 $.vsLabel.text = L('com.intbizth.balltoro.gamelabel.vs');
 
 if (args.datetime) {
-	$.timeLabel.text = moment.unix(args.datetime).format('HH:mm');
+	$.timeLabel.text = Widget.moment.unix(args.datetime).format('HH:mm');
 }
 
 exports.getImageSize = function() {
