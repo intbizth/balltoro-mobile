@@ -1,10 +1,10 @@
 exports.definition = {
 	config : {
-		URL : 'http://boon.dockertester.com/balltoro/web/app_dev.php/api/matches',
+		URL : 'http://boon.dockertester.com/balltoro/web/app_dev.php/api/programs',
 		debug : true,
 		adapter : {
 			type : 'restapi',
-			collection_name : 'matches',
+			collection_name : 'programs',
 			idAttribute : 'id'
 		},
 		parentNode : '_embedded.items',

@@ -1,8 +1,12 @@
 <Alloy>
+	<Collection src='matches' />
 	<Window id="main">
 		<Widget id="navbarView" src="com.intbizth.alloy.navbar" />
-		<View id="content">
+		<ScrollView id="content">
 			<Widget id="matchlabelView" src="com.intbizth.balltoro.matchlabel" />
-		</View>
+			<View id="gamelabelView" dataCollection="matches" dataFunction="updateUi" dataTransform="transformData">
+				<Widget src="com.intbizth.balltoro.gamelabel" dataModel="{dataModel}" />
+			</View>
+		</ScrollView>
 	</Window>
 </Alloy>

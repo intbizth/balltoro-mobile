@@ -4,8 +4,8 @@ Alloy.Globals.isIos7Plus = (OS_IOS && parseInt(Ti.Platform.version.split('.')[0]
 Alloy.Globals.iPhoneTall = (OS_IOS && Ti.Platform.osname == 'iphone' && Ti.Platform.displayCaps.platformHeight == 568);
 Alloy.Globals.nologin = {};
 Alloy.Globals.login = {};
-Alloy.Globals.login.defaultMenu = 'tester';
-Alloy.Globals.login.menu = 'tester';
+Alloy.Globals.login.defaultMenu = 'match';
+Alloy.Globals.login.menu = 'match';
 // < alloy globals
 
 // > alloy loading
@@ -25,8 +25,11 @@ Vendor.Chance = require('chance.min'), Vendor.Chance = new Vendor.Chance();
 Vendor.Tinycolor = require('tinycolor');
 Vendor.underscoreString = require('underscore.string.min');
 _.mixin(Vendor.underscoreString.exports());
+Vendor.placehold = require('placehold.it');
 // < vendor loading
 
 // > collections & models
 Alloy.Models.user = Alloy.createModel('user');
+Alloy.Collections.matches = Alloy.createCollection('matches');
+Alloy.Collections.programs = Alloy.createCollection('programs');
 // > collections & models

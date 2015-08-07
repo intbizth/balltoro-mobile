@@ -499,4 +499,4 @@ module.exports.afterModelCreate = function(Model, name) {
 	Model.prototype.config.Model = Model;
 	Model.prototype.idAttribute = Model.prototype.config.adapter.idAttribute;
 	return Model;
-};
+}; 

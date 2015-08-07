@@ -1,58 +1,43 @@
 var loaded = false;
-var args = {
-	matchlabel : {
-		image : '',
-		title : ''
-	}
-};
+var args = {};
 var openedWindow = false;
-var dataBinding = {
-	// template : chance.pick(['before', 'gamebefore', 'gamebeforesmall', 'gamelive', 'gameliveht', 'gameafter', 'after']),
-	homeClub : {
-		name : 'home_club.name',
-		logo : 'home_club._links.logo_70x70.href',
-		score : 'home_score'
-	},
-	awayClub : {
-		name : 'away_club.name',
-		logo : 'away_club._links.logo_70x70.href',
-		score : 'away_score'
-	},
-	datetime : 'start_time'
+var webservice = {
+	matches : 'http://boon.dockertester.com/balltoro/web/app_dev.php/api/matches/day'
 };
 
-// function transformData(dataBinding, items) {
-// var data = [];
-//
-// for (var i in items) {
-// var item = {
-// template : ''
-// };
-//
-// for (var j in dataBinding) {
-// if (dataBinding[j] !== '') {
-// var value = items[i];
-// var keys = dataBinding[j].split('.');
-//
-// for (var k in keys) {
-// if (value[keys[k]]) {
-// value = value[keys[k]];
-// } else {
-// value = '';
-// }
-// }
-//
-// item[j] = value;
-// } else {
-// item[j] = false;
-// }
-// }
-//
-// data.push(item);
-// }
-//
-// return data;
-// };
+var matches = Alloy.Collections.matches;
+
+function transformData(model) {
+	var data = model.toJSON();
+
+	var attrs = {
+		dataModel : {
+			id : data.id,
+			template : 'before',
+			homeClub : {
+				name : data.home_club.name,
+				logo : data.home_club._links.logo.href,
+				score : data.home_score
+			},
+			awayClub : {
+				name : data.away_club.name,
+				logo : data.away_club._links.logo.href,
+				score : data.away_score
+			},
+			time : 0,
+			datetime : Alloy.Moment(data.start_time).unix()
+		}
+	};
+
+	var imageSize = {
+		width : 100,
+		height : 100
+	};
+	attrs.dataModel.homeClub.logo = Vendor.placehold.createURL(imageSize).image;
+	attrs.dataModel.awayClub.logo = Vendor.placehold.createURL(imageSize).image;
+
+	return attrs;
+};
 
 function initialize() {
 	if (Alloy.Globals.isIos7Plus) {
@@ -99,7 +84,56 @@ exports.unLoad = function() {
 exports.setArgs = function(value) {
 	args = value;
 
-	$.matchlabelView.setData(args.matchlabel);
+	$.matchlabelView.setData({
+		image : args.icon,
+		title : args.title
+	});
+
+	Alloy.Collections.matches.setID(args.name);
+	Alloy.Collections.matches.fetch({
+		url : webservice.matches,
+		timeout : 60000,
+		success : function(model, response) {
+			Ti.API.info('success:model', JSON.stringify(model));
+			updateUi();
+		},
+		error : function(model, response) {
+			Ti.API.error('error:model', JSON.stringify(model));
+		}
+	});
+
+	// _.delay(function() {
+	// Alloy.Collections.matches.nextPage({
+	// success : function(model, response) {
+	// Ti.API.info('success:model', JSON.stringify(model));
+	// },
+	// error : function(model, response) {
+	// Ti.API.error('error:model', JSON.stringify(model));
+	// }
+	// });
+	//
+	// _.delay(function() {
+	// Alloy.Collections.matches.nextPage({
+	// success : function(model, response) {
+	// Ti.API.info('success:model', JSON.stringify(model));
+	// },
+	// error : function(model, response) {
+	// Ti.API.error('error:model', JSON.stringify(model));
+	// }
+	// });
+	//
+	// _.delay(function() {
+	// Alloy.Collections.matches.firstPage({
+	// success : function(model, response) {
+	// Ti.API.info('success:model', JSON.stringify(model));
+	// },
+	// error : function(model, response) {
+	// Ti.API.error('error:model', JSON.stringify(model));
+	// }
+	// });
+	// }, 6000);
+	// }, 6000);
+	// }, 6000);
 };
 
 initialize();

@@ -15,45 +15,39 @@ function initialize() {
 		Ti.API.debug($.main.name + ':' + e.type);
 	});
 
-	$.leftmenuView.getView().addEventListener('click', function(e) {
-		if (!e.source.name) {
-			return;
-		}
-
-		var menu = e.source.name;
-
-		if (/program\:/.test(menu)) {
-			menu = 'program';
-			var args = {
-				programCode : menu.replace('program:', '')
-			};
-
-			if (e.source.data) {
-				args.matchlabel = {
-					image : e.source.data.icon,
-					title : e.source.data.title
-				};
-			}
-
-			Alloy.Globals.login.mainWindow.setMenu(menu, args);
-		} else {
-			Alloy.Globals.login.mainWindow.setMenu(menu);
-		}
-	});
+	Ti.API.error('$.leftmenuView:', $.leftmenuView);
+	// $.leftmenuView.getView().addEventListener('click', function(e) {
+	// if (!e.source.name) {
+	// return;
+	// }
+	//
+	// var menu = e.source.name;
+	//
+	// if (/program\:/.test(menu)) {
+	// menu = 'program';
+	// var args = {
+	// programCode : menu.replace('program:', '')
+	// };
+	//
+	// Alloy.Globals.login.mainWindow.setMenu(menu, e.source.data);
+	// } else {
+	// Alloy.Globals.login.mainWindow.setMenu(menu);
+	// }
+	// });
 };
 
 function load() {
 	loaded = true;
 	openedWindow = false;
 
-	$.leftmenuView.load();
-	$.leftmenuView.select(Alloy.Globals.login.defaultMenu);
+	// $.leftmenuView.load();
+	// $.leftmenuView.select(Alloy.Globals.login.defaultMenu);
 };
 
 function unLoad() {
 	loaded = false;
 	openedWindow = false;
-	$.leftmenuView.unLoad();
+	// $.leftmenuView.unLoad();
 };
 
 exports.getLoad = function() {

@@ -2,54 +2,6 @@ var loaded = false;
 var args = {};
 var openedWindow = false;
 
-Alloy.Collections.programs = Alloy.createCollection('programs');
-Alloy.Collections.programs.id = 'tpl';
-
-Ti.API.error('Alloy.Collections.programs:', Alloy.Collections.programs);
-
-Alloy.Collections.programs.fetch({
-	url : 'http://boon.dockertester.com/balltoro/web/app_dev.php/api/matches/day',
-	success : function(model, response) {
-		Ti.API.info('success:model', JSON.stringify(model));
-	},
-	error : function(model, response) {
-		Ti.API.error('error:model', JSON.stringify(model));
-	}
-});
-
-_.delay(function() {
-	Alloy.Collections.programs.nextPage({
-		success : function(model, response) {
-			Ti.API.info('success:model', JSON.stringify(model));
-		},
-		error : function(model, response) {
-			Ti.API.error('error:model', JSON.stringify(model));
-		}
-	});
-
-	_.delay(function() {
-		Alloy.Collections.programs.nextPage({
-			success : function(model, response) {
-				Ti.API.info('success:model', JSON.stringify(model));
-			},
-			error : function(model, response) {
-				Ti.API.error('error:model', JSON.stringify(model));
-			}
-		});
-
-		_.delay(function() {
-			Alloy.Collections.programs.firstPage({
-				success : function(model, response) {
-					Ti.API.info('success:model', JSON.stringify(model));
-				},
-				error : function(model, response) {
-					Ti.API.error('error:model', JSON.stringify(model));
-				}
-			});
-		}, 6000);
-	}, 6000);
-}, 6000);
-
 var slider = {
 	initialize : function() {
 		var height = parseInt(Ti.Platform.displayCaps.platformHeight - 160);
