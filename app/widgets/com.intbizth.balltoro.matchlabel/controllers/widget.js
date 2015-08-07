@@ -1,9 +1,8 @@
-var config = require(WPATH('config'));
-Widget.Models.matchlabel = Widget.createModel('matchlabel');
+Widget.config = require(WPATH('config'));
 var timer = null;
 
-$.main.height = config.height;
-$.main.backgroundColor = config.backgroundColor;
+$.main.height = Widget.config.height;
+$.main.backgroundColor = Widget.config.backgroundColor;
 
 $.imageView.width = $.main.height;
 $.imageView.height = $.main.height;
@@ -14,9 +13,9 @@ $.titleView.width = Ti.Platform.displayCaps.platformWidth - $.imageView.width;
 $.titleView.height = $.main.height;
 $.title.width = $.titleView.width - 4;
 $.title.height = $.titleView.height;
-$.title.color = config.fontColor;
+$.title.color = Widget.config.fontColor;
 
-$.line.backgroundColor = config.lineColor;
+$.line.backgroundColor = Widget.config.lineColor;
 
 exports.startTest = function(duration) {
 	var chance = require('chance.min'),
@@ -45,15 +44,7 @@ exports.stopTest = function() {
 };
 
 function setImage(value) {
-	Widget.Models.matchlabel.set({
-		image : image
-	});
-	Widget.Models.matchlabel.save();
-	Widget.Models.matchlabel.fetch();
-
-	var data = Widget.Models.matchlabel.toJSON();
-
-	$.image.image = data.image;
+	$.image.image = value;
 };
 
 exports.setImage = function(value) {
@@ -72,15 +63,7 @@ exports.getImageSize = function() {
 };
 
 function setTitle(value) {
-	Widget.Models.matchlabel.set({
-		title : value
-	});
-	Widget.Models.matchlabel.save();
-	Widget.Models.matchlabel.fetch();
-
-	var data = Widget.Models.matchlabel.toJSON();
-
-	$.title.text = data.title;
+	$.title.text = value;
 };
 
 exports.setTitle = function(value) {
@@ -88,14 +71,13 @@ exports.setTitle = function(value) {
 };
 
 function setData(args) {
-	Widget.Models.matchlabel.set(args);
-	Widget.Models.matchlabel.save();
-	Widget.Models.matchlabel.fetch();
+	if (args.image) {
+		setImage(args.image);
+	}
 
-	var data = Widget.Models.matchlabel.toJSON();
-
-	$.image.image = data.image;
-	$.title.text = data.title;
+	if (args.title) {
+		setTitle(args.title);
+	}
 };
 
 exports.setData = function(args) {
