@@ -1,22 +1,14 @@
 Widget.string = require('alloy/string');
-Widget.config = require(WPATH('config'));
 
 Alloy.Collections.menus = Widget.createCollection('menus');
 Alloy.Collections.programs = Alloy.Collections.instance('programs');
 
-var checker = {
-	template : {
-		item : false,
-		section : false,
-		section_accordion : false,
-		setting : false
-	},
-	icon : false
-};
+var itemSelectedIndex = null;
+var clicking = false;
 
 Widget.Collections.menus.reset([{
 	id : 'tester',
-	template : 'item',
+	template : 'itemNoIcon',
 	icon : '',
 	title : 'Tester'
 }, {
@@ -41,10 +33,10 @@ Widget.Collections.menus.reset([{
 	title : L('com.intbizth.balltoro.leftmenu.match')
 }, {
 	id : 'program',
-	template : 'section',
+	template : 'sectionAccordion',
 	icon : WPATH('images/league_game.png'),
 	title : L('com.intbizth.balltoro.leftmenu.league_game'),
-	items : []
+	opened : false
 }, {
 	id : 'peopleranking',
 	template : 'item',
@@ -63,70 +55,130 @@ Widget.Collections.menus.reset([{
 }, {
 	id : 'settings',
 	section : 'settings',
-	template : 'section_accordion',
+	template : 'sectionNoIconAccordion',
 	icon : '',
-	title : L('com.intbizth.balltoro.leftmenu.settings')
-}, {
-	id : 'setting:profile',
-	parent : 'settings',
-	template : 'setting',
-	icon : WPATH('images/profile_setting.png'),
-	title : L('com.intbizth.balltoro.leftmenu.profile_setting')
-}, {
-	id : 'setting:game',
-	parent : 'settings',
-	template : 'setting',
-	icon : WPATH('images/game_setting.png'),
-	title : L('com.intbizth.balltoro.leftmenu.game_setting')
-}, {
-	id : 'setting:app',
-	parent : 'settings',
-	template : 'setting',
-	icon : WPATH('images/app_setting.png'),
-	title : L('com.intbizth.balltoro.leftmenu.app_setting')
+	title : L('com.intbizth.balltoro.leftmenu.settings'),
+	opened : false,
+	data : [{
+		id : 'settings:profile',
+		template : 'setting',
+		icon : WPATH('images/profile_setting.png'),
+		title : L('com.intbizth.balltoro.leftmenu.profile_setting')
+	}, {
+		id : 'settings:game',
+		template : 'setting',
+		icon : WPATH('images/game_setting.png'),
+		title : L('com.intbizth.balltoro.leftmenu.game_setting')
+	}, {
+		id : 'settings:app',
+		template : 'setting',
+		icon : WPATH('images/app_setting.png'),
+		title : L('com.intbizth.balltoro.leftmenu.app_setting')
+	}]
 }, {
 	id : 'more',
-	template : 'section',
+	template : 'sectionNoIcon',
 	icon : '',
 	title : L('com.intbizth.balltoro.leftmenu.more')
 }, {
 	id : 'signout',
-	template : 'section',
+	template : 'sectionNoIcon',
 	icon : '',
 	title : L('com.intbizth.balltoro.leftmenu.sign_out')
 }]);
 
-function doClick(e) {
-	e.name = e.row.dataID;
-	e.template = e.row.dataTemplate;
-	$.trigger('click:' + e.name, e);
-	Ti.API.error(e);
+Ti.API.debug(Widget.Collections.menus.toJSON());
+
+extendData();
+
+Ti.API.debug(Widget.Collections.menus.toJSON());
+Ti.API.debug($);
+
+function extendData() {
+	var models = Widget.Collections.menus.models;
+
+	for (var i in models) {
+		var data = {};
+		var dataModel = models[i].toJSON();
+
+		var style = $.createStyle({
+			classes : dataModel.template + '_row'
+		});
+
+		data.backgroundColor = style.backgroundColor;
+		data.backgroundColorInAct = data.backgroundColor;
+		data.backgroundColorAct = style.backgroundColorAct;
+
+		if (dataModel.template === 'sectionAccordion' || dataModel.template === 'sectionNoIconAccordion') {
+			var style = $.createStyle({
+				classes : dataModel.template + '_arrow'
+			});
+
+			data.arrow = style.image;
+			data.arrowDown = style.imageDown;
+			data.arrowUp = style.imageUp;
+		}
+
+		models[i].set(data);
+		models[i].save();
+	}
 };
 
-function doDblclick(e) {
-	e.name = e.row.dataID;
-	e.template = e.row.dataTemplate;
-	$.trigger('dblclick:' + e.name);
-	Ti.API.error(e);
+function itemclick(e) {
+	if (clicking) {
+		return;
+	}
+
+	clicking = true;
+
+	_.delay(function() {
+		clicking = false;
+	}, 300);
+
+	Ti.API.debug('1:itemclick:', e, $.section.getItemAt(e.itemIndex));
+
+	if (!_.isNull(itemSelectedIndex)) {
+		var itemSelected = $.section.getItemAt(itemSelectedIndex);
+
+		itemSelected.view.backgroundColor = itemSelected.view.backgroundColorInAct;
+		$.section.updateItemAt(itemSelectedIndex, itemSelected);
+	}
+
+	var item = $.section.getItemAt(e.itemIndex);
+
+	if (!_.isUndefined(item.properties) && !_.isUndefined(item.properties.opened)) {
+		item.properties.opened = !item.properties.opened;
+		item.view.backgroundColor = item.view.backgroundColorAct;
+		item.arrow.image = (item.properties.opened) ? item.arrow.imageUp : item.arrow.imageDown;
+		$.section.updateItemAt(e.itemIndex, item);
+
+		_.delay(function() {
+			item.view.backgroundColor = item.view.backgroundColorInAct;
+			$.section.updateItemAt(e.itemIndex, item);
+		}, 100);
+
+		return;
+	} else {
+		item.view.backgroundColor = item.view.backgroundColorAct;
+		$.section.updateItemAt(e.itemIndex, item);
+
+		itemSelectedIndex = e.itemIndex;
+
+		e.name = item.properties.name;
+		delete e.bindId;
+		delete e.section;
+		delete e.sectionIndex;
+	}
+
+	Ti.API.debug('2:itemclick:', e, $.section.getItemAt(e.itemIndex));
+
+	$.trigger('click', e);
 };
 
 function transformData(model) {
 	var attrs = model.toJSON();
 
-	changeChecker('template', attrs.template);
-	changeChecker('icon', (attrs.icon !== ''));
-
 	return attrs;
-};
-
-function changeChecker(key, value) {
-	if (_.isString(value)) {
-		for (var i in checker[key]) {
-			checker[key][i] = (i === value);
-		}
-	} else if (_.isBoolean(value)) {
-		checker[key] = value;
-	}
 };
 
 // Widget.Collections.programs.fetch({
