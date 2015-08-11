@@ -1,3 +1,8 @@
+'#main':{
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL
+}
+
 '#list':{
 	width: Ti.UI.FILL,
 	height: Ti.UI.FILL
@@ -5,6 +10,20 @@
 
 '#list[platform=ios]':{
 	separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE
+}
+
+'.listItem[platform=ios]':{
+	selectionStyle:Ti.UI.iPhone.ListViewCellSelectionStyle.NONE
+}
+
+'.insertItemAnimatetion[platform=ios]': {
+	animated: true,
+	animationStyle: Ti.UI.iPhone.RowAnimationStyle.TOP
+}
+
+'.deleteItemsAnimatetion[platform=ios]': {
+	animated: true,
+	animationStyle: Ti.UI.iPhone.RowAnimationStyle.NONE
 }
 
 '.section_row':{
@@ -26,7 +45,8 @@
 
 '.section_icon':{
 	width: 25,
-	height: 25
+	height: 25,
+	defaultImage: ''
 }
 
 '.section_labelView':{
@@ -105,7 +125,8 @@
 
 '.sectionAccordion_icon':{
 	width: 25,
-	height: 25
+	height: 25,
+	defaultImage: ''
 }
 
 '.sectionAccordion_labelView':{
@@ -143,17 +164,6 @@
 	image: WPATH( 'images/down.png'),
 	imageDown: WPATH( 'images/down.png'),
 	imageUp: WPATH( 'images/up.png')
-}
-
-'.sectionAccordion_activityIndicatorView':{
-	right: 0,
-	width: 50,
-	height: 50,
-	visible: false
-}
-
-'.sectionAccordion_activityIndicator':{
-	visible: true
 }
 
 '.sectionAccordion_lineView':{
@@ -212,17 +222,6 @@
 	imageUp: WPATH( 'images/up.png')
 }
 
-'.sectionNoIconAccordion_activityIndicatorView':{
-	right: 0,
-	width: 50,
-	height: 50,
-	visible: false
-}
-
-'.sectionNoIconAccordion_activityIndicator':{
-	visible: true
-}
-
 '.sectionNoIconAccordion_lineView':{
 	bottom: 0,
 	width: Ti.UI.FILL,
@@ -250,7 +249,8 @@
 
 '.item_icon':{
 	width: 25,
-	height: 25
+	height: 25,
+	defaultImage: ''
 }
 
 '.item_labelView':{
@@ -294,6 +294,44 @@
 	}
 }
 
+'.programs_row':{
+	height: 40,
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
+}
+
+'.programs_subview':{
+	layout: 'horizontal'
+}
+
+'.programs_iconView':{
+	left: 30,
+	width: 40,
+	height: 40
+}
+
+'.programs_icon':{
+	width: 25,
+	height: 25,
+	defaultImage: ''
+}
+
+'.programs_labelView':{
+	left: 0
+}
+
+'.programs_label':{
+	left: 10,
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	textAlign: 'left',
+	color: '#000',
+	font: {
+		fontSize: 14
+	}
+}
+
 '.setting_row':{
 	height: 40,
 	backgroundColor: '#162a37',
@@ -313,7 +351,8 @@
 
 '.setting_icon':{
 	width: 25,
-	height: 25
+	height: 25,
+	defaultImage: ''
 }
 
 '.setting_labelView':{
@@ -337,4 +376,35 @@
 	height: 1,
 	image: WPATH( 'images/213f53.png'),
 	backgroundRepeat: true
+}
+
+'#activityIndicatorView':{
+	top: 0,
+	left: 0,
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	visible: false
+}
+
+'#activityIndicatorSubView1':{
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	backgroundColor: '#000',
+	opacity: 0.4
+}
+
+'#activityIndicatorSubView2':{
+	width: 40,
+	height: 40,
+	backgroundColor: '#000',
+	borderRadius: 10,
+	opacity: 0.9
+}
+
+'#activityIndicator':{
+	visible: true
+}
+
+'#activityIndicator[platform=ios]':{
+	style: Ti.UI.iPhone.ActivityIndicatorStyle.PLAIN
 }
