@@ -1,6 +1,6 @@
 exports.definition = {
 	config : {
-		URL : 'http://boon.dockertester.com/balltoro/web/app_dev.php/api/programs',
+		URL : 'http://128.199.155.38/api/programs',
 		debug : true,
 		adapter : {
 			type : 'restapi',
@@ -12,7 +12,16 @@ exports.definition = {
 	},
 	extendModel : function(Model) {
 		_.extend(Model.prototype, {
+			transformDataToMenus : function() {
+				var dataModel = this.toJSON();
+				var attrs = {
+					id : this.config.adapter.collection_name + ':' + dataModel.code,
+					icon : dataModel._links.logo.href,
+					title : dataModel.name
+				};
 
+				return attrs;
+			}
 		});
 
 		return Model;

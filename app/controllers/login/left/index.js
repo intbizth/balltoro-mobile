@@ -16,6 +16,15 @@ function initialize() {
 	});
 
 	Ti.API.error('$.leftmenuView:', $.leftmenuView);
+
+	$.leftmenuView.on('click', function(e) {
+		Ti.API.error('click', e);
+	});
+
+	$.leftmenuView.on('dblclick', function(e) {
+		Ti.API.error('dblclick', e);
+	});
+
 	// $.leftmenuView.getView().addEventListener('click', function(e) {
 	// if (!e.source.name) {
 	// return;
