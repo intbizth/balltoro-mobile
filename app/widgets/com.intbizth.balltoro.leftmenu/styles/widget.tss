@@ -56,7 +56,7 @@
 '.section_label':{
 	left: 10,
 	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
+	height: 50,
 	textAlign: 'left',
 	color: '#000',
 	font: {
@@ -90,7 +90,7 @@
 '.sectionNoIcon_label':{
 	left: 10,
 	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
+	height: 50,
 	textAlign: 'left',
 	color: '#000',
 	font: {
@@ -136,7 +136,7 @@
 '.sectionAccordion_label':{
 	left: 10,
 	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
+	height: 50,
 	textAlign: 'left',
 	color: '#000',
 	font: {
@@ -192,7 +192,7 @@
 '.sectionNoIconAccordion_label':{
 	left: 10,
 	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
+	height: 50,
 	textAlign: 'left',
 	color: '#000',
 	font: {
@@ -260,7 +260,7 @@
 '.item_label':{
 	left: 10,
 	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
+	height: 50,
 	textAlign: 'left',
 	color: '#000',
 	font: {
@@ -286,7 +286,7 @@
 '.itemNoIcon_label':{
 	left: 10,
 	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
+	height: 50,
 	textAlign: 'left',
 	color: '#000',
 	font: {
@@ -324,7 +324,7 @@
 '.programs_label':{
 	left: 10,
 	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
+	height: 40,
 	textAlign: 'left',
 	color: '#000',
 	font: {
@@ -362,7 +362,7 @@
 '.setting_label':{
 	left: 10,
 	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
+	height: 40,
 	textAlign: 'left',
 	color: '#fff',
 	font: {
