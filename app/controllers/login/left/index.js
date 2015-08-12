@@ -45,18 +45,22 @@ function initialize() {
 	// });
 };
 
+function selectMenu(value, args) {
+	$.leftmenuView.selectItem(value);
+	Alloy.Globals.login.mainWindow.setMenu(value, args);
+};
+
 function load() {
 	loaded = true;
 	openedWindow = false;
-
-	// $.leftmenuView.load();
-	// $.leftmenuView.select(Alloy.Globals.login.defaultMenu);
+	$.leftmenuView.load();
+	selectMenu(Alloy.Globals.login.defaultMenu);
 };
 
 function unLoad() {
 	loaded = false;
 	openedWindow = false;
-	// $.leftmenuView.unLoad();
+	$.leftmenuView.unLoad();
 };
 
 exports.getLoad = function() {
