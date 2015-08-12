@@ -1,6 +1,7 @@
 Widget.Collections.programs = Alloy.Collections.instance('programs');
 
 var debug = true;
+var loaded = false;
 var itemSelectedIndex = null;
 var itemSelectedName = null;
 var clickTimer = null;
@@ -98,23 +99,6 @@ var datas = {
 	}]
 };
 
-Widget.Collections.menus.reset(datas.menus);
-Widget.Collections.settings.reset(datas.settings);
-
-if (debug) {
-	Ti.API.debug('before:Widget.Collections.menus.toJSON():', Widget.Collections.menus.toJSON());
-	Ti.API.debug('before:Widget.Collections.settings.toJSON():', Widget.Collections.settings.toJSON());
-	Ti.API.debug('before:Widget.Collections.programs.toJSON():', Widget.Collections.programs.toJSON());
-}
-
-extendData();
-
-if (debug) {
-	Ti.API.debug('after:Widget.Collections.menus.toJSON():', Widget.Collections.menus.toJSON());
-	Ti.API.debug('after:Widget.Collections.settings.toJSON():', Widget.Collections.settings.toJSON());
-	Ti.API.debug('after:Widget.Collections.programs.toJSON():', Widget.Collections.programs.toJSON());
-}
-
 function extendData() {
 	var models = Widget.Collections.menus.models;
 
@@ -162,7 +146,7 @@ function getArrow(template) {
 	return data;
 };
 
-function changeItemSelect(name) {
+function selectItem(name) {
 	var isExist = false;
 
 	for (var i in $.section.items) {
@@ -191,9 +175,9 @@ function itemclick(e) {
 	e.name = item.properties.name;
 
 	if (debug) {
-		Ti.API.debug('itemclick e:', e);
-		Ti.API.debug('itemclick item:', item);
-		Ti.API.debug('itemclick clickCount:', clickCount);
+		Ti.API.debug('[' + $.__widgetId + ']', 'itemclick:e:', e);
+		Ti.API.debug('[' + $.__widgetId + ']', 'itemclick:item:', item);
+		Ti.API.debug('[' + $.__widgetId + ']', 'itemclick:clickCount:', clickCount);
 	}
 
 	function claer() {
@@ -268,16 +252,16 @@ function itemclick(e) {
 							});
 
 							if (debug) {
-								Ti.API.debug('dataItems:', dataItems.length, dataItems);
+								Ti.API.debug('[' + $.__widgetId + ']', 'dataItems:', dataItems.length, dataItems);
 							}
 
 							$.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
 
-							changeItemSelect(itemSelectedName);
+							selectItem(itemSelectedName);
 
 							if (debug) {
-								Ti.API.debug('itemSelectedIndex:', itemSelectedIndex);
-								Ti.API.debug('itemSelectedName:', itemSelectedName);
+								Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+								Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedName:', itemSelectedName);
 							}
 						},
 						error : function(model, response) {
@@ -287,8 +271,8 @@ function itemclick(e) {
 							$.section.updateItemAt(e.itemIndex, item);
 
 							if (debug) {
-								Ti.API.debug('itemSelectedIndex:', itemSelectedIndex);
-								Ti.API.debug('itemSelectedName:', itemSelectedName);
+								Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+								Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedName:', itemSelectedName);
 							}
 						}
 					});
@@ -332,7 +316,7 @@ function itemclick(e) {
 						});
 
 						if (debug) {
-							Ti.API.debug('dataItems:', dataItems.length, dataItems);
+							Ti.API.debug('[' + $.__widgetId + ']', 'dataItems:', dataItems.length, dataItems);
 						}
 
 						$.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
@@ -344,11 +328,11 @@ function itemclick(e) {
 						$.section.deleteItemsAt(e.itemIndex + 1, dataModels.length, style);
 					}
 
-					changeItemSelect(itemSelectedName);
+					selectItem(itemSelectedName);
 
 					if (debug) {
-						Ti.API.debug('itemSelectedIndex:', itemSelectedIndex);
-						Ti.API.debug('itemSelectedName:', itemSelectedName);
+						Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+						Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedName:', itemSelectedName);
 					}
 				}
 
@@ -380,8 +364,8 @@ function itemclick(e) {
 				$.trigger('click', e);
 
 				if (debug) {
-					Ti.API.debug('itemSelectedIndex:', itemSelectedIndex);
-					Ti.API.debug('itemSelectedName:', itemSelectedName);
+					Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+					Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedName:', itemSelectedName);
 				}
 			}
 		}, 400);
@@ -460,16 +444,16 @@ function itemclick(e) {
 					});
 
 					if (debug) {
-						Ti.API.debug('dataItems:', dataItems.length, dataItems);
+						Ti.API.debug('[' + $.__widgetId + ']', 'dataItems:', dataItems.length, dataItems);
 					}
 
 					$.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
 
-					changeItemSelect(itemSelectedName);
+					selectItem(itemSelectedName);
 
 					if (debug) {
-						Ti.API.debug('itemSelectedIndex:', itemSelectedIndex);
-						Ti.API.debug('itemSelectedName:', itemSelectedName);
+						Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+						Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedName:', itemSelectedName);
 					}
 				},
 				error : function(model, response) {
@@ -479,8 +463,8 @@ function itemclick(e) {
 					$.section.updateItemAt(e.itemIndex, item);
 
 					if (debug) {
-						Ti.API.debug('itemSelectedIndex:', itemSelectedIndex);
-						Ti.API.debug('itemSelectedName:', itemSelectedName);
+						Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+						Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedName:', itemSelectedName);
 					}
 				}
 			});
@@ -513,9 +497,66 @@ function itemclick(e) {
 			$.trigger('dblclick', e);
 
 			if (debug) {
-				Ti.API.debug('itemSelectedIndex:', itemSelectedIndex);
-				Ti.API.debug('itemSelectedName:', itemSelectedName);
+				Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+				Ti.API.debug('[' + $.__widgetId + ']', 'itemSelectedName:', itemSelectedName);
 			}
 		}
 	}
+};
+
+function load() {
+	loaded = true;
+
+	if (debug) {
+		Ti.API.debug('[' + $.__widgetId + ']', 'load');
+	}
+
+	Widget.Collections.menus.reset(datas.menus);
+	Widget.Collections.settings.reset(datas.settings);
+
+	if (debug) {
+		Ti.API.debug('[' + $.__widgetId + ']', 'load:before:menus:', Widget.Collections.menus.toJSON());
+		Ti.API.debug('[' + $.__widgetId + ']', 'load:before:settings:', Widget.Collections.settings.toJSON());
+		Ti.API.debug('[' + $.__widgetId + ']', 'load:before:programs:', Widget.Collections.programs.toJSON());
+	}
+
+	extendData();
+
+	if (debug) {
+		Ti.API.debug('[' + $.__widgetId + ']', 'load:after:menus:', Widget.Collections.menus.toJSON());
+		Ti.API.debug('[' + $.__widgetId + ']', 'load:after:settings:', Widget.Collections.settings.toJSON());
+		Ti.API.debug('[' + $.__widgetId + ']', 'load:after:programs:', Widget.Collections.programs.toJSON());
+	}
+};
+
+function unLoad() {
+	loaded = false;
+
+	if (debug) {
+		Ti.API.debug('[' + $.__widgetId + ']', 'unLoad');
+	}
+
+	Widget.Collections.menus.reset([]);
+	Widget.Collections.settings.reset([]);
+
+	if (debug) {
+		Ti.API.debug('[' + $.__widgetId + ']', 'unLoad:menus:', Widget.Collections.menus.toJSON());
+		Ti.API.debug('[' + $.__widgetId + ']', 'unLoad:settings:', Widget.Collections.settings.toJSON());
+	}
+};
+
+exports.selectItem = function(value) {
+	selectItem(value);
+};
+
+exports.getLoad = function() {
+	return loaded;
+};
+
+exports.load = function() {
+	load();
+};
+
+exports.unLoad = function() {
+	unLoad();
 };
