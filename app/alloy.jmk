@@ -1,0 +1,29 @@
+var exec = require('child_process').exec;
+
+task('pre:load', function(event, logger) {
+	var cmd = 'cd ' + event.dir.project + ' && `which git` -c diff.mnemonicprefix=false -c core.quotepath=false -c credential.helper=sourcetree checkout -- ' + event.dir.project + '/i18n/en/strings.xml ' + event.dir.project + '/i18n/th/strings.xml';
+
+	logger.debug('[execute] ' + cmd);
+
+	exec(cmd, function(error, stdout, stderr) {
+
+	});
+});
+
+task('pre:compile', function(event, logger) {
+
+});
+
+task('post:compile', function(event, logger) {
+	var cmd = 'find ' + event.dir.project + ' -name ".DS_Store" -delete';
+
+	logger.debug('[execute] ' + cmd);
+
+	exec(cmd, function(error, stdout, stderr) {
+
+	});
+});
+
+task('compile:app.js', function(event, logger) {
+
+});
