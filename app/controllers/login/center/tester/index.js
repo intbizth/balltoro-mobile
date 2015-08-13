@@ -1,5 +1,5 @@
+var debug = true;
 var loaded = false;
-var args = {};
 var openedWindow = false;
 
 function initialize() {
@@ -7,43 +7,58 @@ function initialize() {
 		$.navbarView.getView().top = 20;
 	}
 
-	$.main.addEventListener('open', function(e) {
-		load();
+	$.navbarView.setData({
+		id : 'login.menu.tester',
+		title : L('login.menu.tester')
+	});
 
+	$.main.addEventListener('open', function(e) {
 		Alloy.Globals.login.stackWindows.push($.main);
 
-		Ti.API.debug($.main.name + ':' + e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
+		if (debug) {
+			Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
+		}
 	});
 
 	$.main.addEventListener('close', function(e) {
-		unLoad();
-
 		Alloy.Globals.login.stackWindows.pop();
 
-		Ti.API.debug($.main.name + ':' + e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
+		if (debug) {
+			Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
+		}
 	});
 };
 
 function load() {
+	if (debug) {
+		Ti.API.debug('[' + $.main.name + ']', 'load');
+	}
+
 	loaded = true;
 	openedWindow = false;
 
-	$.matchlabelView.startTest(8000);
-	$.gamelabelView.startTest(8000);
-	$.powerBarView.startTest(2000);
-	$.winloseordrawView.startTest(8000, $.winloseordrawTestSubView);
-	$.matchsummytableView.startTest(8000);
+	// $.matchlabelView.startTest(8000);
+	// $.gamelabelView.startTest(8000);
+	$.powerBarView.startTest(500);
+	// $.winloseordrawView.startTest(8000, $.winloseordrawTestSubView);
+	// $.matchsummytableView.startTest(8000);
+
+	$.main.backgroundColor = Vendor.Tinycolor.random().toHexString();
 };
 
 function unLoad() {
+	if (debug) {
+		Ti.API.debug('[' + $.main.name + ']', 'unLoad');
+	}
+
 	loaded = false;
 	openedWindow = false;
 
-	$.matchlabelView.stopTest();
-	$.gamelabelView.stopTest();
+	// $.matchlabelView.stopTest();
+	// $.gamelabelView.stopTest();
 	$.powerBarView.stopTest();
-	$.winloseordrawView.stopTest($.winloseordrawTestSubView);
-	$.matchsummytableView.stopTest();
+	// $.winloseordrawView.stopTest($.winloseordrawTestSubView);
+	// $.matchsummytableView.stopTest();
 };
 
 exports.getLoad = function() {
@@ -56,10 +71,6 @@ exports.load = function() {
 
 exports.unLoad = function() {
 	unLoad();
-};
-
-exports.setArgs = function(value) {
-	args = value;
 };
 
 initialize();

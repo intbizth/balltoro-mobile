@@ -52,28 +52,44 @@ Alloy.Globals.login.mainWindow.unlock = function() {
 	Alloy.Globals.login.mainWindow.openDrawerGestureMode = 'OPEN_MODE_ALL';
 };
 
-Alloy.Globals.login.mainWindow.setMenu = function(menu, args, noToggle) {
-	Ti.API.debug('loginWindow:setMenu:' + menu);
+Alloy.Globals.login.mainWindow.setMenu = function(value) {
+	var debug = true;
+	var data = {
+		name : '',
+		args : {},
+		reload : false,
+		noToggle : false
+	};
+
+	data = _.extend(data, value);
+
+	if (debug) {
+		Ti.API.debug('[setmenu]', 'data:', data);
+	}
 
 	Alloy.Globals.login.stackWindows = [];
 
-	if (!Alloy.Globals.login.menuWindows[menu]) {
-		var menuWindow = Alloy.createController('login/center/' + menu + '/index');
-		Alloy.Globals.login.menuWindows[menu] = menuWindow;
+	if (!Alloy.Globals.login.menuWindows[data.name]) {
+		var menuWindow = Alloy.createController('login/center/' + data.name + '/index', data.args);
+		Alloy.Globals.login.menuWindows[data.name] = menuWindow;
 	}
 
-	if (args) {
-		Alloy.Globals.login.menuWindows[menu].setArgs(args);
+	if (data.reload) {
+		Alloy.Globals.login.menuWindows[data.name].unLoad();
 	}
 
-	Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[menu].getView());
-	Alloy.Globals.login.menu = menu;
+	Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[data.name].getView());
+	Alloy.Globals.login.menu = data.name;
 
-	// if (!Alloy.Globals.login.menuWindows[Alloy.Globals.login.menu].getLoad()) {
-	// Alloy.Globals.login.menuWindows[Alloy.Globals.login.menu].load();
-	// }
+	if (debug) {
+		Ti.API.debug('[setmenu]', data.name + ':getLoad:', (Alloy.Globals.login.menuWindows[data.name].getLoad()) ? 'true' : 'false');
+	}
 
-	if (!noToggle) {
+	if (!Alloy.Globals.login.menuWindows[data.name].getLoad()) {
+		Alloy.Globals.login.menuWindows[data.name].load();
+	}
+
+	if (!data.noToggle) {
 		Alloy.Globals.login.mainWindow.toggleLeftWindow();
 	}
 };
@@ -93,7 +109,6 @@ Alloy.Globals.login.force = function(fn) {
 
 	Alloy.Globals.login.leftWindow.load();
 	Alloy.Globals.login.mainWindow.unlock();
-	Alloy.Globals.login.mainWindow.setMenu(Alloy.Globals.login.menu, {}, true);
 
 	$.login.getView().opacity = 1;
 	$.nologin.getView().opacity = 0;

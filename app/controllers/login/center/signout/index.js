@@ -1,5 +1,5 @@
+var debug = true;
 var loaded = false;
-var args = {};
 var openedWindow = false;
 
 function initialize() {
@@ -7,37 +7,50 @@ function initialize() {
 		$.navbarView.getView().top = 20;
 	}
 
-	$.navbarView.setTitleView(L('login.menu.signout'));
+	$.navbarView.setData({
+		id : 'login.menu.signout',
+		title : L('login.menu.signout')
+	});
 
 	$.main.addEventListener('open', function(e) {
-		load();
-
-		Alloy.Globals.login.mainWindow.lock();
-
-		_.delay(function() {
-			Alloy.Globals.nologin.force();
-		}, _.random(800, 4000));
-
-		Ti.API.debug($.main.name + ':' + e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
+		if (debug) {
+			Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
+		}
 	});
 
 	$.main.addEventListener('close', function(e) {
-		unLoad();
-
-		Ti.API.debug($.main.name + ':' + e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
+		if (debug) {
+			Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
+		}
 	});
 
 	$.activityIndicator.show();
 };
 
 function load() {
+	if (debug) {
+		Ti.API.debug('[' + $.main.name + ']', 'load');
+	}
+
 	loaded = true;
 	openedWindow = false;
+
+	Alloy.Globals.login.mainWindow.lock();
+
+	_.delay(function() {
+		Alloy.Globals.nologin.force();
+	}, _.random(800, 4000));
 };
 
 function unLoad() {
+	if (debug) {
+		Ti.API.debug('[' + $.main.name + ']', 'unLoad');
+	}
+
 	loaded = false;
 	openedWindow = false;
+
+	Alloy.Globals.login.mainWindow.unlock();
 };
 
 exports.getLoad = function() {
@@ -50,10 +63,6 @@ exports.load = function() {
 
 exports.unLoad = function() {
 	unLoad();
-};
-
-exports.setArgs = function(value) {
-	args = value;
 };
 
 initialize();

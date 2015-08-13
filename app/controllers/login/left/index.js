@@ -1,5 +1,5 @@
+var debug = true;
 var loaded = false;
-var args = {};
 var openedWindow = false;
 
 function initialize() {
@@ -8,21 +8,66 @@ function initialize() {
 	}
 
 	$.main.addEventListener('open', function(e) {
-		Ti.API.debug($.main.name + ':' + e.type);
+		if (debug) {
+			Ti.API.debug('[' + $.main.name + ']', e.type);
+		}
 	});
 
 	$.main.addEventListener('close', function(e) {
-		Ti.API.debug($.main.name + ':' + e.type);
+		if (debug) {
+			Ti.API.debug('[' + $.main.name + ']', e.type);
+		}
 	});
 
-	Ti.API.error('$.leftmenuView:', $.leftmenuView);
-
 	$.leftmenuView.on('click', function(e) {
-		Ti.API.error('click', e);
+		if (debug) {
+			Ti.API.debug('[' + $.main.name + ']', 'click:', e);
+		}
+
+		var name = e.name;
+
+		switch(name) {
+		case 'tester':
+			var data = {
+				name : name
+			};
+
+			Alloy.Globals.login.mainWindow.setMenu(data);
+			break;
+		case 'signout':
+			var data = {
+				name : name
+			};
+
+			Alloy.Globals.login.mainWindow.setMenu(data);
+			break;
+		};
 	});
 
 	$.leftmenuView.on('dblclick', function(e) {
-		Ti.API.error('dblclick', e);
+		if (debug) {
+			Ti.API.debug('[' + $.main.name + ']', 'dblclick:', e);
+		}
+
+		var name = e.name;
+
+		switch(name) {
+		case 'tester':
+			var data = {
+				name : name,
+				reload : true
+			};
+
+			Alloy.Globals.login.mainWindow.setMenu(data);
+			break;
+		case 'signout':
+			var data = {
+				name : name
+			};
+
+			Alloy.Globals.login.mainWindow.setMenu(data);
+			break;
+		};
 	});
 
 	// $.leftmenuView.getView().addEventListener('click', function(e) {
@@ -45,19 +90,30 @@ function initialize() {
 	// });
 };
 
-function selectMenu(value, args) {
-	$.leftmenuView.selectItem(value);
-	Alloy.Globals.login.mainWindow.setMenu(value, args);
+function selectMenu(value) {
+	$.leftmenuView.selectItem(value.name);
+	Alloy.Globals.login.mainWindow.setMenu(value);
 };
 
 function load() {
+	if (debug) {
+		Ti.API.debug('[' + $.main.name + ']', 'load');
+	}
+
 	loaded = true;
 	openedWindow = false;
 	$.leftmenuView.load();
-	selectMenu(Alloy.Globals.login.defaultMenu);
+	selectMenu({
+		name : Alloy.Globals.login.defaultMenu,
+		noToggle : true
+	});
 };
 
 function unLoad() {
+	if (debug) {
+		Ti.API.debug('[' + $.main.name + ']', 'unLoad');
+	}
+
 	loaded = false;
 	openedWindow = false;
 	$.leftmenuView.unLoad();

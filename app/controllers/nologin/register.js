@@ -7,13 +7,14 @@ function initialize() {
 		$.navbarView.getView().top = 20;
 	}
 
-	$.navbarView.setTitleView(L('nologin.register.title'));
-	$.navbarView.setLeftView({
-		icon : 'arrow_left',
-		title : L('back')
+	$.navbarView.setData({
+		id : 'nologin.register.title',
+		leftIcon : 'arrow_left',
+		leftTitle : L('back'),
+		title : L('nologin.register.title')
 	});
 
-	$.navbarView.getView().addEventListener('left:click', function(e) {
+	$.navbarView.on('left:click', function(e) {
 		$.main.close();
 	});
 
@@ -22,7 +23,7 @@ function initialize() {
 
 		Alloy.Globals.nologin.stackWindows.push($.main);
 
-		Ti.API.debug($.main.name + ':' + e.type, '(', 'nologin stacks:', JSON.stringify(_.pluck(Alloy.Globals.nologin.stackWindows, 'name')), Alloy.Globals.nologin.stackWindows.length, ')');
+		Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'nologin stacks:', JSON.stringify(_.pluck(Alloy.Globals.nologin.stackWindows, 'name')), Alloy.Globals.nologin.stackWindows.length, ')');
 	});
 
 	$.main.addEventListener('close', function(e) {
@@ -30,7 +31,7 @@ function initialize() {
 
 		Alloy.Globals.nologin.stackWindows.pop();
 
-		Ti.API.debug($.main.name + ':' + e.type, '(', 'nologin stacks:', JSON.stringify(_.pluck(Alloy.Globals.nologin.stackWindows, 'name')), Alloy.Globals.nologin.stackWindows.length, ')');
+		Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'nologin stacks:', JSON.stringify(_.pluck(Alloy.Globals.nologin.stackWindows, 'name')), Alloy.Globals.nologin.stackWindows.length, ')');
 	});
 };
 

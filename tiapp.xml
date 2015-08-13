@@ -2,7 +2,7 @@
 <ti:app xmlns:ti="http://ti.appcelerator.org">
     <id>com.intbizth.balltoro</id>
     <name>Balltoro</name>
-    <version>0.0.4</version>
+    <version>0.0.5</version>
     <publisher>iunknown</publisher>
     <url>http://balltoro.com</url>
     <description>undefined</description>
