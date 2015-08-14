@@ -14,4 +14,5 @@
 	<string name="facebook">Facebook</string>
 	<string name="notconnectedtonetwork">Not connected to network.</string>
 	<string name="dataloadfailure">Data load failure.</string>
+	<string name="nodata">No data.</string>
 </resources>
