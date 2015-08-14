@@ -23,8 +23,6 @@ function initialize() {
 			Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
 		}
 	});
-
-	$.activityIndicator.show();
 };
 
 function load() {

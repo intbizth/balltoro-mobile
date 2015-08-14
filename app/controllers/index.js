@@ -69,13 +69,13 @@ Alloy.Globals.login.mainWindow.setMenu = function(value) {
 
 	Alloy.Globals.login.stackWindows = [];
 
-	if (!Alloy.Globals.login.menuWindows[data.name]) {
+	if (!Alloy.Globals.login.menuWindows[data.name] || data.reload) {
+		if (Alloy.Globals.login.menuWindows[data.name]) {
+			Alloy.Globals.login.menuWindows[data.name].unLoad();
+		}
+
 		var menuWindow = Alloy.createController('login/center/' + data.name + '/index', data.args);
 		Alloy.Globals.login.menuWindows[data.name] = menuWindow;
-	}
-
-	if (data.reload) {
-		Alloy.Globals.login.menuWindows[data.name].unLoad();
 	}
 
 	Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[data.name].getView());

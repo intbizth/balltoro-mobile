@@ -1,15 +1,6 @@
 <Alloy>
 	<Window id="main">
-		<Widget id="navbarView" src="com.intbizth.alloy.navbar" />
-		<View id="content">
-			<Widget id="matchlabelView" src="com.intbizth.balltoro.matchlabel" />
-			<Widget id="gamelabelView" src="com.intbizth.balltoro.gamelabel" />
-			<Widget id="powerBarView" src="com.intbizth.balltoro.powerbar" />
-			<View id="winloseordrawTestView">
-				<View id="winloseordrawTestSubView" />
-			</View>
-			<Widget id="matchsummytableView" src="com.intbizth.balltoro.matchsummytable" />
-		</View>
-		<Widget id="winloseordrawView" src="com.intbizth.balltoro.winloseordraw" />
+		<Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
+		<View id="content"></View>
 	</Window>
 </Alloy>

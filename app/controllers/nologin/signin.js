@@ -9,9 +9,9 @@ function initialize() {
 
 	$.navbarView.setData({
 		id : 'nologin.signin.title',
+		title : L('nologin.signin.title'),
 		leftIcon : 'arrow_left',
-		leftTitle : L('back'),
-		title : L('nologin.signin.title')
+		leftTitle : L('back')
 	});
 
 	$.navbarView.on('left:click', function(e) {

@@ -24,19 +24,30 @@ function initialize() {
 			Ti.API.debug('[' + $.main.name + ']', 'click:', e);
 		}
 
-		var name = e.name;
+		var name = e.name.split(':');
 
-		switch(name) {
+		switch(name[0]) {
 		case 'tester':
 			var data = {
-				name : name
+				name : name[0]
+			};
+
+			Alloy.Globals.login.mainWindow.setMenu(data);
+			break;
+		case 'programs':
+			var data = {
+				name : name[0],
+				args : {
+					programCode : name[1]
+				},
+				reload : true
 			};
 
 			Alloy.Globals.login.mainWindow.setMenu(data);
 			break;
 		case 'signout':
 			var data = {
-				name : name
+				name : name[0]
 			};
 
 			Alloy.Globals.login.mainWindow.setMenu(data);
@@ -49,12 +60,23 @@ function initialize() {
 			Ti.API.debug('[' + $.main.name + ']', 'dblclick:', e);
 		}
 
-		var name = e.name;
+		var name = e.name.split(':');
 
-		switch(name) {
+		switch(name[0]) {
 		case 'tester':
 			var data = {
-				name : name,
+				name : name[0],
+				reload : true
+			};
+
+			Alloy.Globals.login.mainWindow.setMenu(data);
+			break;
+		case 'programs':
+			var data = {
+				name : name[0],
+				args : {
+					programCode : name[1]
+				},
 				reload : true
 			};
 
@@ -62,12 +84,20 @@ function initialize() {
 			break;
 		case 'signout':
 			var data = {
-				name : name
+				name : name[0]
 			};
 
 			Alloy.Globals.login.mainWindow.setMenu(data);
 			break;
 		};
+	});
+
+	$.leftmenuView.on('fetched:nodata', function(e) {
+		Alloy.Notifier.showNodata(e);
+	});
+
+	$.leftmenuView.on('fetched:error', function(e) {
+		Alloy.Notifier.showError(e);
 	});
 
 	// $.leftmenuView.getView().addEventListener('click', function(e) {

@@ -267,7 +267,7 @@ function Sync(method, model, opts) {
 
 		apiCall(params, function(_response) {
 			if (_response.success) {
-				model = setPagerfanta(model, _response);
+				model = setPaginator(model, _response);
 
 				var data = parseJSON(DEBUG, _response, parentNode, model);
 				var values = [];
@@ -436,9 +436,10 @@ function setETag(url, eTag) {
  *
  * @param {Object} response
  */
-function setPagerfanta(model, response) {
-	var pagerfanta = {
+function setPaginator(model, response) {
+	var data = {
 		page : null,
+		total : null,
 		self : null,
 		first : null,
 		last : null,
@@ -446,34 +447,17 @@ function setPagerfanta(model, response) {
 		previous : null
 	};
 
-	if (model.config.pagerfanta !== undefined && model.config.pagerfanta === true && response.responseJSON && response.responseJSON._links) {
-		if (response.responseJSON.page) {
-			pagerfanta.page = response.responseJSON.page;
-		}
-
-		if (response.responseJSON._links.self && response.responseJSON._links.self.href) {
-			pagerfanta.self = response.responseJSON._links.self.href;
-		}
-
-		if (response.responseJSON._links.first && response.responseJSON._links.first.href) {
-			pagerfanta.first = response.responseJSON._links.first.href;
-		}
-
-		if (response.responseJSON._links.last && response.responseJSON._links.last.href) {
-			pagerfanta.last = response.responseJSON._links.last.href;
-		}
-
-		if (response.responseJSON._links.next && response.responseJSON._links.next.href) {
-			pagerfanta.next = response.responseJSON._links.next.href;
-		}
-
-		if (response.responseJSON._links.previous && response.responseJSON._links.previous.href) {
-			pagerfanta.previous = response.responseJSON._links.previous.href;
+	if (_.isObject(model.config.paginatorNode) && response.responseJSON) {
+		for (var i in model.config.paginatorNode) {
+			try {
+				data[i] = traverseProperties(response.responseJSON, model.config.paginatorNode[i]);
+			} catch(e) {
+			}
 		}
 	}
 
 	model = _.extend(model, {
-		pagerfanta : pagerfanta
+		paginator : data
 	});
 
 	return model;
@@ -499,4 +483,4 @@ module.exports.afterModelCreate = function(Model, name) {
 	Model.prototype.config.Model = Model;
 	Model.prototype.idAttribute = Model.prototype.config.adapter.idAttribute;
 	return Model;
-}; 
+};

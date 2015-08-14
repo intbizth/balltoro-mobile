@@ -1,8 +1,0 @@
-<Alloy>
-	<Window id="main">
-		<Widget id="navbarView" src="com.intbizth.alloy.navbar" />
-		<View id="content">
-			<Widget id="matchlabelView" src="com.intbizth.balltoro.matchlabel" />
-		</View>
-	</Window>
-</Alloy>

@@ -1,10 +1,10 @@
 exports.definition = {
 	config : {
-		URL : 'http://demo.balltoro.com/api/matches',
+		URL : 'http://demo.balltoro.com/api/matches/day',
 		debug : true,
 		adapter : {
 			type : 'restapi',
-			collection_name : 'matches',
+			collection_name : 'matchesday',
 			idAttribute : 'id'
 		},
 		parentNode : '_embedded.items',

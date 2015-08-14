@@ -39,7 +39,7 @@ function load() {
 
 	// $.matchlabelView.startTest(8000);
 	// $.gamelabelView.startTest(8000);
-	$.powerBarView.startTest(500);
+	// $.powerBarView.startTest(500);
 	// $.winloseordrawView.startTest(8000, $.winloseordrawTestSubView);
 	// $.matchsummytableView.startTest(8000);
 
@@ -56,7 +56,7 @@ function unLoad() {
 
 	// $.matchlabelView.stopTest();
 	// $.gamelabelView.stopTest();
-	$.powerBarView.stopTest();
+	// $.powerBarView.stopTest();
 	// $.winloseordrawView.stopTest($.winloseordrawTestSubView);
 	// $.matchsummytableView.stopTest();
 };

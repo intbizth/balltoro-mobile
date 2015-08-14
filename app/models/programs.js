@@ -1,6 +1,6 @@
 exports.definition = {
 	config : {
-		URL : 'http://128.199.155.38/api/programs',
+		URL : 'http://demo.balltoro.com/api/programs',
 		debug : true,
 		adapter : {
 			type : 'restapi',
@@ -8,7 +8,15 @@ exports.definition = {
 			idAttribute : 'id'
 		},
 		parentNode : '_embedded.items',
-		pagerfanta : true
+		paginatorNode : {
+			page : 'page',
+			total : 'total',
+			self : '_links.self.href',
+			first : '_links.first.href',
+			last : '_links.last.href',
+			next : '_links.next.href',
+			previous : '_links.previous.href'
+		}
 	},
 	extendModel : function(Model) {
 		_.extend(Model.prototype, {
@@ -16,6 +24,17 @@ exports.definition = {
 				var dataModel = this.toJSON();
 				var attrs = {
 					id : this.config.adapter.collection_name + ':' + dataModel.code,
+					icon : dataModel._links.logo.href,
+					title : dataModel.name
+				};
+
+				return attrs;
+			},
+			transformDataToLabel : function() {
+				var dataModel = this.toJSON();
+				var attrs = {
+					id : dataModel.id,
+					code : dataModel.code,
 					icon : dataModel._links.logo.href,
 					title : dataModel.name
 				};
@@ -38,7 +57,11 @@ exports.definition = {
 			showID : function() {
 				Alloy.Collections[Collection.prototype.config.adapter.collection_name].id = Alloy.Collections[Collection.prototype.config.adapter.collection_name].idDefault;
 			},
-			selfPage : function(args) {
+			removeID : function() {
+				delete Alloy.Collections[Collection.prototype.config.adapter.collection_name].id;
+				delete Alloy.Collections[Collection.prototype.config.adapter.collection_name].idDefault;
+			},
+			fetchSelfPage : function(args) {
 				var url = (Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta && Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta.self) ? Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta.self : null;
 
 				if (url) {
@@ -55,7 +78,7 @@ exports.definition = {
 					});
 				}
 			},
-			firstPage : function(args) {
+			fetchFirstPage : function(args) {
 				var url = (Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta && Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta.first) ? Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta.first : null;
 
 				if (url) {
@@ -72,7 +95,7 @@ exports.definition = {
 					});
 				}
 			},
-			lastPage : function(args) {
+			fetchLastPage : function(args) {
 				var url = (Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta && Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta.last) ? Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta.last : null;
 
 				if (url) {
@@ -89,7 +112,7 @@ exports.definition = {
 					});
 				}
 			},
-			nextPage : function(args) {
+			fetchNextPage : function(args) {
 				var url = (Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta && Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta.next) ? Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta.next : null;
 
 				if (url) {
@@ -106,7 +129,7 @@ exports.definition = {
 					});
 				}
 			},
-			previousPage : function(args) {
+			fetchPreviousPage : function(args) {
 				var url = (Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta && Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta.previous) ? Alloy.Collections[Collection.prototype.config.adapter.collection_name].pagerfanta.previous : null;
 
 				if (url) {

@@ -17,6 +17,48 @@ Alloy.Moment = require('alloy/moment');
 Alloy.Sha1 = require('alloy/sha1');
 Alloy.Social = require('alloy/social');
 Alloy.String = require('alloy/string');
+Alloy.Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications');
+
+Alloy.Notifier.showError = function(e) {
+	var message = '';
+
+	if (_.isNull(e.response)) {
+		message = L('notconnectedtonetwork');
+	} else {
+		try {
+			var data = JSON.parse(e.response);
+			message = [];
+
+			if (data.message) {
+				message.push(data.message);
+			}
+
+			if (data.code) {
+				message.push('(' + data.code + ')');
+			}
+
+			message = message.join(' ');
+		} catch(e) {
+			message = L('dataloadfailure');
+		}
+	}
+
+	Alloy.Notifier.show({
+		message : message,
+		style : 'error',
+		icon : '/images/notifications/warn.png',
+		duration : 3000
+	});
+};
+
+Alloy.Notifier.showNodata = function(e) {
+	Alloy.Notifier.show({
+		message : L('nodata'),
+		style : 'warn',
+		icon : '/images/notifications/database.png',
+		duration : 3000
+	});
+};
 // < alloy loading
 
 // > vendor loading
