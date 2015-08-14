@@ -1,85 +1,37 @@
-Widget.config = require(WPATH('config'));
-var timer = null;
+Widget.moment = require('alloy/moment');
 
-$.main.height = Widget.config.height;
-$.main.backgroundColor = Widget.config.backgroundColor;
+var chance = require('chance.min'),
+    chance = new chance();
 
-$.imageView.width = $.main.height;
-$.imageView.height = $.main.height;
-$.image.width = $.imageView.width - 4;
-$.image.height = $.image.width;
+var data = [];
 
-$.titleView.width = Ti.Platform.displayCaps.platformWidth - $.imageView.width;
-$.titleView.height = $.main.height;
-$.title.width = $.titleView.width - 4;
-$.title.height = $.titleView.height;
-$.title.color = Widget.config.fontColor;
+var random = chance.integer({
+	min : 1,
+	max : 20
+});
 
-$.line.backgroundColor = Widget.config.lineColor;
+for (var i = 1; i <= random; i++) {
+	data.push({
+		template : 'after',
+		leftIcon : 'http://lorempixel.com/200/200/cats/200x200?hash=' + chance.hash(),
+		leftLabel : chance.word(),
+		rightIcon : 'http://lorempixel.com/200/200/cats/200x200?hash=' + chance.hash(),
+		rightLabel : chance.word(),
+		scoreLabel : chance.integer({
+			min : 0,
+			max : 99
+		}) + ' - ' + chance.integer({
+			min : 0,
+			max : 99
+		}),
+		dateLabel : Widget.moment.unix(chance.timestamp()).format('D MMM YYYY'),
+	});
+}
 
-exports.startTest = function(duration) {
-	var chance = require('chance.min'),
-	    chance = new chance();
-	var placehold = require('placehold.it');
+Widget.Collections.matchelabel.reset(data);
 
-	run();
+console.debug(Widget.Collections.matchelabel.toJSON());
 
-	timer = setInterval(function() {
-		run();
-	}, duration);
-
-	function run() {
-		var data = {
-			image : placehold.createURL(getImageSize()).image,
-			title : chance.sentence()
-		};
-
-		setData(data);
-	};
+function itemclick(e) {
 };
 
-exports.stopTest = function() {
-	clearInterval(timer);
-	timer = null;
-};
-
-function setImage(value) {
-	$.image.image = value;
-};
-
-exports.setImage = function(value) {
-	setImage(value);
-};
-
-function getImageSize() {
-	return {
-		width : $.image.width,
-		height : $.image.height
-	};
-};
-
-exports.getImageSize = function() {
-	return getImageSize();
-};
-
-function setTitle(value) {
-	$.title.text = value;
-};
-
-exports.setTitle = function(value) {
-	setTitle(value);
-};
-
-function setData(args) {
-	if (args.image) {
-		setImage(args.image);
-	}
-
-	if (args.title) {
-		setTitle(args.title);
-	}
-};
-
-exports.setData = function(args) {
-	setData(args);
-};

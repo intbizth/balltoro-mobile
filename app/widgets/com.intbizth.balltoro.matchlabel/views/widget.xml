@@ -1,11 +1,36 @@
 <Alloy>
-	<View id="main">
-		<View id="imageView">
-			<ImageView id="image" />
-		</View>
-		<View id="titleView">
-			<Label id="title" />
-		</View>
-		<View id="line"></View>
+	<Collection src="matchelabel" />
+	<View id= "main">
+		<ListView id="list" onItemclick="itemclick">
+			<Templates>
+				<ItemTemplate name="after" class="after_row">
+					<View class="after_leftView">
+						<View class="after_leftIconView">
+							<ImageView class="after_leftIcon" bindId="leftIcon" />
+						</View>
+						<View class="after_leftLabelView">
+							<Label class="after_leftLabel" bindId="leftLabel" />
+						</View>
+					</View>
+					<View class="after_centerView">
+						<View class="after_centerSubView">
+							<Label class="after_scoreLabel" bindId="scoreLabel" backgroundColor="pink" />
+							<Label class="after_dateLabel" bindId="dateLabel" backgroundColor="green" />
+						</View>
+					</View>
+					<View class="after_rightView">
+						<View class="after_rightLabelView">
+							<Label class="after_rightLabel" bindId="rightLabel" />
+						</View>
+						<View class="after_rightIconView">
+							<ImageView class="after_rightIcon" bindId="rightIcon" />
+						</View>
+					</View>
+				</ItemTemplate>
+			</Templates>
+			<ListSection id="section" dataCollection="matchelabel">
+				<ListItem class="listItem" template="{template}" leftIcon:image="{leftIcon}" leftLabel:text="{leftLabel}" rightIcon:image="{rightIcon}" rightLabel:text="{rightLabel}" scoreLabel:text="{scoreLabel}" dateLabel:text="{dateLabel}" />
+			</ListSection>
+		</ListView>
 	</View>
 </Alloy>
