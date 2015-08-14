@@ -219,43 +219,47 @@ function itemclick(e) {
 
 							var dataModels = Widget.Collections[item.properties.accordion.collection].models;
 
-							var dataItems = [];
+							if (dataModels.length > 0) {
+								var dataItems = [];
 
-							for (var i in dataModels) {
-								var dataModel = dataModels[i].transformDataToMenus();
+								for (var i in dataModels) {
+									var dataModel = dataModels[i].transformDataToMenus();
 
-								var _item = {
-									template : dataModel.template || item.properties.accordion.collection,
-									properties : {
-										name : dataModel.id
-									},
-									icon : {
-										image : dataModel.icon
-									},
-									label : {
-										text : dataModel.title
-									},
-									view : getBackground(dataModel.template || item.properties.accordion.collection)
-								};
+									var _item = {
+										template : dataModel.template || item.properties.accordion.collection,
+										properties : {
+											name : dataModel.id
+										},
+										icon : {
+											image : dataModel.icon
+										},
+										label : {
+											text : dataModel.title
+										},
+										view : getBackground(dataModel.template || item.properties.accordion.collection)
+									};
+
+									var style = $.createStyle({
+										classes : 'listItem'
+									});
+
+									_item.properties = _.extend(_item.properties, style);
+
+									dataItems.push(_item);
+								}
 
 								var style = $.createStyle({
-									classes : 'listItem'
+									classes : 'insertItemAnimatetion'
 								});
 
-								_item.properties = _.extend(_item.properties, style);
+								if (debug) {
+									Ti.API.debug('[' + Widget.widgetId + ']', 'dataItems:', dataItems.length, dataItems);
+								}
 
-								dataItems.push(_item);
+								$.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
+							} else {
+								$.trigger('fetched:nodata', {});
 							}
-
-							var style = $.createStyle({
-								classes : 'insertItemAnimatetion'
-							});
-
-							if (debug) {
-								Ti.API.debug('[' + Widget.widgetId + ']', 'dataItems:', dataItems.length, dataItems);
-							}
-
-							$.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
 
 							selectItem(itemSelectedName);
 
@@ -265,6 +269,10 @@ function itemclick(e) {
 							}
 						},
 						error : function(model, response) {
+							$.trigger('fetched:error', {
+								response : response
+							});
+
 							$.activityIndicatorView.visible = false;
 
 							item.properties.accordion.fetching = false;
@@ -384,19 +392,19 @@ function itemclick(e) {
 			item.properties.accordion.fetching = true;
 			$.section.updateItemAt(e.itemIndex, item);
 
-			if (item.properties.accordion.opened) {
-				var dataModels = Widget.Collections[item.properties.accordion.collection].models;
-
-				var style = $.createStyle({
-					classes : 'deleteItemsAnimatetion'
-				});
-
-				$.section.deleteItemsAt(e.itemIndex + 1, dataModels.length, style);
-			}
-
 			Widget.Collections[item.properties.accordion.collection].fetch({
 				timeout : 60000,
 				success : function(model, response) {
+					if (item.properties.accordion.opened) {
+						var dataModels = Widget.Collections[item.properties.accordion.collection].models;
+
+						var style = $.createStyle({
+							classes : 'deleteItemsAnimatetion'
+						});
+
+						$.section.deleteItemsAt(e.itemIndex + 1, dataModels.length, style);
+					}
+
 					if (datas[item.properties.accordion.collection]) {
 						Widget.Collections[item.properties.accordion.collection].reset(datas[item.properties.accordion.collection]);
 					}
@@ -411,43 +419,47 @@ function itemclick(e) {
 
 					var dataModels = Widget.Collections[item.properties.accordion.collection].models;
 
-					var dataItems = [];
+					if (dataModels.length > 0) {
+						var dataItems = [];
 
-					for (var i in dataModels) {
-						var dataModel = dataModels[i].transformDataToMenus();
+						for (var i in dataModels) {
+							var dataModel = dataModels[i].transformDataToMenus();
 
-						var _item = {
-							template : dataModel.template || item.properties.accordion.collection,
-							properties : {
-								name : dataModel.id
-							},
-							icon : {
-								image : dataModel.icon
-							},
-							label : {
-								text : dataModel.title
-							},
-							view : getBackground(dataModel.template || item.properties.accordion.collection)
-						};
+							var _item = {
+								template : dataModel.template || item.properties.accordion.collection,
+								properties : {
+									name : dataModel.id
+								},
+								icon : {
+									image : dataModel.icon
+								},
+								label : {
+									text : dataModel.title
+								},
+								view : getBackground(dataModel.template || item.properties.accordion.collection)
+							};
+
+							var style = $.createStyle({
+								classes : 'listItem'
+							});
+
+							_item.properties = _.extend(_item.properties, style);
+
+							dataItems.push(_item);
+						}
 
 						var style = $.createStyle({
-							classes : 'listItem'
+							classes : 'insertItemAnimatetion'
 						});
 
-						_item.properties = _.extend(_item.properties, style);
+						if (debug) {
+							Ti.API.debug('[' + Widget.widgetId + ']', 'dataItems:', dataItems.length, dataItems);
+						}
 
-						dataItems.push(_item);
+						$.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
+					} else {
+						$.trigger('fetched:nodata', {});
 					}
-
-					var style = $.createStyle({
-						classes : 'insertItemAnimatetion'
-					});
-
-					if (debug) {
-						Ti.API.debug('[' + Widget.widgetId + ']', 'dataItems:', dataItems.length, dataItems);
-					}
-
-					$.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
 
 					selectItem(itemSelectedName);
 
@@ -457,6 +469,10 @@ function itemclick(e) {
 					}
 				},
 				error : function(model, response) {
+					$.trigger('fetched:error', {
+						response : response
+					});
+
 					$.activityIndicatorView.visible = false;
 
 					item.properties.accordion.fetching = false;
