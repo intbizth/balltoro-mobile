@@ -1,4 +1,0 @@
-'#main':{
-	width: Ti.UI.FILL,
-	height: Ti.UI.SIZE
-}

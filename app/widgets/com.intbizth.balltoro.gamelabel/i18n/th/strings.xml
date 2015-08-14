@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<resources>
-	<string name="com.intbizth.balltoro.gamelabel.vs">พบ</string>
-	<string name="com.intbizth.balltoro.gamelabel.live">สด</string>
-	<string name="com.intbizth.balltoro.gamelabel.halftime">พักครึ่ง</string>
-	<string name="com.intbizth.balltoro.gamelabel.fulltime">จบ</string>
-</resources>
