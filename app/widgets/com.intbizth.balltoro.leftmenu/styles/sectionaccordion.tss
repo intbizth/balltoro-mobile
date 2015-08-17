@@ -1,0 +1,67 @@
+'.sectionAccordion_row':{
+	height: 50,
+	backgroundColor: '#f1f2f2',
+	backgroundColorInAct: '#f1f2f2',
+	backgroundColorAct: '#d1d3d4'
+}
+
+'.sectionAccordion_subview':{
+	layout: 'horizontal'
+}
+
+'.sectionAccordion_iconView':{
+	left: 0,
+	width: 50,
+	height: 50
+}
+
+'.sectionAccordion_icon':{
+	width: 25,
+	height: 25,
+	defaultImage: ''
+}
+
+'.sectionAccordion_labelView':{
+	left: 0
+}
+
+'.sectionAccordion_label':{
+	left: 10,
+	width: Ti.UI.SIZE,
+	height: 50,
+	textAlign: 'left',
+	color: '#000',
+	font: {
+		fontSize: 14
+	}
+}
+
+'.sectionAccordion_buttonView':{
+	right: 0,
+	width: 50,
+	height: 50
+}
+
+'.sectionAccordion_buttonLineView':{
+	left: 0,
+	width: 1,
+	height: 40,
+	image: WPATH( 'images/000000.png'),
+	backgroundRepeat: true
+}
+
+'.sectionAccordion_arrow':{
+	width: 15,
+	height: 15,
+	image: WPATH( 'images/down.png'),
+	imageDown: WPATH( 'images/down.png'),
+	imageUp: WPATH( 'images/up.png')
+}
+
+'.sectionAccordion_lineView':{
+	bottom: 0,
+	width: Ti.UI.FILL,
+	height: 1,
+	image: WPATH( 'images/ffffff.png'),
+	backgroundRepeat: true
+}
