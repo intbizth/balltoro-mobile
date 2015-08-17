@@ -1,4 +1,4 @@
-'.itemnoicon_row':{
+'.itemNoIcon_row':{
 	height: 50,
 	backgroundColor: '#ffffff',
 	backgroundColorInAct: '#ffffff',
