@@ -1,0 +1,18 @@
+'#main':{
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL
+}
+
+'#list':{
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	backgroundColor: 'transparent'
+}
+
+'#list[platform=ios]':{
+	separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE
+}
+
+'.listItem[platform=ios]':{
+	selectionStyle:Ti.UI.iPhone.ListViewCellSelectionStyle.NONE
+}

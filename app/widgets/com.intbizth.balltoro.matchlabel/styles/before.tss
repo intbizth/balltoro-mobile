@@ -1,0 +1,107 @@
+'.before_row':{
+	width: Ti.UI.FILL,
+	height: 60,
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
+}
+
+'.before_leftView':{
+	left: 0,
+	width: '40%',
+	backgroundColor: '#ffffff'
+}
+
+'.before_leftIconView':{
+	left: 0,
+	width: 60,
+	height: 60
+}
+
+'.before_leftIcon':{
+	width: 56,
+	height: 56,
+	defaultImage: ''
+}
+
+'.before_leftLabelView':{
+	left: 60,
+	width: Ti.UI.SIZE,
+	height: 60
+}
+
+'.before_leftLabel':{
+	width: Ti.UI.SIZE,
+	height: 60,
+	font: {
+		fontSize: 14
+	},
+	textAlign: 'center'
+}
+
+'.before_rightView':{
+	right: 0,
+	width: '40%',
+	backgroundColor: '#ffffff'
+}
+
+'.before_rightIconView':{
+	right: 0,
+	width: 60,
+	height: 60
+}
+
+'.before_rightIcon':{
+	width: 56,
+	height: 56,
+	defaultImage: ''
+}
+
+'.before_rightLabelView':{
+	right: 60,
+	width: Ti.UI.SIZE,
+	height: 60
+}
+
+'.before_rightLabel':{
+	width: Ti.UI.SIZE,
+	height: 60,
+	font: {
+		fontSize: 14
+	},
+	textAlign: 'center'
+}
+
+'.before_centerView':{
+	width: '20%',
+	backgroundColor: '#ffffff'
+}
+
+'.before_centerSubView':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: 'vertical'
+}
+
+'.before_startTimeLabel':{
+	top: 0,
+	width: Ti.UI.SIZE,
+	width: Ti.UI.SIZE,
+	height: 16,
+	font: {
+		fontSize: 14
+	},
+	textAlign: 'center',
+	color: '#0088cf'
+}
+
+'.before_startDateLabel':{
+	top: 0,
+	width: Ti.UI.SIZE,
+	height: 12,
+	font: {
+		fontSize: 10
+	},
+	textAlign: 'center',
+	color: '#58595b'
+}
