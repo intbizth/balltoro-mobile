@@ -1,37 +1,110 @@
 Widget.moment = require('alloy/moment');
 
-var chance = require('chance.min'),
-    chance = new chance();
+var debug = true;
+var loaded = false;
+var clickTimer = null;
+var clickCount = 0;
 
-var data = [];
+function extendData() {
+	var models = Widget.Collections.matchelabel.models;
 
-var random = chance.integer({
-	min : 1,
-	max : 20
-});
+	for (var i in models) {
+		var data = {};
+		var dataModel = models[i].toJSON();
 
-for (var i = 1; i <= random; i++) {
-	data.push({
-		template : 'after',
-		leftIcon : 'http://lorempixel.com/200/200/cats/200x200?hash=' + chance.hash(),
-		leftLabel : chance.word(),
-		rightIcon : 'http://lorempixel.com/200/200/cats/200x200?hash=' + chance.hash(),
-		rightLabel : chance.word(),
-		scoreLabel : chance.integer({
-			min : 0,
-			max : 99
-		}) + ' - ' + chance.integer({
-			min : 0,
-			max : 99
-		}),
-		dateLabel : Widget.moment.unix(chance.timestamp()).format('D MMM YYYY'),
-	});
-}
+		data = _.extend(data, getBackground(dataModel.template));
 
-Widget.Collections.matchelabel.reset(data);
-
-console.debug(Widget.Collections.matchelabel.toJSON());
-
-function itemclick(e) {
+		models[i].set(data);
+		models[i].save();
+	}
 };
 
+function getBackground(template) {
+	var data = {};
+	var style = $.createStyle({
+		classes : template + '_row'
+	});
+
+	data.backgroundColor = style.backgroundColor;
+	data.backgroundColorInAct = data.backgroundColor;
+	data.backgroundColorAct = style.backgroundColorAct;
+
+	return data;
+};
+
+function itemclick(e) {
+	clickCount++;
+
+	var item = $.section.getItemAt(e.itemIndex);
+	e.name = item.properties.name;
+
+	if (debug) {
+		Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:e:', e);
+		Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:item:', item);
+		Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:clickCount:', clickCount);
+	}
+
+	function claer() {
+		clickCount = 0;
+		clearTimeout(clickTimer);
+		clickTimer = null;
+	};
+
+	if (clickCount === 1) {
+		clickTimer = _.delay(function() {
+		}, 400);
+	} else {
+	}
+};
+
+function load(args) {
+	loaded = true;
+
+	if (debug) {
+		Ti.API.debug('[' + Widget.widgetId + ']', 'load', args);
+	}
+
+	if (args.data.length === 0) {
+		args.data = [{
+			template : 'nodata'
+		}];
+	}
+
+	Widget.Collections.matchelabel.reset(args.data);
+
+	if (debug) {
+		Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:matchelabel:', Widget.Collections.matchelabel.toJSON());
+	}
+
+	extendData();
+
+	if (debug) {
+		Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:matchelabel:', Widget.Collections.matchelabel.toJSON());
+	}
+};
+
+function unLoad() {
+	loaded = false;
+
+	if (debug) {
+		Ti.API.debug('[' + Widget.widgetId + ']', 'unLoad');
+	}
+
+	Widget.Collections.matchelabel.reset([]);
+
+	if (debug) {
+		Ti.API.debug('[' + Widget.widgetId + ']', 'unLoad:matchelabel:', Widget.Collections.matchelabel.toJSON());
+	}
+};
+
+exports.getLoad = function() {
+	return loaded;
+};
+
+exports.load = function(args) {
+	load(args);
+};
+
+exports.unLoad = function() {
+	unLoad();
+};

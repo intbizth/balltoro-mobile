@@ -16,3 +16,9 @@
 '.listItem[platform=ios]':{
 	selectionStyle:Ti.UI.iPhone.ListViewCellSelectionStyle.NONE
 }
+
+'#pullView':{
+	width: Ti.UI.FILL,
+	height: 50,
+	backgroundColor: 'transparent'
+}
