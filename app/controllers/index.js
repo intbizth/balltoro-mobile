@@ -69,6 +69,10 @@ Alloy.Globals.login.mainWindow.setMenu = function(value) {
 
 	Alloy.Globals.login.stackWindows = [];
 
+	if (!data.noToggle) {
+		Alloy.Globals.login.mainWindow.toggleLeftWindow();
+	}
+
 	if (!Alloy.Globals.login.menuWindows[data.name] || data.reload) {
 		if (Alloy.Globals.login.menuWindows[data.name]) {
 			Alloy.Globals.login.menuWindows[data.name].unLoad();
@@ -87,10 +91,6 @@ Alloy.Globals.login.mainWindow.setMenu = function(value) {
 
 	if (!Alloy.Globals.login.menuWindows[data.name].getLoad()) {
 		Alloy.Globals.login.menuWindows[data.name].load();
-	}
-
-	if (!data.noToggle) {
-		Alloy.Globals.login.mainWindow.toggleLeftWindow();
 	}
 };
 

@@ -20,7 +20,27 @@ exports.definition = {
 	},
 	extendModel : function(Model) {
 		_.extend(Model.prototype, {
+			transformDataToMatchlabel : function() {
+				var dataModel = this.toJSON();
+				// var template = ['after', 'before', 'gameafter', 'gamebefore', 'gamelive', 'gamelivehalftime'];
 
+				var template = 'before';
+				var unixtime = Alloy.Moment(dataModel.start_time).unix();
+
+				var attrs = {
+					id : dataModel.id,
+					template : template,
+					leftIcon : dataModel.home_club._links.logo.href,
+					leftLabel : dataModel.home_club.name,
+					rightIcon : dataModel.away_club._links.logo.href,
+					rightLabel : dataModel.away_club.name,
+					scoreLabel : dataModel.home_score + ' - ' + dataModel.away_score,
+					startTimeLabel : Alloy.Moment.unix(unixtime).format('HH:mm'),
+					startDateLabel : Alloy.Moment.unix(unixtime).format('D MMM YYYY'),
+				};
+
+				return attrs;
+			},
 		});
 
 		return Model;
