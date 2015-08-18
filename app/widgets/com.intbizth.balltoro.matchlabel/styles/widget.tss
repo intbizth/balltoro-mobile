@@ -18,9 +18,18 @@
 }
 
 '#pullView':{
+	top: 0,
 	width: Ti.UI.FILL,
 	height: 50,
 	backgroundColor: 'transparent'
+}
+
+'#activityIndicator':{
+	visible: true
+}
+
+'#activityIndicator[platform=ios]':{
+	style: Ti.UI.iPhone.ActivityIndicatorStyle.DARK
 }
 '.nodata_row':{
 	width: Ti.UI.FILL,

@@ -1,7 +1,7 @@
 <Alloy>
 	<Collection src="matchelabel" />
 	<View id= "main">
-		<ListView id="list" onItemclick="itemclick">
+		<ListView id="list" onPull="pull" onPullend="pullend" onItemclick="itemclick">
 			<Templates>
 				<ItemTemplate name="nodata" class="nodata_row">
 					<Label class="nodata_label" />
@@ -180,7 +180,7 @@
 			</Templates>
 			<PullView>
 				<View id="pullView">
-					<Label>Release to reload</Label>
+					<ActivityIndicator id="activityIndicator" />
 				</View>
 			</PullView>
 			<ListSection id="section" dataCollection="matchelabel">

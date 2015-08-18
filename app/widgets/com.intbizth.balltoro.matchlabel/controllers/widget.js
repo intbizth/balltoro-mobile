@@ -2,8 +2,14 @@ Widget.moment = require('alloy/moment');
 
 var debug = true;
 var loaded = false;
+var listTimer = null;
+var listCount = 0;
 var clickTimer = null;
 var clickCount = 0;
+var fetchFirstPage = function() {
+};
+var fetchNextPage = function() {
+};
 
 function extendData() {
 	var models = Widget.Collections.matchelabel.models;
@@ -30,6 +36,51 @@ function getBackground(template) {
 	data.backgroundColorAct = style.backgroundColorAct;
 
 	return data;
+};
+
+function pull(e) {
+	if (e.active) {
+		$.activityIndicator.animate({
+			transform : $.UI.create('2DMatrix').scale(1.5),
+			duration : 600
+		});
+	} else {
+		$.activityIndicator.animate({
+			transform : $.UI.create('2DMatrix').scale(1),
+			duration : 200
+		});
+	}
+};
+
+function pullend(e) {
+	$.list.setContentInsets({
+		top : 50
+	}, {
+		animated : true
+	});
+
+	clearInterval(listTimer);
+	listTimer = null;
+	listCount = 0;
+
+	listTimer = setInterval(function() {
+		listCount++;
+		if (listCount >= 2) {
+			fetchFirstPage(function() {
+				$.list.setContentInsets({
+					top : 0
+				}, {
+					animated : true
+				});
+
+				$.activityIndicator.transform = $.UI.create('2DMatrix').scale(1);
+
+				clearInterval(listTimer);
+				listTimer = null;
+				listCount = 0;
+			});
+		}
+	}, 1000);
 };
 
 function itemclick(e) {
@@ -69,6 +120,9 @@ function load(args) {
 			template : 'nodata'
 		}];
 	}
+
+	fetchFirstPage = args.fetchFirstPage;
+	fetchNextPage = args.fetchNextPage;
 
 	Widget.Collections.matchelabel.reset(args.data);
 
