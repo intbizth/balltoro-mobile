@@ -96,9 +96,6 @@ function load() {
 
 			data = _.shuffle(data);
 
-			Alloy.Collections.matchesday.reset(data);
-			var dataModels = Alloy.Collections.matchesday.models;
-
 			$.matchlabelView.load({
 				data : data,
 				fetchFirstPage : fetchFirstPage,
@@ -112,11 +109,61 @@ function load() {
 		}
 	});
 
-	function fetchFirstPage() {
+	function fetchFirstPage(callback) {
 		Alloy.Collections.matchesday.fetchFirstPage({
 			timeout : 60000,
 			success : function(model, response) {
+				$.activityIndicatorView.visible = false;
+				$.contentView.visible = true;
 
+				callback();
+
+				var data = [];
+
+				for (var i in Alloy.Collections.matchesday.models) {
+					var _data = Alloy.Collections.matchesday.models[i].transformDataToMatchlabel();
+
+					data.push(_data);
+				}
+
+				var placehold = require('placehold.it');
+				var random = 10 - data.length;
+
+				if (random > 0) {
+					for (var i = 1; i <= random; i++) {
+						var datetime = Vendor.Chance.timestamp();
+						data.push({
+							template : Vendor.Chance.pick(['after', 'before', 'gameafter', 'gamebefore', 'gamelive', 'gamelivehalftime']),
+							leftIcon : placehold.createURL({
+								width : 100,
+								height : 100
+							}).image,
+							leftLabel : Vendor.Chance.word(),
+							rightIcon : placehold.createURL({
+								width : 100,
+								height : 100
+							}).image,
+							rightLabel : Vendor.Chance.word(),
+							scoreLabel : Vendor.Chance.integer({
+								min : 0,
+								max : 99
+							}) + ' - ' + Vendor.Chance.integer({
+								min : 0,
+								max : 99
+							}),
+							startTimeLabel : Alloy.Moment.unix(datetime).format('HH:mm'),
+							startDateLabel : Alloy.Moment.unix(datetime).format('D MMM YYYY'),
+						});
+					}
+				}
+
+				data = _.shuffle(data);
+
+				$.matchlabelView.load({
+					data : data,
+					fetchFirstPage : fetchFirstPage,
+					fetchNextPage : fetchNextPage
+				});
 			},
 			error : function(model, response) {
 				Alloy.Notifier.showError({
@@ -126,11 +173,58 @@ function load() {
 		});
 	};
 
-	function fetchNextPage() {
+	function fetchNextPage(callback) {
+		Alloy.Collections.matchesday.paginator.next = 'http://demo.balltoro.com/api/matches/day/' + Vendor.Chance.pick(['tpl', 'tpl-d1', 'epl', 'tpl-d2']);
 		Alloy.Collections.matchesday.fetchNextPage({
 			timeout : 60000,
 			success : function(model, response) {
+				callback();
 
+				var data = [];
+
+				for (var i in Alloy.Collections.matchesday.models) {
+					var _data = Alloy.Collections.matchesday.models[i].transformDataToMatchlabel();
+
+					data.push(_data);
+				}
+
+				var placehold = require('placehold.it');
+				var random = 20 - data.length;
+
+				if (random > 0) {
+					for (var i = 1; i <= random; i++) {
+						var datetime = Vendor.Chance.timestamp();
+						data.push({
+							template : Vendor.Chance.pick(['after', 'before', 'gameafter', 'gamebefore', 'gamelive', 'gamelivehalftime']),
+							leftIcon : placehold.createURL({
+								width : 100,
+								height : 100
+							}).image,
+							leftLabel : Vendor.Chance.word(),
+							rightIcon : placehold.createURL({
+								width : 100,
+								height : 100
+							}).image,
+							rightLabel : Vendor.Chance.word(),
+							scoreLabel : Vendor.Chance.integer({
+								min : 0,
+								max : 99
+							}) + ' - ' + Vendor.Chance.integer({
+								min : 0,
+								max : 99
+							}),
+							startTimeLabel : Alloy.Moment.unix(datetime).format('HH:mm'),
+							startDateLabel : Alloy.Moment.unix(datetime).format('D MMM YYYY'),
+						});
+					}
+				}
+
+				data = _.shuffle(data);
+
+				$.matchlabelView.add({
+					data : data,
+					fetchNextPage : fetchNextPage
+				});
 			},
 			error : function(model, response) {
 				Alloy.Notifier.showError({
