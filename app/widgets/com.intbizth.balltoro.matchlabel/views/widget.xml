@@ -177,6 +177,14 @@
 						</View>
 					</View>
 				</ItemTemplate>
+				<ItemTemplate name="section" class="section_row">
+					<View class="section_iconView">
+						<ImageView class="section_icon" bindId="icon" />
+					</View>
+					<View class="section_titleLabelView">
+						<Label class="section_titleLabel" bindId="title" />
+					</View>
+				</ItemTemplate>
 			</Templates>
 			<PullView>
 				<View id="pullView">
@@ -184,7 +192,7 @@
 				</View>
 			</PullView>
 			<ListSection id="section" dataCollection="matchelabel">
-				<ListItem class="listItem" template="{template}" view:backgroundColor="{backgroundColor}" view:backgroundColorInAct="{backgroundColorInAct}" view:backgroundColorAct="{backgroundColorAct}" leftIcon:image="{leftIcon}" leftLabel:text="{leftLabel}" rightIcon:image="{rightIcon}" rightLabel:text="{rightLabel}" scoreLabel:text="{scoreLabel}" startTimeLabel:text="{startTimeLabel}" startDateLabel:text="{startDateLabel}" />
+				<ListItem class="listItem" template="{template}" icon:image="{icon}" title:text="{title}" view:backgroundColor="{backgroundColor}" view:backgroundColorInAct="{backgroundColorInAct}" view:backgroundColorAct="{backgroundColorAct}" leftIcon:image="{leftIcon}" leftLabel:text="{leftLabel}" rightIcon:image="{rightIcon}" rightLabel:text="{rightLabel}" scoreLabel:text="{scoreLabel}" startTimeLabel:text="{startTimeLabel}" startDateLabel:text="{startDateLabel}" />
 			</ListSection>
 		</ListView>
 	</View>

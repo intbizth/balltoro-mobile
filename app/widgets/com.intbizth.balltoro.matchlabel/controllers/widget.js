@@ -1,6 +1,6 @@
 Widget.moment = require('alloy/moment');
 
-var debug = false;
+var debug = true;
 var loaded = false;
 var listPulling = false;
 var listMarking = false;
@@ -13,10 +13,10 @@ var fetchFirstPage = function() {
 var fetchNextPage = function() {
 };
 
-$.activityIndicator.animateScale = null;
-
 $.list.addEventListener('marker', function(e) {
-	console.error('marker:', 'start');
+	if (debug) {
+		Ti.API.debug('[' + Widget.widgetId + ']', 'marker:start', 'listPulling:', listPulling, 'listMarking:', listMarking);
+	}
 
 	if (listPulling || listMarking) {
 		return;
@@ -24,11 +24,16 @@ $.list.addEventListener('marker', function(e) {
 
 	listMarking = true;
 
-	console.error('marker:', e);
+	if (debug) {
+		Ti.API.debug('[' + Widget.widgetId + ']', 'marker', e);
+	}
 
 	fetchNextPage(function() {
 		listMarking = false;
-		console.error('marker:', 'clear');
+
+		if (debug) {
+			Ti.API.debug('[' + Widget.widgetId + ']', 'marker:end');
+		}
 	});
 });
 
@@ -62,37 +67,29 @@ function getBackground(template) {
 };
 
 function pull(e) {
-	console.error('pull:', 'start');
+	if (debug) {
+		Ti.API.debug('[' + Widget.widgetId + ']', 'pull:start');
+	}
 
 	if (e.active) {
-		if ($.activityIndicator.animateScale) {
-			$.activityIndicator.transform = $.UI.create('2DMatrix').scale($.activityIndicator.animateScale);
-		} else {
-			$.activityIndicator.animate({
-				transform : $.UI.create('2DMatrix').scale(1.5),
-				duration : 600
-			}, function() {
-				$.activityIndicator.animateScale = 1.5;
-			});
-		}
+		$.activityIndicator.animate({
+			transform : $.UI.create('2DMatrix').scale(1.5),
+			duration : 600
+		});
 	} else {
-		if ($.activityIndicator.animateScale) {
-			$.activityIndicator.transform = $.UI.create('2DMatrix').scale($.activityIndicator.animateScale);
-		} else {
-			$.activityIndicator.animate({
-				transform : $.UI.create('2DMatrix').scale(1),
-				duration : 200
-			}, function() {
-				$.activityIndicator.animateScale = 1;
-			});
-		}
+		$.activityIndicator.animate({
+			transform : $.UI.create('2DMatrix').scale(1),
+			duration : 200
+		});
 
 		listPulling = false;
 	}
 };
 
 function pullend(e) {
-	console.error('pullend:', 'start');
+	if (debug) {
+		Ti.API.debug('[' + Widget.widgetId + ']', 'pullend:start', 'listPulling:', listPulling, 'listMarking:', listMarking);
+	}
 
 	if (listPulling || listMarking) {
 		return;
@@ -100,7 +97,9 @@ function pullend(e) {
 
 	listPulling = true;
 
-	console.error('pullend:', e);
+	if (debug) {
+		Ti.API.debug('[' + Widget.widgetId + ']', 'pullend', e);
+	}
 
 	$.list.setContentInsets({
 		top : 50
@@ -129,8 +128,10 @@ function pullend(e) {
 				listPulling = false;
 				listTimer = null;
 				listCount = 0;
-				$.activityIndicator.animateScale = null;
-				console.error('pullend:', 'clear');
+
+				if (debug) {
+					Ti.API.debug('[' + Widget.widgetId + ']', 'pullend:end');
+				}
 			});
 		}
 	}, 1000);
@@ -167,25 +168,24 @@ function add(args) {
 	}
 
 	if (args.data.length > 0) {
+		var marker = {
+			sectionIndex : 0,
+			itemIndex : args.data.length - 1
+		};
+
+		if (debug) {
+			Ti.API.debug('[' + Widget.widgetId + ']', 'addMarker:', marker);
+		}
+
 		$.list.addMarker({
 			sectionIndex : 0,
-			itemIndex : ($.list.sections.length + args.data.length) - 1
+			itemIndex : ($.section.items.length + args.data.length) - 1
 		});
 	}
 
 	fetchNextPage = args.fetchNextPage;
 
-	for (var i in args.data) {
-		Widget.Collections.matchelabel.add(args.data[i]);
-	}
-
-	// Widget.Collections.matchelabel.reset(args.data);
-
-	if (debug) {
-		Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:matchelabel:', Widget.Collections.matchelabel.toJSON());
-	}
-
-	// extendData();
+	Widget.Collections.matchelabel.add(args.data);
 
 	if (debug) {
 		Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:matchelabel:', Widget.Collections.matchelabel.toJSON());
@@ -202,15 +202,17 @@ function load(args) {
 	fetchFirstPage = args.fetchFirstPage;
 	fetchNextPage = args.fetchNextPage;
 
-	if (args.data.length === 0) {
-		args.data = [{
-			template : 'nodata'
-		}];
-	} else {
-		$.list.addMarker({
+	if (!args.noData) {
+		var marker = {
 			sectionIndex : 0,
 			itemIndex : args.data.length - 1
-		});
+		};
+
+		if (debug) {
+			Ti.API.debug('[' + Widget.widgetId + ']', 'addMarker:', marker);
+		}
+
+		$.list.addMarker(marker);
 	}
 
 	Widget.Collections.matchelabel.reset(args.data);
@@ -254,4 +256,12 @@ exports.load = function(args) {
 
 exports.unLoad = function() {
 	unLoad();
+};
+
+exports.scrollToTop = function() {
+	$.list.scrollToItem(0, 0);
+};
+
+exports.scrollToBottom = function() {
+	$.list.scrollToItem(0, $.section.items.length - 1);
 };
