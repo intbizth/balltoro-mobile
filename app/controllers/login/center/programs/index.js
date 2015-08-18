@@ -1,4 +1,5 @@
 var debug = true;
+var fake = false;
 var loaded = false;
 var openedWindow = false;
 var args = arguments[0] || {};
@@ -17,6 +18,10 @@ function initialize() {
 
 	$.navbarView.on('left:click', function(e) {
 		Alloy.Globals.login.mainWindow.toggleLeftWindow();
+	});
+
+	$.navbarView.on('title:dblclick', function(e) {
+		$.matchlabelView.scrollToTop();
 	});
 
 	$.main.addEventListener('open', function(e) {
@@ -45,7 +50,9 @@ function load() {
 	});
 	program = program[0].transformDataToLabel();
 
-	console.error('program:', JSON.stringify(program));
+	if (debug) {
+		Ti.API.debug('[' + $.main.name + ']', 'program:', JSON.stringify(program));
+	}
 
 	Alloy.Collections.matchesday.setID(args.programCode);
 
@@ -56,48 +63,36 @@ function load() {
 			$.contentView.visible = true;
 
 			var data = [];
+			var noData = false;
 
-			for (var i in Alloy.Collections.matchesday.models) {
-				var _data = Alloy.Collections.matchesday.models[i].transformDataToMatchlabel();
+			var section = {
+				template : 'section'
+			};
 
-				data.push(_data);
-			}
+			section = _.extend(section, program);
 
-			var placehold = require('placehold.it');
-			var random = 20 - data.length;
+			data.push(section);
 
-			if (random > 0) {
-				for (var i = 1; i <= random; i++) {
-					var datetime = Vendor.Chance.timestamp();
+			if (fake) {
+				data = fakeData(data);
+			} else {
+				if (Alloy.Collections.matchesday.models.length > 0) {
+					for (var i in Alloy.Collections.matchesday.models) {
+						var _data = Alloy.Collections.matchesday.models[i].transformDataToMatchlabel();
+
+						data.push(_data);
+					}
+				} else {
+					noData = true;
 					data.push({
-						template : Vendor.Chance.pick(['after', 'before', 'gameafter', 'gamebefore', 'gamelive', 'gamelivehalftime']),
-						leftIcon : placehold.createURL({
-							width : 100,
-							height : 100
-						}).image,
-						leftLabel : Vendor.Chance.word(),
-						rightIcon : placehold.createURL({
-							width : 100,
-							height : 100
-						}).image,
-						rightLabel : Vendor.Chance.word(),
-						scoreLabel : Vendor.Chance.integer({
-							min : 0,
-							max : 99
-						}) + ' - ' + Vendor.Chance.integer({
-							min : 0,
-							max : 99
-						}),
-						startTimeLabel : Alloy.Moment.unix(datetime).format('HH:mm'),
-						startDateLabel : Alloy.Moment.unix(datetime).format('D MMM YYYY'),
+						template : 'nodata'
 					});
 				}
 			}
 
-			data = _.shuffle(data);
-
 			$.matchlabelView.load({
 				data : data,
+				noData : noData,
 				fetchFirstPage : fetchFirstPage,
 				fetchNextPage : fetchNextPage
 			});
@@ -119,48 +114,35 @@ function load() {
 				callback();
 
 				var data = [];
+				var noData = false;
 
-				for (var i in Alloy.Collections.matchesday.models) {
-					var _data = Alloy.Collections.matchesday.models[i].transformDataToMatchlabel();
+				var section = {
+					template : 'section'
+				};
 
-					data.push(_data);
-				}
+				section = _.extend(section, program);
 
-				var placehold = require('placehold.it');
-				var random = 10 - data.length;
+				data.push(section);
 
-				if (random > 0) {
-					for (var i = 1; i <= random; i++) {
-						var datetime = Vendor.Chance.timestamp();
+				if (fake) {
+					data = fakeData(data);
+				} else {
+					if (Alloy.Collections.matchesday.models.length > 0) {
+						for (var i in Alloy.Collections.matchesday.models) {
+							var _data = Alloy.Collections.matchesday.models[i].transformDataToMatchlabel();
+
+							data.push(_data);
+						}
+					} else {
 						data.push({
-							template : Vendor.Chance.pick(['after', 'before', 'gameafter', 'gamebefore', 'gamelive', 'gamelivehalftime']),
-							leftIcon : placehold.createURL({
-								width : 100,
-								height : 100
-							}).image,
-							leftLabel : Vendor.Chance.word(),
-							rightIcon : placehold.createURL({
-								width : 100,
-								height : 100
-							}).image,
-							rightLabel : Vendor.Chance.word(),
-							scoreLabel : Vendor.Chance.integer({
-								min : 0,
-								max : 99
-							}) + ' - ' + Vendor.Chance.integer({
-								min : 0,
-								max : 99
-							}),
-							startTimeLabel : Alloy.Moment.unix(datetime).format('HH:mm'),
-							startDateLabel : Alloy.Moment.unix(datetime).format('D MMM YYYY'),
+							template : 'nodata'
 						});
 					}
 				}
 
-				data = _.shuffle(data);
-
 				$.matchlabelView.load({
 					data : data,
+					noData : noData,
 					fetchFirstPage : fetchFirstPage,
 					fetchNextPage : fetchNextPage
 				});
@@ -174,7 +156,10 @@ function load() {
 	};
 
 	function fetchNextPage(callback) {
-		Alloy.Collections.matchesday.paginator.next = 'http://demo.balltoro.com/api/matches/day/' + Vendor.Chance.pick(['tpl', 'tpl-d1', 'epl', 'tpl-d2']);
+		if (fake) {
+			Alloy.Collections.matchesday.paginator.next = Alloy.Collections.matchesday.config.URL + '/' + Vendor.Chance.pick(['tpl', 'tpl-d1', 'epl', 'tpl-d2']);
+		}
+
 		Alloy.Collections.matchesday.fetchNextPage({
 			timeout : 60000,
 			success : function(model, response) {
@@ -188,38 +173,9 @@ function load() {
 					data.push(_data);
 				}
 
-				var placehold = require('placehold.it');
-				var random = 20 - data.length;
-
-				if (random > 0) {
-					for (var i = 1; i <= random; i++) {
-						var datetime = Vendor.Chance.timestamp();
-						data.push({
-							template : Vendor.Chance.pick(['after', 'before', 'gameafter', 'gamebefore', 'gamelive', 'gamelivehalftime']),
-							leftIcon : placehold.createURL({
-								width : 100,
-								height : 100
-							}).image,
-							leftLabel : Vendor.Chance.word(),
-							rightIcon : placehold.createURL({
-								width : 100,
-								height : 100
-							}).image,
-							rightLabel : Vendor.Chance.word(),
-							scoreLabel : Vendor.Chance.integer({
-								min : 0,
-								max : 99
-							}) + ' - ' + Vendor.Chance.integer({
-								min : 0,
-								max : 99
-							}),
-							startTimeLabel : Alloy.Moment.unix(datetime).format('HH:mm'),
-							startDateLabel : Alloy.Moment.unix(datetime).format('D MMM YYYY'),
-						});
-					}
+				if (fake) {
+					data = fakeData(data);
 				}
-
-				data = _.shuffle(data);
 
 				$.matchlabelView.add({
 					data : data,
@@ -245,6 +201,41 @@ function unLoad() {
 	program = null;
 
 	Alloy.Collections.matchesday.removeID();
+};
+
+function fakeData(data) {
+	var placehold = require('placehold.it');
+	var datas = [];
+
+	for (var i = 1; i <= 20; i++) {
+		var datetime = Vendor.Chance.timestamp();
+		datas.push({
+			template : Vendor.Chance.pick(['after', 'before', 'gameafter', 'gamebefore', 'gamelive', 'gamelivehalftime']),
+			leftIcon : placehold.createURL({
+				width : 100,
+				height : 100
+			}).image,
+			leftLabel : Vendor.Chance.word(),
+			rightIcon : placehold.createURL({
+				width : 100,
+				height : 100
+			}).image,
+			rightLabel : Vendor.Chance.word(),
+			scoreLabel : Vendor.Chance.integer({
+				min : 0,
+				max : 99
+			}) + ' - ' + Vendor.Chance.integer({
+				min : 0,
+				max : 99
+			}),
+			startTimeLabel : Alloy.Moment.unix(datetime).format('HH:mm'),
+			startDateLabel : Alloy.Moment.unix(datetime).format('D MMM YYYY'),
+		});
+	}
+
+	datas = _.shuffle(datas);
+
+	return data.concat(datas);
 };
 
 exports.getLoad = function() {

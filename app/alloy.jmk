@@ -21,7 +21,7 @@ task('pre:load', function(event, logger) {
 	});
 
 	var widgetPath = event.dir.project + '/app/widgets/com.intbizth.balltoro.matchlabel/styles';
-	var files = [widgetPath + '/style.tss', widgetPath + '/nodata.tss', widgetPath + '/after.tss', widgetPath + '/before.tss', widgetPath + '/gameafter.tss', widgetPath + '/gamebefore.tss', widgetPath + '/gamelive.tss', widgetPath + '/gamelivehalftime.tss'];
+	var files = [widgetPath + '/style.tss', widgetPath + '/nodata.tss', widgetPath + '/after.tss', widgetPath + '/before.tss', widgetPath + '/gameafter.tss', widgetPath + '/gamebefore.tss', widgetPath + '/gamelive.tss', widgetPath + '/gamelivehalftime.tss', widgetPath + '/section.tss'];
 	var output = widgetPath + '/widget.tss';
 
 	concat(files, output, function() {
