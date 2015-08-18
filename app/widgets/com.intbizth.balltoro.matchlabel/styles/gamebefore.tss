@@ -1,15 +1,15 @@
 '.gamebefore_row':{
 	width: Ti.UI.FILL,
 	height: 60,
-	backgroundColor: '#ffffff',
-	backgroundColorInAct: '#ffffff',
-	backgroundColorAct: '#d1d3d4'
+	backgroundColor: '#ffffff'
 }
 
 '.gamebefore_leftView':{
 	left: 0,
 	width: '40%',
-	backgroundColor: '#ffffff'
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
 }
 
 '.gamebefore_leftIconView':{
@@ -42,7 +42,9 @@
 '.gamebefore_rightView':{
 	right: 0,
 	width: '40%',
-	backgroundColor: '#ffffff'
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
 }
 
 '.gamebefore_rightIconView':{
@@ -74,7 +76,9 @@
 
 '.gamebefore_centerView':{
 	width: '20%',
-	backgroundColor: '#4188c7'
+	backgroundColor: '#4188c7',
+	backgroundColorInAct: '#4188c7',
+	backgroundColorAct: '#d1d3d4'
 }
 
 '.gamebefore_centerSubView':{

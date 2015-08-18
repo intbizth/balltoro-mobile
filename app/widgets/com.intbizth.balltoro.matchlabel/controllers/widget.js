@@ -1,4 +1,5 @@
 Widget.moment = require('alloy/moment');
+Widget.string = require('alloy/string');
 
 var debug = true;
 var loaded = false;
@@ -54,14 +55,21 @@ function extendData(models) {
 };
 
 function getBackground(template) {
+	var classes = ['_leftView', '_centerView', '_rightView'];
 	var data = {};
-	var style = $.createStyle({
-		classes : template + '_row'
-	});
 
-	data.backgroundColor = style.backgroundColor;
-	data.backgroundColorInAct = data.backgroundColor;
-	data.backgroundColorAct = style.backgroundColorAct;
+	for (var i in classes) {
+		var backgroundProps = ['backgroundColor', 'backgroundColorInAct', 'backgroundColorAct'];
+		var style = $.createStyle({
+			classes : template + classes[i]
+		});
+
+		for (var j in backgroundProps) {
+			var prop = classes[i].replace('_', '') + Widget.string.ucfirst(backgroundProps[j]);
+
+			data[prop] = style[backgroundProps[j]];
+		}
+	}
 
 	return data;
 };
@@ -141,7 +149,6 @@ function itemclick(e) {
 	clickCount++;
 
 	var item = $.section.getItemAt(e.itemIndex);
-	e.name = item.properties.name;
 
 	if (debug) {
 		Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:e:', e);
@@ -149,7 +156,7 @@ function itemclick(e) {
 		Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:clickCount:', clickCount);
 	}
 
-	function claer() {
+	function clear() {
 		clickCount = 0;
 		clearTimeout(clickTimer);
 		clickTimer = null;
@@ -157,8 +164,34 @@ function itemclick(e) {
 
 	if (clickCount === 1) {
 		clickTimer = _.delay(function() {
+			item.leftView.backgroundColor = item.leftView.backgroundColorAct;
+			item.centerView.backgroundColor = item.centerView.backgroundColorAct;
+			item.rightView.backgroundColor = item.rightView.backgroundColorAct;
+			$.section.updateItemAt(e.itemIndex, item);
+
+			_.delay(function() {
+				item.leftView.backgroundColor = item.leftView.backgroundColorInAct;
+				item.centerView.backgroundColor = item.centerView.backgroundColorInAct;
+				item.rightView.backgroundColor = item.rightView.backgroundColorInAct;
+				$.section.updateItemAt(e.itemIndex, item);
+			}, 400);
+
+			clear();
 		}, 400);
 	} else {
+		item.leftView.backgroundColor = item.leftView.backgroundColorAct;
+		item.centerView.backgroundColor = item.centerView.backgroundColorAct;
+		item.rightView.backgroundColor = item.rightView.backgroundColorAct;
+		$.section.updateItemAt(e.itemIndex, item);
+
+		_.delay(function() {
+			item.leftView.backgroundColor = item.leftView.backgroundColorInAct;
+			item.centerView.backgroundColor = item.centerView.backgroundColorInAct;
+			item.rightView.backgroundColor = item.rightView.backgroundColorInAct;
+			$.section.updateItemAt(e.itemIndex, item);
+		}, 400);
+
+		clear();
 	}
 };
 

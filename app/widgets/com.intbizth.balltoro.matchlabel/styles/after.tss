@@ -1,15 +1,15 @@
 '.after_row':{
 	width: Ti.UI.FILL,
 	height: 60,
-	backgroundColor: '#ffffff',
-	backgroundColorInAct: '#ffffff',
-	backgroundColorAct: '#d1d3d4'
+	backgroundColor: '#ffffff'
 }
 
 '.after_leftView':{
 	left: 0,
 	width: '40%',
-	backgroundColor: '#ffffff'
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
 }
 
 '.after_leftIconView':{
@@ -42,7 +42,9 @@
 '.after_rightView':{
 	right: 0,
 	width: '40%',
-	backgroundColor: '#ffffff'
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
 }
 
 '.after_rightIconView':{
@@ -74,7 +76,9 @@
 
 '.after_centerView':{
 	width: '20%',
-	backgroundColor: '#ffffff'
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
 }
 
 '.after_centerSubView':{
