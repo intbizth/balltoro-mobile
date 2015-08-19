@@ -1,5 +1,5 @@
 <Alloy>
-	<Window id="main" module="xp.ui" role="leftWindow">
-		<Widget id="leftmenuView" src="com.intbizth.balltoro.leftmenu" />
-	</Window>
+    <Window id="main" module="xp.ui" role="leftWindow">
+        <Widget id="leftmenuView" src="com.intbizth.balltoro.leftmenu" />
+    </Window>
 </Alloy>

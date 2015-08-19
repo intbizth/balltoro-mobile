@@ -1,37 +1,37 @@
 <Alloy>
-	<NavigationWindow id="navigation" platform="ios">
-		<Window id="main">
-			<View id="content">
-				<View id="contentTop">
-					<ScrollableView id="slider">
-						<View id="sliderMain">
-							<View id="sliderMainSub">
-								<ImageView id="logoImage" />
-								<Label id="labelAppName" />
-							</View>
-						</View>
-					</ScrollableView>
-				</View>
-				<View id="contentBottom">
-					<View class="contentBottomSpace" />
-					<View id="registerButton">
-						<Label id="registerLabel" />
-					</View>
-					<View id="signinButton">
-						<Label id="signinLabel" />
-					</View>
-					<View id="signinWithFacebookButton">
-						<View id="signinWithFacebookSubButton">
-							<Label id="signinWithLabel" />
-							<Label id="facebookLabel" />
-						</View>
-					</View>
-					<View class="contentBottomSpace" />
-				</View>
-			</View>
-			<Label id="versionLabel" text="Ti.App.version"></Label>
-		</Window>
-	</NavigationWindow>
-	<Require id="registerWindow" src="nologin/register" />
-	<Require id="signinWindow" src="nologin/signin" />
+    <NavigationWindow id="navigation" platform="ios">
+        <Window id="main">
+            <View id="content">
+                <View id="contentTop">
+                    <ScrollableView id="slider">
+                        <View id="sliderMain">
+                            <View id="sliderMainSub">
+                                <ImageView id="logoImage" />
+                                <Label id="labelAppName" />
+                            </View>
+                        </View>
+                    </ScrollableView>
+                </View>
+                <View id="contentBottom">
+                    <View class="contentBottomSpace" />
+                    <View id="registerButton">
+                        <Label id="registerLabel" />
+                    </View>
+                    <View id="signinButton">
+                        <Label id="signinLabel" />
+                    </View>
+                    <View id="signinWithFacebookButton">
+                        <View id="signinWithFacebookSubButton">
+                            <Label id="signinWithLabel" />
+                            <Label id="facebookLabel" />
+                        </View>
+                    </View>
+                    <View class="contentBottomSpace" />
+                </View>
+            </View>
+            <Label id="versionLabel" text="Ti.App.version"></Label>
+        </Window>
+    </NavigationWindow>
+    <Require id="registerWindow" src="nologin/register" />
+    <Require id="signinWindow" src="nologin/signin" />
 </Alloy>
