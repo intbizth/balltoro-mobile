@@ -1,82 +1,82 @@
 '#main': {
-	top: 0,
-	width: Ti.UI.FILL,
-	height: 40,
-	backgroundColor: '#4687f8'
+    top: 0,
+    width: Ti.UI.FILL,
+    height: 40,
+    backgroundColor: '#4687f8'
 }
 
 '#titleView': {
-	top: 0,
-	width: Ti.UI.FILL,
-	height: 40
+    top: 0,
+    width: Ti.UI.FILL,
+    height: 40
 }
 
 '.title':{
-	width: Ti.UI.SIZE,
-	height: 40,
-	color: '#fff',
-	font: {
-		fontSize: 16
-	},
-	textAlign: 'center'
+    width: Ti.UI.SIZE,
+    height: 40,
+    color: '#fff',
+    font: {
+        fontSize: 16
+    },
+    textAlign: 'center'
 }
 
 '.subView':{
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	layout: 'horizontal',
-	opacity: 1,
-	opacityAct: 0.2,
-	opacityInAct: 1
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    layout: 'horizontal',
+    opacity: 1,
+    opacityAct: 0.2,
+    opacityInAct: 1
 }
 
 '.iconBorder':{
-	width: 26,
-	height: 26
+    width: 26,
+    height: 26
 }
 
 '.icon':{
-	width: 21,
-	height: 21
+    width: 21,
+    height: 21
 }
 
 '#leftView':{
-	top: 0,
-	left: 0,
-	width: 70,
-	height: 40
+    top: 0,
+    left: 0,
+    width: 70,
+    height: 40
 }
 
 '.leftTitle':{
-	width: Ti.UI.SIZE,
-	height: 40,
-	color: '#fff',
-	font: {
-		fontSize: 16
-	},
-	textAlign: 'center'
+    width: Ti.UI.SIZE,
+    height: 40,
+    color: '#fff',
+    font: {
+        fontSize: 16
+    },
+    textAlign: 'center'
 }
 
 '#rightView':{
-	top: 0,
-	right: 0,
-	width: 70,
-	height: 40
+    top: 0,
+    right: 0,
+    width: 70,
+    height: 40
 }
 
 '.rightTitle':{
-	width: Ti.UI.SIZE,
-	height: 40,
-	color: '#fff',
-	font: {
-		fontSize: 16
-	},
-	textAlign: 'center'
+    width: Ti.UI.SIZE,
+    height: 40,
+    color: '#fff',
+    font: {
+        fontSize: 16
+    },
+    textAlign: 'center'
 }
 
 '#lineView': {
-	bottom: 0,
-	width:Ti.UI.FILL,
-	height: 1,
-	backgroundColor: '#2f579e'
+    bottom: 0,
+    width:Ti.UI.FILL,
+    height: 1,
+    backgroundColor: '#2f579e'
 }
