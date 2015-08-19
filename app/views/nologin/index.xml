@@ -32,6 +32,6 @@
             <Label id="versionLabel" text="Ti.App.version"></Label>
         </Window>
     </NavigationWindow>
-    <Require id="registerWindow" src="nologin/register" />
+    <Require id="registerWindow" src="nologin/register/step1" />
     <Require id="signinWindow" src="nologin/signin" />
 </Alloy>
