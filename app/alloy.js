@@ -17,6 +17,7 @@ Alloy.Moment = require('alloy/moment');
 Alloy.Sha1 = require('alloy/sha1');
 Alloy.Social = require('alloy/social');
 Alloy.String = require('alloy/string');
+Alloy.Logger = require('Logger');
 Alloy.Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications');
 
 Alloy.Notifier.showError = function(e) {
@@ -75,3 +76,5 @@ Alloy.Models.user = Alloy.createModel('user');
 Alloy.Collections.matches = Alloy.createCollection('matches');
 Alloy.Collections.programs = Alloy.createCollection('programs');
 // > collections & models
+
+Alloy.Logger.on();
