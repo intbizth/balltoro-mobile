@@ -1,47 +1,47 @@
 '#main':{
-	width: Ti.UI.FILL,
-	height: Ti.UI.SIZE
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE
 }
 
 '#content':{
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	layout: 'horizontal'
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    layout: 'horizontal'
 }
 
 '.label':{
-	font: {
-		fontSize: 16
-	}
+    font: {
+        fontSize: 16
+    }
 }
 
 '#leftLabel':{
-	textAlign: 'right'
+    textAlign: 'right'
 }
 
 '#rightLabel':{
-	textAlign: 'left'
+    textAlign: 'left'
 }
 
 '#centerView':{
-	height: 10
+    height: 10
 }
 
 '#leftBarView':{
-	left: 0,
-	width: Ti.UI.FILL,
-	height: Ti.UI.FILL
+    left: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL
 }
 
 '#rightBarView':{
-	right: 0,
-	width: Ti.UI.FILL,
-	height: Ti.UI.FILL
+    right: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL
 }
 
 '#centerBarView':{
-	top: -7,
-	width: 14,
-	height: 14,
-	visible: false
+    top: -7,
+    width: 14,
+    height: 14,
+    visible: false
 }

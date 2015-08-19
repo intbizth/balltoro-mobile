@@ -1,17 +1,17 @@
 <Alloy>
-	<View id="main">
-		<View id="content">
-			<View id="leftView">
-				<Label id="leftLabel" class="label" text="0%" />
-			</View>
-			<View id="centerView">
-				<View id="leftBarView" />
-				<View id="rightBarView" />
-				<View id="centerBarView" />
-			</View>
-			<View id="rightView">
-				<Label id="rightLabel" class="label" text="0%" />
-			</View>
-		</View>
-	</View>
+    <View id="main">
+        <View id="content">
+            <View id="leftView">
+                <Label id="leftLabel" class="label" text="0%" />
+            </View>
+            <View id="centerView">
+                <View id="leftBarView" />
+                <View id="rightBarView" />
+                <View id="centerBarView" />
+            </View>
+            <View id="rightView">
+                <Label id="rightLabel" class="label" text="0%" />
+            </View>
+        </View>
+    </View>
 </Alloy>

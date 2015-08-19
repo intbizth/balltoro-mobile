@@ -17,123 +17,123 @@ $.leftBarView.width = $.centerView.width;
 $.rightBarView.width = $.centerView.width;
 
 function setLeftValue(value) {
-	// 0 -------> 1
-	var percentLeft = value * (100 / 1);
-	var percentRight = 100 - percentLeft;
+    // 0 -------> 1
+    var percentLeft = value * (100 / 1);
+    var percentRight = 100 - percentLeft;
 
-	Widget.Models.powerbar.set({
-		leftvalue : percentLeft,
-		rightvalue : percentRight
-	});
-	Widget.Models.powerbar.save();
-	Widget.Models.powerbar.fetch();
+    Widget.Models.powerbar.set({
+        leftvalue : percentLeft,
+        rightvalue : percentRight
+    });
+    Widget.Models.powerbar.save();
+    Widget.Models.powerbar.fetch();
 
-	var data = Widget.Models.powerbar.toJSON();
+    var data = Widget.Models.powerbar.toJSON();
 
-	config.left.value = data.leftvalue;
-	config.right.value = data.rightvalue;
+    config.left.value = data.leftvalue;
+    config.right.value = data.rightvalue;
 
-	$.leftLabel.text = data.leftvalue.toFixed(2) + '%';
-	$.rightLabel.text = data.rightvalue.toFixed(2) + '%';
-	$.rightBarView.width = parseInt(data.rightvalue * ($.centerView.width / 100));
+    $.leftLabel.text = data.leftvalue.toFixed(2) + '%';
+    $.rightLabel.text = data.rightvalue.toFixed(2) + '%';
+    $.rightBarView.width = parseInt(data.rightvalue * ($.centerView.width / 100));
 
-	$.centerBarView.transform = Ti.UI.create2DMatrix().rotate(45);
+    $.centerBarView.transform = Ti.UI.create2DMatrix().rotate(45);
 
-	if (percentLeft === 50) {
-		$.centerBarView.visible = false;
-	} else if (percentLeft > 50) {
-		$.centerBarView.visible = true;
-		$.centerBarView.backgroundColor = $.leftBarView.backgroundColor;
-	} else if (percentLeft < 50) {
-		$.centerBarView.visible = true;
-		$.centerBarView.backgroundColor = $.rightBarView.backgroundColor;
-	}
+    if (percentLeft === 50) {
+        $.centerBarView.visible = false;
+    } else if (percentLeft > 50) {
+        $.centerBarView.visible = true;
+        $.centerBarView.backgroundColor = $.leftBarView.backgroundColor;
+    } else if (percentLeft < 50) {
+        $.centerBarView.visible = true;
+        $.centerBarView.backgroundColor = $.rightBarView.backgroundColor;
+    }
 
-	$.centerBarView.left = parseInt(data.leftvalue * ($.centerView.width / 100)) - 6;
+    $.centerBarView.left = parseInt(data.leftvalue * ($.centerView.width / 100)) - 6;
 };
 
 function setRightValue(value) {
-	// 1 <------- 0
-	var percentRight = value * (100 / 1);
-	var percentLeft = 100 - percentRight;
+    // 1 <------- 0
+    var percentRight = value * (100 / 1);
+    var percentLeft = 100 - percentRight;
 
-	Widget.Models.powerbar.set({
-		leftvalue : percentLeft,
-		rightvalue : percentRight
-	});
-	Widget.Models.powerbar.save();
-	Widget.Models.powerbar.fetch();
+    Widget.Models.powerbar.set({
+        leftvalue : percentLeft,
+        rightvalue : percentRight
+    });
+    Widget.Models.powerbar.save();
+    Widget.Models.powerbar.fetch();
 
-	var data = Widget.Models.powerbar.toJSON();
+    var data = Widget.Models.powerbar.toJSON();
 
-	config.left.value = data.leftvalue;
-	config.right.value = data.rightvalue;
+    config.left.value = data.leftvalue;
+    config.right.value = data.rightvalue;
 
-	$.leftLabel.text = data.leftvalue.toFixed(2) + '%';
-	$.rightLabel.text = data.rightvalue.toFixed(2) + '%';
-	$.rightBarView.width = parseInt(data.rightvalue * ($.centerView.width / 100));
+    $.leftLabel.text = data.leftvalue.toFixed(2) + '%';
+    $.rightLabel.text = data.rightvalue.toFixed(2) + '%';
+    $.rightBarView.width = parseInt(data.rightvalue * ($.centerView.width / 100));
 
-	$.centerBarView.transform = Ti.UI.create2DMatrix().rotate(45);
+    $.centerBarView.transform = Ti.UI.create2DMatrix().rotate(45);
 
-	if (percentLeft === 50) {
-		$.centerBarView.visible = false;
-	} else if (percentLeft > 50) {
-		$.centerBarView.visible = true;
-		$.centerBarView.backgroundColor = $.leftBarView.backgroundColor;
-	} else if (percentLeft < 50) {
-		$.centerBarView.visible = true;
-		$.centerBarView.backgroundColor = $.rightBarView.backgroundColor;
-	}
+    if (percentLeft === 50) {
+        $.centerBarView.visible = false;
+    } else if (percentLeft > 50) {
+        $.centerBarView.visible = true;
+        $.centerBarView.backgroundColor = $.leftBarView.backgroundColor;
+    } else if (percentLeft < 50) {
+        $.centerBarView.visible = true;
+        $.centerBarView.backgroundColor = $.rightBarView.backgroundColor;
+    }
 
-	$.centerBarView.left = parseInt(data.leftvalue * ($.centerView.width / 100)) - 6;
+    $.centerBarView.left = parseInt(data.leftvalue * ($.centerView.width / 100)) - 6;
 };
 
 exports.startTest = function(duration) {
-	var chance = require('chance.min'),
-	    chance = new chance();
+    var chance = require('chance.min'),
+        chance = new chance();
 
-	run();
+    run();
 
-	timer = setInterval(function() {
-		run();
-	}, duration);
+    timer = setInterval(function() {
+        run();
+    }, duration);
 
-	function run() {
-		var random = _.random(0, 1);
+    function run() {
+        var random = _.random(0, 1);
 
-		if (random === 1) {
-			setLeftValue(chance.floating({
-				min : 0,
-				max : 1,
-				fixed : 7
-			}));
-		} else {
-			setRightValue(chance.floating({
-				min : 0,
-				max : 1,
-				fixed : 7
-			}));
-		}
-	};
+        if (random === 1) {
+            setLeftValue(chance.floating({
+                min : 0,
+                max : 1,
+                fixed : 7
+            }));
+        } else {
+            setRightValue(chance.floating({
+                min : 0,
+                max : 1,
+                fixed : 7
+            }));
+        }
+    };
 };
 
 exports.stopTest = function() {
-	clearInterval(timer);
-	timer = null;
+    clearInterval(timer);
+    timer = null;
 };
 
 exports.setLeftValue = function(value) {
-	setLeftValue(value);
+    setLeftValue(value);
 };
 
 exports.setRightValue = function(value) {
-	setRightValue(value);
+    setRightValue(value);
 };
 
 exports.getLeftValue = function() {
-	return global.leftValue;
+    return global.leftValue;
 };
 
 exports.getRightValue = function() {
-	return global.rightValue;
+    return global.rightValue;
 };
