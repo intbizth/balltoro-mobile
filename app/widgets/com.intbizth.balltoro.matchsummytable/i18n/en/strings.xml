@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="com.intbizth.balltoro.matchsummytable.previous">Previous</string>
-	<string name="com.intbizth.balltoro.matchsummytable.next">Next</string>
-	<string name="com.intbizth.balltoro.matchsummytable.nodata">No Data</string>
-	<string name="com.intbizth.balltoro.matchsummytable.competition">Comp</string>
-	<string name="com.intbizth.balltoro.matchsummytable.date">Date</string>
-	<string name="com.intbizth.balltoro.matchsummytable.fulltime">FT</string>
-	<string name="com.intbizth.balltoro.matchsummytable.position">Pos</string>
-	<string name="com.intbizth.balltoro.matchsummytable.team">Team</string>
-	<string name="com.intbizth.balltoro.matchsummytable.goal_difference">GD</string>
-	<string name="com.intbizth.balltoro.matchsummytable.points">Pts</string>
-	<string name="com.intbizth.balltoro.matchsummytable.played">P</string>
-	<string name="com.intbizth.balltoro.matchsummytable.win">W</string>
-	<string name="com.intbizth.balltoro.matchsummytable.draw">D</string>
-	<string name="com.intbizth.balltoro.matchsummytable.lose">L</string>
+    <string name="com.intbizth.balltoro.matchsummytable.previous">Previous</string>
+    <string name="com.intbizth.balltoro.matchsummytable.next">Next</string>
+    <string name="com.intbizth.balltoro.matchsummytable.nodata">No Data</string>
+    <string name="com.intbizth.balltoro.matchsummytable.competition">Comp</string>
+    <string name="com.intbizth.balltoro.matchsummytable.date">Date</string>
+    <string name="com.intbizth.balltoro.matchsummytable.fulltime">FT</string>
+    <string name="com.intbizth.balltoro.matchsummytable.position">Pos</string>
+    <string name="com.intbizth.balltoro.matchsummytable.team">Team</string>
+    <string name="com.intbizth.balltoro.matchsummytable.goal_difference">GD</string>
+    <string name="com.intbizth.balltoro.matchsummytable.points">Pts</string>
+    <string name="com.intbizth.balltoro.matchsummytable.played">P</string>
+    <string name="com.intbizth.balltoro.matchsummytable.win">W</string>
+    <string name="com.intbizth.balltoro.matchsummytable.draw">D</string>
+    <string name="com.intbizth.balltoro.matchsummytable.lose">L</string>
 </resources>
