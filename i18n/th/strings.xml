@@ -2,6 +2,7 @@
 <resources>
     <string name="appname">บอลโตโล้</string>
     <string name="back">กลับ</string>
+    <string name="next">ต่อไป</string>
     <string name="login.menu.tester">ทดสอบ</string>
     <string name="login.menu.league_game">ลีกเกม</string>
     <string name="login.menu.match">รายการแข่งขัน</string>
@@ -10,6 +11,12 @@
     <string name="nologin.index.button.signin">เข้าระบบ</string>
     <string name="nologin.index.button.signinwith">เข้าระบบด้วย</string>
     <string name="nologin.register.title">สมัครสมาชิก</string>
+    <string name="nologin.register.username">ชื่อผู้ใช้</string>
+    <string name="nologin.register.email">อีเมล</string>
+    <string name="nologin.register.password">รหัสผ่าน</string>
+    <string name="nologin.register.confirmPassword">ยืนยันรหัสผ่าน</string>
+    <string name="nologin.register.name">ชื่อจริง</string>
+    <string name="nologin.register.surname">นามสกุล</string>
     <string name="nologin.signin.title">เข้าระบบ</string>
     <string name="facebook">เฟสบุ๊ค</string>
     <string name="notconnectedtonetwork">เชื่อมต่อเครือข่ายไม่ได้</string>
