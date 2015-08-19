@@ -12,5 +12,56 @@
     top: 0,
     width: Ti.UI.FILL,
     height: Ti.UI.FILL,
-    layout: 'vertical'
+    backgroundColor: 'white'
+}
+
+'#contentTop':{
+	top: 0,
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE ,
+	layout: 'vertical'
+}
+
+'#contentBottom': {
+	bottom: 0,
+	width: Ti.UI.FILL,
+	height: 76,
+}
+
+".textField": {
+    width: "75%",
+    height: 36,
+    top: 10,
+    borderWidth: '1',
+    borderColor: '#999',
+    textAlign: 'center'
+}
+
+'#username': {
+	hintText: 'Username'
+}
+
+'#email': {
+	hintText: 'Email'
+}
+
+"#password": {
+	hintText: 'Password',
+    passwordMask: true
+}
+
+"#confirmPassword": {
+	hintText: 'Confirm Password',
+    passwordMask: true
+}
+
+"#btn1":{
+    title: 'Next',
+    width: '75%',
+    height: 36,
+    bottom: 20,
+    color: '#ffffff',
+    borderWidth: '1',
+    borderColor: '#549AF7',
+    backgroundColor: '#549AF7'
 }

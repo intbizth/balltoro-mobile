@@ -1,6 +1,16 @@
 <Alloy>
     <Window id="main">
         <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
-        <View id="content"></View>
+        <View id="content">
+            <View id="contentTop">
+                <TextField id="username" class="textField"></TextField>
+                <TextField id="email" class="textField"></TextField>
+                <TextField id="password" class="textField"></TextField>
+                <TextField id="confirmPassword" class="textField"></TextField>
+            </View>
+            <View id="contentBottom">
+                <Button id="btn1"></Button>
+            </View>
+        </View>
     </Window>
 </Alloy>
