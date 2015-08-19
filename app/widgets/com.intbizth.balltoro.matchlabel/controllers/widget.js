@@ -1,7 +1,8 @@
 Widget.moment = require('alloy/moment');
 Widget.string = require('alloy/string');
+Widget.Logger = require('logger');
 
-var debug = true;
+var log = true;
 var loaded = false;
 var listPulling = false;
 var listMarking = false;
@@ -15,9 +16,7 @@ var fetchNextPage = function() {
 };
 
 $.list.addEventListener('marker', function(e) {
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'marker:start', 'listPulling:', listPulling, 'listMarking:', listMarking);
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] marker:start listPulling:' + ((listPulling) ? 'true' : 'false') + ' listMarking:' + ((listMarking) ? 'true' : 'false'));
 
     if (listPulling || listMarking) {
         return;
@@ -25,16 +24,12 @@ $.list.addEventListener('marker', function(e) {
 
     listMarking = true;
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'marker', e);
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] marker ' + JSON.stringify(e));
 
     fetchNextPage(function() {
         listMarking = false;
 
-        if (debug) {
-            Ti.API.debug('[' + Widget.widgetId + ']', 'marker:end');
-        }
+        Widget.Logger.debug('[' + Widget.widgetId + '] marker:end');
     });
 });
 
@@ -77,9 +72,7 @@ function getBackground(template) {
 };
 
 function pull(e) {
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'pull:start');
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] pull:start');
 
     if (e.active) {
         $.activityIndicator.animate({
@@ -97,9 +90,7 @@ function pull(e) {
 };
 
 function pullend(e) {
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'pullend:start', 'listPulling:', listPulling, 'listMarking:', listMarking);
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] pullend:start listPulling:' + ((listPulling) ? 'true' : 'false') + ' listMarking:' + ((listMarking) ? 'true' : 'false'));
 
     if (listPulling || listMarking) {
         return;
@@ -107,9 +98,7 @@ function pullend(e) {
 
     listPulling = true;
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'pullend', e);
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] pullend ' + JSON.stringify(e));
 
     $.list.setContentInsets({
         top : 50
@@ -139,9 +128,7 @@ function pullend(e) {
                 listTimer = null;
                 listCount = 0;
 
-                if (debug) {
-                    Ti.API.debug('[' + Widget.widgetId + ']', 'pullend:end');
-                }
+                Widget.Logger.debug('[' + Widget.widgetId + '] pullend:end');
             });
         }
     }, 1000);
@@ -152,11 +139,9 @@ function itemclick(e) {
 
     var item = $.section.getItemAt(e.itemIndex);
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:e:', e);
-        Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:item:', item);
-        Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:clickCount:', clickCount);
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] itemclick:e: ' + JSON.stringify(e));
+    Widget.Logger.debug('[' + Widget.widgetId + '] itemclick:item: ' + JSON.stringify(item));
+    Widget.Logger.debug('[' + Widget.widgetId + '] itemclick:clickCount: ' + clickCount);
 
     function clear() {
         clickCount = 0;
@@ -202,9 +187,7 @@ function itemclick(e) {
 };
 
 function add(args) {
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'add', args);
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] add ' + JSON.stringify(args));
 
     if (args.data.length > 0) {
         var marker = {
@@ -212,9 +195,7 @@ function add(args) {
             itemIndex : ($.section.items.length + args.data.length) - 1
         };
 
-        if (debug) {
-            Ti.API.debug('[' + Widget.widgetId + ']', 'addMarker:', marker);
-        }
+        Widget.Logger.debug('[' + Widget.widgetId + '] addMarker:' + JSON.stringify(marker));
 
         $.list.addMarker(marker);
     }
@@ -225,17 +206,13 @@ function add(args) {
 
     extendData(Widget.Collections.matchelabel.models);
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:matchelabel:', Widget.Collections.matchelabel.toJSON());
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
 };
 
 function load(args) {
     loaded = true;
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'load', args);
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] load ' + JSON.stringify(args));
 
     fetchFirstPage = args.fetchFirstPage;
     fetchNextPage = args.fetchNextPage;
@@ -246,38 +223,28 @@ function load(args) {
             itemIndex : args.data.length - 1
         };
 
-        if (debug) {
-            Ti.API.debug('[' + Widget.widgetId + ']', 'addMarker:', marker);
-        }
+        Widget.Logger.debug('[' + Widget.widgetId + '] addMarker:' + JSON.stringify(marker));
 
         $.list.addMarker(marker);
     }
 
     Widget.Collections.matchelabel.reset(args.data);
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:matchelabel:', Widget.Collections.matchelabel.toJSON());
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] load:before:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
 
     extendData(Widget.Collections.matchelabel.models);
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:matchelabel:', Widget.Collections.matchelabel.toJSON());
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
 };
 
 function unLoad() {
     loaded = false;
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'unLoad');
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad');
 
     Widget.Collections.matchelabel.reset([]);
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'unLoad:matchelabel:', Widget.Collections.matchelabel.toJSON());
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
 };
 
 exports.getLoad = function() {
