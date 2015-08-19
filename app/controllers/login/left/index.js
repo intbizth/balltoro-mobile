@@ -1,4 +1,3 @@
-var debug = true;
 var loaded = false;
 var openedWindow = false;
 
@@ -8,21 +7,15 @@ function initialize() {
     }
 
     $.main.addEventListener('open', function(e) {
-        if (debug) {
-            Ti.API.debug('[' + $.main.name + ']', e.type);
-        }
+        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type);
     });
 
     $.main.addEventListener('close', function(e) {
-        if (debug) {
-            Ti.API.debug('[' + $.main.name + ']', e.type);
-        }
+        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type);
     });
 
     $.leftmenuView.on('click', function(e) {
-        if (debug) {
-            Ti.API.debug('[' + $.main.name + ']', 'click:', e);
-        }
+        Alloy.Logger.debug('[' + $.main.name + '] click:' + JSON.stringify(e));
 
         var name = e.name.split(':');
 
@@ -56,9 +49,7 @@ function initialize() {
     });
 
     $.leftmenuView.on('dblclick', function(e) {
-        if (debug) {
-            Ti.API.debug('[' + $.main.name + ']', 'dblclick:', e);
-        }
+        Alloy.Logger.debug('[' + $.main.name + '] dblclick:' + JSON.stringify(e));
 
         var name = e.name.split(':');
 
@@ -126,9 +117,7 @@ function selectMenu(value) {
 };
 
 function load() {
-    if (debug) {
-        Ti.API.debug('[' + $.main.name + ']', 'load');
-    }
+    Alloy.Logger.debug('[' + $.main.name + '] load');
 
     loaded = true;
     openedWindow = false;
@@ -140,9 +129,7 @@ function load() {
 };
 
 function unLoad() {
-    if (debug) {
-        Ti.API.debug('[' + $.main.name + ']', 'unLoad');
-    }
+    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
 
     loaded = false;
     openedWindow = false;

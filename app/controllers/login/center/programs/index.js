@@ -1,4 +1,3 @@
-var debug = true;
 var fake = true;
 var loaded = false;
 var openedWindow = false;
@@ -25,23 +24,17 @@ function initialize() {
     });
 
     $.main.addEventListener('open', function(e) {
-        if (debug) {
-            Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
-        }
+        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type + ' (', 'login stacks: ' + JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')) + ' ' + Alloy.Globals.login.stackWindows.length, ')');
     });
 
     $.main.addEventListener('close', function(e) {
-        if (debug) {
-            Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
-        }
+        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type + ' (', 'login stacks: ' + JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')) + ' ' + Alloy.Globals.login.stackWindows.length, ')');
     });
 };
 
 function load() {
-    if (debug) {
-        Ti.API.debug('[' + $.main.name + ']', 'load');
-        Ti.API.debug('[' + $.main.name + ']', 'load:args:', args);
-    }
+    Alloy.Logger.debug('[' + $.main.name + '] load');
+    Alloy.Logger.debug('[' + $.main.name + '] load:args: ' + JSON.stringify(args));
 
     loaded = true;
     openedWindow = false;
@@ -50,9 +43,7 @@ function load() {
     });
     program = program[0].transformDataToLabel();
 
-    if (debug) {
-        Ti.API.debug('[' + $.main.name + ']', 'program:', JSON.stringify(program));
-    }
+    Alloy.Logger.debug('[' + $.main.name + '] program: ' + JSON.stringify(program));
 
     Alloy.Collections.matchesday.setID(args.programCode);
 
@@ -192,9 +183,7 @@ function load() {
 };
 
 function unLoad() {
-    if (debug) {
-        Ti.API.debug('[' + $.main.name + ']', 'unLoad');
-    }
+    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
 
     loaded = false;
     openedWindow = false;

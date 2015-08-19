@@ -1,4 +1,3 @@
-var debug = true;
 var loaded = false;
 var openedWindow = false;
 
@@ -13,22 +12,16 @@ function initialize() {
     });
 
     $.main.addEventListener('open', function(e) {
-        if (debug) {
-            Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
-        }
+        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type + ' (', 'login stacks: ' + JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')) + ' ' + Alloy.Globals.login.stackWindows.length, ')');
     });
 
     $.main.addEventListener('close', function(e) {
-        if (debug) {
-            Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
-        }
+        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type + ' (', 'login stacks: ' + JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')) + ' ' + Alloy.Globals.login.stackWindows.length, ')');
     });
 };
 
 function load() {
-    if (debug) {
-        Ti.API.debug('[' + $.main.name + ']', 'load');
-    }
+    Alloy.Logger.debug('[' + $.main.name + '] load');
 
     loaded = true;
     openedWindow = false;
@@ -41,9 +34,7 @@ function load() {
 };
 
 function unLoad() {
-    if (debug) {
-        Ti.API.debug('[' + $.main.name + ']', 'unLoad');
-    }
+    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
 
     loaded = false;
     openedWindow = false;
