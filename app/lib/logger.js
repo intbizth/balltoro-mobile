@@ -66,12 +66,12 @@ exports.WARN = WARN;
 exports.ERROR = ERROR;
 exports.ALL = ALL;
 
-exports.off = function() {
-    enebled = false;
+exports.getEnabled = function() {
+    return enebled;
 };
 
-exports.on = function() {
-    enebled = true;
+exports.setEnabled = function(value) {
+    enebled = value;
 };
 
 exports.getLevel = function() {
