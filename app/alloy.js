@@ -64,7 +64,7 @@ Alloy.Notifier.showNodata = function(e) {
 // > vendor loading
 var Vendor = {};
 Vendor.Chance = require('chance.min'), Vendor.Chance = new Vendor.Chance();
-Vendor.Tinycolor = require('tinycolor');
+Vendor.Tinycolor = require('tinycolor.min');
 Vendor.underscoreString = require('underscore.string.min');
 _.mixin(Vendor.underscoreString.exports());
 Vendor.placehold = require('placehold.it');
