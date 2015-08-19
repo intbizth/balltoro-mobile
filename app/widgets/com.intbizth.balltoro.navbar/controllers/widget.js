@@ -1,4 +1,6 @@
-var debug = false;
+Widget.Logger = require('logger');
+
+var log = true;
 
 $.title.width = Ti.Platform.displayCaps.platformWidth - 140;
 
@@ -70,9 +72,7 @@ function setData(value) {
     value = transformData(value);
     $.navbar.set(value);
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'setdata:navbar:', $.navbar.toJSON());
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] setdata:navbar: ' + JSON.stringify($.navbar.toJSON()));
 };
 
 exports.setData = function(value) {
