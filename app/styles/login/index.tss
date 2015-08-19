@@ -1,6 +1,6 @@
 '#main': {
-	openDrawerGestureMode: 'OPEN_MODE_ALL',
-	closeDrawerGestureMode: 'CLOSE_MODE_ALL',
-	statusBarStyle: 'STATUSBAR_WHITE',
-	drawerLayout: true
+    openDrawerGestureMode: 'OPEN_MODE_ALL',
+    closeDrawerGestureMode: 'CLOSE_MODE_ALL',
+    statusBarStyle: 'STATUSBAR_WHITE',
+    drawerLayout: true
 }

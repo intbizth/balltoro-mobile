@@ -1,14 +1,14 @@
 <Alloy>
-	<View id="main">
-		<View id="previousView">
-			<View id="previousSubView" class="subView">
-				<Label id="previousLabel" text="L('com.intbizth.balltoro.matchsummytable.previous')" />
-			</View>
-		</View>
-		<View id="nextView">
-			<View id="nextSubView" class="subView">
-				<Label id="nextLabel" class="label" text="L('com.intbizth.balltoro.matchsummytable.next')" />
-			</View>
-		</View>
-	</View>
+    <View id="main">
+        <View id="previousView">
+            <View id="previousSubView" class="subView">
+                <Label id="previousLabel" text="L('com.intbizth.balltoro.matchsummytable.previous')" />
+            </View>
+        </View>
+        <View id="nextView">
+            <View id="nextSubView" class="subView">
+                <Label id="nextLabel" class="label" text="L('com.intbizth.balltoro.matchsummytable.next')" />
+            </View>
+        </View>
+    </View>
 </Alloy>

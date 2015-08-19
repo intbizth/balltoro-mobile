@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="com.intbizth.balltoro.winloseordraw.win">ช</string>
-	<string name="com.intbizth.balltoro.winloseordraw.draw">ส</string>
-	<string name="com.intbizth.balltoro.winloseordraw.lose">พ</string>
+    <string name="com.intbizth.balltoro.winloseordraw.win">ช</string>
+    <string name="com.intbizth.balltoro.winloseordraw.draw">ส</string>
+    <string name="com.intbizth.balltoro.winloseordraw.lose">พ</string>
 </resources>

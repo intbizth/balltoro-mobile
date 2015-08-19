@@ -1,47 +1,47 @@
 '#list':{
-	width:Ti.UI.FILL,
-	height: Ti.UI.FILL,
-	backgroundColor: 'transparent',
-	separatorStyle: Ti.UI.iPhone.ListViewSeparatorStyle.NONE
+    width:Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    backgroundColor: 'transparent',
+    separatorStyle: Ti.UI.iPhone.ListViewSeparatorStyle.NONE
 }
 
 '.subView':{
-	width:Ti.UI.SIZE,
-	height:Ti.UI.SIZE,
-	layout: 'horizontal'
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
+    layout: 'horizontal'
 }
 
 '.noDataLabel':{
-	font: {
-		fontSize: 12
-	},
-	textAlign: 'center'
+    font: {
+        fontSize: 12
+    },
+    textAlign: 'center'
 }
 
 '.headerLabel':{
-	font: {
-		fontSize: 12,
-		fontWeight: 'bold'
-	},
-	textAlign: 'center'
+    font: {
+        fontSize: 12,
+        fontWeight: 'bold'
+    },
+    textAlign: 'center'
 }
 
 '.rowLabel':{
-	font: {
-		fontSize: 12
-	},
-	textAlign: 'center'
+    font: {
+        fontSize: 12
+    },
+    textAlign: 'center'
 }
 
 '.teamLabel':{
-	font: {
-		fontSize: 12
-	},
-	textAlign: 'left'
+    font: {
+        fontSize: 12
+    },
+    textAlign: 'left'
 }
 
 '.rankingImage':{
-	width: 12,
-	height: 12,
-	defaultImage: ''
+    width: 12,
+    height: 12,
+    defaultImage: ''
 }

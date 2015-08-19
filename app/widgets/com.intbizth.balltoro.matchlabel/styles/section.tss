@@ -1,33 +1,33 @@
 '.section_row':{
-	width: Ti.UI.FILL,
-	height: 30,
-	backgroundColor: '#e6e7e8'
+    width: Ti.UI.FILL,
+    height: 30,
+    backgroundColor: '#e6e7e8'
 }
 
 '.section_iconView':{
-	left: 0,
-	width: 30,
-	height: 30
+    left: 0,
+    width: 30,
+    height: 30
 }
 
 '.section_icon':{
-	width: 26,
-	height: 26,
-	defaultImage: ''
+    width: 26,
+    height: 26,
+    defaultImage: ''
 }
 
 '.section_titleLabelView':{
-	left: 30,
-	width: Ti.UI.FILL,
-	height: 30
+    left: 30,
+    width: Ti.UI.FILL,
+    height: 30
 }
 
 '.section_titleLabel':{
-	width: Ti.UI.FILL,
-	height: 30,
-	font: {
-		fontSize: 14
-	},
-	color: '#58595b',
-	textAlign: 'left'
+    width: Ti.UI.FILL,
+    height: 30,
+    font: {
+        fontSize: 14
+    },
+    color: '#58595b',
+    textAlign: 'left'
 }

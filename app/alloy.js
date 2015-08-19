@@ -20,51 +20,51 @@ Alloy.String = require('alloy/string');
 Alloy.Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications');
 
 Alloy.Notifier.showError = function(e) {
-	var message = '';
+    var message = '';
 
-	if (_.isNull(e.response)) {
-		message = L('notconnectedtonetwork');
-	} else {
-		try {
-			var data = JSON.parse(e.response);
-			message = [];
+    if (_.isNull(e.response)) {
+        message = L('notconnectedtonetwork');
+    } else {
+        try {
+            var data = JSON.parse(e.response);
+            message = [];
 
-			if (data.message) {
-				message.push(data.message);
-			}
+            if (data.message) {
+                message.push(data.message);
+            }
 
-			if (data.code) {
-				message.push('(' + data.code + ')');
-			}
+            if (data.code) {
+                message.push('(' + data.code + ')');
+            }
 
-			message = message.join(' ');
-		} catch(e) {
-			message = L('dataloadfailure');
-		}
-	}
+            message = message.join(' ');
+        } catch(e) {
+            message = L('dataloadfailure');
+        }
+    }
 
-	Alloy.Notifier.show({
-		message : message,
-		style : 'error',
-		icon : '/images/notifications/warn.png',
-		duration : 3000
-	});
+    Alloy.Notifier.show({
+        message : message,
+        style : 'error',
+        icon : '/images/notifications/warn.png',
+        duration : 3000
+    });
 };
 
 Alloy.Notifier.showNodata = function(e) {
-	Alloy.Notifier.show({
-		message : L('nodata'),
-		style : 'warn',
-		icon : '/images/notifications/database.png',
-		duration : 3000
-	});
+    Alloy.Notifier.show({
+        message : L('nodata'),
+        style : 'warn',
+        icon : '/images/notifications/database.png',
+        duration : 3000
+    });
 };
 // < alloy loading
 
 // > vendor loading
 var Vendor = {};
 Vendor.Chance = require('chance.min'), Vendor.Chance = new Vendor.Chance();
-Vendor.Tinycolor = require('tinycolor');
+Vendor.Tinycolor = require('tinycolor.min');
 Vendor.underscoreString = require('underscore.string.min');
 _.mixin(Vendor.underscoreString.exports());
 Vendor.placehold = require('placehold.it');

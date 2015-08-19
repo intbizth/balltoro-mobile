@@ -8,22 +8,18 @@ function initialize() {
     }
 
     $.navbarView.setData({
-        id : 'nologin.signin.title',
-        title : L('nologin.signin.title'),
+        id : 'nologin.register.title',
+        title : L('nologin.register.title'),
         leftIcon : 'arrow_left',
         leftTitle : L('back')
     });
 
     $.navbarView.on('left:click', function(e) {
-        // $.main.close();
+        $.main.close();
     });
 
     $.main.addEventListener('open', function(e) {
         load();
-
-        _.delay(function() {
-            Alloy.Globals.login.force();
-        }, 1000);
 
         Alloy.Globals.nologin.stackWindows.push($.main);
 

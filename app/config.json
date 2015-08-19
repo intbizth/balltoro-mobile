@@ -1,20 +1,20 @@
 {
-	"global": {},
-	"env:development": {},
-	"env:test": {},
-	"env:production": {},
-	"os:android": {},
-	"os:ios": {},
-	"os:mobileweb": {},
-	"os:windows": {},
-	"dependencies": {
-		"nl.fokkezb.drawer": "1.1.1",
-		"com.intbizth.balltoro.navbar": "1.0",
-		"com.intbizth.balltoro.powerbar": "1.0",
-		"com.intbizth.balltoro.winloseordraw": "1.0",
-		"com.intbizth.balltoro.matchlabel": "1.0",
-		"com.intbizth.balltoro.matchsummytable": "1.0",
-		"com.intbizth.balltoro.leftmenu": "1.0",
-		"com.caffeinalab.titanium.notifications": "1.6.0"
-	}
+    "global": {},
+    "env:development": {},
+    "env:test": {},
+    "env:production": {},
+    "os:android": {},
+    "os:ios": {},
+    "os:mobileweb": {},
+    "os:windows": {},
+    "dependencies": {
+        "nl.fokkezb.drawer": "1.1.1",
+        "com.intbizth.balltoro.navbar": "1.0",
+        "com.intbizth.balltoro.powerbar": "1.0",
+        "com.intbizth.balltoro.winloseordraw": "1.0",
+        "com.intbizth.balltoro.matchlabel": "1.0",
+        "com.intbizth.balltoro.matchsummytable": "1.0",
+        "com.intbizth.balltoro.leftmenu": "1.0",
+        "com.caffeinalab.titanium.notifications": "1.6.0"
+    }
 }

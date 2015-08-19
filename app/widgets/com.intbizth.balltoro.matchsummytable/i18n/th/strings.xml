@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="com.intbizth.balltoro.matchsummytable.previous">ก่อนหน้า</string>
-	<string name="com.intbizth.balltoro.matchsummytable.next">หน้าถัดไป</string>
-	<string name="com.intbizth.balltoro.matchsummytable.nodata">ไม่พบข้อมูล</string>
-	<string name="com.intbizth.balltoro.matchsummytable.competition">รายการ</string>
-	<string name="com.intbizth.balltoro.matchsummytable.date">วันที่</string>
-	<string name="com.intbizth.balltoro.matchsummytable.fulltime">จบ</string>
-	<string name="com.intbizth.balltoro.matchsummytable.position">ลำดับ</string>
-	<string name="com.intbizth.balltoro.matchsummytable.team">ทีม</string>
-	<string name="com.intbizth.balltoro.matchsummytable.goal_difference">ลูก</string>
-	<string name="com.intbizth.balltoro.matchsummytable.points">คะแนน</string>
-	<string name="com.intbizth.balltoro.matchsummytable.played">แข่ง</string>
-	<string name="com.intbizth.balltoro.matchsummytable.win">ชนะ</string>
-	<string name="com.intbizth.balltoro.matchsummytable.draw">เสมอ</string>
-	<string name="com.intbizth.balltoro.matchsummytable.lose">แพ้</string>
+    <string name="com.intbizth.balltoro.matchsummytable.previous">ก่อนหน้า</string>
+    <string name="com.intbizth.balltoro.matchsummytable.next">หน้าถัดไป</string>
+    <string name="com.intbizth.balltoro.matchsummytable.nodata">ไม่พบข้อมูล</string>
+    <string name="com.intbizth.balltoro.matchsummytable.competition">รายการ</string>
+    <string name="com.intbizth.balltoro.matchsummytable.date">วันที่</string>
+    <string name="com.intbizth.balltoro.matchsummytable.fulltime">จบ</string>
+    <string name="com.intbizth.balltoro.matchsummytable.position">ลำดับ</string>
+    <string name="com.intbizth.balltoro.matchsummytable.team">ทีม</string>
+    <string name="com.intbizth.balltoro.matchsummytable.goal_difference">ลูก</string>
+    <string name="com.intbizth.balltoro.matchsummytable.points">คะแนน</string>
+    <string name="com.intbizth.balltoro.matchsummytable.played">แข่ง</string>
+    <string name="com.intbizth.balltoro.matchsummytable.win">ชนะ</string>
+    <string name="com.intbizth.balltoro.matchsummytable.draw">เสมอ</string>
+    <string name="com.intbizth.balltoro.matchsummytable.lose">แพ้</string>
 </resources>

@@ -1,123 +1,123 @@
 '.gamelivehalftime_row':{
-	width: Ti.UI.FILL,
-	height: 60,
-	backgroundColor: '#ffffff'
+    width: Ti.UI.FILL,
+    height: 60,
+    backgroundColor: '#ffffff'
 }
 
 '.gamelivehalftime_leftView':{
-	left: 0,
-	width: '40%',
-	backgroundColor: '#ffffff',
-	backgroundColorInAct: '#ffffff',
-	backgroundColorAct: '#d1d3d4'
+    left: 0,
+    width: '40%',
+    backgroundColor: '#ffffff',
+    backgroundColorInAct: '#ffffff',
+    backgroundColorAct: '#d1d3d4'
 }
 
 '.gamelivehalftime_leftIconView':{
-	left: 0,
-	width: 60,
-	height: 60
+    left: 0,
+    width: 60,
+    height: 60
 }
 
 '.gamelivehalftime_leftIcon':{
-	width: 56,
-	height: 56,
-	defaultImage: ''
+    width: 56,
+    height: 56,
+    defaultImage: ''
 }
 
 '.gamelivehalftime_leftLabelView':{
-	left: 60,
-	width: Ti.UI.SIZE,
-	height: 60
+    left: 60,
+    width: Ti.UI.SIZE,
+    height: 60
 }
 
 '.gamelivehalftime_leftLabel':{
-	width: Ti.UI.SIZE,
-	height: 60,
-	font: {
-		fontSize: 14
-	},
-	textAlign: 'center'
+    width: Ti.UI.SIZE,
+    height: 60,
+    font: {
+        fontSize: 14
+    },
+    textAlign: 'center'
 }
 
 '.gamelivehalftime_rightView':{
-	right: 0,
-	width: '40%',
-	backgroundColor: '#ffffff',
-	backgroundColorInAct: '#ffffff',
-	backgroundColorAct: '#d1d3d4'
+    right: 0,
+    width: '40%',
+    backgroundColor: '#ffffff',
+    backgroundColorInAct: '#ffffff',
+    backgroundColorAct: '#d1d3d4'
 }
 
 '.gamelivehalftime_rightIconView':{
-	right: 0,
-	width: 60,
-	height: 60
+    right: 0,
+    width: 60,
+    height: 60
 }
 
 '.gamelivehalftime_rightIcon':{
-	width: 56,
-	height: 56,
-	defaultImage: ''
+    width: 56,
+    height: 56,
+    defaultImage: ''
 }
 
 '.gamelivehalftime_rightLabelView':{
-	right: 60,
-	width: Ti.UI.SIZE,
-	height: 60
+    right: 60,
+    width: Ti.UI.SIZE,
+    height: 60
 }
 
 '.gamelivehalftime_rightLabel':{
-	width: Ti.UI.SIZE,
-	height: 60,
-	font: {
-		fontSize: 14
-	},
-	textAlign: 'center'
+    width: Ti.UI.SIZE,
+    height: 60,
+    font: {
+        fontSize: 14
+    },
+    textAlign: 'center'
 }
 
 '.gamelivehalftime_centerView':{
-	width: '20%',
-	backgroundColor: '#4188c7',
-	backgroundColorInAct: '#4188c7',
-	backgroundColorAct: '#d1d3d4'
+    width: '20%',
+    backgroundColor: '#4188c7',
+    backgroundColorInAct: '#4188c7',
+    backgroundColorAct: '#d1d3d4'
 }
 
 '.gamelivehalftime_centerSubView':{
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	layout: 'vertical'
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    layout: 'vertical'
 }
 
 '.gamelivehalftime_liveLabel':{
-	top: 0,
-	width: Ti.UI.SIZE,
-	height: 16,
-	font: {
-		fontSize: 14,
-		fontWeight: 'bold'
-	},,
-	text: L( 'com.intbizth.balltoro.matchlabel.live'),
-	color: '#caf906'
+    top: 0,
+    width: Ti.UI.SIZE,
+    height: 16,
+    font: {
+        fontSize: 14,
+        fontWeight: 'bold'
+    },,
+    text: L( 'com.intbizth.balltoro.matchlabel.live'),
+    color: '#caf906'
 }
 
 '.gamelivehalftime_scoreLabel':{
-	top: 0,
-	width: Ti.UI.SIZE,
-	height: 22,
-	font: {
-		fontSize: 20
-	},
-	textAlign: 'center',
-	color: '#ffffff'
+    top: 0,
+    width: Ti.UI.SIZE,
+    height: 22,
+    font: {
+        fontSize: 20
+    },
+    textAlign: 'center',
+    color: '#ffffff'
 }
 
 '.gamelivehalftime_statusLabel':{
-	top: 0,
-	width: Ti.UI.SIZE,
-	height: 16,
-	font: {
-		fontSize: 14
-	},
-	textAlign: 'center',
-	text: L( 'com.intbizth.balltoro.matchlabel.halftime'),
-	color: '#ffffff'
+    top: 0,
+    width: Ti.UI.SIZE,
+    height: 16,
+    font: {
+        fontSize: 14
+    },
+    textAlign: 'center',
+    text: L( 'com.intbizth.balltoro.matchlabel.halftime'),
+    color: '#ffffff'
 }

@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<string name="com.intbizth.balltoro.leftmenu.home_feed">หน้าแรก</string>
-	<string name="com.intbizth.balltoro.leftmenu.news">ข่าว</string>
-	<string name="com.intbizth.balltoro.leftmenu.match">รายการแข่งขัน</string>
-	<string name="com.intbizth.balltoro.leftmenu.league_game">ลีกเกม</string>
-	<string name="com.intbizth.balltoro.leftmenu.people_ranking">ลำดับ</string>
-	<string name="com.intbizth.balltoro.leftmenu.fanzone">แฟนโซน</string>
-	<string name="com.intbizth.balltoro.leftmenu.reward">รางวัล</string>
-	<string name="com.intbizth.balltoro.leftmenu.settings">ตั้งค่า</string>
-	<string name="com.intbizth.balltoro.leftmenu.profile_setting">ตั้งค่าข้อมูลส่วนตัว</string>
-	<string name="com.intbizth.balltoro.leftmenu.game_setting">ตั้งค่าเกม</string>
-	<string name="com.intbizth.balltoro.leftmenu.app_setting">ตั้งค่าแอพ</string>
-	<string name="com.intbizth.balltoro.leftmenu.more">อื่นๆ</string>
-	<string name="com.intbizth.balltoro.leftmenu.sign_out">ล็อกเอาท์</string>
+    <string name="com.intbizth.balltoro.leftmenu.home_feed">หน้าแรก</string>
+    <string name="com.intbizth.balltoro.leftmenu.news">ข่าว</string>
+    <string name="com.intbizth.balltoro.leftmenu.match">รายการแข่งขัน</string>
+    <string name="com.intbizth.balltoro.leftmenu.league_game">ลีกเกม</string>
+    <string name="com.intbizth.balltoro.leftmenu.people_ranking">ลำดับ</string>
+    <string name="com.intbizth.balltoro.leftmenu.fanzone">แฟนโซน</string>
+    <string name="com.intbizth.balltoro.leftmenu.reward">รางวัล</string>
+    <string name="com.intbizth.balltoro.leftmenu.settings">ตั้งค่า</string>
+    <string name="com.intbizth.balltoro.leftmenu.profile_setting">ตั้งค่าข้อมูลส่วนตัว</string>
+    <string name="com.intbizth.balltoro.leftmenu.game_setting">ตั้งค่าเกม</string>
+    <string name="com.intbizth.balltoro.leftmenu.app_setting">ตั้งค่าแอพ</string>
+    <string name="com.intbizth.balltoro.leftmenu.more">อื่นๆ</string>
+    <string name="com.intbizth.balltoro.leftmenu.sign_out">ล็อกเอาท์</string>
 </resources>

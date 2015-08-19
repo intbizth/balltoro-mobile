@@ -1,37 +1,37 @@
 '.programs_row':{
-	height: 40,
-	backgroundColor: '#ffffff',
-	backgroundColorInAct: '#ffffff',
-	backgroundColorAct: '#d1d3d4'
+    height: 40,
+    backgroundColor: '#ffffff',
+    backgroundColorInAct: '#ffffff',
+    backgroundColorAct: '#d1d3d4'
 }
 
 '.programs_subview':{
-	layout: 'horizontal'
+    layout: 'horizontal'
 }
 
 '.programs_iconView':{
-	left: 30,
-	width: 40,
-	height: 40
+    left: 30,
+    width: 40,
+    height: 40
 }
 
 '.programs_icon':{
-	width: 25,
-	height: 25,
-	defaultImage: ''
+    width: 25,
+    height: 25,
+    defaultImage: ''
 }
 
 '.programs_labelView':{
-	left: 0
+    left: 0
 }
 
 '.programs_label':{
-	left: 10,
-	width: Ti.UI.SIZE,
-	height: 40,
-	textAlign: 'left',
-	color: '#000',
-	font: {
-		fontSize: 14
-	}
+    left: 10,
+    width: Ti.UI.SIZE,
+    height: 40,
+    textAlign: 'left',
+    color: '#000',
+    font: {
+        fontSize: 14
+    }
 }

@@ -1,11 +1,11 @@
 <Alloy>
-	<Window id="main">
-		<Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
-		<View id="content">
-			<View id="contentView"></View>
-			<View id="activityIndicatorView">
-				<ActivityIndicator id="activityIndicator" />
-			</View>
-		</View>
-	</Window>
+    <Window id="main">
+        <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
+        <View id="content">
+            <View id="contentView"></View>
+            <View id="activityIndicatorView">
+                <ActivityIndicator id="activityIndicator" />
+            </View>
+        </View>
+    </Window>
 </Alloy>

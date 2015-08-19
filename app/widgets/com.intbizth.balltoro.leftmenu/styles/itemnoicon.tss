@@ -1,25 +1,25 @@
 '.itemNoIcon_row':{
-	height: 50,
-	backgroundColor: '#ffffff',
-	backgroundColorInAct: '#ffffff',
-	backgroundColorAct: '#d1d3d4'
+    height: 50,
+    backgroundColor: '#ffffff',
+    backgroundColorInAct: '#ffffff',
+    backgroundColorAct: '#d1d3d4'
 }
 
 '.itemNoIcon_subview':{
-	layout: 'horizontal'
+    layout: 'horizontal'
 }
 
 '.itemNoIcon_labelView':{
-	left: 0
+    left: 0
 }
 
 '.itemNoIcon_label':{
-	left: 10,
-	width: Ti.UI.SIZE,
-	height: 50,
-	textAlign: 'left',
-	color: '#000',
-	font: {
-		fontSize: 14
-	}
+    left: 10,
+    width: Ti.UI.SIZE,
+    height: 50,
+    textAlign: 'left',
+    color: '#000',
+    font: {
+        fontSize: 14
+    }
 }

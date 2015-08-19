@@ -1,55 +1,55 @@
 '.sectionNoIconAccordion_row':{
-	height: 50,
-	backgroundColor: '#f1f2f2',
-	backgroundColorInAct: '#f1f2f2',
-	backgroundColorAct: '#d1d3d4'
+    height: 50,
+    backgroundColor: '#f1f2f2',
+    backgroundColorInAct: '#f1f2f2',
+    backgroundColorAct: '#d1d3d4'
 }
 
 '.sectionNoIconAccordion_subview':{
-	layout: 'horizontal'
+    layout: 'horizontal'
 }
 
 '.sectionNoIconAccordion_labelView':{
-	left: 0
+    left: 0
 }
 
 '.sectionNoIconAccordion_label':{
-	left: 10,
-	width: Ti.UI.SIZE,
-	height: 50,
-	textAlign: 'left',
-	color: '#000',
-	font: {
-		fontSize: 14
-	}
+    left: 10,
+    width: Ti.UI.SIZE,
+    height: 50,
+    textAlign: 'left',
+    color: '#000',
+    font: {
+        fontSize: 14
+    }
 }
 
 '.sectionNoIconAccordion_buttonView':{
-	right: 0,
-	width: 50,
-	height: 50
+    right: 0,
+    width: 50,
+    height: 50
 }
 
 '.sectionNoIconAccordion_buttonLineView':{
-	left: 0,
-	width: 1,
-	height: 40,
-	image: WPATH( 'images/000000.png'),
-	backgroundRepeat: true
+    left: 0,
+    width: 1,
+    height: 40,
+    image: WPATH( 'images/000000.png'),
+    backgroundRepeat: true
 }
 
 '.sectionNoIconAccordion_arrow':{
-	width: 15,
-	height: 15,
-	image: WPATH( 'images/down.png'),
-	imageDown: WPATH( 'images/down.png'),
-	imageUp: WPATH( 'images/up.png')
+    width: 15,
+    height: 15,
+    image: WPATH( 'images/down.png'),
+    imageDown: WPATH( 'images/down.png'),
+    imageUp: WPATH( 'images/up.png')
 }
 
 '.sectionNoIconAccordion_lineView':{
-	bottom: 0,
-	width: Ti.UI.FILL,
-	height: 1,
-	image: WPATH( 'images/ffffff.png'),
-	backgroundRepeat: true
+    bottom: 0,
+    width: Ti.UI.FILL,
+    height: 1,
+    image: WPATH( 'images/ffffff.png'),
+    backgroundRepeat: true
 }

@@ -1,215 +1,215 @@
 <Alloy>
-	<Collection src="matchelabel" />
-	<View id= "main">
-		<ListView id="list" onPull="pull" onPullend="pullend" onItemclick="itemclick">
-			<Templates>
-				<ItemTemplate name="nodata" class="nodata_row">
-					<Label class="nodata_label" />
-				</ItemTemplate>
-				<ItemTemplate name="after" class="after_row">
-					<View bindId="view">
-						<View class="after_leftView" bindId="leftView">
-							<View class="after_leftIconView">
-								<ImageView class="after_leftIcon" bindId="leftIcon" />
-							</View>
-							<View class="after_leftLabelView">
-								<Label class="after_leftLabel" bindId="leftLabel" />
-							</View>
-						</View>
-						<View class="after_centerView" bindId="centerView">
-							<View class="after_centerSubView">
-								<Label class="after_scoreLabel" bindId="scoreLabel" />
-								<Label class="after_startDateLabel" bindId="startDateLabel" />
-							</View>
-						</View>
-						<View class="after_rightView" bindId="rightView">
-							<View class="after_rightLabelView">
-								<Label class="after_rightLabel" bindId="rightLabel" />
-							</View>
-							<View class="after_rightIconView">
-								<ImageView class="after_rightIcon" bindId="rightIcon" />
-							</View>
-						</View>
-					</View>
-				</ItemTemplate>
-				<ItemTemplate name="before" class="before_row">
-					<View bindId="view">
-						<View class="before_leftView" bindId="leftView">
-							<View class="before_leftIconView">
-								<ImageView class="before_leftIcon" bindId="leftIcon" />
-							</View>
-							<View class="before_leftLabelView">
-								<Label class="before_leftLabel" bindId="leftLabel" />
-							</View>
-						</View>
-						<View class="before_centerView" bindId="centerView">
-							<View class="before_centerSubView">
-								<Label class="before_startTimeLabel" bindId="startTimeLabel" />
-								<Label class="before_startDateLabel" bindId="startDateLabel" />
-							</View>
-						</View>
-						<View class="before_rightView" bindId="rightView">
-							<View class="before_rightLabelView">
-								<Label class="before_rightLabel" bindId="rightLabel" />
-							</View>
-							<View class="before_rightIconView">
-								<ImageView class="before_rightIcon" bindId="rightIcon" />
-							</View>
-						</View>
-					</View>
-				</ItemTemplate>
-				<ItemTemplate name="gameafter" class="gameafter_row">
-					<View bindId="view">
-						<View class="gameafter_leftView" bindId="leftView">
-							<View class="gameafter_leftIconView">
-								<ImageView class="gameafter_leftIcon" bindId="leftIcon" />
-							</View>
-							<View class="gameafter_leftLabelView">
-								<Label class="gameafter_leftLabel" bindId="leftLabel" />
-							</View>
-						</View>
-						<View class="gameafter_centerView" bindId="centerView">
-							<View class="gameafter_centerSubView">
-								<Label class="gameafter_liveLabel" />
-								<Label class="gameafter_scoreLabel" bindId="scoreLabel" />
-								<Label class="gameafter_statusLabel" />
-							</View>
-						</View>
-						<View class="gameafter_rightView" bindId="rightView">
-							<View class="gameafter_rightLabelView">
-								<Label class="gameafter_rightLabel" bindId="rightLabel" />
-							</View>
-							<View class="gameafter_rightIconView">
-								<ImageView class="gameafter_rightIcon" bindId="rightIcon" />
-							</View>
-						</View>
-					</View>
-				</ItemTemplate>
-				<ItemTemplate name="gamebefore" class="gamebefore_row">
-					<View bindId="view">
-						<View class="gamebefore_leftView" bindId="leftView">
-							<View class="gamebefore_leftIconView">
-								<ImageView class="gamebefore_leftIcon" bindId="leftIcon" />
-							</View>
-							<View class="gamebefore_leftLabelView">
-								<Label class="gamebefore_leftLabel" bindId="leftLabel" />
-							</View>
-						</View>
-						<View class="gamebefore_centerView" bindId="centerView">
-							<View class="gamebefore_centerSubView">
-								<Label class="gamebefore_vsLabel" />
-								<Label class="gamebefore_startTimeLabel" bindId="startTimeLabel" />
-							</View>
-						</View>
-						<View class="gamebefore_rightView" bindId="rightView">
-							<View class="gamebefore_rightLabelView">
-								<Label class="gamebefore_rightLabel" bindId="rightLabel" />
-							</View>
-							<View class="gamebefore_rightIconView">
-								<ImageView class="gamebefore_rightIcon" bindId="rightIcon" />
-							</View>
-						</View>
-					</View>
-				</ItemTemplate>
-				<ItemTemplate name="gamebefore" class="gamebefore_row">
-					<View bindId="view">
-						<View class="gamebefore_leftView" bindId="leftView">
-							<View class="gamebefore_leftIconView">
-								<ImageView class="gamebefore_leftIcon" bindId="leftIcon" />
-							</View>
-							<View class="gamebefore_leftLabelView">
-								<Label class="gamebefore_leftLabel" bindId="leftLabel" />
-							</View>
-						</View>
-						<View class="gamebefore_centerView" bindId="centerView">
-							<View class="gamebefore_centerSubView">
-								<Label class="gamebefore_vsLabel" />
-								<Label class="gamebefore_startTimeLabel" bindId="startTimeLabel" />
-							</View>
-						</View>
-						<View class="gamebefore_rightView" bindId="rightView">
-							<View class="gamebefore_rightLabelView">
-								<Label class="gamebefore_rightLabel" bindId="rightLabel" />
-							</View>
-							<View class="gamebefore_rightIconView">
-								<ImageView class="gamebefore_rightIcon" bindId="rightIcon" />
-							</View>
-						</View>
-					</View>
-				</ItemTemplate>
-				<ItemTemplate name="gamelive" class="gamelive_row">
-					<View bindId="view">
-						<View class="gamelive_leftView" bindId="leftView">
-							<View class="gamelive_leftIconView">
-								<ImageView class="gamelive_leftIcon" bindId="leftIcon" />
-							</View>
-							<View class="gamelive_leftLabelView">
-								<Label class="gamelive_leftLabel" bindId="leftLabel" />
-							</View>
-						</View>
-						<View class="gamelive_centerView" bindId="centerView">
-							<View class="gamelive_centerSubView">
-								<Label class="gamelive_liveLabel" />
-								<Label class="gamelive_scoreLabel" bindId="scoreLabel" />
-								<Label class="gamelive_startTimeLabel" bindId="startTimeLabel" />
-							</View>
-						</View>
-						<View class="gamelive_rightView" bindId="rightView">
-							<View class="gamelive_rightLabelView">
-								<Label class="gamelive_rightLabel" bindId="rightLabel" />
-							</View>
-							<View class="gamelive_rightIconView">
-								<ImageView class="gamelive_rightIcon" bindId="rightIcon" />
-							</View>
-						</View>
-					</View>
-				</ItemTemplate>
-				<ItemTemplate name="gamelivehalftime" class="gamelivehalftime_row">
-					<View bindId="view">
-						<View class="gamelivehalftime_leftView" bindId="leftView">
-							<View class="gamelivehalftime_leftIconView">
-								<ImageView class="gamelivehalftime_leftIcon" bindId="leftIcon" />
-							</View>
-							<View class="gamelivehalftime_leftLabelView">
-								<Label class="gamelivehalftime_leftLabel" bindId="leftLabel" />
-							</View>
-						</View>
-						<View class="gamelivehalftime_centerView" bindId="centerView">
-							<View class="gamelivehalftime_centerSubView">
-								<Label class="gamelivehalftime_liveLabel" />
-								<Label class="gamelivehalftime_scoreLabel" bindId="scoreLabel" />
-								<Label class="gamelivehalftime_statusLabel" bindId="statusLabel" />
-							</View>
-						</View>
-						<View class="gamelivehalftime_rightView" bindId="rightView">
-							<View class="gamelivehalftime_rightLabelView">
-								<Label class="gamelivehalftime_rightLabel" bindId="rightLabel" />
-							</View>
-							<View class="gamelivehalftime_rightIconView">
-								<ImageView class="gamelivehalftime_rightIcon" bindId="rightIcon" />
-							</View>
-						</View>
-					</View>
-				</ItemTemplate>
-				<ItemTemplate name="section" class="section_row">
-					<View bindId="view">
-						<View class="section_iconView">
-							<ImageView class="section_icon" bindId="icon" />
-						</View>
-						<View class="section_titleLabelView">
-							<Label class="section_titleLabel" bindId="title" />
-						</View>
-					</View>
-				</ItemTemplate>
-			</Templates>
-			<PullView>
-				<View id="pullView">
-					<ActivityIndicator id="activityIndicator" />
-				</View>
-			</PullView>
-			<ListSection id="section" dataCollection="matchelabel">
-				<ListItem class="listItem" template="{template}" icon:image="{icon}" title:text="{title}" leftView:backgroundColor="{leftViewBackgroundColor}" leftView:backgroundColorInAct="{leftViewBackgroundColorInAct}" leftView:backgroundColorAct="{leftViewBackgroundColorAct}" leftIcon:image="{leftIcon}" leftLabel:text="{leftLabel}" centerView:backgroundColor="{centerViewBackgroundColor}" centerView:backgroundColorInAct="{centerViewBackgroundColorInAct}" centerView:backgroundColorAct="{centerViewBackgroundColorAct}" rightView:backgroundColor="{rightViewBackgroundColor}" rightView:backgroundColorInAct="{rightViewBackgroundColorInAct}" rightView:backgroundColorAct="{rightViewBackgroundColorAct}" rightIcon:image="{rightIcon}" rightLabel:text="{rightLabel}" scoreLabel:text="{scoreLabel}" startTimeLabel:text="{startTimeLabel}" startDateLabel:text="{startDateLabel}" />
-			</ListSection>
-		</ListView>
-	</View>
+    <Collection src="matchelabel" />
+    <View id= "main">
+        <ListView id="list" onPull="pull" onPullend="pullend" onItemclick="itemclick">
+            <Templates>
+                <ItemTemplate name="nodata" class="nodata_row">
+                    <Label class="nodata_label" />
+                </ItemTemplate>
+                <ItemTemplate name="after" class="after_row">
+                    <View bindId="view">
+                        <View class="after_leftView" bindId="leftView">
+                            <View class="after_leftIconView">
+                                <ImageView class="after_leftIcon" bindId="leftIcon" />
+                            </View>
+                            <View class="after_leftLabelView">
+                                <Label class="after_leftLabel" bindId="leftLabel" />
+                            </View>
+                        </View>
+                        <View class="after_centerView" bindId="centerView">
+                            <View class="after_centerSubView">
+                                <Label class="after_scoreLabel" bindId="scoreLabel" />
+                                <Label class="after_startDateLabel" bindId="startDateLabel" />
+                            </View>
+                        </View>
+                        <View class="after_rightView" bindId="rightView">
+                            <View class="after_rightLabelView">
+                                <Label class="after_rightLabel" bindId="rightLabel" />
+                            </View>
+                            <View class="after_rightIconView">
+                                <ImageView class="after_rightIcon" bindId="rightIcon" />
+                            </View>
+                        </View>
+                    </View>
+                </ItemTemplate>
+                <ItemTemplate name="before" class="before_row">
+                    <View bindId="view">
+                        <View class="before_leftView" bindId="leftView">
+                            <View class="before_leftIconView">
+                                <ImageView class="before_leftIcon" bindId="leftIcon" />
+                            </View>
+                            <View class="before_leftLabelView">
+                                <Label class="before_leftLabel" bindId="leftLabel" />
+                            </View>
+                        </View>
+                        <View class="before_centerView" bindId="centerView">
+                            <View class="before_centerSubView">
+                                <Label class="before_startTimeLabel" bindId="startTimeLabel" />
+                                <Label class="before_startDateLabel" bindId="startDateLabel" />
+                            </View>
+                        </View>
+                        <View class="before_rightView" bindId="rightView">
+                            <View class="before_rightLabelView">
+                                <Label class="before_rightLabel" bindId="rightLabel" />
+                            </View>
+                            <View class="before_rightIconView">
+                                <ImageView class="before_rightIcon" bindId="rightIcon" />
+                            </View>
+                        </View>
+                    </View>
+                </ItemTemplate>
+                <ItemTemplate name="gameafter" class="gameafter_row">
+                    <View bindId="view">
+                        <View class="gameafter_leftView" bindId="leftView">
+                            <View class="gameafter_leftIconView">
+                                <ImageView class="gameafter_leftIcon" bindId="leftIcon" />
+                            </View>
+                            <View class="gameafter_leftLabelView">
+                                <Label class="gameafter_leftLabel" bindId="leftLabel" />
+                            </View>
+                        </View>
+                        <View class="gameafter_centerView" bindId="centerView">
+                            <View class="gameafter_centerSubView">
+                                <Label class="gameafter_liveLabel" />
+                                <Label class="gameafter_scoreLabel" bindId="scoreLabel" />
+                                <Label class="gameafter_statusLabel" />
+                            </View>
+                        </View>
+                        <View class="gameafter_rightView" bindId="rightView">
+                            <View class="gameafter_rightLabelView">
+                                <Label class="gameafter_rightLabel" bindId="rightLabel" />
+                            </View>
+                            <View class="gameafter_rightIconView">
+                                <ImageView class="gameafter_rightIcon" bindId="rightIcon" />
+                            </View>
+                        </View>
+                    </View>
+                </ItemTemplate>
+                <ItemTemplate name="gamebefore" class="gamebefore_row">
+                    <View bindId="view">
+                        <View class="gamebefore_leftView" bindId="leftView">
+                            <View class="gamebefore_leftIconView">
+                                <ImageView class="gamebefore_leftIcon" bindId="leftIcon" />
+                            </View>
+                            <View class="gamebefore_leftLabelView">
+                                <Label class="gamebefore_leftLabel" bindId="leftLabel" />
+                            </View>
+                        </View>
+                        <View class="gamebefore_centerView" bindId="centerView">
+                            <View class="gamebefore_centerSubView">
+                                <Label class="gamebefore_vsLabel" />
+                                <Label class="gamebefore_startTimeLabel" bindId="startTimeLabel" />
+                            </View>
+                        </View>
+                        <View class="gamebefore_rightView" bindId="rightView">
+                            <View class="gamebefore_rightLabelView">
+                                <Label class="gamebefore_rightLabel" bindId="rightLabel" />
+                            </View>
+                            <View class="gamebefore_rightIconView">
+                                <ImageView class="gamebefore_rightIcon" bindId="rightIcon" />
+                            </View>
+                        </View>
+                    </View>
+                </ItemTemplate>
+                <ItemTemplate name="gamebefore" class="gamebefore_row">
+                    <View bindId="view">
+                        <View class="gamebefore_leftView" bindId="leftView">
+                            <View class="gamebefore_leftIconView">
+                                <ImageView class="gamebefore_leftIcon" bindId="leftIcon" />
+                            </View>
+                            <View class="gamebefore_leftLabelView">
+                                <Label class="gamebefore_leftLabel" bindId="leftLabel" />
+                            </View>
+                        </View>
+                        <View class="gamebefore_centerView" bindId="centerView">
+                            <View class="gamebefore_centerSubView">
+                                <Label class="gamebefore_vsLabel" />
+                                <Label class="gamebefore_startTimeLabel" bindId="startTimeLabel" />
+                            </View>
+                        </View>
+                        <View class="gamebefore_rightView" bindId="rightView">
+                            <View class="gamebefore_rightLabelView">
+                                <Label class="gamebefore_rightLabel" bindId="rightLabel" />
+                            </View>
+                            <View class="gamebefore_rightIconView">
+                                <ImageView class="gamebefore_rightIcon" bindId="rightIcon" />
+                            </View>
+                        </View>
+                    </View>
+                </ItemTemplate>
+                <ItemTemplate name="gamelive" class="gamelive_row">
+                    <View bindId="view">
+                        <View class="gamelive_leftView" bindId="leftView">
+                            <View class="gamelive_leftIconView">
+                                <ImageView class="gamelive_leftIcon" bindId="leftIcon" />
+                            </View>
+                            <View class="gamelive_leftLabelView">
+                                <Label class="gamelive_leftLabel" bindId="leftLabel" />
+                            </View>
+                        </View>
+                        <View class="gamelive_centerView" bindId="centerView">
+                            <View class="gamelive_centerSubView">
+                                <Label class="gamelive_liveLabel" />
+                                <Label class="gamelive_scoreLabel" bindId="scoreLabel" />
+                                <Label class="gamelive_startTimeLabel" bindId="startTimeLabel" />
+                            </View>
+                        </View>
+                        <View class="gamelive_rightView" bindId="rightView">
+                            <View class="gamelive_rightLabelView">
+                                <Label class="gamelive_rightLabel" bindId="rightLabel" />
+                            </View>
+                            <View class="gamelive_rightIconView">
+                                <ImageView class="gamelive_rightIcon" bindId="rightIcon" />
+                            </View>
+                        </View>
+                    </View>
+                </ItemTemplate>
+                <ItemTemplate name="gamelivehalftime" class="gamelivehalftime_row">
+                    <View bindId="view">
+                        <View class="gamelivehalftime_leftView" bindId="leftView">
+                            <View class="gamelivehalftime_leftIconView">
+                                <ImageView class="gamelivehalftime_leftIcon" bindId="leftIcon" />
+                            </View>
+                            <View class="gamelivehalftime_leftLabelView">
+                                <Label class="gamelivehalftime_leftLabel" bindId="leftLabel" />
+                            </View>
+                        </View>
+                        <View class="gamelivehalftime_centerView" bindId="centerView">
+                            <View class="gamelivehalftime_centerSubView">
+                                <Label class="gamelivehalftime_liveLabel" />
+                                <Label class="gamelivehalftime_scoreLabel" bindId="scoreLabel" />
+                                <Label class="gamelivehalftime_statusLabel" bindId="statusLabel" />
+                            </View>
+                        </View>
+                        <View class="gamelivehalftime_rightView" bindId="rightView">
+                            <View class="gamelivehalftime_rightLabelView">
+                                <Label class="gamelivehalftime_rightLabel" bindId="rightLabel" />
+                            </View>
+                            <View class="gamelivehalftime_rightIconView">
+                                <ImageView class="gamelivehalftime_rightIcon" bindId="rightIcon" />
+                            </View>
+                        </View>
+                    </View>
+                </ItemTemplate>
+                <ItemTemplate name="section" class="section_row">
+                    <View bindId="view">
+                        <View class="section_iconView">
+                            <ImageView class="section_icon" bindId="icon" />
+                        </View>
+                        <View class="section_titleLabelView">
+                            <Label class="section_titleLabel" bindId="title" />
+                        </View>
+                    </View>
+                </ItemTemplate>
+            </Templates>
+            <PullView>
+                <View id="pullView">
+                    <ActivityIndicator id="activityIndicator" />
+                </View>
+            </PullView>
+            <ListSection id="section" dataCollection="matchelabel">
+                <ListItem class="listItem" template="{template}" icon:image="{icon}" title:text="{title}" leftView:backgroundColor="{leftViewBackgroundColor}" leftView:backgroundColorInAct="{leftViewBackgroundColorInAct}" leftView:backgroundColorAct="{leftViewBackgroundColorAct}" leftIcon:image="{leftIcon}" leftLabel:text="{leftLabel}" centerView:backgroundColor="{centerViewBackgroundColor}" centerView:backgroundColorInAct="{centerViewBackgroundColorInAct}" centerView:backgroundColorAct="{centerViewBackgroundColorAct}" rightView:backgroundColor="{rightViewBackgroundColor}" rightView:backgroundColorInAct="{rightViewBackgroundColorInAct}" rightView:backgroundColorAct="{rightViewBackgroundColorAct}" rightIcon:image="{rightIcon}" rightLabel:text="{rightLabel}" scoreLabel:text="{scoreLabel}" startTimeLabel:text="{startTimeLabel}" startDateLabel:text="{startDateLabel}" />
+            </ListSection>
+        </ListView>
+    </View>
 </Alloy>

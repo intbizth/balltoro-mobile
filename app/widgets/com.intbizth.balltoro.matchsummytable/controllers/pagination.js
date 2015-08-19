@@ -9,41 +9,41 @@ $.nextView.backgroundColor = args.next.backgroundColor;
 $.nextLabel.color = args.next.color;
 
 $.previousView.addEventListener('click', function(e) {
-	$.main.fireEvent('click:previous', e);
+    $.main.fireEvent('click:previous', e);
 });
 
 $.previousView.addEventListener('touchstart', function() {
-	$.previousSubView.opacity = $.previousSubView.opacityAct;
+    $.previousSubView.opacity = $.previousSubView.opacityAct;
 });
 
 $.previousView.addEventListener('touchmove', function() {
-	this.fireEvent('touchstart');
+    this.fireEvent('touchstart');
 });
 
 $.previousView.addEventListener('touchend', function() {
-	$.previousSubView.opacity = $.previousSubView.opacityInAct;
+    $.previousSubView.opacity = $.previousSubView.opacityInAct;
 });
 
 $.previousView.addEventListener('touchcancel', function() {
-	this.fireEvent('touchend');
+    this.fireEvent('touchend');
 });
 
 $.nextView.addEventListener('click', function(e) {
-	$.main.fireEvent('click:next', e);
+    $.main.fireEvent('click:next', e);
 });
 
 $.nextView.addEventListener('touchstart', function() {
-	$.nextSubView.opacity = $.nextSubView.opacityAct;
+    $.nextSubView.opacity = $.nextSubView.opacityAct;
 });
 
 $.nextView.addEventListener('touchmove', function() {
-	this.fireEvent('touchstart');
+    this.fireEvent('touchstart');
 });
 
 $.nextView.addEventListener('touchend', function() {
-	$.nextSubView.opacity = $.nextSubView.opacityInAct;
+    $.nextSubView.opacity = $.nextSubView.opacityInAct;
 });
 
 $.nextView.addEventListener('touchcancel', function() {
-	this.fireEvent('touchend');
+    this.fireEvent('touchend');
 });
