@@ -1,58 +1,58 @@
 '#main':{
-	width: Ti.UI.FILL,
-	height: Ti.UI.FILL
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL
 }
 
 '#list':{
-	width: Ti.UI.FILL,
-	height: Ti.UI.FILL
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL
 }
 
 '#list[platform=ios]':{
-	separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE
+    separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE
 }
 
 '.listItem[platform=ios]':{
-	selectionStyle:Ti.UI.iPhone.ListViewCellSelectionStyle.NONE
+    selectionStyle:Ti.UI.iPhone.ListViewCellSelectionStyle.NONE
 }
 
 '.insertItemAnimatetion[platform=ios]': {
-	animated: true,
-	animationStyle: Ti.UI.iPhone.RowAnimationStyle.TOP
+    animated: true,
+    animationStyle: Ti.UI.iPhone.RowAnimationStyle.TOP
 }
 
 '.deleteItemsAnimatetion[platform=ios]': {
-	animated: true,
-	animationStyle: Ti.UI.iPhone.RowAnimationStyle.NONE
+    animated: true,
+    animationStyle: Ti.UI.iPhone.RowAnimationStyle.NONE
 }
 
 '#activityIndicatorView':{
-	top: 0,
-	left: 0,
-	width: Ti.UI.FILL,
-	height: Ti.UI.FILL,
-	visible: false
+    top: 0,
+    left: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    visible: false
 }
 
 '#activityIndicatorSubView1':{
-	width: Ti.UI.FILL,
-	height: Ti.UI.FILL,
-	backgroundColor: '#000',
-	opacity: 0.4
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    backgroundColor: '#000',
+    opacity: 0.4
 }
 
 '#activityIndicatorSubView2':{
-	width: 40,
-	height: 40,
-	backgroundColor: '#000',
-	borderRadius: 10,
-	opacity: 0.9
+    width: 40,
+    height: 40,
+    backgroundColor: '#000',
+    borderRadius: 10,
+    opacity: 0.9
 }
 
 '#activityIndicator':{
-	visible: true
+    visible: true
 }
 
 '#activityIndicator[platform=ios]':{
-	style: Ti.UI.iPhone.ActivityIndicatorStyle.PLAIN
+    style: Ti.UI.iPhone.ActivityIndicatorStyle.PLAIN
 }
