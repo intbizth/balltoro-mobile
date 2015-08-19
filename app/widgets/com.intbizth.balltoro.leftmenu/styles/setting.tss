@@ -1,0 +1,45 @@
+'.setting_row':{
+	height: 40,
+	backgroundColor: '#162a37',
+	backgroundColorInAct: '#162a37',
+	backgroundColorAct: '#101f29'
+}
+
+'.setting_subview':{
+	layout: 'horizontal'
+}
+
+'.setting_iconView':{
+	left: 30,
+	width: 40,
+	height: 40
+}
+
+'.setting_icon':{
+	width: 25,
+	height: 25,
+	defaultImage: ''
+}
+
+'.setting_labelView':{
+	left: 0
+}
+
+'.setting_label':{
+	left: 10,
+	width: Ti.UI.SIZE,
+	height: 40,
+	textAlign: 'left',
+	color: '#fff',
+	font: {
+		fontSize: 14
+	}
+}
+
+'.setting_lineView':{
+	bottom: 0,
+	width: Ti.UI.FILL,
+	height: 1,
+	image: WPATH( 'images/213f53.png'),
+	backgroundRepeat: true
+}

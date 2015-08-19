@@ -1,0 +1,1 @@
+$.main.leftDrawerWidth = parseInt(Ti.Platform.displayCaps.platformWidth * 0.8);

@@ -1,0 +1,118 @@
+<Alloy>
+	<Collection src="menus" />
+	<Collection src="settings" />
+	<View id= "main">
+		<ListView id="list" onItemclick="itemclick">
+			<Templates>
+				<ItemTemplate name="section" class="section_row">
+					<View bindId="view">
+						<View class="section_subview">
+							<View class="section_iconView">
+								<ImageView class="section_icon" bindId="icon" />
+							</View>
+							<View class="section_labelView">
+								<Label class="section_label" bindId="label" />
+							</View>
+						</View>
+						<ImageView class="section_lineView" />
+					</View>
+				</ItemTemplate>
+				<ItemTemplate name="sectionNoIcon" class="sectionNoIcon_row">
+					<View bindId="view">
+						<View class="sectionNoIcon_subview">
+							<View class="sectionNoIcon_labelView">
+								<Label class="sectionNoIcon_label" bindId="label" />
+							</View>
+						</View>
+						<ImageView class="sectionNoIcon_lineView" />
+					</View>
+				</ItemTemplate>
+				<ItemTemplate name="sectionAccordion" class="sectionAccordion_row">
+					<View bindId="view">
+						<View class="sectionAccordion_subview">
+							<View class="sectionAccordion_iconView">
+								<ImageView class="sectionAccordion_icon" bindId="icon" />
+							</View>
+							<View class="sectionAccordion_labelView">
+								<Label class="sectionAccordion_label" bindId="label" />
+							</View>
+						</View>
+						<View class="sectionAccordion_buttonView">
+							<ImageView class="sectionAccordion_buttonLineView" />
+							<ImageView class="sectionAccordion_arrow" bindId="arrow" />
+						</View>
+						<ImageView class="sectionAccordion_lineView" />
+					</View>
+				</ItemTemplate>
+				<ItemTemplate name="sectionNoIconAccordion" class="sectionNoIconAccordion_row">
+					<View bindId="view">
+						<View class="sectionNoIconAccordion_subview">
+							<View class="sectionNoIconAccordion_labelView">
+								<Label class="sectionNoIconAccordion_label" bindId="label" />
+							</View>
+						</View>
+						<View class="sectionNoIconAccordion_buttonView">
+							<ImageView class="sectionNoIconAccordion_buttonLineView" />
+							<ImageView class="sectionNoIconAccordion_arrow" bindId="arrow" />
+						</View>
+						<ImageView class="sectionNoIconAccordion_lineView" />
+					</View>
+				</ItemTemplate>
+				<ItemTemplate name="item" class="item_row">
+					<View bindId="view">
+						<View class="item_subview">
+							<View class="item_iconView">
+								<ImageView class="item_icon" bindId="icon" />
+							</View>
+							<View class="item_labelView">
+								<Label class="item_label" bindId="label" />
+							</View>
+						</View>
+					</View>
+				</ItemTemplate>
+				<ItemTemplate name="itemNoIcon" class="itemNoIcon_row">
+					<View bindId="view">
+						<View class="itemNoIcon_subview">
+							<View class="itemNoIcon_labelView">
+								<Label class="itemNoIcon_label" bindId="label" />
+							</View>
+						</View>
+					</View>
+				</ItemTemplate>
+				<ItemTemplate name="programs" class="programs_row">
+					<View bindId="view">
+						<View class="programs_subview">
+							<View class="programs_iconView">
+								<ImageView class="programs_icon" bindId="icon" />
+							</View>
+							<View class="programs_labelView">
+								<Label class="programs_label" bindId="label" />
+							</View>
+						</View>
+					</View>
+				</ItemTemplate>
+				<ItemTemplate name="setting" class="setting_row">
+					<View bindId="view">
+						<View class="setting_subview">
+							<View class="setting_iconView">
+								<ImageView class="setting_icon" bindId="icon" />
+							</View>
+							<View class="setting_labelView">
+								<Label class="setting_label" bindId="label" />
+							</View>
+						</View>
+						<ImageView class="setting_lineView" />
+					</View>
+				</ItemTemplate>
+			</Templates>
+			<ListSection id="section" dataCollection="menus">
+				<ListItem class="listItem" template="{template}" name="{id}" accordion="{accordion}" view:backgroundColor="{backgroundColor}" view:backgroundColorInAct="{backgroundColorInAct}" view:backgroundColorAct="{backgroundColorAct}" icon:image="{icon}" label:text="{title}" arrow:image="{arrow}" arrow:imageDown="{arrowDown}" arrow:imageUp="{arrowUp}" />
+			</ListSection>
+		</ListView>
+		<View id="activityIndicatorView">
+			<View id="activityIndicatorSubView1" />
+			<View id="activityIndicatorSubView2" />
+			<ActivityIndicator id="activityIndicator" />
+		</View>
+	</View>
+</Alloy>

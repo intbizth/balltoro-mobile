@@ -1,0 +1,27 @@
+'#main':{
+	name: 'tester',
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	backgroundColor: '#0f181e',
+	navBarHidden: true,
+	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT,
+	layout: 'vertical'
+}
+
+'#content':{
+	top: 0,
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	layout: 'vertical'
+}
+
+'#winloseordrawTestView':{
+	width: Ti.UI.FILL,
+	height: 35
+}
+
+'#winloseordrawTestSubView':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: 'horizontal'
+}

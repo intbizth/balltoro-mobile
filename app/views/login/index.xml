@@ -1,0 +1,6 @@
+<Alloy>
+	<Widget id="main" src="nl.fokkezb.drawer">
+		<Window id="leftMainWindow" module="xp.ui" role="leftWindow" />
+		<Window id="centerMainWindow" module="xp.ui" role="centerWindow" />
+	</Widget>
+</Alloy>

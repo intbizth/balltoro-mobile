@@ -1,0 +1,43 @@
+'#main':{
+	width: 120,
+	height: 26,
+	borderRadius: 4
+}
+
+'#previousView':{
+	left: 0,
+	width: 60,
+	height: 26
+}
+
+'#previousLabel':{
+	width: 60,
+	height: 26,
+	font: {
+		fontSize: 12
+	},
+	textAlign: 'center'
+}
+
+'#nextView':{
+	right: 0,
+	width: 60,
+	height: 26
+}
+
+'#nextLabel':{
+	width: 60,
+	height: 26,
+	font: {
+		fontSize: 12
+	},
+	textAlign: 'center'
+}
+
+'.subView':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	opacity: 1,
+	opacityAct: 0.2,
+	opacityInAct: 1
+}

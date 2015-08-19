@@ -1,0 +1,47 @@
+'#main':{
+	width: Ti.UI.FILL,
+	height: Ti.UI.SIZE
+}
+
+'#content':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: 'horizontal'
+}
+
+'.label':{
+	font: {
+		fontSize: 16
+	}
+}
+
+'#leftLabel':{
+	textAlign: 'right'
+}
+
+'#rightLabel':{
+	textAlign: 'left'
+}
+
+'#centerView':{
+	height: 10
+}
+
+'#leftBarView':{
+	left: 0,
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL
+}
+
+'#rightBarView':{
+	right: 0,
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL
+}
+
+'#centerBarView':{
+	top: -7,
+	width: 14,
+	height: 14,
+	visible: false
+}

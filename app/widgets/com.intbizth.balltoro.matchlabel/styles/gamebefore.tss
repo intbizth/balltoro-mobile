@@ -1,0 +1,111 @@
+'.gamebefore_row':{
+	width: Ti.UI.FILL,
+	height: 60,
+	backgroundColor: '#ffffff'
+}
+
+'.gamebefore_leftView':{
+	left: 0,
+	width: '40%',
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
+}
+
+'.gamebefore_leftIconView':{
+	left: 0,
+	width: 60,
+	height: 60
+}
+
+'.gamebefore_leftIcon':{
+	width: 56,
+	height: 56,
+	defaultImage: ''
+}
+
+'.gamebefore_leftLabelView':{
+	left: 60,
+	width: Ti.UI.SIZE,
+	height: 60
+}
+
+'.gamebefore_leftLabel':{
+	width: Ti.UI.SIZE,
+	height: 60,
+	font: {
+		fontSize: 14
+	},
+	textAlign: 'center'
+}
+
+'.gamebefore_rightView':{
+	right: 0,
+	width: '40%',
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
+}
+
+'.gamebefore_rightIconView':{
+	right: 0,
+	width: 60,
+	height: 60
+}
+
+'.gamebefore_rightIcon':{
+	width: 56,
+	height: 56,
+	defaultImage: ''
+}
+
+'.gamebefore_rightLabelView':{
+	right: 60,
+	width: Ti.UI.SIZE,
+	height: 60
+}
+
+'.gamebefore_rightLabel':{
+	width: Ti.UI.SIZE,
+	height: 60,
+	font: {
+		fontSize: 14
+	},
+	textAlign: 'center'
+}
+
+'.gamebefore_centerView':{
+	width: '20%',
+	backgroundColor: '#4188c7',
+	backgroundColorInAct: '#4188c7',
+	backgroundColorAct: '#d1d3d4'
+}
+
+'.gamebefore_centerSubView':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: 'vertical'
+}
+
+'.gamebefore_vsLabel':{
+	top: 0,
+	width: Ti.UI.SIZE,
+	height: 28,
+	font: {
+		fontSize: 26
+	},
+	textAlign: 'center',
+	text: L( 'com.intbizth.balltoro.matchlabel.vs'),
+	color: '#ffffff'
+}
+
+'.gamebefore_startTimeLabel':{
+	top: 0,
+	width: Ti.UI.SIZE,
+	height: 16,
+	font: {
+		fontSize: 14
+	},
+	textAlign: 'center',
+	color: '#ffffff'
+}

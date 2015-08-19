@@ -1,0 +1,8 @@
+'#main': {
+	name: 'leftmenu',
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	backgroundColor: '#0f181e',
+	navBarHidden: true,
+	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
+}

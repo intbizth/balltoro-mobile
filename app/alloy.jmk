@@ -1,0 +1,50 @@
+var exec = require('child_process').exec;
+var concat = require('concat-files');
+
+task('pre:load', function(event, logger) {
+	var cmd = 'cd ' + event.dir.project + ' && `which git` -c diff.mnemonicprefix=false -c core.quotepath=false -c credential.helper=sourcetree checkout -- ' + event.dir.project + '/i18n/en/strings.xml ' + event.dir.project + '/i18n/th/strings.xml';
+
+	logger.debug('[execute] ' + cmd);
+
+	exec(cmd, function(error, stdout, stderr) {
+
+	});
+
+	var widgetPath = event.dir.project + '/app/widgets/com.intbizth.balltoro.leftmenu/styles';
+	var files = [widgetPath + '/style.tss', widgetPath + '/item.tss', widgetPath + '/itemnoicon.tss', widgetPath + '/programs.tss', widgetPath + '/section.tss', widgetPath + '/sectionaccordion.tss', widgetPath + '/sectionnoicon.tss', widgetPath + '/sectionnoiconaccordion.tss', widgetPath + '/setting.tss'];
+	var output = widgetPath + '/widget.tss';
+
+	concat(files, output, function() {
+		for (var i in files) {
+			logger.debug('[concat] ' + files[i] + ' => ' + output);
+		}
+	});
+
+	var widgetPath = event.dir.project + '/app/widgets/com.intbizth.balltoro.matchlabel/styles';
+	var files = [widgetPath + '/style.tss', widgetPath + '/nodata.tss', widgetPath + '/after.tss', widgetPath + '/before.tss', widgetPath + '/gameafter.tss', widgetPath + '/gamebefore.tss', widgetPath + '/gamelive.tss', widgetPath + '/gamelivehalftime.tss', widgetPath + '/section.tss'];
+	var output = widgetPath + '/widget.tss';
+
+	concat(files, output, function() {
+		for (var i in files) {
+			logger.debug('[concat] ' + files[i] + ' => ' + output);
+		}
+	});
+});
+
+task('pre:compile', function(event, logger) {
+
+});
+
+task('post:compile', function(event, logger) {
+	var cmd = 'find ' + event.dir.project + ' -name ".DS_Store" -delete';
+
+	logger.debug('[execute] ' + cmd);
+
+	exec(cmd, function(error, stdout, stderr) {
+
+	});
+});
+
+task('compile:app.js', function(event, logger) {
+
+});

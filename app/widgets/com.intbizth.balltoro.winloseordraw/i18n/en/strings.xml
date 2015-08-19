@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="com.intbizth.balltoro.winloseordraw.win">W</string>
+	<string name="com.intbizth.balltoro.winloseordraw.draw">D</string>
+	<string name="com.intbizth.balltoro.winloseordraw.lose">L</string>
+</resources>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ti:app xmlns:ti="http://ti.appcelerator.org">
+    <id>com.intbizth.balltoro</id>
+    <name>Balltoro</name>
+    <version>0.0.6</version>
+    <publisher>iunknown</publisher>
+    <url>http://balltoro.com</url>
+    <description>undefined</description>
+    <copyright>2015 by iunknown</copyright>
+    <icon>appicon.png</icon>
+    <fullscreen>false</fullscreen>
+    <navbar-hidden>false</navbar-hidden>
+    <analytics>true</analytics>
+    <guid>a0ac4503-d004-4758-9000-d0e658eb6114</guid>
+    <property name="ti.ui.defaultunit" type="string">dp</property>
+    <ios>
+        <plist>
+            <dict>
+                <key>UISupportedInterfaceOrientations~iphone</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UISupportedInterfaceOrientations~ipad</key>
+                <array>
+                    <string>UIInterfaceOrientationPortrait</string>
+                </array>
+                <key>UIRequiresPersistentWiFi</key>
+                <false/>
+                <key>UIPrerenderedIcon</key>
+                <true/>
+                <key>UIStatusBarHidden</key>
+                <false/>
+                <key>UIStatusBarStyle</key>
+                <string>UIStatusBarStyleDefault</string>
+                <key>CFBundleURLTypes</key>
+                <array>
+                    <dict>
+                        <key>CFBundleURLName</key>
+                        <string>com.intbizth.balltoro</string>
+                        <key>CFBundleURLSchemes</key>
+                        <array>
+                            <string>fb1003498859694845</string>
+                        </array>
+                    </dict>
+                </array>
+                <key>FacebookAppID</key>
+                <string>1003498859694845</string>
+                <key>FacebookDisplayName</key>
+                <string>Balltoro</string>
+            </dict>
+        </plist>
+    </ios>
+    <android xmlns:android="http://schemas.android.com/apk/res/android"/>
+    <mobileweb>
+        <precache/>
+        <splash>
+            <enabled>true</enabled>
+            <inline-css-images>true</inline-css-images>
+        </splash>
+        <theme>default</theme>
+    </mobileweb>
+    <modules>
+        <module platform="commonjs">ti.cloud</module>
+        <module platform="iphone">dk.napp.drawer</module>
+        <module platform="android">facebook</module>
+        <module platform="iphone">facebook</module>
+    </modules>
+    <deployment-targets>
+        <target device="android">true</target>
+        <target device="ipad">true</target>
+        <target device="iphone">true</target>
+        <target device="mobileweb">true</target>
+        <target device="windows">false</target>
+    </deployment-targets>
+    <sdk-version>4.1.0.GA</sdk-version>
+    <plugins>
+        <plugin version="1.0">ti.alloy</plugin>
+    </plugins>
+    <property name="appc-app-id" type="string">55a768eb49e10fda17c662d2</property>
+    <property name="acs-authbase-url-development" type="string">https://secure-identity.cloud.appcelerator.com</property>
+    <property name="acs-base-url-development" type="string">https://api.cloud.appcelerator.com</property>
+    <property name="acs-oauth-secret-development" type="string">a9LdTN5xvxpF96TxppnUBAwu0Rie0ixb</property>
+    <property name="acs-oauth-key-development" type="string">7sUUAFvK3CvKoVfIpxH1lXNZ93rlpsQc</property>
+    <property name="acs-api-key-development" type="string">D374SrZ0SHuCJF4dE22uM8M7vcpdZ1F2</property>
+    <property name="acs-username-development" type="string">appc_app_user_dev</property>
+    <property name="acs-password-development" type="string">YoFGTyyNWkmMA46udM</property>
+    <property name="acs-authbase-url-production" type="string">https://secure-identity.cloud.appcelerator.com</property>
+    <property name="acs-base-url-production" type="string">https://api.cloud.appcelerator.com</property>
+    <property name="acs-oauth-secret-production" type="string">GCpsihDc96uFOyc5LyPjWP1KOoURlp4c</property>
+    <property name="acs-oauth-key-production" type="string">BQomfYS7T25W9LQQIy0FeC7oNJBFYC1u</property>
+    <property name="acs-api-key-production" type="string">oVTJjLeRV4577nMlprLwIl3yjl0v2be1</property>
+    <property name="acs-username-production" type="string">appc_app_user</property>
+    <property name="acs-password-production" type="string">YtSbp2mbRuIGZ2zPPv</property>
+    <property name="appc-org-id" type="string">100017515</property>
+    <property name="appc-creator-user-id" type="string">51164ba2-f974-4dbe-8594-3cace05e02b0</property>
+</ti:app>

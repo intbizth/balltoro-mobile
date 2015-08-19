@@ -1,0 +1,188 @@
+<Alloy>
+	<ListView id="list">
+		<Templates>
+			<ItemTemplate name="vsTableNoData">
+				<View bindId="noDataView">
+					<Label bindId="noDataLabel" class="noDataLabel" text="L('com.intbizth.balltoro.matchsummytable.nodata')" />
+				</View>
+			</ItemTemplate>
+			<ItemTemplate name="vsTableHeader">
+				<View bindId="competitionView">
+					<Label bindId="competitionLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.competition')" />
+				</View>
+				<View bindId="dateView">
+					<Label bindId="dateLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.date')" />
+				</View>
+				<View bindId="teamView">
+					<Label bindId="teamLabel" class="headerLabel" text="" />
+				</View>
+				<View bindId="fulltimeView">
+					<Label bindId="fulltimeLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.fulltime')" />
+				</View>
+			</ItemTemplate>
+			<ItemTemplate name="vsTableRow">
+				<View bindId="competitionView">
+					<Label bindId="competitionLabel" class="rowLabel" />
+				</View>
+				<View bindId="dateView">
+					<Label bindId="dateLabel" class="rowLabel" />
+				</View>
+				<View bindId="teamView">
+					<View bindId="teamSubView" class="subView">
+						<Label bindId="team1Label" class="teamLabel" />
+						<Label bindId="dashLabel" class="rowLabel" text="-" />
+						<Label bindId="team2Label" class="teamLabel" />
+					</View>
+				</View>
+				<View bindId="fulltimeView">
+					<Label bindId="fulltimeLabel" class="rowLabel" />
+				</View>
+			</ItemTemplate>
+			<ItemTemplate name="matchTableNoData">
+				<View bindId="noDataView">
+					<Label bindId="noDataLabel" class="noDataLabel" text="L('com.intbizth.balltoro.matchsummytable.nodata')" />
+				</View>
+			</ItemTemplate>
+			<ItemTemplate name="matchTableHeader">
+				<View bindId="competitionView">
+					<Label bindId="competitionLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.competition')" />
+				</View>
+				<View bindId="dateView">
+					<Label bindId="dateLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.date')" />
+				</View>
+				<View bindId="teamView">
+					<Label bindId="teamLabel" class="headerLabel" text="" />
+				</View>
+				<View bindId="fulltimeView">
+					<Label bindId="fulltimeLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.fulltime')" />
+				</View>
+			</ItemTemplate>
+			<ItemTemplate name="matchTableRow">
+				<View bindId="competitionView">
+					<Label bindId="competitionLabel" class="rowLabel" />
+				</View>
+				<View bindId="dateView">
+					<Label bindId="dateLabel" class="rowLabel" />
+				</View>
+				<View bindId="teamView">
+					<View bindId="teamSubView" class="subView">
+						<Label bindId="team1Label" class="teamLabel" />
+						<Label bindId="dashLabel" class="rowLabel" text="-" />
+						<Label bindId="team2Label" class="teamLabel" />
+					</View>
+				</View>
+				<View bindId="fulltimeView">
+					<Label bindId="fulltimeLabel" class="rowLabel" />
+				</View>
+			</ItemTemplate>
+			<ItemTemplate name="teamTableNoData">
+				<View bindId="noDataView">
+					<Label bindId="noDataLabel" class="noDataLabel" text="L('com.intbizth.balltoro.matchsummytable.nodata')" />
+				</View>
+			</ItemTemplate>
+			<ItemTemplate name="teamTableHeader">
+				<View bindId="positionView">
+					<Label bindId="positionLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.position')" />
+				</View>
+				<View bindId="teamView">
+					<Label bindId="teamLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.team')" />
+				</View>
+				<View bindId="playedView">
+					<Label bindId="playedLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.played')" />
+				</View>
+				<View bindId="goalDifferenceView">
+					<Label bindId="goalDifferenceLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.goal_difference')" />
+				</View>
+				<View bindId="pointsView">
+					<Label bindId="pointsLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.points')" />
+				</View>
+				<View bindId="rankingView">
+					<Label bindId="rankingLabel" class="headerLabel" text="" />
+				</View>
+			</ItemTemplate>
+			<ItemTemplate name="teamTableRow">
+				<View bindId="positionView">
+					<Label bindId="positionLabel" class="rowLabel" />
+				</View>
+				<View bindId="teamView">
+					<Label bindId="teamLabel" class="rowLabel" />
+				</View>
+				<View bindId="playedView">
+					<Label bindId="playedLabel" class="rowLabel" />
+				</View>
+				<View bindId="goalDifferenceView">
+					<Label bindId="goalDifferenceLabel" class="rowLabel" />
+				</View>
+				<View bindId="pointsView">
+					<Label bindId="pointsLabel" class="rowLabel" />
+				</View>
+				<View bindId="rankingView">
+					<ImageView bindId="rankingImage" class="rankingImage" />
+				</View>
+			</ItemTemplate>
+			<ItemTemplate name="leagueTableNoData">
+				<View bindId="noDataView">
+					<Label bindId="noDataLabel" class="noDataLabel" text="L('com.intbizth.balltoro.matchsummytable.nodata')" />
+				</View>
+			</ItemTemplate>
+			<ItemTemplate name="leagueTableHeader">
+				<View bindId="positionView">
+					<Label bindId="positionLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.position')" />
+				</View>
+				<View bindId="teamView">
+					<Label bindId="teamLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.team')" />
+				</View>
+				<View bindId="playedView">
+					<Label bindId="playedLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.played')" />
+				</View>
+				<View bindId="winView">
+					<Label bindId="winLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.win')" />
+				</View>
+				<View bindId="drawView">
+					<Label bindId="drawLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.draw')" />
+				</View>
+				<View bindId="loseView">
+					<Label bindId="loseLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.lose')" />
+				</View>
+				<View bindId="goalDifferenceView">
+					<Label bindId="goalDifferenceLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.goal_difference')" />
+				</View>
+				<View bindId="pointsView">
+					<Label bindId="pointsLabel" class="headerLabel" text="L('com.intbizth.balltoro.matchsummytable.points')" />
+				</View>
+				<View bindId="rankingView">
+					<Label bindId="rankingLabel" class="headerLabel" text="" />
+				</View>
+			</ItemTemplate>
+			<ItemTemplate name="leagueTableRow">
+				<View bindId="positionView">
+					<Label bindId="positionLabel" class="rowLabel" />
+				</View>
+				<View bindId="teamView">
+					<Label bindId="teamLabel" class="rowLabel" />
+				</View>
+				<View bindId="playedView">
+					<Label bindId="playedLabel" class="rowLabel" />
+				</View>
+				<View bindId="winView">
+					<Label bindId="winLabel" class="rowLabel" />
+				</View>
+				<View bindId="drawView">
+					<Label bindId="drawLabel" class="rowLabel" />
+				</View>
+				<View bindId="loseView">
+					<Label bindId="loseLabel" class="rowLabel" />
+				</View>
+				<View bindId="goalDifferenceView">
+					<Label bindId="goalDifferenceLabel" class="rowLabel" />
+				</View>
+				<View bindId="pointsView">
+					<Label bindId="pointsLabel" class="rowLabel" />
+				</View>
+				<View bindId="rankingView">
+					<ImageView bindId="rankingImage" class="rankingImage" />
+				</View>
+			</ItemTemplate>
+		</Templates>
+	</ListView>
+</Alloy>

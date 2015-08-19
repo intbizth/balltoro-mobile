@@ -1,0 +1,110 @@
+'.after_row':{
+	width: Ti.UI.FILL,
+	height: 60,
+	backgroundColor: '#ffffff'
+}
+
+'.after_leftView':{
+	left: 0,
+	width: '40%',
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
+}
+
+'.after_leftIconView':{
+	left: 0,
+	width: 60,
+	height: 60
+}
+
+'.after_leftIcon':{
+	width: 56,
+	height: 56,
+	defaultImage: ''
+}
+
+'.after_leftLabelView':{
+	left: 60,
+	width: Ti.UI.SIZE,
+	height: 60
+}
+
+'.after_leftLabel':{
+	width: Ti.UI.SIZE,
+	height: 60,
+	font: {
+		fontSize: 14
+	},
+	textAlign: 'center'
+}
+
+'.after_rightView':{
+	right: 0,
+	width: '40%',
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
+}
+
+'.after_rightIconView':{
+	right: 0,
+	width: 60,
+	height: 60
+}
+
+'.after_rightIcon':{
+	width: 56,
+	height: 56,
+	defaultImage: ''
+}
+
+'.after_rightLabelView':{
+	right: 60,
+	width: Ti.UI.SIZE,
+	height: 60
+}
+
+'.after_rightLabel':{
+	width: Ti.UI.SIZE,
+	height: 60,
+	font: {
+		fontSize: 14
+	},
+	textAlign: 'center'
+}
+
+'.after_centerView':{
+	width: '20%',
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
+}
+
+'.after_centerSubView':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: 'vertical'
+}
+
+'.after_scoreLabel':{
+	top: 0,
+	width: Ti.UI.SIZE,
+	height: 22,
+	font: {
+		fontSize: 20
+	},
+	textAlign: 'center',
+	color: '#4188c7'
+}
+
+'.after_startDateLabel':{
+	top: 0,
+	width: Ti.UI.SIZE,
+	height: 10,
+	font: {
+		fontSize: 10
+	},
+	textAlign: 'center',
+	color: '#58595b'
+}

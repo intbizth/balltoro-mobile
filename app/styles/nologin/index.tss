@@ -1,0 +1,195 @@
+'#navigation':{
+	opacity: 0
+}
+
+'#main[platform=ios]':{
+	name: 'nologin',
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	backgroundColor: '#0f181e',
+	backgroundImage: 'images/nologin/bg.png',
+	navBarHidden: true,
+	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT
+}
+
+'#content':{
+	top: 0,
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL
+}
+
+'#content[if=Alloy.Globals.isIos7Plus]':{
+	top: 20
+}
+
+'#contentTop': {
+	top: 0
+}
+
+'#slider': {
+	top: 0,
+	width: Ti.UI.FILL,
+	height: Ti.UI.FILL,
+	showPagingControl: false,
+	pagingControlColor: 'transparent'
+}
+
+'#sliderMain':{}
+
+'#sliderMainSub':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: 'vertical'
+}
+
+'#sliderMainSub[if=Alloy.Globals.grid]': {
+	borderWidth: 1,
+	borderColor: '#3190a4'
+}
+
+'#logoImage':{
+	width: 128,
+	height: 128,
+	image: 'images/nologin/logo.png'
+}
+
+'#logoImage[if=Alloy.Globals.grid]': {
+	borderWidth: 1,
+	borderColor: '#3190a4'
+}
+
+'#labelAppName':{
+	width: Ti.UI.FILL,
+	height: 34,
+	font: {
+		fontSize: 22,
+		fontWeight: 'Bold'
+	},
+	color: '#fff',
+	text: L( 'appname'),
+	textAlign: 'center'
+}
+
+'#labelAppName[if=Alloy.Globals.grid]': {
+	borderWidth: 1,
+	borderColor: '#3190a4'
+}
+
+'#contentBottom': {
+	bottom: 0,
+	height: 160,
+	layout: 'vertical'
+}
+
+'#contentBottom[if=Alloy.Globals.grid]': {
+	borderWidth: 1,
+	borderColor: '#3190a4'
+}
+
+'.contentBottomSpace': {
+	top: 0,
+	height: 16,
+	width: 1
+}
+
+'.contentBottomSpace[if=Alloy.Globals.grid]': {
+	backgroundColor: '#dd7f28'
+}
+
+'#registerButton': {
+	top: 0,
+	width: '86%',
+	height: 36,
+	borderWidth: 1,
+	borderColor: '#fff'
+}
+
+'#registerLabel': {
+	width: '86%',
+	height: 36,
+	color: '#fff',
+	font: {
+		fontSize: 14
+	},
+	text: L( 'nologin.index.button.register'),
+	textAlign: 'center',
+	opacity: 1,
+	opacityAct: 0.2,
+	opacityInAct: 1
+}
+
+'#signinButton':{
+	top: 10,
+	width: '86%',
+	height: 36,
+	borderWidth: 1,
+	borderColor: '#fff'
+}
+
+'#signinLabel':{
+	width: '86%',
+	height: 36,
+	color: '#fff',
+	font: {
+		fontSize: 14
+	},
+	text: L( 'nologin.index.button.signin'),
+	textAlign: 'center',
+	opacity: 1,
+	opacityAct: 0.2,
+	opacityInAct: 1
+}
+
+'#signinWithFacebookButton':{
+	top: 10,
+	width: '86%',
+	height: 36,
+	backgroundColor: '#39579a',
+	borderWidth: 1,
+	borderColor: '#39579a'
+}
+
+'#signinWithFacebookSubButton':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: 'horizontal',
+	opacity: 1,
+	opacityAct: 0.2,
+	opacityInAct: 1
+}
+
+'#signinWithLabel':{
+	width: Ti.UI.SIZE,
+	height: 36,
+	color: '#fff',
+	font: {
+		fontSize: 14
+	},
+	text: L( 'nologin.index.button.signinwith'),
+	textAlign: 'center'
+}
+
+'#facebookLabel':{
+	left: 4,
+	width:  Ti.UI.SIZE,
+	height: 36,
+	color: '#fff',
+	font: {
+		fontSize: 14,
+		fontWeight: 'Bold'
+	},
+	text: L( 'facebook'),
+	textAlign: 'center'
+}
+
+'#versionLabel':{
+	bottom: 1,
+	right: 1,
+	width: Ti.UI.SIZE,
+	height:Ti.UI.SIZE,
+	color: '#fff',
+	font: {
+		fontSize: 8
+	},
+	textAlign: 'right'
+}

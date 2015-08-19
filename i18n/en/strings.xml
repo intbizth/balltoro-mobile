@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="appname">Balltoro</string>
+	<string name="back">Back</string>
+	<string name="login.menu.tester">Tester</string>
+	<string name="login.menu.league_game">League Game</string>
+	<string name="login.menu.match">Match</string>
+	<string name="login.menu.signout">Sign Out</string>
+	<string name="nologin.index.button.register">Register</string>
+	<string name="nologin.index.button.signin">Sign In</string>
+	<string name="nologin.index.button.signinwith">Sign In with</string>
+	<string name="nologin.register.title">Register</string>
+	<string name="nologin.signin.title">Sign In</string>
+	<string name="facebook">Facebook</string>
+	<string name="notconnectedtonetwork">Not connected to network.</string>
+	<string name="dataloadfailure">Data load failure.</string>
+	<string name="nodata">No data.</string>
+</resources>

@@ -1,0 +1,4 @@
+<Alloy>
+	<Require id="nologin" src="nologin/index" type="view"/>
+	<Require id="login" src="login/index" type="view"/>
+</Alloy>

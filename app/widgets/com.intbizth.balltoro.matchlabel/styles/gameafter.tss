@@ -1,0 +1,124 @@
+'.gameafter_row':{
+	width: Ti.UI.FILL,
+	height: 60,
+	backgroundColor: '#ffffff'
+}
+
+'.gameafter_leftView':{
+	left: 0,
+	width: '40%',
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
+}
+
+'.gameafter_leftIconView':{
+	left: 0,
+	width: 60,
+	height: 60
+}
+
+'.gameafter_leftIcon':{
+	width: 56,
+	height: 56,
+	defaultImage: ''
+}
+
+'.gameafter_leftLabelView':{
+	left: 60,
+	width: Ti.UI.SIZE,
+	height: 60
+}
+
+'.gameafter_leftLabel':{
+	width: Ti.UI.SIZE,
+	height: 60,
+	font: {
+		fontSize: 14
+	},
+	textAlign: 'center'
+}
+
+'.gameafter_rightView':{
+	right: 0,
+	width: '40%',
+	backgroundColor: '#ffffff',
+	backgroundColorInAct: '#ffffff',
+	backgroundColorAct: '#d1d3d4'
+}
+
+'.gameafter_rightIconView':{
+	right: 0,
+	width: 60,
+	height: 60
+}
+
+'.gameafter_rightIcon':{
+	width: 56,
+	height: 56,
+	defaultImage: ''
+}
+
+'.gameafter_rightLabelView':{
+	right: 60,
+	width: Ti.UI.SIZE,
+	height: 60
+}
+
+'.gameafter_rightLabel':{
+	width: Ti.UI.SIZE,
+	height: 60,
+	font: {
+		fontSize: 14
+	},
+	textAlign: 'center'
+}
+
+'.gameafter_centerView':{
+	width: '20%',
+	backgroundColor: '#4188c7',
+	backgroundColorInAct: '#4188c7',
+	backgroundColorAct: '#d1d3d4'
+}
+
+'.gameafter_centerSubView':{
+	width: Ti.UI.SIZE,
+	height: Ti.UI.SIZE,
+	layout: 'vertical'
+}
+
+'.gameafter_liveLabel':{
+	top: 0,
+	width: Ti.UI.SIZE,
+	height: 16,
+	font: {
+		fontSize: 14,
+		fontWeight: 'bold'
+	},
+	textAlign: 'center',
+	text: L( 'com.intbizth.balltoro.matchlabel.live'),
+	color: '#caf906'
+}
+
+'.gameafter_scoreLabel':{
+	top: 0,
+	width: Ti.UI.SIZE,
+	height: 22,
+	font: {
+		fontSize: 20
+	},
+	textAlign: 'center',
+	color: '#ffffff'
+}
+
+'.gameafter_statusLabel':{
+	top: 0,
+	width: Ti.UI.SIZE,
+	height: 16,
+	font: {
+		fontSize: 14
+	},
+	textAlign: 'center',
+	text: L( 'com.intbizth.balltoro.matchlabel.fulltime'),
+	color: '#ffffff'
+}

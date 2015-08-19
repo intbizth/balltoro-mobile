@@ -1,0 +1,25 @@
+<Alloy>
+	<Model src="navbar" id="navbar" instance="true" />
+	<View id="main">
+		<View id="titleView">
+			<Label id="title" class="title" text="{$.navbar.title}" />
+		</View>
+		<View id="leftView">
+			<View class="subView">
+				<View class="iconBorder">
+					<ImageView id="leftIcon" class="icon" image="{$.navbar.leftIcon}" />
+				</View>
+				<Label id="leftTitle" class="leftTitle" text="{$.navbar.leftTitle}" />
+			</View>
+		</View>
+		<View id="rightView">
+			<View class="subView">
+				<Label id="rightTitle" class="rightTitle" text="{$.navbar.rightTitle}" />
+				<View class="iconBorder">
+					<ImageView id="rightIcon" class="icon" image="{$.navbar.rightIcon}" />
+				</View>
+			</View>
+		</View>
+		<View id="lineView"></View>
+	</View>
+</Alloy>
