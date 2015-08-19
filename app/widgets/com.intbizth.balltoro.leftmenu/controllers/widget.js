@@ -1,6 +1,7 @@
 Widget.Collections.programs = Alloy.Collections.instance('programs');
+Widget.Logger = require('logger');
 
-var debug = false;
+var log = true;
 var loaded = false;
 var itemSelectedIndex = null;
 var itemSelectedName = null;
@@ -99,6 +100,8 @@ var datas = {
     }]
 };
 
+Widget.Logger.setEnabled(log);
+
 function extendData() {
     var models = Widget.Collections.menus.models;
 
@@ -174,11 +177,9 @@ function itemclick(e) {
     var item = $.section.getItemAt(e.itemIndex);
     e.name = item.properties.name;
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:e:', e);
-        Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:item:', item);
-        Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:clickCount:', clickCount);
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] itemclick:e: ' + JSON.stringify(e));
+    Widget.Logger.debug('[' + Widget.widgetId + '] itemclick:item: ' + JSON.stringify(item));
+    Widget.Logger.debug('[' + Widget.widgetId + '] itemclick:clickCount: ' + clickCount);
 
     function clear() {
         clickCount = 0;
@@ -252,9 +253,7 @@ function itemclick(e) {
                                     classes : 'insertItemAnimatetion'
                                 });
 
-                                if (debug) {
-                                    Ti.API.debug('[' + Widget.widgetId + ']', 'dataItems:', dataItems.length, dataItems);
-                                }
+                                Widget.Logger.debug('[' + Widget.widgetId + '] dataItems: ' + dataItems.length + ' ' + JSON.stringify(dataItems));
 
                                 $.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
                             } else {
@@ -263,10 +262,8 @@ function itemclick(e) {
 
                             selectItem(itemSelectedName);
 
-                            if (debug) {
-                                Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
-                                Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
-                            }
+                            Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+                            Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
                         },
                         error : function(model, response) {
                             $.trigger('fetched:error', {
@@ -278,10 +275,8 @@ function itemclick(e) {
                             item.properties.accordion.fetching = false;
                             $.section.updateItemAt(e.itemIndex, item);
 
-                            if (debug) {
-                                Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
-                                Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
-                            }
+                            Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+                            Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
                         }
                     });
                 } else {
@@ -323,9 +318,7 @@ function itemclick(e) {
                             classes : 'insertItemAnimatetion'
                         });
 
-                        if (debug) {
-                            Ti.API.debug('[' + Widget.widgetId + ']', 'dataItems:', dataItems.length, dataItems);
-                        }
+                        Widget.Logger.debug('[' + Widget.widgetId + '] dataItems: ' + dataItems.length + ' ' + JSON.stringify(dataItems));
 
                         $.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
                     } else {
@@ -338,10 +331,8 @@ function itemclick(e) {
 
                     selectItem(itemSelectedName);
 
-                    if (debug) {
-                        Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
-                        Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
-                    }
+                    Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+                    Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
                 }
 
                 clear();
@@ -371,10 +362,8 @@ function itemclick(e) {
 
                 $.trigger('click', e);
 
-                if (debug) {
-                    Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
-                    Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
-                }
+                Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+                Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
             }
         }, 400);
     } else {
@@ -452,9 +441,7 @@ function itemclick(e) {
                             classes : 'insertItemAnimatetion'
                         });
 
-                        if (debug) {
-                            Ti.API.debug('[' + Widget.widgetId + ']', 'dataItems:', dataItems.length, dataItems);
-                        }
+                        Widget.Logger.debug('[' + Widget.widgetId + '] dataItems: ' + dataItems.length + ' ' + JSON.stringify(dataItems));
 
                         $.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
                     } else {
@@ -463,10 +450,8 @@ function itemclick(e) {
 
                     selectItem(itemSelectedName);
 
-                    if (debug) {
-                        Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
-                        Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
-                    }
+                    Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+                    Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
                 },
                 error : function(model, response) {
                     $.trigger('fetched:error', {
@@ -478,10 +463,8 @@ function itemclick(e) {
                     item.properties.accordion.fetching = false;
                     $.section.updateItemAt(e.itemIndex, item);
 
-                    if (debug) {
-                        Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
-                        Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
-                    }
+                    Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+                    Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
                 }
             });
 
@@ -512,10 +495,8 @@ function itemclick(e) {
 
             $.trigger('dblclick', e);
 
-            if (debug) {
-                Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
-                Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
-            }
+            Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+            Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
         }
     }
 };
@@ -523,42 +504,32 @@ function itemclick(e) {
 function load() {
     loaded = true;
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'load');
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] load');
 
     Widget.Collections.menus.reset(datas.menus);
     Widget.Collections.settings.reset(datas.settings);
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:menus:', Widget.Collections.menus.toJSON());
-        Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:settings:', Widget.Collections.settings.toJSON());
-        Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:programs:', Widget.Collections.programs.toJSON());
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] load:before:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + '] load:before:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + '] load:before:programs: ' + JSON.stringify(Widget.Collections.programs.toJSON()));
 
     extendData();
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:menus:', Widget.Collections.menus.toJSON());
-        Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:settings:', Widget.Collections.settings.toJSON());
-        Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:programs:', Widget.Collections.programs.toJSON());
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:programs: ' + JSON.stringify(Widget.Collections.programs.toJSON()));
 };
 
 function unLoad() {
     loaded = false;
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'unLoad');
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad');
 
     Widget.Collections.menus.reset([]);
     Widget.Collections.settings.reset([]);
 
-    if (debug) {
-        Ti.API.debug('[' + Widget.widgetId + ']', 'unLoad:menus:', Widget.Collections.menus.toJSON());
-        Ti.API.debug('[' + Widget.widgetId + ']', 'unLoad:settings:', Widget.Collections.settings.toJSON());
-    }
+    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
 };
 
 exports.selectItem = function(value) {
