@@ -18,7 +18,7 @@ Alloy.Moment = require('alloy/moment');
 Alloy.Sha1 = require('alloy/sha1');
 Alloy.Social = require('alloy/social');
 Alloy.String = require('alloy/string');
-Alloy.Logger = require('Logger');
+Alloy.Logger = require('logger');
 Alloy.Logger.setEnabled(Alloy.Globals.logger);
 
 Alloy.Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications');
