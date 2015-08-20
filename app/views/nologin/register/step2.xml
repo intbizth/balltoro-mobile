@@ -1,8 +1,8 @@
 <Alloy>
     <Window id="main" onSingletap="doBlur">
         <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
-        <View id="content">
-            <ScrollView id="contentTop" >
+        <ScrollView id="content">
+            <View id="contentTop" >
                 <View id="profileImage" />
                 <View id="photo">
                     <ImageView id="addPhoto" />
@@ -10,12 +10,12 @@
                 </View>
                 <TextField id="name" class="textField" />
                 <TextField id="surname" class="textField" />
-            </ScrollView>
+            </View>
             <View id="contentBottom">
                 <View id="nextButton">
                     <Label id="nextLabel" />
                 </View>
             </View>
-        </View>
+        </ScrollView>
     </Window>
 </Alloy>
