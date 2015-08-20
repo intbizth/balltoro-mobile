@@ -1,5 +1,5 @@
-var modelManger = require('model/manger');
-var modelPaginator = require('model/paginator');
+var manger = require('model/manger');
+var paginator = require('model/paginator');
 
 exports.definition = {
     config : {
@@ -22,7 +22,7 @@ exports.definition = {
     extendCollection : function(Collection) {
         var methods = {};
 
-        methods = _.extend(methods, modelPaginator.createMethod(Collection.prototype));
+        methods = _.extend(methods, paginator.createMethod(Collection.prototype));
 
         _.extend(Collection.prototype, methods);
 
