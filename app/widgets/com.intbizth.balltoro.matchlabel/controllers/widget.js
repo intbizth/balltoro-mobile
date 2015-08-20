@@ -113,7 +113,14 @@ function pullend(e) {
     listTimer = setInterval(function() {
         listCount++;
 
+        console.debug('listTimer:', listTimer);
+        console.debug('listCount:', listCount);
+
         if (listCount >= 2) {
+            clearInterval(listTimer);
+            listTimer = null;
+            listCount = 0;
+
             fetchFirstPage(function() {
                 $.list.setContentInsets({
                     top : 0
@@ -123,10 +130,7 @@ function pullend(e) {
 
                 $.activityIndicator.transform = $.UI.create('2DMatrix').scale(1);
 
-                clearInterval(listTimer);
                 listPulling = false;
-                listTimer = null;
-                listCount = 0;
 
                 Widget.Logger.debug('[' + Widget.widgetId + '] pullend:end');
             });
