@@ -2,17 +2,19 @@
     <Window id="main">
         <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
         <View id="content">
-            <View id="content Top">
-                <View id="contentCircleIn"></View>
+            <View id="contentTop">
+                <View id="contentCircleIn" />
                 <View id="contentImage">
-                    <ImageView id="imageLeft" image="icon_01@2x.png"></ImageView>
-                    <ImageView id="imageRight" image="icon_camera@2x.png"></ImageView>
+                    <ImageView id="imageLeft" />
+                    <ImageView id="imageRight" />
                 </View>
-                <TextField id="name" class="textField"></TextField>
-                <TextField id="surname" class="textField"></TextField>
+                <TextField id="name" class="textField" />
+                <TextField id="surname" class="textField" />
             </View>
             <View id="contentBottom">
-                <Button id="btn1"></Button>
+                <View id="nextButton">
+                    <Label id="nextLabel" />
+                </View>
             </View>
         </View>
     </Window>

@@ -1,6 +1,8 @@
 var loaded = false;
-var args = {};
 var openedWindow = false;
+var args = arguments[0] || {};
+
+Alloy.Logger.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
 function initialize() {
     if (Alloy.Globals.isIos7Plus) {
@@ -63,10 +65,6 @@ exports.load = function() {
 
 exports.unLoad = function() {
     unLoad();
-};
-
-exports.setArgs = function(value) {
-    args = value;
 };
 
 initialize();

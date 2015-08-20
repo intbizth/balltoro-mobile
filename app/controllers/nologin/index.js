@@ -1,6 +1,13 @@
 var loaded = false;
-var args = {};
 var openedWindow = false;
+var args = arguments[0] || {};
+
+var step1Window = Alloy.createController('nologin/register/step1', {
+    navigation : $.navigation
+});
+var signinWindow = Alloy.createController('nologin/signin', {
+    navigation : $.navigation
+});
 
 var slider = {
     initialize : function() {
@@ -105,56 +112,43 @@ var slider = {
     },
 };
 
-function loadEvent() {
-    $.registerButton.addEventListener('click', function(e) {
-        if (openedWindow) {
-            return;
-        }
+$.registerButton.addEventListener('click', function(e) {
+    if (openedWindow) {
+        return;
+    }
 
-        openedWindow = true;
+    openedWindow = true;
 
-        $.navigation.openWindow($.registerStep1Window.getView());
+    $.navigation.openWindow(step1Window.getView());
 
-        $.registerWindow.getView().addEventListener('close', function(e) {
-            openedWindow = false;
-        });
+    step1Window.getView().addEventListener('close', function(e) {
+        openedWindow = false;
     });
+});
 
-    $.signinButton.addEventListener('click', function(e) {
-        if (openedWindow) {
-            return;
-        }
+$.signinButton.addEventListener('click', function(e) {
+    if (openedWindow) {
+        return;
+    }
 
-        openedWindow = true;
+    openedWindow = true;
 
-        $.navigation.openWindow($.signinWindow.getView());
+    $.navigation.openWindow(signinWindow.getView());
 
-        $.signinWindow.getView().addEventListener('close', function(e) {
-            openedWindow = false;
-        });
+    signinWindow.getView().addEventListener('close', function(e) {
+        openedWindow = false;
     });
+});
 
-    $.signinWithFacebookButton.addEventListener('click', function(e) {
-        Ti.API.error('Alloy.Facebook.loggedIn', typeof Alloy.Facebook.loggedIn, Alloy.Facebook.loggedIn);
+$.signinWithFacebookButton.addEventListener('click', function(e) {
+    Ti.API.error('Alloy.Facebook.loggedIn', typeof Alloy.Facebook.loggedIn, Alloy.Facebook.loggedIn);
 
-        if (!Alloy.Facebook.loggedIn) {
-            Alloy.Facebook.authorize();
-        } else {
-            Alloy.Facebook.logout();
-        }
-    });
-};
-
-function unLoadEvent() {
-    $.registerButton.removeEventListener('click', function(e) {
-    });
-
-    $.signinButton.removeEventListener('click', function(e) {
-    });
-
-    $.signinWithFacebookButton.removeEventListener('click', function(e) {
-    });
-};
+    if (!Alloy.Facebook.loggedIn) {
+        Alloy.Facebook.authorize();
+    } else {
+        Alloy.Facebook.logout();
+    }
+});
 
 function initialize() {
     Alloy.Facebook.permissions = ['publish_stream', 'read_stream'];
@@ -190,16 +184,8 @@ function initialize() {
 
     // >> button
     // > register button
-    $.registerLabel.act = function() {
-        this.opacity = this.opacityAct;
-    };
-
-    $.registerLabel.inact = function() {
-        this.opacity = this.opacityInAct;
-    };
-
     $.registerButton.addEventListener('touchstart', function() {
-        $.registerLabel.act();
+        $.registerLabel.opacity = $.registerLabel.opacityAct;
     });
 
     $.registerButton.addEventListener('touchmove', function() {
@@ -207,7 +193,7 @@ function initialize() {
     });
 
     $.registerButton.addEventListener('touchend', function() {
-        $.registerLabel.inact();
+        $.registerLabel.opacity = $.registerLabel.opacityInAct;
     });
 
     $.registerButton.addEventListener('touchcancel', function() {
@@ -216,16 +202,8 @@ function initialize() {
     // < register button
 
     // > signin button
-    $.signinLabel.act = function() {
-        this.opacity = this.opacityAct;
-    };
-
-    $.signinLabel.inact = function() {
-        this.opacity = this.opacityInAct;
-    };
-
     $.signinButton.addEventListener('touchstart', function() {
-        $.signinLabel.act();
+        $.signinLabel.opacity = $.signinLabel.opacityAct;
     });
 
     $.signinButton.addEventListener('touchmove', function() {
@@ -233,7 +211,7 @@ function initialize() {
     });
 
     $.signinButton.addEventListener('touchend', function() {
-        $.signinLabel.inact();
+        $.signinLabel.opacity = $.signinLabel.opacityInAct;
     });
 
     $.signinButton.addEventListener('touchcancel', function() {
@@ -242,16 +220,8 @@ function initialize() {
     // < signin button
 
     // > signin with facebook button
-    $.signinWithFacebookSubButton.act = function() {
-        this.opacity = this.opacityAct;
-    };
-
-    $.signinWithFacebookSubButton.inact = function() {
-        this.opacity = this.opacityInAct;
-    };
-
     $.signinWithFacebookButton.addEventListener('touchstart', function() {
-        $.signinWithFacebookSubButton.act();
+        $.signinWithFacebookSubButton.opacity = $.signinWithFacebookSubButton.opacityAct;
     });
 
     $.signinWithFacebookButton.addEventListener('touchmove', function() {
@@ -259,7 +229,7 @@ function initialize() {
     });
 
     $.signinWithFacebookButton.addEventListener('touchend', function() {
-        $.signinWithFacebookSubButton.inact();
+        $.signinWithFacebookSubButton.opacity = $.signinWithFacebookSubButton.opacityInAct;
     });
 
     $.signinWithFacebookButton.addEventListener('touchcancel', function() {
@@ -273,19 +243,17 @@ function initialize() {
 };
 
 function load() {
+    Alloy.Logger.debug('[' + $.main.name + '] load');
+
     loaded = true;
     openedWindow = false;
-    loadEvent();
-
-    Ti.API.debug($.main.name + ':load');
 };
 
 function unLoad() {
+    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
+
     loaded = false;
     openedWindow = false;
-    unLoadEvent();
-
-    Ti.API.debug($.main.name + ':unLoad');
 };
 
 exports.getLoad = function() {
@@ -298,10 +266,6 @@ exports.load = function() {
 
 exports.unLoad = function() {
     unLoad();
-};
-
-exports.setArgs = function(value) {
-    args = value;
 };
 
 initialize();

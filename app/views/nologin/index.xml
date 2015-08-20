@@ -33,5 +33,4 @@
         </Window>
     </NavigationWindow>
     <Require id="registerStep1Window" src="nologin/register/step1" />
-    <Require id="signinWindow" src="nologin/signin" />
 </Alloy>

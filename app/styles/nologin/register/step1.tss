@@ -1,5 +1,5 @@
 '#main':{
-    name: 'register',
+    name: 'step1',
     width: Ti.UI.FILL,
     height: Ti.UI.FILL,
     backgroundColor: '#0f181e',
@@ -16,52 +16,65 @@
 }
 
 '#contentTop':{
-	top: 0,
-	width: Ti.UI.FILL,
-	height: Ti.UI.SIZE ,
-	layout: 'vertical'
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE ,
+    layout: 'vertical'
 }
 
 '#contentBottom': {
-	bottom: 0,
-	width: Ti.UI.FILL,
-	height: 76,
+    bottom: 0,
+    width: Ti.UI.FILL,
+    height: 76
 }
 
 ".textField": {
-    width: "75%",
+    width: '86%',
     height: 36,
     top: 10,
     borderWidth: '1',
-    borderColor: '#999',
+    borderColor: '#999999',
     textAlign: 'center'
 }
 
 '#username': {
-	hintText: 'Username'
+    hintText: L( 'nologin.register.username')
 }
 
 '#email': {
-	hintText: 'Email'
+    hintText: L( 'nologin.register.email')
 }
 
-"#password": {
-	hintText: 'Password',
+'#password': {
+    hintText: L( 'nologin.register.password'),
     passwordMask: true
 }
 
-"#confirmPassword": {
-	hintText: 'Confirm Password',
+'#confirmPassword': {
+    hintText: L( 'nologin.register.confirmPassword'),
     passwordMask: true
 }
 
-"#btn1":{
-    title: 'Next',
-    width: '75%',
+'#nextButton':{
+    width: '86%',
     height: 36,
     bottom: 20,
     color: '#ffffff',
     borderWidth: '1',
-    borderColor: '#549AF7',
-    backgroundColor: '#549AF7'
+    borderColor: '#549af7',
+    backgroundColor: '#549af7'
+}
+
+'#nextLabel':{
+    width: '86%',
+    height: 36,
+    color: '#fff',
+    font: {
+        fontSize: 14
+    },
+    text: L( 'next'),
+    textAlign: 'center',
+    opacity: 1,
+    opacityAct: 0.2,
+    opacityInAct: 1
 }
