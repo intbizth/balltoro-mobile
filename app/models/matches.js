@@ -22,7 +22,7 @@ exports.definition = {
     extendCollection : function(Collection) {
         var methods = {};
 
-        methods = _.extend(methods, paginator.createMethod(Collection.prototype));
+         methods = _.extend(methods, paginator.createMethod());
 
         _.extend(Collection.prototype, methods);
 
