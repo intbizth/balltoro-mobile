@@ -113,7 +113,7 @@ function loadEvent() {
 
         openedWindow = true;
 
-        $.navigation.openWindow($.registerWindow.getView());
+        $.navigation.openWindow($.registerStep1Window.getView());
 
         $.registerWindow.getView().addEventListener('close', function(e) {
             openedWindow = false;

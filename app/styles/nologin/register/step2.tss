@@ -1,0 +1,90 @@
+'#main':{
+    // name: 'register',
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    backgroundColor: '#0f181e',
+    navBarHidden: true,
+    statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT,
+    layout: 'vertical'
+}
+
+'#content':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    backgroundColor: 'white'
+}
+
+'#contentTop':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE ,
+    layout: 'vertical'
+}
+
+'#contentBottom': {
+    bottom: 0,
+    width: Ti.UI.FILL,
+    height: 76
+}
+
+// '#contentCircleOut': {
+// top: 50,
+// height: 76,
+// width: 76,
+// borderRadius: 38,
+// borderColor: '#999',
+// backgroundColor: '#999'
+// }
+
+'#contentCircleIn': {
+    top: 50,
+    height: 76,
+    width: 76,
+    borderRadius: 38,
+    backgroundImage: 'icon_profile@2x.png'
+}
+
+'#contentImage': {
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE
+}
+
+'#imageLeft': {
+    top: 25,
+    left: '33%'
+}
+
+'#imageRight': {
+    top: 25,
+    right: '33%'
+}
+
+'#name': {
+    hintText: 'Name'
+}
+
+'#surname': {
+    hintText: 'Surname'
+}
+
+'.textField': {
+    textAlign: 'center',
+    top: 20,
+    height: 36,
+    width: '75%',
+    borderColor: '#999',
+    borderWidth: '1'
+}
+
+'#btn1': {
+    title: 'Next',
+    width: '75%',
+    height: 36,
+    bottom: 20,
+    color: '#ffffff',
+    borderWidth: '1',
+    borderColor: '#549AF7',
+    backgroundColor: '#549AF7'
+}
