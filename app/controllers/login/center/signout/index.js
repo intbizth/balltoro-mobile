@@ -12,11 +12,31 @@ function initialize() {
     });
 
     $.main.addEventListener('open', function(e) {
-        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type + ' (', 'login stacks: ' + JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')) + ' ' + Alloy.Globals.login.stackWindows.length, ')');
+        var log = '[' + $.main.name + '] ';
+        log += e.type;
+        log += ' ';
+        log += '(';
+        log += ' login stacks: ';
+        log += JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name'));
+        log += ' ';
+        log += Alloy.Globals.login.stackWindows.length;
+        log += ')';
+
+        Alloy.Logger.debug(log);
     });
 
     $.main.addEventListener('close', function(e) {
-        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type + ' (', 'login stacks: ' + JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')) + ' ' + Alloy.Globals.login.stackWindows.length, ')');
+        var log = '[' + $.main.name + '] ';
+        log += e.type;
+        log += ' ';
+        log += '(';
+        log += ' login stacks: ';
+        log += JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name'));
+        log += ' ';
+        log += Alloy.Globals.login.stackWindows.length;
+        log += ')';
+
+        Alloy.Logger.debug(log);
     });
 };
 

@@ -27,6 +27,13 @@ function initialize() {
 
             Alloy.Globals.login.mainWindow.setMenu(data);
             break;
+        case 'match':
+            var data = {
+                name : name[0]
+            };
+
+            Alloy.Globals.login.mainWindow.setMenu(data);
+            break;
         case 'programs':
             var data = {
                 name : name[0],
@@ -62,6 +69,11 @@ function initialize() {
 
             Alloy.Globals.login.mainWindow.setMenu(data);
             break;
+        case 'match':
+            var data = {
+                name : name[0],
+                reload : true
+            };
         case 'programs':
             var data = {
                 name : name[0],
@@ -90,25 +102,6 @@ function initialize() {
     $.leftmenuView.on('fetched:error', function(e) {
         Alloy.Notifier.showError(e);
     });
-
-    // $.leftmenuView.getView().addEventListener('click', function(e) {
-    // if (!e.source.name) {
-    // return;
-    // }
-    //
-    // var menu = e.source.name;
-    //
-    // if (/program\:/.test(menu)) {
-    // menu = 'program';
-    // var args = {
-    // programCode : menu.replace('program:', '')
-    // };
-    //
-    // Alloy.Globals.login.mainWindow.setMenu(menu, e.source.data);
-    // } else {
-    // Alloy.Globals.login.mainWindow.setMenu(menu);
-    // }
-    // });
 };
 
 function selectMenu(value) {

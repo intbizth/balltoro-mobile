@@ -1,7 +1,6 @@
 var loaded = false;
 var openedWindow = false;
 var args = arguments[0] || {};
-var program = null;
 
 function initialize() {
     if (Alloy.Globals.isIos7Plus) {
@@ -9,8 +8,8 @@ function initialize() {
     }
 
     $.navbarView.setData({
-        id : 'login.menu.leagueGame',
-        title : L('login.menu.leagueGame'),
+        id : 'login.menu.match',
+        title : L('login.menu.match'),
         leftIcon : 'list'
     });
 
@@ -57,16 +56,8 @@ function load() {
 
     loaded = true;
     openedWindow = false;
-    program = Alloy.Collections.programs.where({
-        code : args.programCode
-    });
-    program = program[0].transformDataToLabel();
 
-    Alloy.Logger.debug('[' + $.main.name + '] program: ' + JSON.stringify(program));
-
-    Alloy.Collections.matchesday.setID(args.programCode);
-
-    Alloy.Collections.matchesday.fetch({
+    Alloy.Collections.matches.fetch({
         timeout : 60000,
         success : function(model, response) {
             $.activityIndicatorView.visible = false;
@@ -75,17 +66,9 @@ function load() {
             var data = [];
             var noData = false;
 
-            var section = {
-                template : 'section'
-            };
-
-            section = _.extend(section, program);
-
-            data.push(section);
-
-            if (Alloy.Collections.matchesday.models.length > 0) {
-                for (var i in Alloy.Collections.matchesday.models) {
-                    var _data = Alloy.Collections.matchesday.models[i].transformDataToMatchlabel();
+            if (Alloy.Collections.matches.models.length > 0) {
+                for (var i in Alloy.Collections.matches.models) {
+                    var _data = Alloy.Collections.matches.models[i].transformDataToMatchlabel();
 
                     data.push(_data);
                 }
@@ -111,7 +94,7 @@ function load() {
     });
 
     function fetchFirstPage(callback) {
-        Alloy.Collections.matchesday.fetchFirstPage({
+        Alloy.Collections.matches.fetchFirstPage({
             timeout : 60000,
             success : function(model, response) {
                 $.activityIndicatorView.visible = false;
@@ -122,17 +105,9 @@ function load() {
                 var data = [];
                 var noData = false;
 
-                var section = {
-                    template : 'section'
-                };
-
-                section = _.extend(section, program);
-
-                data.push(section);
-
-                if (Alloy.Collections.matchesday.models.length > 0) {
-                    for (var i in Alloy.Collections.matchesday.models) {
-                        var _data = Alloy.Collections.matchesday.models[i].transformDataToMatchlabel();
+                if (Alloy.Collections.matches.models.length > 0) {
+                    for (var i in Alloy.Collections.matches.models) {
+                        var _data = Alloy.Collections.matches.models[i].transformDataToMatchlabel();
 
                         data.push(_data);
                     }
@@ -163,15 +138,15 @@ function load() {
     };
 
     function fetchNextPage(callback) {
-        Alloy.Collections.matchesday.fetchNextPage({
+        Alloy.Collections.matches.fetchNextPage({
             timeout : 60000,
             success : function(model, response) {
                 callback();
 
                 var data = [];
 
-                for (var i in Alloy.Collections.matchesday.models) {
-                    var _data = Alloy.Collections.matchesday.models[i].transformDataToMatchlabel();
+                for (var i in Alloy.Collections.matches.models) {
+                    var _data = Alloy.Collections.matches.models[i].transformDataToMatchlabel();
 
                     data.push(_data);
                 }
@@ -200,9 +175,6 @@ function unLoad() {
 
     loaded = false;
     openedWindow = false;
-    program = null;
-
-    Alloy.Collections.matchesday.removeID();
 };
 
 function fakeData(data) {

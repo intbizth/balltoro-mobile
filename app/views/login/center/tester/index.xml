@@ -1,6 +1,8 @@
 <Alloy>
-    <Window id="main">
-        <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
-        <View id="content"></View>
-    </Window>
+    <NavigationWindow id="navigation" platform="ios">
+        <Window id="main">
+            <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
+            <View id="content"></View>
+        </Window>
+    </NavigationWindow>
 </Alloy>
