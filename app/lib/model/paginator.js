@@ -25,27 +25,35 @@ exports.setFromRestAPI = function(manger, model, response) {
 exports.createMethod = function(collection) {
     return {
         setID : function(id) {
-            collection.id = id;
-            collection.idDefault = id;
+            var name = this.config.adapter.collection_name;
+
+            Alloy.Collections[name].id = id;
+            Alloy.Collections[name].idDefault = id;
         },
         hideID : function() {
-            collection.id = null;
+            var name = this.config.adapter.collection_name;
+
+            Alloy.Collections[name].id = null;
         },
         showID : function() {
-            collection.id = collection.idDefault;
+            var name = this.config.adapter.collection_name;
+
+            Alloy.Collections[name].id = Alloy.Collections[name].idDefault;
         },
         removeID : function() {
-            delete collection.id;
-            delete collection.idDefault;
+            var name = this.config.adapter.collection_name;
+            delete Alloy.Collections[name].id;
+            delete Alloy.Collections[name].idDefault;
         },
         fetchSelfPage : function(args) {
+            var name = this.config.adapter.collection_name;
             var url = (this.paginator && this.paginator.self) ? this.paginator.self : null;
 
-            Alloy.Logger.debug('fetchSelfPage:url: ' + url);
+            Alloy.Logger.debug('[' + name + '] fetch self:' + url);
 
             if (url) {
-                collection.hideID();
-                collection.fetch({
+                Alloy.Collections[name].hideID();
+                Alloy.Collections[name].fetch({
                     url : url,
                     timeout : 60000,
                     success : function(model, response) {
@@ -55,16 +63,19 @@ exports.createMethod = function(collection) {
                         args.error(model, response);
                     }
                 });
+            } else {
+                args.error({}, null);
             }
         },
         fetchFirstPage : function(args) {
+            var name = this.config.adapter.collection_name;
             var url = (this.paginator && this.paginator.first) ? this.paginator.first : null;
 
-            Alloy.Logger.debug('fetchFirstPage:url: ' + url);
+            Alloy.Logger.debug('[' + name + '] fetch first:' + url);
 
             if (url) {
-                collection.hideID();
-                collection.fetch({
+                Alloy.Collections[name].hideID();
+                Alloy.Collections[name].fetch({
                     url : url,
                     timeout : 60000,
                     success : function(model, response) {
@@ -74,16 +85,19 @@ exports.createMethod = function(collection) {
                         args.error(model, response);
                     }
                 });
+            } else {
+                args.error({}, null);
             }
         },
         fetchLastPage : function(args) {
+            var name = this.config.adapter.collection_name;
             var url = (this.paginator && this.paginator.last) ? this.paginator.last : null;
 
-            Alloy.Logger.debug('fetchLastPage:url: ' + url);
+            Alloy.Logger.debug('[' + name + '] fetch last:' + url);
 
             if (url) {
-                collection.hideID();
-                collection.fetch({
+                Alloy.Collections[name].hideID();
+                Alloy.Collections[name].fetch({
                     url : url,
                     timeout : 60000,
                     success : function(model, response) {
@@ -93,16 +107,19 @@ exports.createMethod = function(collection) {
                         args.error(model, response);
                     }
                 });
+            } else {
+                args.error({}, null);
             }
         },
         fetchNextPage : function(args) {
+            var name = this.config.adapter.collection_name;
             var url = (this.paginator && this.paginator.next) ? this.paginator.next : null;
 
-            Alloy.Logger.debug('fetchNextPage:url: ' + url);
+            Alloy.Logger.debug('[' + name + '] fetch next:' + url);
 
             if (url) {
-                collection.hideID();
-                collection.fetch({
+                Alloy.Collections[name].hideID();
+                Alloy.Collections[name].fetch({
                     url : url,
                     timeout : 60000,
                     success : function(model, response) {
@@ -112,16 +129,19 @@ exports.createMethod = function(collection) {
                         args.error(model, response);
                     }
                 });
+            } else {
+                args.error({}, null);
             }
         },
         fetchPreviousPage : function(args) {
+            var name = this.config.adapter.collection_name;
             var url = (this.paginator && this.paginator.previous) ? this.paginator.previous : null;
 
-            Alloy.Logger.debug('fetchPreviousPage:url: ' + url);
+            Alloy.Logger.debug('[' + name + '] fetch next:' + previous);
 
             if (url) {
-                collection.hideID();
-                collection.fetch({
+                Alloy.Collections[name].hideID();
+                Alloy.Collections[name].fetch({
                     url : url,
                     timeout : 60000,
                     success : function(model, response) {
@@ -131,6 +151,8 @@ exports.createMethod = function(collection) {
                         args.error(model, response);
                     }
                 });
+            } else {
+                args.error({}, null);
             }
         }
     };
