@@ -1,3 +1,5 @@
+var manger = require('model/manger');
+
 var paginatorNode = {
     page : 'page',
     total : 'total',
@@ -8,7 +10,7 @@ var paginatorNode = {
     previous : '_links.previous.href'
 };
 
-exports.setFromRestAPI = function(manger, model, response) {
+exports.setFromRestAPI = function(model, response) {
     var data = {
         paginator : {}
     };
@@ -22,7 +24,7 @@ exports.setFromRestAPI = function(manger, model, response) {
     return model;
 };
 
-exports.createMethod = function(collection) {
+exports.createCollectionMethod = function() {
     return {
         setID : function(id) {
             var name = this.config.adapter.collection_name;
@@ -64,7 +66,7 @@ exports.createMethod = function(collection) {
                     }
                 });
             } else {
-                args.error({}, null);
+                args.done();
             }
         },
         fetchFirstPage : function(args) {
@@ -86,7 +88,7 @@ exports.createMethod = function(collection) {
                     }
                 });
             } else {
-                args.error({}, null);
+                args.done();
             }
         },
         fetchLastPage : function(args) {
@@ -108,7 +110,7 @@ exports.createMethod = function(collection) {
                     }
                 });
             } else {
-                args.error({}, null);
+                args.done();
             }
         },
         fetchNextPage : function(args) {
@@ -130,7 +132,7 @@ exports.createMethod = function(collection) {
                     }
                 });
             } else {
-                args.error({}, null);
+                args.done();
             }
         },
         fetchPreviousPage : function(args) {
@@ -152,7 +154,7 @@ exports.createMethod = function(collection) {
                     }
                 });
             } else {
-                args.error({}, null);
+                args.done();
             }
         }
     };

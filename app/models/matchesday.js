@@ -1,76 +1,25 @@
+var name = 'matchesday';
+var config = require('model/config');
 var manger = require('model/manger');
 var paginator = require('model/paginator');
+var load = require('model/' + name);
 
 exports.definition = {
-    config : {
-        URL : 'http://demo.balltoro.com/api/matches/day',
-        debug : true,
-        adapter : {
-            type : 'restapi',
-            collection_name : 'matchesday',
-            idAttribute : 'id'
-        },
-        parentNode : '_embedded.items'
-    },
+    config : config[name],
     extendModel : function(Model) {
-        _.extend(Model.prototype, {
-            transformDataToMatchlabel : function() {
-                /**
-                 * # template
-                 * - after
-                 * - before
-                 * - gameafter
-                 * - gamebefore
-                 * - gamelive
-                 * - gamelivehalftime
-                 */
+        var methods = {};
 
-                var dataModel = this.toJSON();
-                var data = {
-                    id : 'id',
-                    homeIcon : 'home_club._links.logo.href',
-                    homeName : 'home_club.name',
-                    homeScore : 'home_score',
-                    awayIcon : 'away_club._links.logo.href',
-                    awayName : 'away_club.name',
-                    awayScore : 'away_score',
-                    datetime : 'start_time'
-                };
+        methods = _.extend(methods, load.createModelMethod());
 
-                for (var i in data) {
-                    data[i] = manger.traverseProperties(dataModel, data[i]);
-
-                    if (_.isNull(data[i])) {
-                        data[i] = '';
-                    }
-                }
-
-                data.template = 'before';
-
-                var unixtime = Alloy.Moment(data.datetime).unix();
-
-                var attrs = {
-                    id : data.id,
-                    template : data.template,
-                    leftIcon : data.homeIcon,
-                    leftLabel : data.homeName,
-                    rightIcon : data.awayIcon,
-                    rightLabel : data.awayName,
-                    scoreLabel : data.homeScore + ' - ' + data.awayScore,
-                    startTimeLabel : Alloy.Moment.unix(unixtime).format('HH:mm'),
-                    startDateLabel : Alloy.Moment.unix(unixtime).format('D MMM YYYY'),
-                };
-
-                return attrs;
-            },
-        });
+        _.extend(Model.prototype, methods);
 
         return Model;
     },
     extendCollection : function(Collection) {
         var methods = {};
 
-        methods = _.extend(methods, paginator.createMethod());
+        methods = _.extend(methods, load.createCollectionMethod());
+        methods = _.extend(methods, paginator.createCollectionMethod());
 
         _.extend(Collection.prototype, methods);
 

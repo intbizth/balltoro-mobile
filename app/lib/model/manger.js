@@ -15,3 +15,26 @@ exports.traverseProperties = function(object, string) {
 
     return output;
 };
+
+exports.filterMethod = function(methods, value) {
+    if (value) {
+        if (_.isString(value)) {
+            value = [value];
+        }
+
+        var keys = _.keys(methods);
+        keys = _.intersection(keys, value);
+
+        if (keys.length > 0) {
+            var newMethods = {};
+
+            for (var i in keys) {
+                newMethods[keys[i]] = methods[keys[i]];
+            }
+
+            methods = newMethods;
+        }
+    }
+
+    return methods;
+};

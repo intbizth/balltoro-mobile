@@ -6,7 +6,6 @@
  * www.napp.dk
  */
 
-var manger = require('model/manger');
 var paginator = require('model/paginator');
 
 function S4() {
@@ -270,7 +269,7 @@ function Sync(method, model, opts) {
 
         apiCall(params, function(_response) {
             if (_response.success) {
-                model = paginator.setFromRestAPI(manger, model, _response);
+                model = paginator.setFromRestAPI(model, _response);
                 
                 var data = parseJSON(DEBUG, _response, parentNode, model);
                 var values = [];
