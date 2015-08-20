@@ -39,7 +39,9 @@ exports.createMethod = function(collection) {
             delete collection.idDefault;
         },
         fetchSelfPage : function(args) {
-            var url = (collection.paginator && collection.paginator.self) ? collection.paginator.self : null;
+            var url = (this.paginator && this.paginator.self) ? this.paginator.self : null;
+
+            Alloy.Logger.debug('fetchSelfPage:url: ' + url);
 
             if (url) {
                 collection.hideID();
@@ -56,7 +58,9 @@ exports.createMethod = function(collection) {
             }
         },
         fetchFirstPage : function(args) {
-            var url = (collection.paginator && collection.paginator.first) ? collection.paginator.first : null;
+            var url = (this.paginator && this.paginator.first) ? this.paginator.first : null;
+
+            Alloy.Logger.debug('fetchFirstPage:url: ' + url);
 
             if (url) {
                 collection.hideID();
@@ -73,7 +77,9 @@ exports.createMethod = function(collection) {
             }
         },
         fetchLastPage : function(args) {
-            var url = (collection.paginator && collection.paginator.last) ? collection.paginator.last : null;
+            var url = (this.paginator && this.paginator.last) ? this.paginator.last : null;
+
+            Alloy.Logger.debug('fetchLastPage:url: ' + url);
 
             if (url) {
                 collection.hideID();
@@ -90,7 +96,9 @@ exports.createMethod = function(collection) {
             }
         },
         fetchNextPage : function(args) {
-            var url = (collection.paginator && collection.paginator.next) ? collection.paginator.next : null;
+            var url = (this.paginator && this.paginator.next) ? this.paginator.next : null;
+
+            Alloy.Logger.debug('fetchNextPage:url: ' + url);
 
             if (url) {
                 collection.hideID();
@@ -107,7 +115,9 @@ exports.createMethod = function(collection) {
             }
         },
         fetchPreviousPage : function(args) {
-            var url = (collection.paginator && collection.paginator.previous) ? collection.paginator.previous : null;
+            var url = (this.paginator && this.paginator.previous) ? this.paginator.previous : null;
+
+            Alloy.Logger.debug('fetchPreviousPage:url: ' + url);
 
             if (url) {
                 collection.hideID();

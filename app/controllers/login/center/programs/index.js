@@ -139,6 +139,8 @@ function load() {
                 });
             },
             error : function(model, response) {
+                callback();
+
                 Alloy.Notifier.showError({
                     response : response
                 });
@@ -174,6 +176,8 @@ function load() {
                 });
             },
             error : function(model, response) {
+                callback();
+
                 Alloy.Notifier.showError({
                     response : response
                 });
