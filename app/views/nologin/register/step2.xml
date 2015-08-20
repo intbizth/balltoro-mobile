@@ -1,16 +1,16 @@
 <Alloy>
-    <Window id="main">
+    <Window id="main" onSingletap="doBlur">
         <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
         <View id="content">
-            <View id="contentTop">
-                <View id="contentCircleIn" />
-                <View id="contentImage">
-                    <ImageView id="imageLeft" />
-                    <ImageView id="imageRight" />
+            <ScrollView id="contentTop" >
+                <View id="profileImage" />
+                <View id="photo">
+                    <ImageView id="addPhoto" />
+                    <ImageView id="camera" />
                 </View>
                 <TextField id="name" class="textField" />
                 <TextField id="surname" class="textField" />
-            </View>
+            </ScrollView>
             <View id="contentBottom">
                 <View id="nextButton">
                     <Label id="nextLabel" />

@@ -24,6 +24,82 @@ $.nextButton.addEventListener('click', function() {
 
 });
 
+$.profileImage.addEventListener('touchstart', function() {
+    $.profileImage.opacity = $.profileImage.opacityAct;
+});
+
+$.profileImage.addEventListener('touchmove', function() {
+    this.fireEvent('touchstart');
+});
+
+$.profileImage.addEventListener('touchend', function() {
+    $.profileImage.opacity = $.profileImage.opacityInAct;
+});
+
+$.profileImage.addEventListener('touchcancel', function() {
+    this.fireEvent('touchend');
+});
+
+$.profileImage.addEventListener('click', function() {
+
+});
+
+$.addPhoto.addEventListener('touchstart', function() {
+    $.addPhoto.opacity = $.addPhoto.opacityAct;
+});
+
+$.addPhoto.addEventListener('touchmove', function() {
+    this.fireEvent('touchstart');
+});
+
+$.addPhoto.addEventListener('touchend', function() {
+    $.addPhoto.opacity = $.addPhoto.opacityInAct;
+});
+
+$.addPhoto.addEventListener('touchcancel', function() {
+    this.fireEvent('touchend');
+});
+
+$.addPhoto.addEventListener('click', function() {
+
+});
+
+$.camera.addEventListener('touchstart', function() {
+    $.camera.opacity = $.camera.opacityAct;
+});
+
+$.camera.addEventListener('touchmove', function() {
+    this.fireEvent('touchstart');
+});
+
+$.camera.addEventListener('touchend', function() {
+    $.camera.opacity = $.camera.opacityInAct;
+});
+
+$.camera.addEventListener('touchcancel', function() {
+    this.fireEvent('touchend');
+});
+
+$.camera.addEventListener('click', function() {
+
+});
+
+function doBlur(e) {
+    if (e.source) {
+        blur();
+    }
+};
+
+function blur() {
+    $.name.blur();
+    $.surname.blur();
+};
+
+function clean() {
+    $.name.value = '';
+    $.surname.value = '';
+};
+
 function initialize() {
     if (Alloy.Globals.isIos7Plus) {
         $.navbarView.getView().top = 20;

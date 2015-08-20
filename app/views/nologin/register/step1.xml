@@ -2,12 +2,12 @@
     <Window id="main" onSingletap="doBlur">
         <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
         <View id="content">
-            <View id="contentTop">
+            <ScrollView id="contentTop">
                 <TextField id="username" class="textField" />
                 <TextField id="email" class="textField" />
                 <TextField id="password" class="textField" />
                 <TextField id="confirmPassword" class="textField" />
-            </View>
+            </ScrollView>
             <View id="contentBottom">
                 <View id="nextButton">
                     <Label id="nextLabel" />
