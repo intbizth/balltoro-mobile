@@ -6,6 +6,9 @@
  * www.napp.dk
  */
 
+var manger = require('model/manger');
+var paginator = require('model/paginator');
+
 function S4() {
     return ((1 + Math.random()) * 65536 | 0).toString(16).substring(1);
 }
@@ -267,8 +270,8 @@ function Sync(method, model, opts) {
 
         apiCall(params, function(_response) {
             if (_response.success) {
-                model = setPaginator(model, _response);
-
+                model = paginator.setFromRestAPI(manger, model, _response);
+                
                 var data = parseJSON(DEBUG, _response, parentNode, model);
                 var values = [];
 
@@ -431,37 +434,6 @@ function setETag(url, eTag) {
         Ti.App.Properties.setObject("NAPP_REST_ADAPTER", obj);
     }
 }
-
-/**
- *
- * @param {Object} response
- */
-function setPaginator(model, response) {
-    var data = {
-        page : null,
-        total : null,
-        self : null,
-        first : null,
-        last : null,
-        next : null,
-        previous : null
-    };
-
-    if (_.isObject(model.config.paginatorNode) && response.responseJSON) {
-        for (var i in model.config.paginatorNode) {
-            try {
-                data[i] = traverseProperties(response.responseJSON, model.config.paginatorNode[i]);
-            } catch(e) {
-            }
-        }
-    }
-
-    model = _.extend(model, {
-        paginator : data
-    });
-
-    return model;
-};
 
 //we need underscore
 var _ = require("alloy/underscore")._;
