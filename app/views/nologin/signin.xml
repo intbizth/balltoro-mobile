@@ -8,7 +8,9 @@
                 <TextField id="password" class="textField" />
             </View>
             <View id="contentBottom">
-                <Button id="signinButton" />
+                <View id="signinButton">
+                    <Label id="signinLabel" />
+                </View>
             </View>
         </ScrollView>
     </Window>

@@ -115,6 +115,23 @@ function initialize() {
     $.navbarView.on('left:click', function(e) {
         $.main.close();
     });
+
+    $.main.addEventListener('open', function(e) {
+        load();
+
+        Alloy.Globals.nologin.stackWindows.push($.main);
+
+        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type + ' (', 'nologin stacks: ' + JSON.stringify(_.pluck(Alloy.Globals.nologin.stackWindows, 'name')) + ' ' + Alloy.Globals.nologin.stackWindows.length, ')');
+    });
+
+    $.main.addEventListener('close', function(e) {
+        unLoad();
+        clean();
+
+        Alloy.Globals.nologin.stackWindows.pop();
+
+        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type + ' (', 'nologin stacks: ' + JSON.stringify(_.pluck(Alloy.Globals.nologin.stackWindows, 'name')) + ' ' + Alloy.Globals.nologin.stackWindows.length, ')');
+    });
 };
 
 function load() {

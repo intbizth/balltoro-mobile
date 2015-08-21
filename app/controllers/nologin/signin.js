@@ -5,7 +5,7 @@ var args = arguments[0] || {};
 Alloy.Logger.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
 $.signinButton.addEventListener('touchstart', function() {
-    $.signinButton.opacity = $.signinButton.opacityAct;
+    $.signinLabel.opacity = $.signinLabel.opacityAct;
 });
 
 $.signinButton.addEventListener('touchmove', function() {
@@ -13,7 +13,7 @@ $.signinButton.addEventListener('touchmove', function() {
 });
 
 $.signinButton.addEventListener('touchend', function() {
-    $.signinButton.opacity = $.signinButton.opacityInAct;
+    $.signinLabel.opacity = $.signinLabel.opacityInAct;
 });
 
 $.signinButton.addEventListener('touchcancel', function() {
@@ -21,13 +21,26 @@ $.signinButton.addEventListener('touchcancel', function() {
 });
 
 $.signinButton.addEventListener('click', function() {
-
+    Alloy.Globals.login.force();
 });
 
 function doBlur(e) {
+    if (e.source) {
+        blur();
+    }
+};
+
+function blur() {
     $.username.blur();
     $.email.blur();
-    $.username.blur();
+    $.password.blur();
+
+};
+
+function clean() {
+    $.username.value = '';
+    $.email.value = '';
+    $.password.value = '';
 };
 
 function initialize() {
@@ -43,15 +56,11 @@ function initialize() {
     });
 
     $.navbarView.on('left:click', function(e) {
-        // $.main.close();
+        $.main.close();
     });
 
     $.main.addEventListener('open', function(e) {
         load();
-
-        _.delay(function() {
-            Alloy.Globals.login.force();
-        }, 1000);
 
         Alloy.Globals.nologin.stackWindows.push($.main);
 
@@ -60,6 +69,7 @@ function initialize() {
 
     $.main.addEventListener('close', function(e) {
         unLoad();
+        clean();
 
         Alloy.Globals.nologin.stackWindows.pop();
 
