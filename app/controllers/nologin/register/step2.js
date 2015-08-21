@@ -35,65 +35,65 @@ $.nextButton.addEventListener('click', function() {
 
 });
 
-$.profileImage.addEventListener('touchstart', function() {
-    $.profileImage.opacity = $.profileImage.opacityAct;
-});
-
-$.profileImage.addEventListener('touchmove', function() {
-    this.fireEvent('touchstart');
-});
-
-$.profileImage.addEventListener('touchend', function() {
-    $.profileImage.opacity = $.profileImage.opacityInAct;
-});
-
-$.profileImage.addEventListener('touchcancel', function() {
-    this.fireEvent('touchend');
-});
-
-$.profileImage.addEventListener('click', function() {
-
-});
-
-$.addPhoto.addEventListener('touchstart', function() {
-    $.addPhoto.opacity = $.addPhoto.opacityAct;
-});
-
-$.addPhoto.addEventListener('touchmove', function() {
-    this.fireEvent('touchstart');
-});
-
-$.addPhoto.addEventListener('touchend', function() {
-    $.addPhoto.opacity = $.addPhoto.opacityInAct;
-});
-
-$.addPhoto.addEventListener('touchcancel', function() {
-    this.fireEvent('touchend');
-});
-
-$.addPhoto.addEventListener('click', function() {
-
-});
-
-$.camera.addEventListener('touchstart', function() {
-    $.camera.opacity = $.camera.opacityAct;
-});
-
-$.camera.addEventListener('touchmove', function() {
-    this.fireEvent('touchstart');
-});
-
-$.camera.addEventListener('touchend', function() {
-    $.camera.opacity = $.camera.opacityInAct;
-});
-
-$.camera.addEventListener('touchcancel', function() {
-    this.fireEvent('touchend');
-});
-
-$.camera.addEventListener('click', function() {
-
-});
+// $.addPhoto.addEventListener('touchstart', function() {
+// this.opacity = this.opacityAct;
+// });
+//
+// $.addPhoto.addEventListener('touchmove', function() {
+// this.fireEvent('touchstart');
+// });
+//
+// $.addPhoto.addEventListener('touchend', function() {
+// this.opacity = this.opacityInAct;
+// });
+//
+// $.addPhoto.addEventListener('touchcancel', function() {
+// this.fireEvent('touchend');
+// });
+//
+// $.addPhoto.addEventListener('click', function() {
+//
+// });
+//
+// $.openCamera.addEventListener('touchstart', function() {
+// this.opacity = this.opacityAct;
+// });
+//
+// $.openCamera.addEventListener('touchmove', function() {
+// this.fireEvent('touchstart');
+// });
+//
+// $.openCamera.addEventListener('touchend', function() {
+// this.opacity = this.opacityInAct;
+// });
+//
+// $.openCamera.addEventListener('touchcancel', function() {
+// this.fireEvent('touchend');
+// });
+//
+// $.openCamera.addEventListener('click', function() {
+//
+// });
+//
+// $.removePhoto.addEventListener('touchstart', function() {
+// this.opacity = this.opacityAct;
+// });
+//
+// $.removePhoto.addEventListener('touchmove', function() {
+// this.fireEvent('touchstart');
+// });
+//
+// $.removePhoto.addEventListener('touchend', function() {
+// this.opacity = this.opacityInAct;
+// });
+//
+// $.removePhoto.addEventListener('touchcancel', function() {
+// this.fireEvent('touchend');
+// });
+//
+// $.removePhoto.addEventListener('click', function() {
+//
+// });
 
 function doBlur(e) {
     if (e.source) {
@@ -109,6 +109,62 @@ function blur() {
 function clean() {
     $.name.value = '';
     $.surname.value = '';
+};
+
+function openPhotoGallery() {
+    Ti.Media.openPhotoGallery({
+        allowEditing : true,
+        mediaTypes : [Ti.Media.MEDIA_TYPE_PHOTO],
+        success : function(event) {
+            console.info(event);
+
+            $.profile.image = event.media;
+        },
+        cancel : function() {
+
+        },
+        error : function(error) {
+            var message = L('camera.unexpectederror') + ' (' + error.code + ')';
+
+            Alloy.Notifier.show({
+                message : message,
+                style : 'error',
+                icon : '/images/notifications/image.png',
+                duration : 3000
+            });
+        }
+    });
+};
+
+function openCamera() {
+    Ti.Media.showCamera({
+        allowEditing : true,
+        mediaTypes : [Ti.Media.MEDIA_TYPE_PHOTO],
+        success : function(event) {
+            console.info(event);
+
+            $.profile.image = event.media;
+        },
+        cancel : function() {
+
+        },
+        error : function(error) {
+            var message = '';
+
+            if (error.code == Ti.Media.NO_CAMERA) {
+                message = L('camera.devicesdonotsupportthecamera');
+            } else {
+                message = L('camera.unexpectederror') + ' (' + error.code + ')';
+            }
+
+            Alloy.Notifier.show({
+                message : message,
+                style : 'error',
+                icon : '/images/notifications/camera.png',
+                duration : 3000
+            });
+        }
+    });
 };
 
 function initialize() {
