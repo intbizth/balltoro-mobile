@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><resources>
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
     <string name="appname">บอลโตโล้</string>
     <string name="back">กลับ</string>
     <string name="next">ต่อไป</string>
@@ -21,4 +22,6 @@
     <string name="notconnectedtonetwork">เชื่อมต่อเครือข่ายไม่ได้</string>
     <string name="dataloadfailure">โหลดข้อมูลไม่สำเร็จ</string>
     <string name="nodata">ไม่มีข้อมูล</string>
+    <string name="camera.unexpectederror">เกิดข้อผิดพลาด</string>
+    <string name="camera.devicesdonotsupportthecamera">อุปกรณ์ไม่รองรับกล้องถ่ายภาพ</string>
 </resources>

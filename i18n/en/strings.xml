@@ -1,4 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><resources>
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
     <string name="appname">Balltoro</string>
     <string name="back">Back</string>
     <string name="next">Next</string>
@@ -21,4 +22,6 @@
     <string name="notconnectedtonetwork">Not connected to network.</string>
     <string name="dataloadfailure">Data load failure.</string>
     <string name="nodata">No data.</string>
+    <string name="camera.unexpectederror">Unexpected error</string>
+    <string name="camera.devicesdonotsupportthecamera">Devices do not support the camera</string>
 </resources>
