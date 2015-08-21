@@ -1,18 +1,18 @@
 <Alloy>
     <Window id="main" onSingletap="doBlur">
         <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
-        <View id="content">
-            <ScrollView id="contentTop">
+        <ScrollView id="content">
+            <View id="contentTop">
                 <TextField id="username" class="textField" />
                 <TextField id="email" class="textField" />
                 <TextField id="password" class="textField" />
                 <TextField id="confirmPassword" class="textField" />
-            </ScrollView>
+            </View>
             <View id="contentBottom">
                 <View id="nextButton">
                     <Label id="nextLabel" />
                 </View>
             </View>
-        </View>
+        </ScrollView>
     </Window>
 </Alloy>
