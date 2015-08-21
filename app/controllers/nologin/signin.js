@@ -62,18 +62,34 @@ function initialize() {
     $.main.addEventListener('open', function(e) {
         load();
 
-        Alloy.Globals.nologin.stackWindows.push($.main);
+        var log = '[' + $.main.name + '] ';
+        log += e.type;
+        log += ' ';
+        log += '(';
+        log += ' nologin stacks: ';
+        log += JSON.stringify(_.pluck(Alloy.Globals.nologin.stackWindows, 'name'));
+        log += ' ';
+        log += Alloy.Globals.nologin.stackWindows.length;
+        log += ')';
 
-        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type + ' (', 'nologin stacks: ' + JSON.stringify(_.pluck(Alloy.Globals.nologin.stackWindows, 'name')) + ' ' + Alloy.Globals.nologin.stackWindows.length, ')');
+        Alloy.Logger.debug(log);
     });
 
     $.main.addEventListener('close', function(e) {
         unLoad();
         clean();
 
-        Alloy.Globals.nologin.stackWindows.pop();
+        var log = '[' + $.main.name + '] ';
+        log += e.type;
+        log += ' ';
+        log += '(';
+        log += ' nologin stacks: ';
+        log += JSON.stringify(_.pluck(Alloy.Globals.nologin.stackWindows, 'name'));
+        log += ' ';
+        log += Alloy.Globals.nologin.stackWindows.length;
+        log += ')';
 
-        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type + ' (', 'nologin stacks: ' + JSON.stringify(_.pluck(Alloy.Globals.nologin.stackWindows, 'name')) + ' ' + Alloy.Globals.nologin.stackWindows.length, ')');
+        Alloy.Logger.debug(log);
     });
 };
 
