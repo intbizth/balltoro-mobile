@@ -66,10 +66,12 @@
 }
 
 '#name': {
+    maxLength: 128,
     hintText: L( 'nologin.register.name')
 }
 
 '#surname': {
+    maxLength: 128,
     hintText: L( 'nologin.register.surname')
 }
 
@@ -89,7 +91,9 @@
     color: '#ffffff',
     borderWidth: '1',
     borderColor: '#549af7',
-    backgroundColor: '#549af7'
+    backgroundColor: '#549af7',
+    backgroundColorEnable: '#549af7',
+    backgroundColorDisable: '#b2d1fb'
 }
 
 '#nextLabel':{

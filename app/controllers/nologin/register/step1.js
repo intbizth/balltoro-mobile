@@ -8,6 +8,17 @@ var step2Window = Alloy.createController('nologin/register/step2', {
 
 Alloy.Logger.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
+$.nextButton.enable = function() {
+    this.backgroundColor = this.backgroundColorEnable;
+};
+
+$.nextButton.disable = function() {
+    this.backgroundColor = this.backgroundColorDisable;
+};
+
+// $.nextButton.disable();
+// $.nextButton.enable();
+
 $.nextButton.addEventListener('touchstart', function() {
     $.nextLabel.opacity = $.nextLabel.opacityAct;
 });
@@ -46,6 +57,17 @@ function clean() {
     $.email.value = '';
     $.password.value = '';
     $.confirmPassword.value = '';
+};
+
+function checkemail(emailAddress) {
+        var str = emailAddress;
+        var filter = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        if (filter.test(str)) {
+            testresults = true;
+        } else {
+            testresults = false;
+        }
+        return (testresults);
 };
 
 function initialize() {

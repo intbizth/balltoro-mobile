@@ -29,14 +29,18 @@
 }
 
 '#username': {
+    top: 20,
+    maxLength: 64,
     hintText: L( 'nologin.register.username')
 }
 
 '#email': {
+    maxLength: 128,
     hintText: L( 'nologin.register.email')
 }
 
 '#password': {
+    maxLength: 64,
     hintText: L( 'nologin.register.password'),
     passwordMask: true
 }
@@ -57,7 +61,9 @@
     color: '#ffffff',
     borderWidth: '1',
     borderColor: '#549af7',
-    backgroundColor: '#549af7'
+    backgroundColor: '#549af7',
+    backgroundColorEnable: '#549af7',
+    backgroundColorDisable: '#b2d1fb'
 }
 
 '#signinLabel':{
