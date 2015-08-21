@@ -4,6 +4,32 @@ var args = arguments[0] || {};
 
 Alloy.Logger.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
+$.signinButton.addEventListener('touchstart', function() {
+    $.signinButton.opacity = $.signinButton.opacityAct;
+});
+
+$.signinButton.addEventListener('touchmove', function() {
+    this.fireEvent('touchstart');
+});
+
+$.signinButton.addEventListener('touchend', function() {
+    $.signinButton.opacity = $.signinButton.opacityInAct;
+});
+
+$.signinButton.addEventListener('touchcancel', function() {
+    this.fireEvent('touchend');
+});
+
+$.signinButton.addEventListener('click', function() {
+
+});
+
+function doBlur(e) {
+    $.username.blur();
+    $.email.blur();
+    $.username.blur();
+};
+
 function initialize() {
     if (Alloy.Globals.isIos7Plus) {
         $.navbarView.getView().top = 20;
