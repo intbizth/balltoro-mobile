@@ -61,7 +61,28 @@ exports.createModelMethod = function(value) {
 };
 
 exports.createCollectionMethod = function(value) {
-    var methods = {};
+    var methods = {
+        fakeData : function() {
+            var placehold = require('placehold.it');
+            var chance = require('chance.min'),
+                chance = new chance();
+            var data = [];
+
+            for (var i = 1; i <= 20; i++) {
+                data.push({
+                    id : chance.hash(),
+                    code : chance.hash(),
+                    icon : placehold.createURL({
+                        width : 100,
+                        height : 100
+                    }).image,
+                    title : chance.name(),
+                });
+            }
+
+            this.reset(data);
+        }
+    };
 
     methods = manger.filterMethod(methods, value);
 

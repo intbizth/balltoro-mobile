@@ -1,6 +1,7 @@
 exports.matchesday = {
     URL : 'http://demo.balltoro.com/api/matches/day',
     debug : true,
+    fake : true,
     adapter : {
         type : 'restapi',
         collection_name : 'matchesday',
@@ -12,6 +13,7 @@ exports.matchesday = {
 exports.matches = {
     URL : 'http://demo.balltoro.com/api/matches',
     debug : true,
+    fake : true,
     adapter : {
         type : 'restapi',
         collection_name : 'matches',
@@ -23,6 +25,7 @@ exports.matches = {
 exports.programs = {
     URL : 'http://demo.balltoro.com/api/programs',
     debug : true,
+    fake : true,
     adapter : {
         type : 'restapi',
         collection_name : 'programs',

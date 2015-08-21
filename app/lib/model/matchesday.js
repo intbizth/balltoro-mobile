@@ -14,6 +14,8 @@ exports.createModelMethod = function(value) {
 exports.createCollectionMethod = function(value) {
     var methods = {};
 
+    methods = _.extend(methods, matches.createCollectionMethod('fakeData'));
+
     methods = manger.filterMethod(methods, value);
 
     return methods;

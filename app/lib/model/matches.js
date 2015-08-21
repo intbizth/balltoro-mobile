@@ -28,8 +28,12 @@ exports.createModelMethod = function(value) {
             for (var i in data) {
                 data[i] = manger.traverseProperties(dataModel, data[i]);
 
-                if (_.isNull(data[i])) {
-                    data[i] = '';
+                if (dataModel[i]) {
+                    data[i] = dataModel[i];
+                } else {
+                    if (_.isNull(data[i])) {
+                        data[i] = '';
+                    }
                 }
             }
 
@@ -59,7 +63,46 @@ exports.createModelMethod = function(value) {
 };
 
 exports.createCollectionMethod = function(value) {
-    var methods = {};
+    var methods = {
+        fakeData : function() {
+            var placehold = require('placehold.it');
+            var chance = require('chance.min'),
+                chance = new chance();
+            var data = [];
+
+            for (var i = 1; i <= 20; i++) {
+                var datetime = chance.timestamp();
+                datetime = Alloy.Moment.unix(datetime).format('YYYY-MM-DD') + 'T' + Alloy.Moment.unix(datetime).format('HH:mm:ss') + '+0700';
+
+                data.push({
+                    id : chance.hash(),
+                    homeIcon : placehold.createURL({
+                        width : 30,
+                        height : 30
+                    }).image,
+                    homeName : chance.word(),
+                    homeScore : chance.integer({
+                        min : 0,
+                        max : 99
+                    }),
+                    awayIcon : placehold.createURL({
+                        width : 30,
+                        height : 30
+                    }).image,
+                    awayName : chance.word(),
+                    awayScore : chance.integer({
+                        min : 0,
+                        max : 99
+                    }),
+                    datetime : datetime
+                });
+            }
+
+            data = _.sortBy(data, 'datetime').reverse();
+
+            Alloy.Collections[this.config.adapter.collection_name].reset(data);
+        }
+    };
 
     methods = manger.filterMethod(methods, value);
 
