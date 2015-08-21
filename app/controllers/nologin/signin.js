@@ -4,6 +4,45 @@ var args = arguments[0] || {};
 
 Alloy.Logger.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
+$.signinButton.addEventListener('touchstart', function() {
+    $.signinLabel.opacity = $.signinLabel.opacityAct;
+});
+
+$.signinButton.addEventListener('touchmove', function() {
+    this.fireEvent('touchstart');
+});
+
+$.signinButton.addEventListener('touchend', function() {
+    $.signinLabel.opacity = $.signinLabel.opacityInAct;
+});
+
+$.signinButton.addEventListener('touchcancel', function() {
+    this.fireEvent('touchend');
+});
+
+$.signinButton.addEventListener('click', function() {
+    Alloy.Globals.login.force();
+});
+
+function doBlur(e) {
+    if (e.source) {
+        blur();
+    }
+};
+
+function blur() {
+    $.username.blur();
+    $.email.blur();
+    $.password.blur();
+
+};
+
+function clean() {
+    $.username.value = '';
+    $.email.value = '';
+    $.password.value = '';
+};
+
 function initialize() {
     if (Alloy.Globals.isIos7Plus) {
         $.navbarView.getView().top = 20;
@@ -17,15 +56,11 @@ function initialize() {
     });
 
     $.navbarView.on('left:click', function(e) {
-        // $.main.close();
+        $.main.close();
     });
 
     $.main.addEventListener('open', function(e) {
         load();
-
-        _.delay(function() {
-            Alloy.Globals.login.force();
-        }, 1000);
 
         Alloy.Globals.nologin.stackWindows.push($.main);
 
@@ -34,6 +69,7 @@ function initialize() {
 
     $.main.addEventListener('close', function(e) {
         unLoad();
+        clean();
 
         Alloy.Globals.nologin.stackWindows.pop();
 
