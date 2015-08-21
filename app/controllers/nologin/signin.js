@@ -4,6 +4,17 @@ var args = arguments[0] || {};
 
 Alloy.Logger.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
+$.signinButton.enable = function() {
+    this.backgroundColor = this.backgroundColorEnable;
+};
+
+$.signinButton.disable = function() {
+    this.backgroundColor = this.backgroundColorDisable;
+};
+
+// $.nextButton.disable();
+// $.nextButton.enable();
+
 $.signinButton.addEventListener('touchstart', function() {
     $.signinLabel.opacity = $.signinLabel.opacityAct;
 });

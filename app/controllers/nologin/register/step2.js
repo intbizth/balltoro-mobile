@@ -4,6 +4,17 @@ var args = arguments[0] || {};
 
 Alloy.Logger.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
+$.nextButton.enable = function() {
+    this.backgroundColor = this.backgroundColorEnable;
+};
+
+$.nextButton.disable = function() {
+    this.backgroundColor = this.backgroundColorDisable;
+};
+
+// $.nextButton.disable();
+// $.nextButton.enable();
+
 $.nextButton.addEventListener('touchstart', function() {
     $.nextLabel.opacity = $.nextLabel.opacityAct;
 });
