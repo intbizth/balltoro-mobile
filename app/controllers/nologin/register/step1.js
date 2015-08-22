@@ -9,15 +9,23 @@ var step2Window = Alloy.createController('nologin/register/step2', {
 
 Ti.API.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
+// >> username
+ui.setTextFieldNormalAndError($.username);
+// << username
+
+// >> email
+ui.setTextFieldNormalAndError($.email);
+// << email
+
+// >> password
+ui.setTextFieldNormalAndError($.password);
+// << password
+
+// >> confirmPassword
+ui.setTextFieldNormalAndError($.confirmPassword);
+// << confirmPassword
+
 // >> nextButton
-$.nextButton.enable = function() {
-    this.backgroundColor = this.backgroundColorEnable;
-};
-
-$.nextButton.disable = function() {
-    this.backgroundColor = this.backgroundColorDisable;
-};
-
 $.nextButton.act = function() {
     $.nextLabel.opacity = $.nextLabel.opacityAct;
 };
@@ -29,17 +37,38 @@ $.nextButton.inAct = function() {
 ui.setInActAndAct($.nextButton);
 
 $.nextButton.addEventListener('click', function() {
-    if (openedWindow) {
-        return;
-    }
+    $.username.normal();
+    $.email.normal();
+    $.password.normal();
+    $.confirmPassword.normal();
 
-    openedWindow = true;
-
-    args.navigation.openWindow(step2Window.getView());
-
-    step2Window.getView().addEventListener('close', function(e) {
-        openedWindow = false;
+    Alloy.Models.register.set({
+        username : $.username.value,
+        email : $.email.value,
+        password : $.password.value,
+        confirmPassword : $.confirmPassword.value
     });
+
+    var validate = Alloy.Models.register.validStep1();
+
+    if (validate.result) {
+        if (openedWindow) {
+            return;
+        }
+
+        openedWindow = true;
+
+        args.navigation.openWindow(step2Window.getView());
+
+        step2Window.getView().addEventListener('close', function(e) {
+            openedWindow = false;
+        });
+    } else {
+        for (var i in validate.fields) {
+            $[validate.fields[i]].error();
+            Alloy.Animation.shake($[validate.fields[i]]);
+        };
+    }
 });
 // << nextButton
 
@@ -54,24 +83,6 @@ function blur() {
     $.email.blur();
     $.password.blur();
     $.confirmPassword.blur();
-};
-
-function clean() {
-    $.username.value = '';
-    $.email.value = '';
-    $.password.value = '';
-    $.confirmPassword.value = '';
-};
-
-function checkemail(emailAddress) {
-    var str = emailAddress;
-    var filter = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-    if (filter.test(str)) {
-        testresults = true;
-    } else {
-        testresults = false;
-    }
-    return (testresults);
 };
 
 function initialize() {
@@ -108,7 +119,7 @@ function initialize() {
 
     $.main.addEventListener('close', function(e) {
         unload();
-        clean();
+        Alloy.Models.register.clear();
 
         var log = '[' + $.main.name + '] ';
         log += e.type;
@@ -123,6 +134,13 @@ function initialize() {
         Ti.API.debug(log);
     });
 
+    $.main.addEventListener('longpress', function(e) {
+        Alloy.Models.register.clear();
+    });
+
+    $.main.addEventListener('doubletap', function(e) {
+        Alloy.Models.register.fakeData();
+    });
 };
 
 function load() {

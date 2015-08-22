@@ -1,4 +1,5 @@
 <Alloy>
+     <Model src="register" />
     <Window id="main" onSingletap="doBlur">
         <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
         <ScrollView id="content">
@@ -15,8 +16,8 @@
                         <View id="removePhoto" />
                     </View>
                 </View>
-                <TextField id="name" class="textField" />
-                <TextField id="surname" class="textField" />
+                <TextField id="firstName" class="textField" value="{register.firstName}" />
+                <TextField id="lastName" class="textField" value="{register.lastName}" />
             </View>
             <View id="contentBottom">
                 <View id="nextButton">

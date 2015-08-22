@@ -3,7 +3,7 @@ var _exports = {
         object.addEventListener('touchstart', function() {
             this.act();
         });
-        
+
         object.addEventListener('touchmove', function() {
             this.fireEvent('touchstart');
         });
@@ -14,6 +14,23 @@ var _exports = {
 
         object.addEventListener('touchcancel', function() {
             this.fireEvent('touchend');
+        });
+    },
+    setTextFieldNormalAndError : function(object) {
+        object.normal = function() {
+            this.backgroundColor = this.backgroundColorNormal;
+            this.color = this.colorNormal;
+            this.borderColor = this.borderColorNormal;
+        };
+
+        object.error = function() {
+            this.backgroundColor = this.backgroundColorError;
+            this.color = this.colorError;
+            this.borderColor = this.borderColorError;
+        };
+
+        object.addEventListener('focus', function() {
+            this.normal();
         });
     }
 };

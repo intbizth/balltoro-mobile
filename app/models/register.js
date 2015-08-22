@@ -1,0 +1,116 @@
+var manger = require('model/manger');
+
+exports.definition = {
+    config : {
+        columns : {
+            id : 'TEXT',
+            username : 'TEXT',
+            email : 'TEXT',
+            firstName : 'TEXT',
+            lastName : 'TEXT',
+            password : 'TEXT',
+            confirmPassword : 'TEXT',
+            updatedAt : 'INTEGER'
+        },
+        defaults : {
+            username : '',
+            email : '',
+            firstName : '',
+            lastName : '',
+            password : '',
+            confirmPassword : '',
+            updatedAt : 0
+        },
+        adapter : {
+            type : 'sql',
+            collection_name : 'register',
+            db_file : 'data.sqlite',
+            db_name : 'user',
+            idAttribute : 'id',
+            remoteBackup : false
+        }
+    },
+    extendModel : function(Model) {
+        var methods = {
+            validStep1 : function() {
+                var output = {
+                    result : true,
+                    fields : []
+                };
+
+                var dataModel = this.toJSON();
+                delete dataModel.firstName;
+                delete dataModel.lastName;
+
+                for (var i in dataModel) {
+                    if (dataModel[i] === '') {
+                        output.result = false;
+                        output.fields.push(i);
+                    }
+                }
+
+                if (dataModel.password !== dataModel.confirmPassword) {
+                    output.result = false;
+                    output.fields.push('password');
+                    output.fields.push('confirmPassword');
+                }
+
+                output.fields = _.uniq(output.fields);
+
+                return output;
+            },
+            validStep2 : function() {
+                var output = {
+                    result : true,
+                    fields : []
+                };
+
+                // TODO
+                var dataModel = this.toJSON();
+                delete dataModel.firstName;
+                delete dataModel.lastName;
+
+                for (var i in dataModel) {
+                    if (dataModel[i] === '') {
+                        output.result = false;
+                        output.fields.push(i);
+                    }
+                }
+
+                if (dataModel.password !== dataModel.confirmPassword) {
+                    output.result = false;
+                    output.fields.push('password');
+                    output.fields.push('confirmPassword');
+                }
+
+                output.fields = _.uniq(output.fields);
+
+                return output;
+            },
+            fakeData : function() {
+                var chance = require('chance.min'),
+                    chance = new chance();
+                var data = {
+                    username : (chance.first() + chance.last()).toLowerCase(),
+                    email : chance.email(),
+                    firstName : chance.first(),
+                    lastName : chance.last(),
+                    password : chance.ssn({
+                        dashes : false
+                    }),
+                    confirmPassword : '',
+                    updatedAt : _.now()
+                };
+
+                data.confirmPassword = data.password;
+
+                this.set(data);
+                this.save();
+            }
+        };
+
+        _.extend(Model.prototype, methods);
+
+        return Model;
+    },
+};

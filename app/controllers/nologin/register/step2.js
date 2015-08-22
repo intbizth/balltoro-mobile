@@ -57,14 +57,6 @@ $.photoCameraView.removeProfile = function() {
 // << photoCameraView
 
 // >> nextButton
-$.nextButton.enable = function() {
-    this.backgroundColor = this.backgroundColorEnable;
-};
-
-$.nextButton.disable = function() {
-    this.backgroundColor = this.backgroundColorDisable;
-};
-
 $.nextButton.act = function() {
     $.nextLabel.opacity = $.nextLabel.opacityAct;
 };
@@ -172,6 +164,14 @@ $.removePhoto.addEventListener('click', function() {
 });
 // << removePhoto
 
+// >> firstName
+ui.setTextFieldNormalAndError($.firstName);
+// << firstName
+
+// >> lastName
+ui.setTextFieldNormalAndError($.lastName);
+// << lastName
+
 function doBlur(e) {
     if (e.source) {
         blur();
@@ -179,13 +179,8 @@ function doBlur(e) {
 };
 
 function blur() {
-    $.name.blur();
-    $.surname.blur();
-};
-
-function clean() {
-    $.name.value = '';
-    $.surname.value = '';
+    $.firstName.blur();
+    $.lastName.blur();
 };
 
 function initialize() {
@@ -222,7 +217,6 @@ function initialize() {
 
     $.main.addEventListener('close', function(e) {
         unload();
-        clean();
 
         var log = '[' + $.main.name + '] ';
         log += e.type;
