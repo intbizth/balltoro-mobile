@@ -1,9 +1,11 @@
 var loaded = false;
 var openedWindow = false;
 var args = arguments[0] || {};
+var ui = require('ui');
 
 Alloy.Logger.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
+// >> signinButton
 $.signinButton.enable = function() {
     this.backgroundColor = this.backgroundColorEnable;
 };
@@ -12,28 +14,20 @@ $.signinButton.disable = function() {
     this.backgroundColor = this.backgroundColorDisable;
 };
 
-// $.nextButton.disable();
-// $.nextButton.enable();
-
-$.signinButton.addEventListener('touchstart', function() {
+$.signinButton.act = function() {
     $.signinLabel.opacity = $.signinLabel.opacityAct;
-});
+};
 
-$.signinButton.addEventListener('touchmove', function() {
-    this.fireEvent('touchstart');
-});
-
-$.signinButton.addEventListener('touchend', function() {
+$.signinButton.inAct = function() {
     $.signinLabel.opacity = $.signinLabel.opacityInAct;
-});
+};
 
-$.signinButton.addEventListener('touchcancel', function() {
-    this.fireEvent('touchend');
-});
+ui.setInActAndAct($.signinButton);
 
 $.signinButton.addEventListener('click', function() {
     Alloy.Globals.login.force();
 });
+// << signinButton
 
 function doBlur(e) {
     if (e.source) {
@@ -87,7 +81,7 @@ function initialize() {
     });
 
     $.main.addEventListener('close', function(e) {
-        unLoad();
+        unload();
         clean();
 
         var log = '[' + $.main.name + '] ';
@@ -111,23 +105,27 @@ function load() {
     openedWindow = false;
 };
 
-function unLoad() {
+function unload() {
     Alloy.Logger.debug('[' + $.main.name + '] unLoad');
 
     loaded = false;
     openedWindow = false;
 };
 
-exports.getLoad = function() {
-    return loaded;
-};
-
-exports.load = function() {
-    load();
-};
-
-exports.unLoad = function() {
-    unLoad();
+var _exports = {
+    getLoad : function() {
+        return loaded;
+    },
+    load : function() {
+        load();
+    },
+    unload : function() {
+        unload();
+    }
 };
 
 initialize();
+
+for (var i in _exports) {
+    exports[i] = _exports[i];
+};

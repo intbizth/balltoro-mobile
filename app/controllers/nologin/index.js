@@ -1,6 +1,7 @@
 var loaded = false;
 var openedWindow = false;
 var args = arguments[0] || {};
+var ui = require('ui');
 
 var step1Window = Alloy.createController('nologin/register/step1', {
     navigation : $.navigation
@@ -112,6 +113,22 @@ var slider = {
     },
 };
 
+// >> logoImage
+$.logoImage.width = Ti.Platform.displayCaps.platformWidth * 0.40;
+$.logoImage.height = $.logoImage.width;
+// << logoImage
+
+// >> registerButton
+$.registerButton.act = function() {
+    $.registerLabel.opacity = $.registerLabel.opacityAct;
+};
+
+$.registerButton.inAct = function() {
+    $.registerLabel.opacity = $.registerLabel.opacityInAct;
+};
+
+ui.setInActAndAct($.registerButton);
+
 $.registerButton.addEventListener('click', function(e) {
     if (openedWindow) {
         return;
@@ -125,6 +142,18 @@ $.registerButton.addEventListener('click', function(e) {
         openedWindow = false;
     });
 });
+// << registerButton
+
+// >> signinButton
+$.signinButton.act = function() {
+    $.signinLabel.opacity = $.signinLabel.opacityAct;
+};
+
+$.signinButton.inAct = function() {
+    $.signinLabel.opacity = $.signinLabel.opacityInAct;
+};
+
+ui.setInActAndAct($.signinButton);
 
 $.signinButton.addEventListener('click', function(e) {
     if (openedWindow) {
@@ -139,8 +168,21 @@ $.signinButton.addEventListener('click', function(e) {
         openedWindow = false;
     });
 });
+// << signinButton
+
+// >> signinWithFacebookButton
+$.signinWithFacebookButton.act = function() {
+    $.signinWithFacebookSubButton.opacity = $.signinWithFacebookSubButton.opacityAct;
+};
+
+$.signinWithFacebookButton.inAct = function() {
+    $.signinWithFacebookSubButton.opacity = $.signinWithFacebookSubButton.opacityInAct;
+};
+
+ui.setInActAndAct($.signinButton);
 
 $.signinWithFacebookButton.addEventListener('click', function(e) {
+    // TODO
     Ti.API.error('Alloy.Facebook.loggedIn', typeof Alloy.Facebook.loggedIn, Alloy.Facebook.loggedIn);
 
     if (!Alloy.Facebook.loggedIn) {
@@ -149,6 +191,7 @@ $.signinWithFacebookButton.addEventListener('click', function(e) {
         Alloy.Facebook.logout();
     }
 });
+// << signinWithFacebookButton
 
 function initialize() {
     Alloy.Facebook.permissions = ['publish_stream', 'read_stream'];
@@ -174,69 +217,10 @@ function initialize() {
     });
 
     $.main.addEventListener('close', function() {
-        unLoad();
+        unload();
 
         Alloy.Globals.nologin.stackWindows.pop();
     });
-
-    $.logoImage.width = Ti.Platform.displayCaps.platformWidth * 0.40;
-    $.logoImage.height = $.logoImage.width;
-
-    // >> button
-    // > register button
-    $.registerButton.addEventListener('touchstart', function() {
-        $.registerLabel.opacity = $.registerLabel.opacityAct;
-    });
-
-    $.registerButton.addEventListener('touchmove', function() {
-        this.fireEvent('touchstart');
-    });
-
-    $.registerButton.addEventListener('touchend', function() {
-        $.registerLabel.opacity = $.registerLabel.opacityInAct;
-    });
-
-    $.registerButton.addEventListener('touchcancel', function() {
-        this.fireEvent('touchend');
-    });
-    // < register button
-
-    // > signin button
-    $.signinButton.addEventListener('touchstart', function() {
-        $.signinLabel.opacity = $.signinLabel.opacityAct;
-    });
-
-    $.signinButton.addEventListener('touchmove', function() {
-        this.fireEvent('touchstart');
-    });
-
-    $.signinButton.addEventListener('touchend', function() {
-        $.signinLabel.opacity = $.signinLabel.opacityInAct;
-    });
-
-    $.signinButton.addEventListener('touchcancel', function() {
-        this.fireEvent('touchend');
-    });
-    // < signin button
-
-    // > signin with facebook button
-    $.signinWithFacebookButton.addEventListener('touchstart', function() {
-        $.signinWithFacebookSubButton.opacity = $.signinWithFacebookSubButton.opacityAct;
-    });
-
-    $.signinWithFacebookButton.addEventListener('touchmove', function() {
-        this.fireEvent('touchstart');
-    });
-
-    $.signinWithFacebookButton.addEventListener('touchend', function() {
-        $.signinWithFacebookSubButton.opacity = $.signinWithFacebookSubButton.opacityInAct;
-    });
-
-    $.signinWithFacebookButton.addEventListener('touchcancel', function() {
-        this.fireEvent('touchend');
-    });
-    // < signin with facebook button
-    // << button
 
     slider.initialize();
     // slider.test();
@@ -249,23 +233,27 @@ function load() {
     openedWindow = false;
 };
 
-function unLoad() {
+function unload() {
     Alloy.Logger.debug('[' + $.main.name + '] unLoad');
 
     loaded = false;
     openedWindow = false;
 };
 
-exports.getLoad = function() {
-    return loaded;
-};
-
-exports.load = function() {
-    load();
-};
-
-exports.unLoad = function() {
-    unLoad();
+var _exports = {
+    getLoad : function() {
+        return loaded;
+    },
+    load : function() {
+        load();
+    },
+    unload : function() {
+        unload();
+    }
 };
 
 initialize();
+
+for (var i in _exports) {
+    exports[i] = _exports[i];
+};
