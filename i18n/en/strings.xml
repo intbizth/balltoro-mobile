@@ -15,8 +15,8 @@
     <string name="nologin.register.email">Email</string>
     <string name="nologin.register.password">Password</string>
     <string name="nologin.register.confirmPassword">Comfirm Password</string>
-    <string name="nologin.register.firstname">Firstname</string>
-    <string name="nologin.register.lastname">Lastname</string>
+    <string name="nologin.register.firstName">Firstname</string>
+    <string name="nologin.register.lastName">Lastname</string>
     <string name="nologin.signin.title">Sign In</string>
     <string name="nologin.signin.usernameOrEmail">Username Or Email</string>
     <string name="facebook">Facebook</string>
