@@ -3,7 +3,7 @@ var openedWindow = false;
 var args = arguments[0] || {};
 var ui = require('ui');
 
-Alloy.Logger.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
+Ti.API.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
 // >> signinButton
 $.signinButton.enable = function() {
@@ -77,7 +77,7 @@ function initialize() {
         log += Alloy.Globals.nologin.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
     });
 
     $.main.addEventListener('close', function(e) {
@@ -94,19 +94,19 @@ function initialize() {
         log += Alloy.Globals.nologin.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
     });
 };
 
 function load() {
-    Alloy.Logger.debug('[' + $.main.name + '] load');
+    Ti.API.debug('[' + $.main.name + ']', 'load');
 
     loaded = true;
     openedWindow = false;
 };
 
 function unload() {
-    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
+    Ti.API.debug('[' + $.main.name + ']', 'unload');
 
     loaded = false;
     openedWindow = false;

@@ -1,140 +1,141 @@
 '#main':{
-	name: 'step2',
-	width: Ti.UI.FILL,
-	height: Ti.UI.FILL,
-	backgroundColor: '#0f181e',
-	navBarHidden: true,
-	statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT,
-	layout: 'vertical'
+    name: 'step2',
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    backgroundColor: '#0f181e',
+    navBarHidden: true,
+    statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT,
+    layout: 'vertical'
 }
 
 '#content':{
-	top: 0,
-	width: Ti.UI.FILL,
-	height: Ti.UI.FILL,
-	backgroundColor: '#ffffff',
-	contentWidth: Ti.UI.FILL
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    backgroundColor: '#ffffff',
+    contentWidth: Ti.UI.FILL
 }
 
 '#contentTop':{
-	top: 0,
-	width: Ti.UI.FILL,
-	height: Ti.UI.SIZE ,
-	layout: 'vertical'
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE ,
+    layout: 'vertical'
 }
 
 '#contentBottom': {
-	bottom: 0,
-	width: Ti.UI.FILL,
-	height: 76
+    bottom: 0,
+    width: Ti.UI.FILL,
+    height: 76
 }
 
 '#profileView': {
-	top: 20,
-	width: 76,
-	height: 76,
-	backgroundColor: '#eff0f0',
-	borderRadius: 38
+    top: 20,
+    width: 76,
+    height: 76,
+    backgroundColor: '#eff0f0',
+    borderRadius: 38
 }
 
 '#profileSubView': {
-	width: 66,
-	height: 66,
-	backgroundColor: '#1d2f3e',
-	borderRadius: 33
+    width: 66,
+    height: 66,
+    backgroundColor: '#1d2f3e',
+    borderRadius: 33
 }
 
 '#profile': {
-	width: 56,
-	height: 56,
-	borderRadius: 28,
-	image: 'images/nologin/register/step2/profile.png'
+    width: 66,
+    height: 66,
+    borderRadius: 33,
+    image: 'images/nologin/register/step2/profile.png',
+    imageDefault: 'images/nologin/register/step2/profile.png'
 }
 
 '#photoCameraView': {
-	top: 0,
-	width: Ti.UI.FILL,
-	height: 60
+    top: 0,
+    width: Ti.UI.FILL,
+    height: 60
 }
 
 '#photoCameraSubView': {
-	width: Ti.UI.SIZE,
-	height: Ti.UI.SIZE,
-	layout: 'horizontal'
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    layout: 'horizontal'
 }
 
 '#addPhoto': {
-	left: 0,
-	width: 30,
-	height: 30,
-	backgroundImage: 'images/nologin/register/step2/add_photo.png',
-	opacity: 1,
-	opacityInAct: 1,
-	opacityAct: 0.2
+    left: 0,
+    width: 30,
+    height: 30,
+    backgroundImage: 'images/nologin/register/step2/add_photo.png',
+    opacity: 1,
+    opacityInAct: 1,
+    opacityAct: 0.2
 }
 
 '#openCamera': {
-	left: 76,
-	width: 30,
-	height: 30,
-	backgroundImage: 'images/nologin/register/step2/take_photo.png',
-	opacity: 1,
-	opacityInAct: 1,
-	opacityAct: 0.2
+    left: 76,
+    width: 30,
+    height: 30,
+    backgroundImage: 'images/nologin/register/step2/take_photo.png',
+    opacity: 1,
+    opacityInAct: 1,
+    opacityAct: 0.2
 }
 
 '#removePhoto': {
-	left: 76,
-	width: 30,
-	height: 30,
-	backgroundImage: 'images/nologin/register/step2/remove_photo.png',
-	visible: false,
-	opacity: 0,
-	opacityInAct: 1,
-	opacityAct: 0.2
+    left: 76,
+    width: 30,
+    height: 30,
+    backgroundImage: 'images/nologin/register/step2/remove_photo.png',
+    visible: false,
+    opacity: 0,
+    opacityInAct: 1,
+    opacityAct: 0.2
 }
 
 '#name': {
-	maxLength: 128,
-	hintText: L( 'nologin.register.name')
+    maxLength: 128,
+    hintText: L( 'nologin.register.name')
 }
 
 '#surname': {
-	maxLength: 128,
-	hintText: L( 'nologin.register.surname')
+    maxLength: 128,
+    hintText: L( 'nologin.register.surname')
 }
 
 '.textField': {
-	top: 10,
-	width: '86%',
-	height: 36,
-	borderColor: '#999999',
-	borderWidth: 1,
-	textAlign: 'center'
+    top: 10,
+    width: '86%',
+    height: 36,
+    borderColor: '#999999',
+    borderWidth: 1,
+    textAlign: 'center'
 }
 
 '#nextButton':{
-	bottom: 20,
-	width: '86%',
-	height: 36,
-	color: '#ffffff',
-	borderWidth: '1',
-	borderColor: '#549af7',
-	backgroundColor: '#549af7',
-	backgroundColorEnable: '#549af7',
-	backgroundColorDisable: '#b2d1fb'
+    bottom: 20,
+    width: '86%',
+    height: 36,
+    color: '#ffffff',
+    borderWidth: '1',
+    borderColor: '#549af7',
+    backgroundColor: '#549af7',
+    backgroundColorEnable: '#549af7',
+    backgroundColorDisable: '#b2d1fb'
 }
 
 '#nextLabel':{
-	width: '86%',
-	height: 36,
-	color: '#ffffff',
-	font: {
-		fontSize: 14
-	},
-	text: L( 'next'),
-	textAlign: 'center',
-	opacity: 1,
-	opacityAct: 0.2,
-	opacityInAct: 1
+    width: '86%',
+    height: 36,
+    color: '#ffffff',
+    font: {
+        fontSize: 14
+    },
+    text: L( 'next'),
+    textAlign: 'center',
+    opacity: 1,
+    opacityAct: 0.2,
+    opacityInAct: 1
 }

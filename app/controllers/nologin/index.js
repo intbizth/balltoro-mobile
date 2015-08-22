@@ -10,6 +10,7 @@ var signinWindow = Alloy.createController('nologin/signin', {
     navigation : $.navigation
 });
 
+// TODO create new widget
 var slider = {
     initialize : function() {
         var height = parseInt(Ti.Platform.displayCaps.platformHeight - 160);
@@ -227,14 +228,14 @@ function initialize() {
 };
 
 function load() {
-    Alloy.Logger.debug('[' + $.main.name + '] load');
+    Ti.API.debug('[' + $.main.name + ']', 'load');
 
     loaded = true;
     openedWindow = false;
 };
 
 function unload() {
-    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
+    Ti.API.debug('[' + $.main.name + ']', 'unload');
 
     loaded = false;
     openedWindow = false;

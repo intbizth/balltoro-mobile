@@ -504,32 +504,32 @@ function itemclick(e) {
 function load() {
     loaded = true;
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load');
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'load');
 
     Widget.Collections.menus.reset(datas.menus);
     Widget.Collections.settings.reset(datas.settings);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:before:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:before:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:before:programs: ' + JSON.stringify(Widget.Collections.programs.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'load:before:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'load:before:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'load:before:programs: ' + JSON.stringify(Widget.Collections.programs.toJSON()));
 
     extendData();
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:programs: ' + JSON.stringify(Widget.Collections.programs.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'load:after:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'load:after:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'load:after:programs: ' + JSON.stringify(Widget.Collections.programs.toJSON()));
 };
 
-function unLoad() {
+function unload() {
     loaded = false;
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad');
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'unload');
 
     Widget.Collections.menus.reset([]);
     Widget.Collections.settings.reset([]);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
-    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'unload:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'unload:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
 };
 
 exports.selectItem = function(value) {
@@ -544,6 +544,6 @@ exports.load = function() {
     load();
 };
 
-exports.unLoad = function() {
-    unLoad();
+exports.unload = function() {
+    unload();
 };

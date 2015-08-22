@@ -1,10 +1,11 @@
 var loaded = false;
 var openedWindow = false;
 var args = arguments[0] || {};
-var photocamera = require('photocamera');
+var photocamera = new require('photocamera');
 var ui = require('ui');
+var photo = null;
 
-Alloy.Logger.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
+Ti.API.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
 // >> photoCameraView
 $.photoCameraView.width = 242;
@@ -49,6 +50,10 @@ $.photoCameraView.hideRemove = function() {
         $.removePhoto.visible = false;
     });
 };
+
+$.photoCameraView.removeProfile = function() {
+    $.profile.image = $.profile.imageDefault;
+};
 // << photoCameraView
 
 // >> nextButton
@@ -87,7 +92,27 @@ $.addPhoto.inAct = function() {
 ui.setInActAndAct($.addPhoto);
 
 $.addPhoto.addEventListener('click', function() {
-    $.photoCameraView.showRemove();
+    photocamera.openPhotoGallery({
+        success : function(e) {
+            photo = e.image;
+            $.profile.image = e.image;
+            $.photoCameraView.showRemove();
+
+            Ti.API.debug('[' + $.main.name + ']', 'photo:', photo);
+        },
+        error : function(e) {
+            var message = photocamera.message(e.code);
+
+            Alloy.Notifier.show({
+                message : message,
+                style : 'error',
+                icon : '/images/notifications/image.png',
+                duration : 3000
+            });
+        },
+        cancel : function() {
+        }
+    });
 });
 // << addPhoto
 
@@ -103,7 +128,27 @@ $.openCamera.inAct = function() {
 ui.setInActAndAct($.openCamera);
 
 $.openCamera.addEventListener('click', function() {
-    $.photoCameraView.showRemove();
+    photocamera.openCamera({
+        success : function(e) {
+            photo = e.image;
+            $.profile.image = e.image;
+            $.photoCameraView.showRemove();
+
+            Ti.API.debug('[' + $.main.name + ']', 'photo:', photo);
+        },
+        error : function(e) {
+            var message = photocamera.message(e.code);
+
+            Alloy.Notifier.show({
+                message : message,
+                style : 'error',
+                icon : '/images/notifications/camera.png',
+                duration : 3000
+            });
+        },
+        cancel : function() {
+        }
+    });
 });
 // << openCamera
 
@@ -119,7 +164,11 @@ $.removePhoto.inAct = function() {
 ui.setInActAndAct($.removePhoto);
 
 $.removePhoto.addEventListener('click', function() {
+    photo = null;
     $.photoCameraView.hideRemove();
+    $.photoCameraView.removeProfile();
+
+    Ti.API.debug('[' + $.main.name + ']', 'photo:', photo);
 });
 // << removePhoto
 
@@ -168,7 +217,7 @@ function initialize() {
         log += Alloy.Globals.nologin.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
     });
 
     $.main.addEventListener('close', function(e) {
@@ -185,19 +234,19 @@ function initialize() {
         log += Alloy.Globals.nologin.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
     });
 };
 
 function load() {
-    Alloy.Logger.debug('[' + $.main.name + '] load');
+    Ti.API.debug('[' + $.main.name + ']', 'load');
 
     loaded = true;
     openedWindow = false;
 };
 
 function unload() {
-    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
+    Ti.API.debug('[' + $.main.name + ']', 'unload');
 
     loaded = false;
     openedWindow = false;

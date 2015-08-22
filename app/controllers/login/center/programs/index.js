@@ -33,7 +33,7 @@ function initialize() {
         log += Alloy.Globals.login.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
     });
 
     $.main.addEventListener('close', function(e) {
@@ -47,13 +47,13 @@ function initialize() {
         log += Alloy.Globals.login.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
     });
 };
 
 function load() {
-    Alloy.Logger.debug('[' + $.main.name + '] load');
-    Alloy.Logger.debug('[' + $.main.name + '] load:args: ' + JSON.stringify(args));
+    Ti.API.debug('[' + $.main.name + ']', 'load');
+    Ti.API.debug('[' + $.main.name + ']', 'load:args: ' + JSON.stringify(args));
 
     loaded = true;
     openedWindow = false;
@@ -62,7 +62,7 @@ function load() {
     });
     program = program[0].transformDataToLabel();
 
-    Alloy.Logger.debug('[' + $.main.name + '] program: ' + JSON.stringify(program));
+    Ti.API.debug('[' + $.main.name + '] program: ' + JSON.stringify(program));
 
     Alloy.Collections.matchesday.setID(args.programCode);
 
@@ -192,8 +192,8 @@ function load() {
     };
 };
 
-function unLoad() {
-    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
+function unload() {
+    Ti.API.debug('[' + $.main.name + ']', 'unload');
 
     loaded = false;
     openedWindow = false;
@@ -210,8 +210,8 @@ exports.load = function() {
     load();
 };
 
-exports.unLoad = function() {
-    unLoad();
+exports.unload = function() {
+    unload();
 };
 
 initialize();

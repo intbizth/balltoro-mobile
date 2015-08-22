@@ -1,51 +1,143 @@
-function openPhotoGallery() {
-    Ti.Media.openPhotoGallery({
-        allowEditing : true,
-        mediaTypes : [Ti.Media.MEDIA_TYPE_PHOTO],
-        success : function(event) {
-            console.info(event);
-        },
-        cancel : function() {
+var maxWidth = 600;
+var maxHeight = 600;
+var imagefactory = require('ti.imagefactory');
 
-        },
-        error : function(error) {
-            var message = L('camera.unexpectederror') + ' (' + error.code + ')';
+function resizeKeepAspectRatioPercentage(blob, width, height, percentage) {
+    if (width <= 0 || height <= 0 || percentage <= 0) {
+        return blob;
+    }
 
-            Alloy.Notifier.show({
-                message : message,
-                style : 'error',
-                icon : '/images/notifications/image.png',
-                duration : 3000
-            });
-        }
+    var w = width * (percentage / 100);
+    var h = height * (percentage / 100);
+
+    return imagefactory.imageAsResized(blob, {
+        width : w,
+        height : h
     });
 };
 
-function openCamera() {
-    Ti.Media.showCamera({
-        allowEditing : true,
-        mediaTypes : [Ti.Media.MEDIA_TYPE_PHOTO],
-        success : function(event) {
-            console.info(event);
-        },
-        cancel : function() {
+function resizeKeepAspectRatioNewWidth(blob, width, height, newWidth) {
+    if (width <= 0 || height <= 0 || newWidth <= 0) {
+        return blob;
+    }
 
-        },
-        error : function(error) {
-            var message = '';
+    var ratio = width / height;
 
-            if (error.code == Ti.Media.NO_CAMERA) {
-                message = L('camera.devicesdonotsupportthecamera');
-            } else {
-                message = L('camera.unexpectederror') + ' (' + error.code + ')';
-            }
+    var w = newWidth;
+    var h = newWidth / ratio;
 
-            Alloy.Notifier.show({
-                message : message,
-                style : 'error',
-                icon : '/images/notifications/camera.png',
-                duration : 3000
-            });
-        }
+    return imagefactory.imageAsResized(blob, {
+        width : w,
+        height : h
     });
+};
+
+function resizeKeepAspectRatioNewHeight(blob, width, height, newHeight) {
+    if (width <= 0 || height <= 0 || newHeight <= 0) {
+        return blob;
+    }
+
+    var ratio = width / height;
+
+    var w = newHeight * ratio;
+    var h = newHeight;
+
+    return imagefactory.imageAsResized(blob, {
+        width : w,
+        height : h
+    });
+};
+
+function resize(blob, width, height, newWidth, newHeight) {
+    if (width <= 0 || height <= 0 || newWidth <= 0 || newHeight <= 0) {
+        return blob;
+    }
+
+    var w = newHeight;
+    var h = newHeight;
+
+    return imagefactory.imageAsResized(blob, {
+        width : w,
+        height : h
+    });
+};
+
+function resizePhoto(blob, width, height) {
+    if (height > width) {
+        if (height > maxHeight) {
+            blob = resizeKeepAspectRatioNewHeight(blob, width, height, maxHeight);
+        }
+    } else if (width > height) {
+        if (width > maxWidth) {
+            blob = resizeKeepAspectRatioNewWidth(blob, width, height, maxWidth);
+        }
+    } else {
+        if (width > maxWidth && height > maxHeight) {
+            blob = resize(blob, width, height, maxWidth, maxHeight);
+        }
+    }
+
+    return blob;
+};
+
+module.exports = {
+    openPhotoGallery : function(callback) {
+        Ti.Media.openPhotoGallery({
+            allowEditing : true,
+            mediaTypes : [Ti.Media.MEDIA_TYPE_PHOTO],
+            success : function(event) {
+                var data = {
+                    image : resizePhoto(event.media, event.cropRect.width, event.cropRect.height)
+                };
+
+                Ti.API.debug('[photocamera]', 'event:', event);
+
+                callback.success(data);
+            },
+            error : function(error) {
+                var data = {
+                    code : error.code
+                };
+
+                callback.error(data);
+            },
+            cancel : function() {
+                callback.cancel();
+            }
+        });
+    },
+    openCamera : function(callback) {
+        Ti.Media.showCamera({
+            allowEditing : true,
+            mediaTypes : [Ti.Media.MEDIA_TYPE_PHOTO],
+            success : function(event) {
+                var data = {
+                    image : resizePhoto(event.media, event.cropRect.width, event.cropRect.height)
+                };
+
+                Ti.API.debug('[photocamera]', 'event:', event);
+
+                callback.success(data);
+            },
+            error : function(error) {
+                var data = {
+                    code : error.code
+                };
+
+                callback.error(data);
+            },
+            cancel : function() {
+                callback.cancel();
+            }
+        });
+    },
+    message : function(code) {
+        var message = L('camera.unexpectederror') + ' (' + code + ')';
+
+        if (code == Ti.Media.NO_CAMERA) {
+            message = L('camera.devicesdonotsupportthecamera');
+        }
+
+        return message;
+    }
 };

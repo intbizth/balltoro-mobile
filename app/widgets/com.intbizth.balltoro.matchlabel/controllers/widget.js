@@ -210,13 +210,13 @@ function add(args) {
 
     extendData(Widget.Collections.matchelabel.models);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'load:after:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
 };
 
 function load(args) {
     loaded = true;
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load ' + JSON.stringify(args));
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'load ' + JSON.stringify(args));
 
     fetchFirstPage = args.fetchFirstPage;
     fetchNextPage = args.fetchNextPage;
@@ -234,21 +234,21 @@ function load(args) {
 
     Widget.Collections.matchelabel.reset(args.data);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:before:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'load:before:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
 
     extendData(Widget.Collections.matchelabel.models);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'load:after:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
 };
 
-function unLoad() {
+function unload() {
     loaded = false;
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad');
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'unload');
 
     Widget.Collections.matchelabel.reset([]);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
+    Widget.Logger.debug('[' + Widget.widgetId + ']', 'unload:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
 };
 
 exports.getLoad = function() {
@@ -263,8 +263,8 @@ exports.load = function(args) {
     load(args);
 };
 
-exports.unLoad = function() {
-    unLoad();
+exports.unload = function() {
+    unload();
 };
 
 exports.scrollToTop = function() {

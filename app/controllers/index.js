@@ -75,7 +75,7 @@ Alloy.Globals.login.mainWindow.setMenu = function(value) {
 
     if (!Alloy.Globals.login.menuWindows[data.name] || data.reload) {
         if (Alloy.Globals.login.menuWindows[data.name]) {
-            Alloy.Globals.login.menuWindows[data.name].unLoad();
+            Alloy.Globals.login.menuWindows[data.name].unload();
         }
 
         var menuWindow = Alloy.createController('login/center/' + data.name + '/index', data.args);
@@ -153,10 +153,10 @@ Alloy.Globals.nologin.force = function(fn) {
     _.delay(function() {
         animating = false;
 
-        Alloy.Globals.login.leftWindow.unLoad();
+        Alloy.Globals.login.leftWindow.unload();
 
         for (var i in Alloy.Globals.login.menuWindows) {
-            Alloy.Globals.login.menuWindows[i].unLoad();
+            Alloy.Globals.login.menuWindows[i].unload();
         }
     }, 800);
 };
