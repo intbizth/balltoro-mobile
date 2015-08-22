@@ -3,7 +3,6 @@ var manger = require('model/manger');
 exports.definition = {
     config : {
         columns : {
-            id : 'TEXT',
             username : 'TEXT',
             email : 'TEXT',
             firstName : 'TEXT',
@@ -31,61 +30,44 @@ exports.definition = {
         }
     },
     extendModel : function(Model) {
+        function validStep(dataModel) {
+            var output = {
+                result : true,
+                fields : []
+            };
+
+            for (var i in dataModel) {
+                if (dataModel[i] === '') {
+                    output.result = false;
+                    output.fields.push(i);
+                }
+            }
+
+            if (dataModel.password && dataModel.confirmPassword && dataModel.password !== dataModel.confirmPassword) {
+                output.result = false;
+                output.fields.push('password');
+                output.fields.push('confirmPassword');
+            }
+
+            output.fields = _.uniq(output.fields);
+
+            return output;
+        };
+
         var methods = {
             validStep1 : function() {
-                var output = {
-                    result : true,
-                    fields : []
-                };
-
                 var dataModel = this.toJSON();
-                delete dataModel.firstName;
-                delete dataModel.lastName;
 
-                for (var i in dataModel) {
-                    if (dataModel[i] === '') {
-                        output.result = false;
-                        output.fields.push(i);
-                    }
-                }
-
-                if (dataModel.password !== dataModel.confirmPassword) {
-                    output.result = false;
-                    output.fields.push('password');
-                    output.fields.push('confirmPassword');
-                }
-
-                output.fields = _.uniq(output.fields);
-
-                return output;
+                return validStep(_.omit(dataModel, ['firstName', 'lastName']));
             },
             validStep2 : function() {
-                var output = {
-                    result : true,
-                    fields : []
-                };
-
-                // TODO
                 var dataModel = this.toJSON();
-                delete dataModel.firstName;
-                delete dataModel.lastName;
 
-                for (var i in dataModel) {
-                    if (dataModel[i] === '') {
-                        output.result = false;
-                        output.fields.push(i);
-                    }
-                }
-
-                if (dataModel.password !== dataModel.confirmPassword) {
-                    output.result = false;
-                    output.fields.push('password');
-                    output.fields.push('confirmPassword');
-                }
-
-                output.fields = _.uniq(output.fields);
-
-                return output;
+                return validStep(_.omit(dataModel, ['username', 'email', 'password', 'confirmPassword']));
+            },
+            reset : function() {
+                this.set(this.defaults);
+                this.save();
             },
             fakeData : function() {
                 var chance = require('chance.min'),
@@ -112,5 +94,5 @@ exports.definition = {
         _.extend(Model.prototype, methods);
 
         return Model;
-    },
+    }
 };

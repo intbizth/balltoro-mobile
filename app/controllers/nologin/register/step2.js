@@ -172,6 +172,41 @@ ui.setTextFieldNormalAndError($.firstName);
 ui.setTextFieldNormalAndError($.lastName);
 // << lastName
 
+// >> nextButton
+$.nextButton.act = function() {
+    $.nextLabel.opacity = $.nextLabel.opacityAct;
+};
+
+$.nextButton.inAct = function() {
+    $.nextLabel.opacity = $.nextLabel.opacityInAct;
+};
+
+ui.setInActAndAct($.nextButton);
+
+$.nextButton.addEventListener('click', function() {
+    $.firstName.normal();
+    $.lastName.normal();
+
+    Alloy.Models.register.set({
+        firstName : $.firstName.value,
+        firstName : $.firstName.value
+    });
+
+    var validate = Alloy.Models.register.validStep2();
+
+    console.error(validate);
+
+    if (validate.result) {
+
+    } else {
+        for (var i in validate.fields) {
+            $[validate.fields[i]].error();
+            Alloy.Animation.shake($[validate.fields[i]]);
+        };
+    }
+});
+// << nextButton
+
 function doBlur(e) {
     if (e.source) {
         blur();
@@ -229,6 +264,20 @@ function initialize() {
         log += ')';
 
         Ti.API.debug(log);
+    });
+
+    $.main.addEventListener('longpress', function(e) {
+        $.firstName.normal();
+        $.lastName.normal();
+
+        Alloy.Models.register.reset();
+    });
+
+    $.main.addEventListener('doubletap', function(e) {
+        $.firstName.normal();
+        $.lastName.normal();
+
+        Alloy.Models.register.fakeData();
     });
 };
 

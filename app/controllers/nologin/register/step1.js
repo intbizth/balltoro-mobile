@@ -50,6 +50,8 @@ $.nextButton.addEventListener('click', function() {
     });
 
     var validate = Alloy.Models.register.validStep1();
+    
+    console.error(validate);
 
     if (validate.result) {
         if (openedWindow) {
@@ -119,7 +121,7 @@ function initialize() {
 
     $.main.addEventListener('close', function(e) {
         unload();
-        Alloy.Models.register.clear();
+        Alloy.Models.register.reset();
 
         var log = '[' + $.main.name + '] ';
         log += e.type;
@@ -135,10 +137,20 @@ function initialize() {
     });
 
     $.main.addEventListener('longpress', function(e) {
-        Alloy.Models.register.clear();
+        $.username.normal();
+        $.email.normal();
+        $.password.normal();
+        $.confirmPassword.normal();
+
+        Alloy.Models.register.reset();
     });
 
     $.main.addEventListener('doubletap', function(e) {
+        $.username.normal();
+        $.email.normal();
+        $.password.normal();
+        $.confirmPassword.normal();
+
         Alloy.Models.register.fakeData();
     });
 };

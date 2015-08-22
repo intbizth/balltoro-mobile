@@ -1,7 +1,6 @@
 migration.up = function(db) {
     db.createTable({
         columns : {
-            id : 'TEXT',
             username : 'TEXT',
             email : 'TEXT',
             firstName : 'TEXT',
