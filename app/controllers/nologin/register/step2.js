@@ -197,7 +197,7 @@ $.nextButton.addEventListener('click', function() {
     console.error(validate);
 
     if (validate.result) {
-
+        Alloy.Globals.login.force();
     } else {
         for (var i in validate.fields) {
             $[validate.fields[i]].error();

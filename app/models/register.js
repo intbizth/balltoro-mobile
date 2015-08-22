@@ -3,6 +3,7 @@ var manger = require('model/manger');
 exports.definition = {
     config : {
         columns : {
+            id : 'TEXT',
             username : 'TEXT',
             email : 'TEXT',
             firstName : 'TEXT',
@@ -24,7 +25,7 @@ exports.definition = {
             type : 'sql',
             collection_name : 'register',
             db_file : 'data.sqlite',
-            db_name : 'user',
+            db_name : 'register',
             idAttribute : 'id',
             remoteBackup : false
         }
