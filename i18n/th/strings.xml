@@ -15,8 +15,8 @@
     <string name="nologin.register.email">อีเมล</string>
     <string name="nologin.register.password">รหัสผ่าน</string>
     <string name="nologin.register.confirmPassword">ยืนยันรหัสผ่าน</string>
-    <string name="nologin.register.name">ชื่อจริง</string>
-    <string name="nologin.register.surname">นามสกุล</string>
+    <string name="nologin.register.firstname">ชื่อ</string>
+    <string name="nologin.register.lastname">นามสกุล</string>
     <string name="nologin.signin.title">เข้าระบบ</string>
     <string name="facebook">เฟสบุ๊ค</string>
     <string name="notconnectedtonetwork">เชื่อมต่อเครือข่ายไม่ได้</string>
