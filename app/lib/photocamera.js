@@ -4,8 +4,6 @@ function openPhotoGallery() {
         mediaTypes : [Ti.Media.MEDIA_TYPE_PHOTO],
         success : function(event) {
             console.info(event);
-
-            $.profile.image = event.media;
         },
         cancel : function() {
 
@@ -29,8 +27,6 @@ function openCamera() {
         mediaTypes : [Ti.Media.MEDIA_TYPE_PHOTO],
         success : function(event) {
             console.info(event);
-
-            $.profile.image = event.media;
         },
         cancel : function() {
 
