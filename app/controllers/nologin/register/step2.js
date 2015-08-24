@@ -200,6 +200,7 @@ $.nextButton.addEventListener('click', function() {
         Alloy.Globals.login.force();
 
         _.delay(function() {
+            Alloy.Models.register.reset();
             $.photoCameraView.removeProfile();
         }, 800);
     } else {

@@ -1,11 +1,11 @@
 <Alloy>
+    <Model src="signin" />
     <Window id="main" onSingletap="doBlur">
         <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
         <ScrollView id="content">
             <View id="contentTop">
-                <TextField id="username" class="textField" />
-                <TextField id="email" class="textField" />
-                <TextField id="password" class="textField" />
+                <TextField id="usernameOrEmail" class="textField" value="{signin.usernameOrEmail}" />
+                <TextField id="password" class="textField" value="{signin.password}" />
             </View>
             <View id="contentBottom">
                 <View id="signinButton">

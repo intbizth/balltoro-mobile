@@ -5,6 +5,14 @@ var ui = require('ui');
 
 Ti.API.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
+// >> usernameOrEmail
+ui.setTextFieldNormalAndError($.usernameOrEmail);
+// << usernameOrEmail
+
+// >> password
+ui.setTextFieldNormalAndError($.password);
+// << password
+
 // >> signinButton
 $.signinButton.enable = function() {
     this.backgroundColor = this.backgroundColorEnable;
@@ -25,7 +33,30 @@ $.signinButton.inAct = function() {
 ui.setInActAndAct($.signinButton);
 
 $.signinButton.addEventListener('click', function() {
-    Alloy.Globals.login.force();
+    $.usernameOrEmail.normal();
+    $.password.normal();
+
+    Alloy.Models.signin.set({
+        usernameOrEmail : $.usernameOrEmail.value,
+        password : $.password.value
+    });
+
+    var validate = Alloy.Models.signin.valid();
+
+    if (validate.result) {
+        // TODO submit data
+        Alloy.Models.signin.save();
+        Alloy.Globals.login.force();
+
+        _.delay(function() {
+            Alloy.Models.signin.reset();
+        }, 800);
+    } else {
+        for (var i in validate.fields) {
+            $[validate.fields[i]].error();
+            Alloy.Animation.shake($[validate.fields[i]]);
+        };
+    }
 });
 // << signinButton
 
@@ -36,16 +67,8 @@ function doBlur(e) {
 };
 
 function blur() {
-    $.username.blur();
-    $.email.blur();
+    $.usernameOrEmail.blur();
     $.password.blur();
-
-};
-
-function clean() {
-    $.username.value = '';
-    $.email.value = '';
-    $.password.value = '';
 };
 
 function initialize() {
@@ -84,7 +107,7 @@ function initialize() {
 
     $.main.addEventListener('close', function(e) {
         unload();
-        clean();
+        Alloy.Models.signin.reset();
 
         Alloy.Globals.nologin.stackWindows.pop();
 
@@ -99,6 +122,20 @@ function initialize() {
         log += ')';
 
         Ti.API.debug(log);
+    });
+
+    $.main.addEventListener('longpress', function(e) {
+        $.usernameOrEmail.normal();
+        $.password.normal();
+
+        Alloy.Models.signin.reset();
+    });
+
+    $.main.addEventListener('doubletap', function(e) {
+        $.usernameOrEmail.normal();
+        $.password.normal();
+
+        Alloy.Models.signin.fakeData();
     });
 };
 

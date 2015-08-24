@@ -109,6 +109,10 @@ exports.definition = {
             },
             resetStep2 : function() {
                 reset(this, fields.step2);
+            },
+            reset : function() {
+                this.set(this.defaults);
+                this.save();
             }
         };
 

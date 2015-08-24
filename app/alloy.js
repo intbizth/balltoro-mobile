@@ -73,6 +73,7 @@ Vendor.placehold = require('placehold.it');
 
 // > collections & models
 Alloy.Models.register = Alloy.createModel('register');
+Alloy.Models.signin = Alloy.createModel('signin');
 Alloy.Collections.matches = Alloy.createCollection('matches');
 Alloy.Collections.programs = Alloy.createCollection('programs');
 // > collections & models
