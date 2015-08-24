@@ -80,7 +80,7 @@ function resizePhoto(blob, width, height) {
     return blob;
 };
 
-module.exports = {
+var _exports = {
     openPhotoGallery : function(callback) {
         Ti.Media.openPhotoGallery({
             allowEditing : true,
@@ -140,4 +140,8 @@ module.exports = {
 
         return message;
     }
+};
+
+for (var i in _exports) {
+    exports[i] = _exports[i];
 };

@@ -6,32 +6,38 @@ exports.definition = {
             id : 'TEXT',
             username : 'TEXT',
             email : 'TEXT',
-            firstName : 'TEXT',
-            lastName : 'TEXT',
             password : 'TEXT',
             confirmPassword : 'TEXT',
+            firstName : 'TEXT',
+            lastName : 'TEXT',
             updatedAt : 'INTEGER'
         },
         defaults : {
             username : '',
             email : '',
-            firstName : '',
-            lastName : '',
             password : '',
             confirmPassword : '',
+            firstName : '',
+            lastName : '',
             updatedAt : 0
         },
         adapter : {
-            type : 'sql',
+            type : 'properties',
             collection_name : 'register',
-            db_file : 'data.sqlite',
-            db_name : 'register',
-            idAttribute : 'id',
-            remoteBackup : false
+            idAttribute : 'id'
         }
     },
     extendModel : function(Model) {
-        function validStep(dataModel) {
+        var fields = {
+            step1 : ['username', 'email', 'password', 'confirmPassword'],
+            step2 : ['firstName', 'lastName']
+        };
+
+        function validStep(model, keys) {
+            var dataModel = model.toJSON();
+
+            dataModel = _.pick(dataModel, keys);
+
             var output = {
                 result : true,
                 fields : []
@@ -55,40 +61,54 @@ exports.definition = {
             return output;
         };
 
+        function fakeData(model, keys) {
+            var chance = require('chance.min'),
+                chance = new chance();
+            var data = {
+                username : (chance.first() + chance.last()).toLowerCase(),
+                email : chance.email(),
+                password : chance.ssn({
+                    dashes : false
+                }),
+                confirmPassword : '',
+                firstName : chance.first(),
+                lastName : chance.last(),
+                updatedAt : _.now()
+            };
+
+            data.confirmPassword = data.password;
+
+            data = _.pick(data, keys);
+
+            model.set(data);
+            model.save();
+        };
+
+        function reset(model, keys) {
+            var data = _.pick(model.defaults, keys);
+
+            model.set(data);
+            model.save();
+        };
+
         var methods = {
             validStep1 : function() {
-                var dataModel = this.toJSON();
-
-                return validStep(_.omit(dataModel, ['firstName', 'lastName']));
+                return validStep(this, fields.step1);
             },
             validStep2 : function() {
-                var dataModel = this.toJSON();
-
-                return validStep(_.omit(dataModel, ['username', 'email', 'password', 'confirmPassword']));
+                return validStep(this, fields.step2);
             },
-            reset : function() {
-                this.set(this.defaults);
-                this.save();
+            fakeDataStep1 : function() {
+                fakeData(this, fields.step1);
             },
-            fakeData : function() {
-                var chance = require('chance.min'),
-                    chance = new chance();
-                var data = {
-                    username : (chance.first() + chance.last()).toLowerCase(),
-                    email : chance.email(),
-                    firstName : chance.first(),
-                    lastName : chance.last(),
-                    password : chance.ssn({
-                        dashes : false
-                    }),
-                    confirmPassword : '',
-                    updatedAt : _.now()
-                };
-
-                data.confirmPassword = data.password;
-
-                this.set(data);
-                this.save();
+            fakeDataStep2 : function() {
+                fakeData(this, fields.step2);
+            },
+            resetStep1 : function() {
+                reset(this, fields.step1);
+            },
+            resetStep2 : function() {
+                reset(this, fields.step2);
             }
         };
 

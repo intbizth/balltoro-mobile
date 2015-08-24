@@ -4,8 +4,8 @@ Alloy.Globals.isIos7Plus = (OS_IOS && parseInt(Ti.Platform.version.split('.')[0]
 Alloy.Globals.iPhoneTall = (OS_IOS && Ti.Platform.osname == 'iphone' && Ti.Platform.displayCaps.platformHeight == 568);
 Alloy.Globals.nologin = {};
 Alloy.Globals.login = {};
-Alloy.Globals.login.defaultMenu = 'tester';
-Alloy.Globals.login.menu = 'tester';
+Alloy.Globals.login.defaultMenu = 'profile';
+Alloy.Globals.login.menu = 'profile';
 // < alloy globals
 
 // > alloy loading

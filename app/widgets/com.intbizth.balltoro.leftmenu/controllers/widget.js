@@ -7,11 +7,6 @@ var clickTimer = null;
 var clickCount = 0;
 var datas = {
     menus : [{
-        id : 'tester',
-        template : 'itemNoIcon',
-        icon : '',
-        title : 'Tester'
-    }, {
         id : 'profile',
         template : 'item',
         icon : WPATH('images/photo.png'),

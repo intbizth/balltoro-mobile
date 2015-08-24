@@ -67,6 +67,8 @@ function initialize() {
     $.main.addEventListener('open', function(e) {
         load();
 
+        Alloy.Globals.nologin.stackWindows.push($.main);
+
         var log = '[' + $.main.name + '] ';
         log += e.type;
         log += ' ';
@@ -83,6 +85,8 @@ function initialize() {
     $.main.addEventListener('close', function(e) {
         unload();
         clean();
+
+        Alloy.Globals.nologin.stackWindows.pop();
 
         var log = '[' + $.main.name + '] ';
         log += e.type;

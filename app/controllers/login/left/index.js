@@ -20,7 +20,7 @@ function initialize() {
         var name = e.name.split(':');
 
         switch(name[0]) {
-        case 'tester':
+        case 'profile':
             var data = {
                 name : name[0]
             };
@@ -61,7 +61,7 @@ function initialize() {
         var name = e.name.split(':');
 
         switch(name[0]) {
-        case 'tester':
+        case 'profile':
             var data = {
                 name : name[0],
                 reload : true

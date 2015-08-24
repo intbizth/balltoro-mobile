@@ -50,7 +50,7 @@ $.nextButton.addEventListener('click', function() {
     });
 
     var validate = Alloy.Models.register.validStep1();
-    
+
     console.error(validate);
 
     if (validate.result) {
@@ -106,6 +106,8 @@ function initialize() {
     $.main.addEventListener('open', function(e) {
         load();
 
+        Alloy.Globals.nologin.stackWindows.push($.main);
+
         var log = '[' + $.main.name + '] ';
         log += e.type;
         log += ' ';
@@ -121,7 +123,9 @@ function initialize() {
 
     $.main.addEventListener('close', function(e) {
         unload();
-        Alloy.Models.register.reset();
+        Alloy.Models.register.resetStep1();
+
+        Alloy.Globals.nologin.stackWindows.pop();
 
         var log = '[' + $.main.name + '] ';
         log += e.type;
@@ -142,7 +146,7 @@ function initialize() {
         $.password.normal();
         $.confirmPassword.normal();
 
-        Alloy.Models.register.reset();
+        Alloy.Models.register.resetStep1();
     });
 
     $.main.addEventListener('doubletap', function(e) {
@@ -151,7 +155,7 @@ function initialize() {
         $.password.normal();
         $.confirmPassword.normal();
 
-        Alloy.Models.register.fakeData();
+        Alloy.Models.register.fakeDataStep1();
     });
 };
 

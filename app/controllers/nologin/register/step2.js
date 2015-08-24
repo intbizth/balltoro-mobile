@@ -1,7 +1,7 @@
 var loaded = false;
 var openedWindow = false;
 var args = arguments[0] || {};
-var photocamera = new require('photocamera');
+var photocamera = require('photocamera');
 var ui = require('ui');
 var photo = null;
 
@@ -52,6 +52,8 @@ $.photoCameraView.hideRemove = function() {
 };
 
 $.photoCameraView.removeProfile = function() {
+    photo = null;
+    $.photoCameraView.hideRemove();
     $.profile.image = $.profile.imageDefault;
 };
 // << photoCameraView
@@ -156,8 +158,6 @@ $.removePhoto.inAct = function() {
 ui.setInActAndAct($.removePhoto);
 
 $.removePhoto.addEventListener('click', function() {
-    photo = null;
-    $.photoCameraView.hideRemove();
     $.photoCameraView.removeProfile();
 
     Ti.API.debug('[' + $.main.name + ']', 'photo:', photo);
@@ -189,15 +189,19 @@ $.nextButton.addEventListener('click', function() {
 
     Alloy.Models.register.set({
         firstName : $.firstName.value,
-        firstName : $.firstName.value
+        lastName : $.lastName.value
     });
 
     var validate = Alloy.Models.register.validStep2();
 
-    console.error(validate);
-
     if (validate.result) {
+        // TODO submit data and upload photo
+        Alloy.Models.register.save();
         Alloy.Globals.login.force();
+
+        _.delay(function() {
+            $.photoCameraView.removeProfile();
+        }, 800);
     } else {
         for (var i in validate.fields) {
             $[validate.fields[i]].error();
@@ -231,11 +235,14 @@ function initialize() {
     });
 
     $.navbarView.on('left:click', function(e) {
+        $.photoCameraView.removeProfile();
         $.main.close();
     });
 
     $.main.addEventListener('open', function(e) {
         load();
+
+        Alloy.Globals.nologin.stackWindows.push($.main);
 
         var log = '[' + $.main.name + '] ';
         log += e.type;
@@ -252,6 +259,9 @@ function initialize() {
 
     $.main.addEventListener('close', function(e) {
         unload();
+        Alloy.Models.register.resetStep2();
+
+        Alloy.Globals.nologin.stackWindows.pop();
 
         var log = '[' + $.main.name + '] ';
         log += e.type;
@@ -270,14 +280,14 @@ function initialize() {
         $.firstName.normal();
         $.lastName.normal();
 
-        Alloy.Models.register.reset();
+        Alloy.Models.register.resetStep2();
     });
 
     $.main.addEventListener('doubletap', function(e) {
         $.firstName.normal();
         $.lastName.normal();
 
-        Alloy.Models.register.fakeData();
+        Alloy.Models.register.fakeDataStep2();
     });
 };
 
