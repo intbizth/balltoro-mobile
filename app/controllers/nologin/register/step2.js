@@ -242,6 +242,8 @@ function initialize() {
 
     $.main.addEventListener('open', function(e) {
         load();
+        $.firstName.normal();
+        $.lastName.normal();
 
         Alloy.Globals.nologin.stackWindows.push($.main);
 

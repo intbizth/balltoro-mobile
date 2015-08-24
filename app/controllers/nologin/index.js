@@ -10,114 +10,13 @@ var signinWindow = Alloy.createController('nologin/signin', {
     navigation : $.navigation
 });
 
-// TODO create new widget
-var slider = {
-    initialize : function() {
-        var height = parseInt(Ti.Platform.displayCaps.platformHeight - 160);
+$.adssliderView.on('click', function(e) {
+    console.error(e);
+});
 
-        if (Alloy.Globals.isIos7Plus) {
-            height = height - 20;
-        }
-
-        $.contentTop.height = height;
-        $.slider.height = height;
-    },
-    addView : function(view) {
-        if ($.slider.views.length >= 10) {
-            return;
-        }
-
-        $.slider.addView(view);
-        $.slider.showPagingControl = !($.slider.views.length == 1);
-    },
-    removeView : function(view) {
-        $.slider.removeView(view);
-        $.slider.showPagingControl = !($.slider.views.length == 1);
-    },
-    removeAllView : function() {
-        if ($.slider.views.length <= 1) {
-            return;
-        }
-
-        var views = $.slider.views.reverse();
-
-        for (var i in views) {
-            if (views[i].toString() !== '[object sliderMain]') {
-                $.slider.removeView(views[i]);
-            }
-        }
-
-        $.slider.showPagingControl = !($.slider.views.length == 1);
-    },
-    test : function() {
-        var random = _.random(1, 100);
-
-        for (var i = 1; i <= random; i++) {
-            var view = Ti.UI.createView({
-                id : 'slideView' + i,
-                backgroundColor : Vendor.Tinycolor.random().toHexString()
-            });
-
-            var color = Vendor.Tinycolor(view.backgroundColor);
-            color = color.spin(Vendor.Chance.integer({
-                min : -360,
-                max : 360
-            })).toString();
-
-            var label = Ti.UI.createLabel({
-                text : i,
-                color : color,
-                font : {
-                    fontSize : 60
-                }
-            });
-
-            view.add(label);
-
-            slider.addView(view);
-
-            Ti.API.info('slider addView:', i);
-        }
-
-        Ti.API.info('slider total:', $.slider.views.length);
-
-        _.delay(function() {
-            var random = _.random(0, 1);
-
-            if (random === 0) {
-                var random = _.random(1, 100);
-
-                for (var i = 1; i <= random; i++) {
-                    if ($.slider.views.length > 0) {
-                        var views = _.shuffle($.slider.views);
-
-                        if (views[0].toString() !== '[object sliderMain]') {
-                            slider.removeView(views[0]);
-
-                            Ti.API.info('slider removeView:', views[0].toString());
-                        }
-                    }
-                }
-
-            } else if (random === 1) {
-                slider.removeAllView();
-
-                Ti.API.info('slider removeAllView');
-            }
-
-            Ti.API.info('slider total:', $.slider.views.length);
-
-            _.delay(function() {
-                slider.test();
-            }, 2000);
-        }, 6000);
-    },
-};
-
-// >> logoImage
-$.logoImage.width = Ti.Platform.displayCaps.platformWidth * 0.40;
-$.logoImage.height = $.logoImage.width;
-// << logoImage
+$.adssliderView.on('dblclick', function(e) {
+    console.error(e);
+});
 
 // >> registerButton
 $.registerButton.act = function() {
@@ -195,6 +94,10 @@ $.signinWithFacebookButton.addEventListener('click', function(e) {
 // << signinWithFacebookButton
 
 function initialize() {
+    if (Alloy.Globals.isIos7Plus) {
+        $.content.top = 20;
+    }
+
     Alloy.Facebook.permissions = ['publish_stream', 'read_stream'];
     Alloy.Facebook.addEventListener('login', function(e) {
         if (e.success) {
@@ -223,8 +126,7 @@ function initialize() {
         Alloy.Globals.nologin.stackWindows.pop();
     });
 
-    slider.initialize();
-    // slider.test();
+    $.adssliderView.load();
 };
 
 function load() {

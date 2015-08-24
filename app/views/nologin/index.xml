@@ -3,14 +3,7 @@
         <Window id="main">
             <View id="content">
                 <View id="contentTop">
-                    <ScrollableView id="slider">
-                        <View id="sliderMain">
-                            <View id="sliderMainSub">
-                                <ImageView id="logoImage" />
-                                <Label id="labelAppName" />
-                            </View>
-                        </View>
-                    </ScrollableView>
+                    <Widget id="adssliderView" src="com.intbizth.balltoro.adsslider" />
                 </View>
                 <View id="contentBottom">
                     <View class="contentBottomSpace" />

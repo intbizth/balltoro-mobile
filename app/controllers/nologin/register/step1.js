@@ -105,6 +105,10 @@ function initialize() {
 
     $.main.addEventListener('open', function(e) {
         load();
+        $.username.normal();
+        $.email.normal();
+        $.password.normal();
+        $.confirmPassword.normal();
 
         Alloy.Globals.nologin.stackWindows.push($.main);
 

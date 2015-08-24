@@ -89,7 +89,9 @@ function initialize() {
 
     $.main.addEventListener('open', function(e) {
         load();
-
+        $.usernameOrEmail.normal();
+        $.password.normal();
+        
         Alloy.Globals.nologin.stackWindows.push($.main);
 
         var log = '[' + $.main.name + '] ';
