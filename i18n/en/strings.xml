@@ -19,6 +19,7 @@
     <string name="nologin.register.lastName">Lastname</string>
     <string name="nologin.signin.title">Sign In</string>
     <string name="nologin.signin.usernameOrEmail">Username Or Email</string>
+    <string name="nologin.signin.password">Password</string>
     <string name="facebook">Facebook</string>
     <string name="notconnectedtonetwork">Not connected to network.</string>
     <string name="dataloadfailure">Data load failure.</string>

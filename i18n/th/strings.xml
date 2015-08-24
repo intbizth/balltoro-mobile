@@ -19,6 +19,7 @@
     <string name="nologin.register.lastName">นามสกุล</string>
     <string name="nologin.signin.title">เข้าระบบ</string>
     <string name="nologin.signin.usernameOrEmail">ชื่อผู้ใช้หรืออีเมล</string>
+    <string name="nologin.signin.password">รหัสผ่าน</string>
     <string name="facebook">เฟสบุ๊ค</string>
     <string name="notconnectedtonetwork">เชื่อมต่อเครือข่ายไม่ได้</string>
     <string name="dataloadfailure">โหลดข้อมูลไม่สำเร็จ</string>
