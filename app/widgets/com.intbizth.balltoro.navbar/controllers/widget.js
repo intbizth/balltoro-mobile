@@ -71,6 +71,12 @@ function setData(value) {
     Ti.API.debug('[' + Widget.widgetId + '] setdata:navbar: ' + JSON.stringify($.navbar.toJSON()));
 };
 
-exports.setData = function(value) {
-    setData(value);
+var _exports = {
+    setData : function(value) {
+        setData(value);
+    }
+};
+
+for (var i in _exports) {
+    exports[i] = _exports[i];
 };
