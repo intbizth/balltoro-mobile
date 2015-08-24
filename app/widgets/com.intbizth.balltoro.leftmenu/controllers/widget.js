@@ -523,18 +523,21 @@ function unload() {
     Ti.API.debug('[' + Widget.widgetId + ']', 'unload:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
 };
 
-exports.selectItem = function(value) {
-    selectItem(value);
+var _exports = {
+    selectItem : function(value) {
+        selectItem(value);
+    },
+    getLoad : function() {
+        return loaded;
+    },
+    load : function() {
+        load();
+    },
+    unload : function() {
+        unload();
+    }
 };
 
-exports.getLoad = function() {
-    return loaded;
-};
-
-exports.load = function() {
-    load();
-};
-
-exports.unload = function() {
-    unload();
+for (var i in _exports) {
+    exports[i] = _exports[i];
 };
