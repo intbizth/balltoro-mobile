@@ -3,6 +3,9 @@
     <string name="appname">บอลโตโล้</string>
     <string name="back">กลับ</string>
     <string name="next">ต่อไป</string>
+    <string name="yes">ใช่</string>
+    <string name="no">ไม่ใช่</string>
+    <string name="openlink">เปิดลิงค์</string>
     <string name="login.menu.tester">ทดสอบ</string>
     <string name="login.menu.leagueGame">ลีกเกม</string>
     <string name="login.menu.match">รายการแข่งขัน</string>
