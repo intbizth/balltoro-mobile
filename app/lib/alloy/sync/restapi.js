@@ -267,9 +267,7 @@ function Sync(method, model, opts) {
 
         apiCall(params, function(_response) {
             if (_response.success) {
-                model.trigger("setpaginator", {
-                    response : _response
-                });
+                model.trigger("setpaginator", _response);
 
                 var data = parseJSON(DEBUG, _response, parentNode, model);
                 var values = [];

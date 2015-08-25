@@ -10,20 +10,6 @@ var paginatorNode = {
     previous : '_links.previous.href'
 };
 
-exports.setFromRestAPI = function(model, response) {
-    var data = {
-        paginator : {}
-    };
-
-    for (var i in paginatorNode) {
-        data.paginator[i] = manger.traverseProperties(response.responseJSON, paginatorNode[i]);
-    }
-
-    model = _.extend(model, data);
-
-    return model;
-};
-
 exports.createCollectionMethod = function() {
     return {
         setID : function(id) {
@@ -44,9 +30,21 @@ exports.createCollectionMethod = function() {
         },
         removeID : function() {
             var name = this.config.adapter.collection_name;
-            
             delete Alloy.Collections[name].id;
             delete Alloy.Collections[name].idDefault;
+        },
+        setPaginator : function(response) {
+            var name = this.config.adapter.collection_name;
+
+            var data = {
+                paginator : {}
+            };
+
+            for (var i in paginatorNode) {
+                data.paginator[i] = manger.traverseProperties(response.responseJSON, paginatorNode[i]);
+            }
+
+            _.extend(Alloy.Collections[name], data);
         },
         fetchStartPage : function(args) {
             var name = this.config.adapter.collection_name;
