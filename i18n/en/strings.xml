@@ -8,7 +8,9 @@
     <string name="openlink">Open link</string>
     <string name="login.profile.title">Profile</string>
     <string name="login.homefeed.title">Home Feed</string>
+    <string name="login.homefeed.lasted">Lasted News</string>
     <string name="login.news.title">News</string>
+    <string name="login.news.lasted">Lasted News</string>
     <string name="login.leagueGame.title">League Game</string>
     <string name="login.match.title">Match</string>
     <string name="login.signout.title">Sign Out</string>
