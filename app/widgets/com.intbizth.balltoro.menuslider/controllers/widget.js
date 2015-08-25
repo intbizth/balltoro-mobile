@@ -22,7 +22,7 @@ function getLoad() {
 };
 
 function load(datas) {
-    Ti.API.debug('[' + Widget.widgetId + ']', 'load');
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load', JSON.stringify(datas));
 
     loaded = true;
 
