@@ -1,5 +1,5 @@
 '#main':{
-    name: 'tester',
+    name: 'signout',
     width: Ti.UI.FILL,
     height: Ti.UI.FILL,
     backgroundColor: '#0f181e',
@@ -11,6 +11,27 @@
 '#content':{
     top: 0,
     width: Ti.UI.FILL,
+    height: Ti.UI.FILL
+}
+
+'#contentView':{
+    top: 0,
+    width: Ti.UI.FILL,
     height: Ti.UI.FILL,
-    layout: 'vertical'
+    visible: false
+}
+
+'#activityIndicatorView':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    visible: true
+}
+
+'#activityIndicator':{
+    visible: true
+}
+
+'#activityIndicator[platform=ios]':{
+    style:Ti.UI.iPhone.ActivityIndicatorStyle.PLAIN
 }

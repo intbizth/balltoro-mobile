@@ -3,6 +3,8 @@ var openedWindow = false;
 var args = arguments[0] || {};
 var ui = require('ui');
 
+Ti.API.debug('[' + $.main.name + ']', 'args:', args);
+
 var step1Window = Alloy.createController('nologin/register/step1', {
     navigation : $.navigation
 });
@@ -10,12 +12,60 @@ var signinWindow = Alloy.createController('nologin/signin', {
     navigation : $.navigation
 });
 
-$.adssliderView.on('click', function(e) {
-    console.error(e);
+// TODO facebook
+Alloy.Facebook.permissions = ['publish_stream', 'read_stream'];
+Alloy.Facebook.addEventListener('login', function(e) {
+    if (e.success) {
+        alert('login from uid: ' + e.uid + ', name: ' + JSON.parse(e.data).name);
+    } else if (e.cancelled) {
+        // user cancelled
+        alert('cancelled');
+    } else {
+        alert(e.error);
+    }
 });
 
-$.adssliderView.on('dblclick', function(e) {
-    console.error(e);
+Alloy.Facebook.addEventListener('logout', function(e) {
+    alert('Logged out');
+});
+
+if (Alloy.Globals.isIos7Plus) {
+    $.content.top = 20;
+}
+
+$.main.addEventListener('open', function(e) {
+    Ti.API.debug('[' + $.main.name + ']', e.type);
+
+    Alloy.Globals.nologin.stackWindows.push($.main);
+    Alloy.Globals.nologin.stackWindowsLogger();
+
+    load();
+});
+
+$.main.addEventListener('close', function(e) {
+    Ti.API.debug('[' + $.main.name + ']', e.type);
+
+    Alloy.Globals.nologin.stackWindows.pop();
+    Alloy.Globals.nologin.stackWindowsLogger();
+
+    unload();
+});
+
+$.adssliderView.load();
+
+$.adssliderView.on('click', function(e) {
+    Alloy.Dialogs.confirm({
+        title : L('openlink'),
+        message : e.url,
+        yes : L('yes'),
+        no : L('no'),
+        callback : function(e) {
+            Ti.Platform.openURL(e.url);
+        },
+        evt : {
+            url : e.url
+        }
+    });
 });
 
 // >> registerButton
@@ -82,7 +132,7 @@ $.signinWithFacebookButton.inAct = function() {
 ui.setInActAndAct($.signinButton);
 
 $.signinWithFacebookButton.addEventListener('click', function(e) {
-    // TODO
+    // TODO facebook
     Ti.API.error('Alloy.Facebook.loggedIn', typeof Alloy.Facebook.loggedIn, Alloy.Facebook.loggedIn);
 
     if (!Alloy.Facebook.loggedIn) {
@@ -93,69 +143,27 @@ $.signinWithFacebookButton.addEventListener('click', function(e) {
 });
 // << signinWithFacebookButton
 
-function initialize() {
-    if (Alloy.Globals.isIos7Plus) {
-        $.content.top = 20;
-    }
-
-    Alloy.Facebook.permissions = ['publish_stream', 'read_stream'];
-    Alloy.Facebook.addEventListener('login', function(e) {
-        if (e.success) {
-            alert('login from uid: ' + e.uid + ', name: ' + JSON.parse(e.data).name);
-        } else if (e.cancelled) {
-            // user cancelled
-            alert('cancelled');
-        } else {
-            alert(e.error);
-        }
-    });
-
-    Alloy.Facebook.addEventListener('logout', function(e) {
-        alert('Logged out');
-    });
-
-    $.main.addEventListener('open', function() {
-        load();
-
-        Alloy.Globals.nologin.stackWindows.push($.main);
-    });
-
-    $.main.addEventListener('close', function() {
-        unload();
-
-        Alloy.Globals.nologin.stackWindows.pop();
-    });
-
-    $.adssliderView.load();
+function getLoad() {
+    return loaded;
 };
 
 function load() {
     Ti.API.debug('[' + $.main.name + ']', 'load');
 
     loaded = true;
-    openedWindow = false;
 };
 
 function unload() {
     Ti.API.debug('[' + $.main.name + ']', 'unload');
 
     loaded = false;
-    openedWindow = false;
 };
 
 var _exports = {
-    getLoad : function() {
-        return loaded;
-    },
-    load : function() {
-        load();
-    },
-    unload : function() {
-        unload();
-    }
+    getLoad : getLoad,
+    load : load,
+    unload : unload
 };
-
-initialize();
 
 for (var i in _exports) {
     exports[i] = _exports[i];

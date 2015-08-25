@@ -498,10 +498,18 @@ function itemclick(e) {
     }
 };
 
-function load() {
-    loaded = true;
+function getLoad() {
+    return loaded;
+};
 
+function load() {
     Ti.API.debug('[' + Widget.widgetId + ']', 'load');
+
+    loaded = true;
+    itemSelectedIndex = null;
+    itemSelectedName = null;
+    clickTimer = null;
+    clickCount = 0;
 
     Widget.Collections.menus.reset(datas.menus);
     Widget.Collections.settings.reset(datas.settings);
@@ -518,9 +526,13 @@ function load() {
 };
 
 function unload() {
-    loaded = false;
-
     Ti.API.debug('[' + Widget.widgetId + ']', 'unload');
+
+    loaded = false;
+    itemSelectedIndex = null;
+    itemSelectedName = null;
+    clickTimer = null;
+    clickCount = 0;
 
     Widget.Collections.menus.reset([]);
     Widget.Collections.settings.reset([]);
@@ -530,18 +542,10 @@ function unload() {
 };
 
 var _exports = {
-    selectItem : function(value) {
-        selectItem(value);
-    },
-    getLoad : function() {
-        return loaded;
-    },
-    load : function() {
-        load();
-    },
-    unload : function() {
-        unload();
-    }
+    selectItem : selectItem,
+    getLoad : getLoad,
+    load : load,
+    unload : unload
 };
 
 for (var i in _exports) {

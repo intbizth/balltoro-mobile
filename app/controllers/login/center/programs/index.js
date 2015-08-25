@@ -9,8 +9,8 @@ function initialize() {
     }
 
     $.navbarView.setData({
-        id : 'login.menu.leagueGame',
-        title : L('login.menu.leagueGame'),
+        id : 'login.leagueGame',
+        title : L('login.leagueGame.title'),
         leftIcon : 'list'
     });
 

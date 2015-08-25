@@ -1,62 +1,16 @@
 <Alloy>
-    <Window id="main" >
-        <View id="content">
-            <View id="contentTop">
-                <ScrollView id="scrollTop">
-                    <View id="menu1" class="menuTop">
-                        <Label id="menuText1" class="titleTop"></Label>
-                    </View>
-                    <View id="menu2" class="menuTop">
-                        <Label id="menuText2" class="titleTop"></Label>
-                    </View>
-                    <View id="menu3" class="menuTop">
-                        <Label id="menuText3" class="titleTop"></Label>
-                    </View>
-                    <View id="menu4" class="menuTop">
-                        <Label id="menuText4" class="titleTop"></Label>
-                    </View>
-                    <View id="menu5" class="menuTop">
-                        <Label id="menuText5" class="titleTop"></Label>
-                    </View>
-                    <View id="menu6" class="menuTop">
-                        <Label id="menuText6" class="titleTop"></Label>
-                    </View>
-                    <View id="menu7" class="menuTop">
-                        <Label id="menuText7" class="titleTop"></Label>
-                    </View>
-                </ScrollView>
-                <ImageView id="imageTop" ></ImageView>
-                <View id="viewTextTop">
-                    <Label id="textContentTop" class="textContent"></Label>
-                    <View class="viewHorizontal">
-                        <ImageView class="imageProfile"></ImageView>
-                        <Label class="textProfile"></Label>
-                    </View>
+    <NavigationWindow id="navigation" module="xp.ui" role="centerWindow" platform="ios">
+        <Window id="main">
+            <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
+            <View id="content">
+                <View id="contentView">
+                    <Widget id="menusliderView" src="com.intbizth.balltoro.menuslider" />
+                </View>
+                <View id="activityIndicatorView">
+                    <ActivityIndicator id="activityIndicator" />
                 </View>
             </View>
-            <View id="contentBottom" >
-                <View id="contentBottomLeft" >
-                    <ImageView id="imageBottomLeft"></ImageView>
-                    <View class="viewTextBottom">
-                        <Label id="textContentLeft" class="textContent"></Label>
-                        <View class="viewHorizontal">
-                            <ImageView class="imageProfile"></ImageView>
-                            <Label class="textProfile"></Label>
-                        </View>
-                    </View>
-                </View>
-                <View id="contentBottomRight" >
-                    <ImageView id="imageBottomRight"></ImageView>
-                    <View class="viewTextBottom">
-                        <Label id="textContentRight" class="textContent" ></Label>
-                        <View class="viewHorizontal">
-                            <ImageView class="imageProfile"></ImageView>
-                            <Label class="textProfile"></Label>
-                        </View>
-                    </View>
-                </View>
-            </View>
-        </View>
-    </Window>
+        </Window>
+    </NavigationWindow>
 </Alloy>
 

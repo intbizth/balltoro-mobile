@@ -1,50 +1,44 @@
 var loaded = false;
 var openedWindow = false;
+var args = arguments[0] || {};
 
-function initialize() {
-    if (Alloy.Globals.isIos7Plus) {
-        $.navbarView.getView().top = 20;
-    }
+Ti.API.debug('[' + $.main.name + ']', 'args:', args);
 
-    $.navbarView.setData({
-        id : 'login.menu.signout',
-        title : L('login.menu.signout')
-    });
+if (Alloy.Globals.isIos7Plus) {
+    $.navbarView.getView().top = 20;
+}
 
-    $.main.addEventListener('open', function(e) {
-        var log = '[' + $.main.name + '] ';
-        log += e.type;
-        log += ' ';
-        log += '(';
-        log += ' login stacks: ';
-        log += JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name'));
-        log += ' ';
-        log += Alloy.Globals.login.stackWindows.length;
-        log += ')';
+$.navbarView.setData({
+    id : 'login.signout',
+    title : L('login.signout.title')
+});
 
-        Ti.API.debug(log);
-    });
+$.main.addEventListener('open', function(e) {
+    Ti.API.debug('[' + $.main.name + ']', e.type);
 
-    $.main.addEventListener('close', function(e) {
-        var log = '[' + $.main.name + '] ';
-        log += e.type;
-        log += ' ';
-        log += '(';
-        log += ' login stacks: ';
-        log += JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name'));
-        log += ' ';
-        log += Alloy.Globals.login.stackWindows.length;
-        log += ')';
+    Alloy.Globals.login.stackWindows.push($.main);
+    Alloy.Globals.login.stackWindowsLogger();
 
-        Ti.API.debug(log);
-    });
+    load();
+});
+
+$.main.addEventListener('close', function(e) {
+    Ti.API.debug('[' + $.main.name + ']', e.type);
+
+    Alloy.Globals.login.stackWindows.pop();
+    Alloy.Globals.login.stackWindowsLogger();
+
+    unload();
+});
+
+function getLoad() {
+    return loaded;
 };
 
 function load() {
     Ti.API.debug('[' + $.main.name + ']', 'load');
 
     loaded = true;
-    openedWindow = false;
 
     Alloy.Globals.login.mainWindow.lock();
 
@@ -57,21 +51,14 @@ function unload() {
     Ti.API.debug('[' + $.main.name + ']', 'unload');
 
     loaded = false;
-    openedWindow = false;
-
-    Alloy.Globals.login.mainWindow.unlock();
 };
 
-exports.getLoad = function() {
-    return loaded;
+var _exports = {
+    getLoad : getLoad,
+    load : load,
+    unload : unload
 };
 
-exports.load = function() {
-    load();
+for (var i in _exports) {
+    exports[i] = _exports[i];
 };
-
-exports.unload = function() {
-    unload();
-};
-
-initialize();
