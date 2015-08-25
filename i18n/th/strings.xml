@@ -6,10 +6,10 @@
     <string name="yes">ใช่</string>
     <string name="no">ไม่ใช่</string>
     <string name="openlink">เปิดลิงค์</string>
-    <string name="login.menu.tester">ทดสอบ</string>
-    <string name="login.menu.leagueGame">ลีกเกม</string>
-    <string name="login.menu.match">รายการแข่งขัน</string>
-    <string name="login.menu.signout">ล็อกเอาท์</string>
+    <string name="login.profile.title">โปรไฟล์</string>
+    <string name="login.leagueGame.title">ลีกเกม</string>
+    <string name="login.match.title">รายการแข่งขัน</string>
+    <string name="login.signout.title">ล็อกเอาท์</string>
     <string name="nologin.index.button.register">สมัครสมาชิก</string>
     <string name="nologin.index.button.signin">เข้าระบบ</string>
     <string name="nologin.index.button.signinwith">เข้าระบบด้วย</string>

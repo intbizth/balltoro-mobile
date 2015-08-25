@@ -6,10 +6,10 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="openlink">Open link</string>
-    <string name="login.menu.tester">Tester</string>
-    <string name="login.menu.leagueGame">League Game</string>
-    <string name="login.menu.match">Match</string>
-    <string name="login.menu.signout">Sign Out</string>
+    <string name="login.profile.title">Profile</string>
+    <string name="login.leagueGame.title">League Game</string>
+    <string name="login.match.title">Match</string>
+    <string name="login.signout.title">Sign Out</string>
     <string name="nologin.index.button.register">Register</string>
     <string name="nologin.index.button.signin">Sign In</string>
     <string name="nologin.index.button.signinwith">Sign In with</string>
