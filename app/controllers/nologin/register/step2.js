@@ -35,25 +35,18 @@ $.nextButton.addEventListener('click', function() {
 
 });
 
-$.profileImage.addEventListener('touchstart', function() {
-    $.profileImage.opacity = $.profileImage.opacityAct;
-});
+console.valueOf(doClickCamera);
 
-$.profileImage.addEventListener('touchmove', function() {
-    this.fireEvent('touchstart');
-});
+function doClickCamera(e){
+      Ti.Media.showCamera({
+      	saveToPhotoGallery : true
+      	
+      });
+};
 
-$.profileImage.addEventListener('touchend', function() {
-    $.profileImage.opacity = $.profileImage.opacityInAct;
-});
-
-$.profileImage.addEventListener('touchcancel', function() {
-    this.fireEvent('touchend');
-});
-
-$.profileImage.addEventListener('click', function() {
-
-});
+function doClickAddPhoto(e){
+	Ti.Media.openPhotoGallery();
+};
 
 $.addPhoto.addEventListener('touchstart', function() {
     $.addPhoto.opacity = $.addPhoto.opacityAct;

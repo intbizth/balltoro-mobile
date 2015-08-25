@@ -5,8 +5,8 @@
             <View id="contentTop" >
                 <View id="profileImage" />
                 <View id="photo">
-                    <ImageView id="addPhoto" />
-                    <ImageView id="camera" />
+                    <ImageView id="addPhoto" onClick="doClickAddPhoto"/>
+                    <ImageView id="camera" onClick="doClickCamera"/>
                 </View>
                 <TextField id="name" class="textField" />
                 <TextField id="surname" class="textField" />
