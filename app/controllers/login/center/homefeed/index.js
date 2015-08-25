@@ -44,28 +44,6 @@ $.menusliderView.on('dblclick', function(e) {
     console.debug(e);
 });
 
-var datas = [{
-    name : 'menu1',
-    title : 'Menu1'
-}, {
-    name : 'menu2',
-    title : 'Menu2'
-}, {
-    name : 'menu3',
-    title : 'Menu3'
-}, {
-    name : 'menu4',
-    title : 'Menu4'
-}, {
-    name : 'menu5',
-    title : 'Menu'
-}, {
-    name : 'menu6',
-    title : 'Menu6'
-}];
-
-$.menusliderView.load(datas);
-
 function getLoad() {
     return loaded;
 };
@@ -74,6 +52,33 @@ function load() {
     Ti.API.debug('[' + $.main.name + ']', 'load');
 
     loaded = true;
+
+    Alloy.Collections.programs.fetch({
+        timeout : 60000,
+        success : function(model, response) {
+            if (Alloy.Collections.programs.models.length > 0) {
+                $.contentView.visible = true;
+                $.activityIndicatorView.visible = false;
+
+                var data = [{
+                    id : 0,
+                    name : '',
+                    title : L('login.homefeed.lasted')
+                }];
+
+                for (var i in Alloy.Collections.programs.models) {
+                    data.push(Alloy.Collections.programs.models[i].transformDataToMenuSlider());
+                }
+
+                $.menusliderView.load(data);
+            } else {
+                Alloy.Notifier.showNodata();
+            }
+        },
+        error : function(model, response) {
+            Alloy.Notifier.showError(response);
+        }
+    });
 };
 
 function unload() {

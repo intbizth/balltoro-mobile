@@ -52,7 +52,31 @@ exports.createModelMethod = function(value) {
             };
 
             return attrs;
-        }
+        },
+        transformDataToMenuSlider : function() {
+            var dataModel = this.toJSON();
+            var data = {
+                id : 'id',
+                code : 'code',
+                title : 'name',
+            };
+
+            for (var i in data) {
+                data[i] = manger.traverseProperties(dataModel, data[i]);
+
+                if (_.isNull(data[i])) {
+                    data[i] = '';
+                }
+            }
+
+            var attrs = {
+                id : data.id,
+                name : data.code,
+                title : data.title
+            };
+
+            return attrs;
+        },
     };
 
     methods = manger.filterMethod(methods, value);

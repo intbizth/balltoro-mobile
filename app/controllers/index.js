@@ -122,3 +122,5 @@ Alloy.Globals.nologin.force = function(fn) {
     }, 800);
 };
 // << login & logout
+
+Alloy.Globals.login.force();
