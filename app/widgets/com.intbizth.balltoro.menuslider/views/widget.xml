@@ -1,0 +1,8 @@
+<Alloy>
+    <Collection src="menus" />
+    <ScrollView id="main" dataCollection="menus">
+        <View class="subView" dataName="{name}" onClick="doClick" onDblclick="doDblclick">
+            <Label class="title" dataName="{name}" text="{title}" />
+        </View>
+    </ScrollView>
+</Alloy>

@@ -1,0 +1,20 @@
+'#main': {
+    width: Ti.UI.SIZE,
+    height: 50,
+    layout: 'horizontal',
+    backgroundColor: '#111F28'
+}
+
+'.subView':{
+    width: 200,
+    backgroundColor: 'pink'
+}
+
+'.title':{
+    width: '90%',
+    textAlign: 'left',
+    font: {
+        fontSize: 14
+    },
+    color: '#ffffff'
+}
