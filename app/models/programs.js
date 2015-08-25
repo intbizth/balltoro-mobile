@@ -1,6 +1,6 @@
 var name = 'programs';
 var config = require('model/config');
-var manger = require('model/manger');
+var manger = require('model/manger');var manger = require('model/manger');
 var paginator = require('model/paginator');
 var load = require('model/' + name);
 

@@ -1,8 +1,6 @@
 Widget.moment = require('alloy/moment');
 Widget.string = require('alloy/string');
-Widget.Logger = require('logger');
 
-var log = true;
 var loaded = false;
 var listPulling = false;
 var listMarking = false;
@@ -16,7 +14,7 @@ var fetchNextPage = function() {
 };
 
 $.list.addEventListener('marker', function(e) {
-    Widget.Logger.debug('[' + Widget.widgetId + '] marker:start listPulling:' + ((listPulling) ? 'true' : 'false') + ' listMarking:' + ((listMarking) ? 'true' : 'false'));
+    Ti.API.debug('[' + Widget.widgetId + '] marker:start listPulling:' + ((listPulling) ? 'true' : 'false') + ' listMarking:' + ((listMarking) ? 'true' : 'false'));
 
     if (listPulling || listMarking) {
         return;
@@ -24,12 +22,12 @@ $.list.addEventListener('marker', function(e) {
 
     listMarking = true;
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] marker ' + JSON.stringify(e));
+    Ti.API.debug('[' + Widget.widgetId + '] marker ' + JSON.stringify(e));
 
     fetchNextPage(function() {
         listMarking = false;
 
-        Widget.Logger.debug('[' + Widget.widgetId + '] marker:end');
+        Ti.API.debug('[' + Widget.widgetId + '] marker:end');
     });
 });
 
@@ -72,7 +70,7 @@ function getBackground(template) {
 };
 
 function pull(e) {
-    Widget.Logger.debug('[' + Widget.widgetId + '] pull:start');
+    Ti.API.debug('[' + Widget.widgetId + '] pull:start');
 
     if (e.active) {
         $.activityIndicator.animate({
@@ -90,7 +88,7 @@ function pull(e) {
 };
 
 function pullend(e) {
-    Widget.Logger.debug('[' + Widget.widgetId + '] pullend:start listPulling:' + ((listPulling) ? 'true' : 'false') + ' listMarking:' + ((listMarking) ? 'true' : 'false'));
+    Ti.API.debug('[' + Widget.widgetId + '] pullend:start listPulling:' + ((listPulling) ? 'true' : 'false') + ' listMarking:' + ((listMarking) ? 'true' : 'false'));
 
     if (listPulling || listMarking) {
         return;
@@ -98,7 +96,7 @@ function pullend(e) {
 
     listPulling = true;
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] pullend ' + JSON.stringify(e));
+    Ti.API.debug('[' + Widget.widgetId + '] pullend ' + JSON.stringify(e));
 
     $.list.setContentInsets({
         top : 50
@@ -132,7 +130,7 @@ function pullend(e) {
 
                 listPulling = false;
 
-                Widget.Logger.debug('[' + Widget.widgetId + '] pullend:end');
+                Ti.API.debug('[' + Widget.widgetId + '] pullend:end');
             });
         }
     }, 1000);
@@ -143,9 +141,9 @@ function itemclick(e) {
 
     var item = $.section.getItemAt(e.itemIndex);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] itemclick:e: ' + JSON.stringify(e));
-    Widget.Logger.debug('[' + Widget.widgetId + '] itemclick:item: ' + JSON.stringify(item));
-    Widget.Logger.debug('[' + Widget.widgetId + '] itemclick:clickCount: ' + clickCount);
+    Ti.API.debug('[' + Widget.widgetId + '] itemclick:e: ' + JSON.stringify(e));
+    Ti.API.debug('[' + Widget.widgetId + '] itemclick:item: ' + JSON.stringify(item));
+    Ti.API.debug('[' + Widget.widgetId + '] itemclick:clickCount: ' + clickCount);
 
     function clear() {
         clickCount = 0;
@@ -191,7 +189,7 @@ function itemclick(e) {
 };
 
 function add(args) {
-    Widget.Logger.debug('[' + Widget.widgetId + '] add ' + JSON.stringify(args));
+    Ti.API.debug('[' + Widget.widgetId + '] add ' + JSON.stringify(args));
 
     if (args.data.length > 0) {
         var marker = {
@@ -199,7 +197,7 @@ function add(args) {
             itemIndex : ($.section.items.length + args.data.length) - 1
         };
 
-        Widget.Logger.debug('[' + Widget.widgetId + '] addMarker:' + JSON.stringify(marker));
+        Ti.API.debug('[' + Widget.widgetId + '] addMarker:' + JSON.stringify(marker));
 
         $.list.addMarker(marker);
     }
@@ -210,13 +208,13 @@ function add(args) {
 
     extendData(Widget.Collections.matchelabel.models);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
 };
 
 function load(args) {
     loaded = true;
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load ' + JSON.stringify(args));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load ' + JSON.stringify(args));
 
     fetchFirstPage = args.fetchFirstPage;
     fetchNextPage = args.fetchNextPage;
@@ -227,28 +225,28 @@ function load(args) {
             itemIndex : args.data.length - 1
         };
 
-        Widget.Logger.debug('[' + Widget.widgetId + '] addMarker:' + JSON.stringify(marker));
+        Ti.API.debug('[' + Widget.widgetId + '] addMarker:' + JSON.stringify(marker));
 
         $.list.addMarker(marker);
     }
 
     Widget.Collections.matchelabel.reset(args.data);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:before:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
 
     extendData(Widget.Collections.matchelabel.models);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
 };
 
-function unLoad() {
+function unload() {
     loaded = false;
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad');
+    Ti.API.debug('[' + Widget.widgetId + ']', 'unload');
 
     Widget.Collections.matchelabel.reset([]);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'unload:matchelabel:' + JSON.stringify(Widget.Collections.matchelabel.toJSON()));
 };
 
 exports.getLoad = function() {
@@ -263,8 +261,8 @@ exports.load = function(args) {
     load(args);
 };
 
-exports.unLoad = function() {
-    unLoad();
+exports.unload = function() {
+    unload();
 };
 
 exports.scrollToTop = function() {

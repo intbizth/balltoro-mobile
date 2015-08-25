@@ -14,14 +14,3 @@
     height: Ti.UI.FILL,
     layout: 'vertical'
 }
-
-'#winloseordrawTestView':{
-    width: Ti.UI.FILL,
-    height: 35
-}
-
-'#winloseordrawTestSubView':{
-    width: Ti.UI.SIZE,
-    height: Ti.UI.SIZE,
-    layout: 'horizontal'
-}

@@ -1,43 +1,78 @@
 var loaded = false;
 var openedWindow = false;
 var args = arguments[0] || {};
+var ui = require('ui');
 
 var step2Window = Alloy.createController('nologin/register/step2', {
     navigation : args.navigation
 });
 
-Alloy.Logger.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
+Ti.API.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
-$.nextButton.enable = function() {
-    this.backgroundColor = this.backgroundColorEnable;
-};
+// >> username
+ui.setTextFieldNormalAndError($.username);
+// << username
 
-$.nextButton.disable = function() {
-    this.backgroundColor = this.backgroundColorDisable;
-};
+// >> email
+ui.setTextFieldNormalAndError($.email);
+// << email
 
-// $.nextButton.disable();
-// $.nextButton.enable();
+// >> password
+ui.setTextFieldNormalAndError($.password);
+// << password
 
-$.nextButton.addEventListener('touchstart', function() {
+// >> confirmPassword
+ui.setTextFieldNormalAndError($.confirmPassword);
+// << confirmPassword
+
+// >> nextButton
+$.nextButton.act = function() {
     $.nextLabel.opacity = $.nextLabel.opacityAct;
-});
+};
 
-$.nextButton.addEventListener('touchmove', function() {
-    this.fireEvent('touchstart');
-});
-
-$.nextButton.addEventListener('touchend', function() {
+$.nextButton.inAct = function() {
     $.nextLabel.opacity = $.nextLabel.opacityInAct;
-});
+};
 
-$.nextButton.addEventListener('touchcancel', function() {
-    this.fireEvent('touchend');
-});
+ui.setInActAndAct($.nextButton);
 
 $.nextButton.addEventListener('click', function() {
-    args.navigation.openWindow(step2Window.getView());
+    $.username.normal();
+    $.email.normal();
+    $.password.normal();
+    $.confirmPassword.normal();
+
+    Alloy.Models.register.set({
+        username : $.username.value,
+        email : $.email.value,
+        password : $.password.value,
+        confirmPassword : $.confirmPassword.value
+    });
+
+    var validate = Alloy.Models.register.validStep1();
+
+    console.error(validate);
+
+    if (validate.result) {
+        if (openedWindow) {
+            return;
+        }
+
+        openedWindow = true;
+
+        args.navigation.openWindow(step2Window.getView());
+
+        step2Window.getView().addEventListener('close', function(e) {
+            openedWindow = false;
+        });
+    } else {
+        for (var i in validate.fields) {
+            $[validate.fields[i]].error();
+            Alloy.Animation.shake($[validate.fields[i]]);
+        };
+    }
 });
+// << nextButton
 
 function doBlur(e) {
     if (e.source) {
@@ -50,24 +85,6 @@ function blur() {
     $.email.blur();
     $.password.blur();
     $.confirmPassword.blur();
-};
-
-function clean() {
-    $.username.value = '';
-    $.email.value = '';
-    $.password.value = '';
-    $.confirmPassword.value = '';
-};
-
-function checkemail(emailAddress) {
-        var str = emailAddress;
-        var filter = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-        if (filter.test(str)) {
-            testresults = true;
-        } else {
-            testresults = false;
-        }
-        return (testresults);
 };
 
 function initialize() {
@@ -86,9 +103,14 @@ function initialize() {
         $.main.close();
     });
 
-    
     $.main.addEventListener('open', function(e) {
         load();
+        $.username.normal();
+        $.email.normal();
+        $.password.normal();
+        $.confirmPassword.normal();
+
+        Alloy.Globals.nologin.stackWindows.push($.main);
 
         var log = '[' + $.main.name + '] ';
         log += e.type;
@@ -100,12 +122,14 @@ function initialize() {
         log += Alloy.Globals.nologin.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
     });
 
     $.main.addEventListener('close', function(e) {
-        unLoad();
-        clean();
+        unload();
+        Alloy.Models.register.resetStep1();
+
+        Alloy.Globals.nologin.stackWindows.pop();
 
         var log = '[' + $.main.name + '] ';
         log += e.type;
@@ -117,35 +141,56 @@ function initialize() {
         log += Alloy.Globals.nologin.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
-    }); 
+        Ti.API.debug(log);
+    });
 
+    $.main.addEventListener('longpress', function(e) {
+        $.username.normal();
+        $.email.normal();
+        $.password.normal();
+        $.confirmPassword.normal();
+
+        Alloy.Models.register.resetStep1();
+    });
+
+    $.main.addEventListener('doubletap', function(e) {
+        $.username.normal();
+        $.email.normal();
+        $.password.normal();
+        $.confirmPassword.normal();
+
+        Alloy.Models.register.fakeDataStep1();
+    });
 };
 
 function load() {
-    Alloy.Logger.debug('[' + $.main.name + '] load');
+    Ti.API.debug('[' + $.main.name + ']', 'load');
 
     loaded = true;
     openedWindow = false;
 };
 
-function unLoad() {
-    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
+function unload() {
+    Ti.API.debug('[' + $.main.name + ']', 'unload');
 
     loaded = false;
     openedWindow = false;
 };
 
-exports.getLoad = function() {
-    return loaded;
-};
-
-exports.load = function() {
-    load();
-};
-
-exports.unLoad = function() {
-    unLoad();
+var _exports = {
+    getLoad : function() {
+        return loaded;
+    },
+    load : function() {
+        load();
+    },
+    unload : function() {
+        unload();
+    }
 };
 
 initialize();
+
+for (var i in _exports) {
+    exports[i] = _exports[i];
+};

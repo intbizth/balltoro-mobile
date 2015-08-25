@@ -28,29 +28,32 @@
     height: 76
 }
 
-'#username': {
+'#usernameOrEmail': {
     top: 20,
-    maxLength: 64,
-    hintText: L( 'nologin.register.username')
-}
-
-'#email': {
     maxLength: 128,
-    hintText: L( 'nologin.register.email')
+    hintText: L( 'nologin.signin.usernameOrEmail')
 }
 
 '#password': {
     maxLength: 64,
-    hintText: L( 'nologin.register.password'),
+    hintText: L( 'nologin.signin.password'),
     passwordMask: true
 }
 
 '.textField': {
     top: 10,
-    height: 36,
     width: '86%',
+    height: 36,
+    backgroundColor: '#ffffff',
+    backgroundColorNormal: '#ffffff',
+    backgroundColorError: '#fff6f6',
+    color: '#000000',
+    colorNormal: '#000000',
+    colorError: '#c42424',
+    borderWidth: 1,
     borderColor: '#999999',
-    borderWidth: '1',
+    borderColorNormal: '#999999',
+    borderColorError: '#e0b4b4',
     textAlign: 'center'
 }
 

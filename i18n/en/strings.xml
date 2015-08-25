@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><resources>
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
     <string name="appname">Balltoro</string>
     <string name="back">Back</string>
     <string name="next">Next</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="openlink">Open link</string>
     <string name="login.menu.tester">Tester</string>
     <string name="login.menu.leagueGame">League Game</string>
     <string name="login.menu.match">Match</string>
@@ -14,11 +18,15 @@
     <string name="nologin.register.email">Email</string>
     <string name="nologin.register.password">Password</string>
     <string name="nologin.register.confirmPassword">Comfirm Password</string>
-    <string name="nologin.register.name">Name</string>
-    <string name="nologin.register.surname">Surname</string>
+    <string name="nologin.register.firstName">Firstname</string>
+    <string name="nologin.register.lastName">Lastname</string>
     <string name="nologin.signin.title">Sign In</string>
+    <string name="nologin.signin.usernameOrEmail">Username Or Email</string>
+    <string name="nologin.signin.password">Password</string>
     <string name="facebook">Facebook</string>
     <string name="notconnectedtonetwork">Not connected to network.</string>
     <string name="dataloadfailure">Data load failure.</string>
     <string name="nodata">No data.</string>
+    <string name="camera.unexpectederror">Unexpected error</string>
+    <string name="camera.devicesdonotsupportthecamera">Devices do not support the camera</string>
 </resources>

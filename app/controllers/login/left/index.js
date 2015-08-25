@@ -7,20 +7,20 @@ function initialize() {
     }
 
     $.main.addEventListener('open', function(e) {
-        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type);
+        Ti.API.debug('[' + $.main.name + '] ' + e.type);
     });
 
     $.main.addEventListener('close', function(e) {
-        Alloy.Logger.debug('[' + $.main.name + '] ' + e.type);
+        Ti.API.debug('[' + $.main.name + '] ' + e.type);
     });
 
     $.leftmenuView.on('click', function(e) {
-        Alloy.Logger.debug('[' + $.main.name + '] click:' + JSON.stringify(e));
+        Ti.API.debug('[' + $.main.name + '] click:' + JSON.stringify(e));
 
         var name = e.name.split(':');
 
         switch(name[0]) {
-        case 'tester':
+        case 'profile':
             var data = {
                 name : name[0]
             };
@@ -56,12 +56,12 @@ function initialize() {
     });
 
     $.leftmenuView.on('dblclick', function(e) {
-        Alloy.Logger.debug('[' + $.main.name + '] dblclick:' + JSON.stringify(e));
+        Ti.API.debug('[' + $.main.name + '] dblclick:' + JSON.stringify(e));
 
         var name = e.name.split(':');
 
         switch(name[0]) {
-        case 'tester':
+        case 'profile':
             var data = {
                 name : name[0],
                 reload : true
@@ -110,7 +110,7 @@ function selectMenu(value) {
 };
 
 function load() {
-    Alloy.Logger.debug('[' + $.main.name + '] load');
+    Ti.API.debug('[' + $.main.name + ']', 'load');
 
     loaded = true;
     openedWindow = false;
@@ -121,12 +121,12 @@ function load() {
     });
 };
 
-function unLoad() {
-    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
+function unload() {
+    Ti.API.debug('[' + $.main.name + ']', 'unload');
 
     loaded = false;
     openedWindow = false;
-    $.leftmenuView.unLoad();
+    $.leftmenuView.unload();
 };
 
 exports.getLoad = function() {
@@ -137,8 +137,8 @@ exports.load = function() {
     load();
 };
 
-exports.unLoad = function() {
-    unLoad();
+exports.unload = function() {
+    unload();
 };
 
 initialize();

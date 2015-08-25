@@ -18,61 +18,10 @@
     height: Ti.UI.FILL
 }
 
-'#content[if=Alloy.Globals.isIos7Plus]':{
-    top: 20
-}
-
 '#contentTop': {
-    top: 0
-}
-
-'#slider': {
     top: 0,
     width: Ti.UI.FILL,
-    height: Ti.UI.FILL,
-    showPagingControl: false,
-    pagingControlColor: 'transparent'
-}
-
-'#sliderMain':{}
-
-'#sliderMainSub':{
-    width: Ti.UI.SIZE,
-    height: Ti.UI.SIZE,
-    layout: 'vertical'
-}
-
-'#sliderMainSub[if=Alloy.Globals.grid]': {
-    borderWidth: 1,
-    borderColor: '#3190a4'
-}
-
-'#logoImage':{
-    width: 128,
-    height: 128,
-    image: 'images/nologin/logo.png'
-}
-
-'#logoImage[if=Alloy.Globals.grid]': {
-    borderWidth: 1,
-    borderColor: '#3190a4'
-}
-
-'#labelAppName':{
-    width: Ti.UI.FILL,
-    height: 34,
-    font: {
-        fontSize: 22,
-        fontWeight: 'Bold'
-    },
-    color: '#fff',
-    text: L( 'appname'),
-    textAlign: 'center'
-}
-
-'#labelAppName[if=Alloy.Globals.grid]': {
-    borderWidth: 1,
-    borderColor: '#3190a4'
+    height: Ti.UI.SIZE
 }
 
 '#contentBottom': {
@@ -81,19 +30,10 @@
     layout: 'vertical'
 }
 
-'#contentBottom[if=Alloy.Globals.grid]': {
-    borderWidth: 1,
-    borderColor: '#3190a4'
-}
-
 '.contentBottomSpace': {
     top: 0,
     height: 16,
     width: 1
-}
-
-'.contentBottomSpace[if=Alloy.Globals.grid]': {
-    backgroundColor: '#dd7f28'
 }
 
 '#registerButton': {
@@ -101,13 +41,13 @@
     width: '86%',
     height: 36,
     borderWidth: 1,
-    borderColor: '#fff'
+    borderColor: '#ffffff'
 }
 
 '#registerLabel': {
     width: '86%',
     height: 36,
-    color: '#fff',
+    color: '#ffffff',
     font: {
         fontSize: 14
     },
@@ -123,13 +63,13 @@
     width: '86%',
     height: 36,
     borderWidth: 1,
-    borderColor: '#fff'
+    borderColor: '#ffffff'
 }
 
 '#signinLabel':{
     width: '86%',
     height: 36,
-    color: '#fff',
+    color: '#ffffff',
     font: {
         fontSize: 14
     },
@@ -161,7 +101,7 @@
 '#signinWithLabel':{
     width: Ti.UI.SIZE,
     height: 36,
-    color: '#fff',
+    color: '#ffffff',
     font: {
         fontSize: 14
     },
@@ -173,7 +113,7 @@
     left: 4,
     width:  Ti.UI.SIZE,
     height: 36,
-    color: '#fff',
+    color: '#ffffff',
     font: {
         fontSize: 14,
         fontWeight: 'Bold'
@@ -187,7 +127,7 @@
     right: 1,
     width: Ti.UI.SIZE,
     height:Ti.UI.SIZE,
-    color: '#fff',
+    color: '#ffffff',
     font: {
         fontSize: 8
     },

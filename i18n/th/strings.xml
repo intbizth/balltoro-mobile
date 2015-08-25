@@ -1,7 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><resources>
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
     <string name="appname">บอลโตโล้</string>
     <string name="back">กลับ</string>
     <string name="next">ต่อไป</string>
+    <string name="yes">ใช่</string>
+    <string name="no">ไม่ใช่</string>
+    <string name="openlink">เปิดลิงค์</string>
     <string name="login.menu.tester">ทดสอบ</string>
     <string name="login.menu.leagueGame">ลีกเกม</string>
     <string name="login.menu.match">รายการแข่งขัน</string>
@@ -14,11 +18,15 @@
     <string name="nologin.register.email">อีเมล</string>
     <string name="nologin.register.password">รหัสผ่าน</string>
     <string name="nologin.register.confirmPassword">ยืนยันรหัสผ่าน</string>
-    <string name="nologin.register.name">ชื่อจริง</string>
-    <string name="nologin.register.surname">นามสกุล</string>
+    <string name="nologin.register.firstName">ชื่อ</string>
+    <string name="nologin.register.lastName">นามสกุล</string>
     <string name="nologin.signin.title">เข้าระบบ</string>
+    <string name="nologin.signin.usernameOrEmail">ชื่อผู้ใช้หรืออีเมล</string>
+    <string name="nologin.signin.password">รหัสผ่าน</string>
     <string name="facebook">เฟสบุ๊ค</string>
     <string name="notconnectedtonetwork">เชื่อมต่อเครือข่ายไม่ได้</string>
     <string name="dataloadfailure">โหลดข้อมูลไม่สำเร็จ</string>
     <string name="nodata">ไม่มีข้อมูล</string>
+    <string name="camera.unexpectederror">เกิดข้อผิดพลาด</string>
+    <string name="camera.devicesdonotsupportthecamera">อุปกรณ์ไม่รองรับกล้องถ่ายภาพ</string>
 </resources>

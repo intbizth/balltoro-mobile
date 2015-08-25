@@ -1,15 +1,30 @@
 <Alloy>
+    <Model src="register" />
     <Window id="main" onSingletap="doBlur">
         <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
         <ScrollView id="content">
             <View id="contentTop" >
+<<<<<<< HEAD
                 <View id="profileImage" />
                 <View id="photo">
                     <ImageView id="addPhoto" onClick="doClickAddPhoto"/>
                     <ImageView id="camera" onClick="doClickCamera"/>
+=======
+                <View id="profileView">
+                    <View id="profileSubView">
+                        <ImageView id="profile" />
+                    </View>
+>>>>>>> origin/develop/1.0-tum
                 </View>
-                <TextField id="name" class="textField" />
-                <TextField id="surname" class="textField" />
+                <View id="photoCameraView">
+                    <View id="photoCameraSubView">
+                        <View id="addPhoto" />
+                        <View id="openCamera" />
+                        <View id="removePhoto" />
+                    </View>
+                </View>
+                <TextField id="firstName" class="textField" value="{register.firstName}" />
+                <TextField id="lastName" class="textField" value="{register.lastName}" />
             </View>
             <View id="contentBottom">
                 <View id="nextButton">

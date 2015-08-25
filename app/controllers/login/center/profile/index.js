@@ -1,5 +1,6 @@
 var loaded = false;
 var openedWindow = false;
+var args = arguments[0] || {};
 
 function initialize() {
     if (Alloy.Globals.isIos7Plus) {
@@ -7,13 +8,20 @@ function initialize() {
     }
 
     $.navbarView.setData({
-        id : 'login.menu.tester',
-        title : L('login.menu.tester')
+        id : 'login.menu.profile',
+        title : L('login.menu.profile'),
+        leftIcon : 'list'
+    });
+
+    $.navbarView.on('left:click', function(e) {
+        Alloy.Globals.login.mainWindow.toggleLeftWindow();
+    });
+
+    $.navbarView.on('title:dblclick', function(e) {
+        $.matchlabelView.scrollToTop();
     });
 
     $.main.addEventListener('open', function(e) {
-        Alloy.Globals.login.stackWindows.push($.main);
-
         var log = '[' + $.main.name + '] ';
         log += e.type;
         log += ' ';
@@ -24,12 +32,10 @@ function initialize() {
         log += Alloy.Globals.login.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
     });
 
     $.main.addEventListener('close', function(e) {
-        Alloy.Globals.login.stackWindows.pop();
-
         var log = '[' + $.main.name + '] ';
         log += e.type;
         log += ' ';
@@ -40,36 +46,23 @@ function initialize() {
         log += Alloy.Globals.login.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
     });
 };
 
 function load() {
-    Alloy.Logger.debug('[' + $.main.name + '] load');
+    Ti.API.debug('[' + $.main.name + ']', 'load');
+    Ti.API.debug('[' + $.main.name + ']', 'load:args: ' + JSON.stringify(args));
 
     loaded = true;
     openedWindow = false;
-
-    // $.matchlabelView.startTest(8000);
-    // $.gamelabelView.startTest(8000);
-    // $.powerBarView.startTest(500);
-    // $.winloseordrawView.startTest(8000, $.winloseordrawTestSubView);
-    // $.matchsummytableView.startTest(8000);
-
-    $.main.backgroundColor = Vendor.Tinycolor.random().toHexString();
 };
 
-function unLoad() {
-    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
+function unload() {
+    Ti.API.debug('[' + $.main.name + ']', 'unload');
 
     loaded = false;
     openedWindow = false;
-
-    // $.matchlabelView.stopTest();
-    // $.gamelabelView.stopTest();
-    // $.powerBarView.stopTest();
-    // $.winloseordrawView.stopTest($.winloseordrawTestSubView);
-    // $.matchsummytableView.stopTest();
 };
 
 exports.getLoad = function() {
@@ -80,8 +73,8 @@ exports.load = function() {
     load();
 };
 
-exports.unLoad = function() {
-    unLoad();
+exports.unload = function() {
+    unload();
 };
 
 initialize();

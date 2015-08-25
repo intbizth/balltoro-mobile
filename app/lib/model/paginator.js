@@ -53,7 +53,7 @@ exports.createCollectionMethod = function() {
             var fake = this.config.fake || false;
             var url = this.config.URL || null;
 
-            Alloy.Logger.debug('[' + name + '] fetch start:' + url);
+            Ti.API.debug('[' + name + '] fetch start:' + url);
 
             if (fake) {
                 Alloy.Collections[name].fakeData();
@@ -81,7 +81,7 @@ exports.createCollectionMethod = function() {
             var fake = this.config.fake || false;
             var url = (this.paginator && this.paginator.self) ? this.paginator.self : null;
 
-            Alloy.Logger.debug('[' + name + '] fetch self:' + url);
+            Ti.API.debug('[' + name + '] fetch self:' + url);
 
             if (fake) {
                 Alloy.Collections[name].fakeData();
@@ -109,7 +109,7 @@ exports.createCollectionMethod = function() {
             var fake = this.config.fake || false;
             var url = (this.paginator && this.paginator.first) ? this.paginator.first : null;
 
-            Alloy.Logger.debug('[' + name + '] fetch first:' + url);
+            Ti.API.debug('[' + name + '] fetch first:' + url);
 
             if (fake) {
                 Alloy.Collections[name].fakeData();
@@ -137,7 +137,7 @@ exports.createCollectionMethod = function() {
             var fake = this.config.fake || false;
             var url = (this.paginator && this.paginator.last) ? this.paginator.last : null;
 
-            Alloy.Logger.debug('[' + name + '] fetch last:' + url);
+            Ti.API.debug('[' + name + '] fetch last:' + url);
 
             if (fake) {
                 Alloy.Collections[name].fakeData();
@@ -165,7 +165,7 @@ exports.createCollectionMethod = function() {
             var fake = this.config.fake || false;
             var url = (this.paginator && this.paginator.next) ? this.paginator.next : null;
 
-            Alloy.Logger.debug('[' + name + '] fetch next:' + url);
+            Ti.API.debug('[' + name + '] fetch next:' + url);
 
             if (fake) {
                 Alloy.Collections[name].fakeData();
@@ -193,7 +193,7 @@ exports.createCollectionMethod = function() {
             var fake = this.config.fake || false;
             var url = (this.paginator && this.paginator.previous) ? this.paginator.previous : null;
 
-            Alloy.Logger.debug('[' + name + '] fetch next:' + previous);
+            Ti.API.debug('[' + name + '] fetch next:' + previous);
 
             if (fake) {
                 Alloy.Collections[name].fakeData();

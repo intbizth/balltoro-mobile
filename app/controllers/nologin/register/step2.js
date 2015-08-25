@@ -1,40 +1,80 @@
 var loaded = false;
 var openedWindow = false;
 var args = arguments[0] || {};
+var photocamera = require('photocamera');
+var ui = require('ui');
+var photo = null;
 
-Alloy.Logger.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
+Ti.API.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
-$.nextButton.enable = function() {
-    this.backgroundColor = this.backgroundColorEnable;
+// >> photoCameraView
+$.photoCameraView.width = 242;
+$.photoCameraView.leftHideRemove = (Ti.Platform.displayCaps.platformWidth / 2) - (($.photoCameraView.width - 106) / 2);
+$.photoCameraView.leftShowRemove = (Ti.Platform.displayCaps.platformWidth / 2) - ($.photoCameraView.width / 2);
+$.photoCameraView.left = $.photoCameraView.leftHideRemove;
+
+$.photoCameraView.showRemove = function() {
+    var duration = 160;
+
+    $.photoCameraView.animate({
+        left : $.photoCameraView.leftShowRemove,
+        duration : duration
+    }, function() {
+        $.photoCameraView.left = $.photoCameraView.leftShowRemove;
+    });
+
+    $.removePhoto.visible = true;
+    $.removePhoto.animate({
+        opacity : 1,
+        duration : duration
+    }, function() {
+        $.removePhoto.opacity = 1;
+    });
 };
 
-$.nextButton.disable = function() {
-    this.backgroundColor = this.backgroundColorDisable;
+$.photoCameraView.hideRemove = function() {
+    var duration = 160;
+
+    $.photoCameraView.animate({
+        left : $.photoCameraView.leftHideRemove,
+        duration : duration
+    }, function() {
+        $.photoCameraView.left = $.photoCameraView.leftHideRemove;
+    });
+
+    $.removePhoto.animate({
+        opacity : 0,
+        duration : duration
+    }, function() {
+        $.removePhoto.opacity = 0;
+        $.removePhoto.visible = false;
+    });
 };
 
-// $.nextButton.disable();
-// $.nextButton.enable();
+$.photoCameraView.removeProfile = function() {
+    photo = null;
+    $.photoCameraView.hideRemove();
+    $.profile.image = $.profile.imageDefault;
+};
+// << photoCameraView
 
-$.nextButton.addEventListener('touchstart', function() {
+// >> nextButton
+$.nextButton.act = function() {
     $.nextLabel.opacity = $.nextLabel.opacityAct;
-});
+};
 
-$.nextButton.addEventListener('touchmove', function() {
-    this.fireEvent('touchstart');
-});
-
-$.nextButton.addEventListener('touchend', function() {
+$.nextButton.inAct = function() {
     $.nextLabel.opacity = $.nextLabel.opacityInAct;
-});
+};
 
-$.nextButton.addEventListener('touchcancel', function() {
-    this.fireEvent('touchend');
-});
+ui.setInActAndAct($.nextButton);
 
 $.nextButton.addEventListener('click', function() {
 
 });
+// << nextButton
 
+<<<<<<< HEAD
 console.valueOf(doClickCamera);
 
 function doClickCamera(e){
@@ -46,47 +86,145 @@ function doClickCamera(e){
 
 function doClickAddPhoto(e){
 	Ti.Media.openPhotoGallery();
+=======
+// >> addPhoto
+$.addPhoto.act = function() {
+    this.opacity = this.opacityAct;
 };
 
-$.addPhoto.addEventListener('touchstart', function() {
-    $.addPhoto.opacity = $.addPhoto.opacityAct;
-});
+$.addPhoto.inAct = function() {
+    this.opacity = this.opacityInAct;
+};
 
-$.addPhoto.addEventListener('touchmove', function() {
-    this.fireEvent('touchstart');
-});
-
-$.addPhoto.addEventListener('touchend', function() {
-    $.addPhoto.opacity = $.addPhoto.opacityInAct;
-});
-
-$.addPhoto.addEventListener('touchcancel', function() {
-    this.fireEvent('touchend');
-});
+ui.setInActAndAct($.addPhoto);
 
 $.addPhoto.addEventListener('click', function() {
+    photocamera.openPhotoGallery({
+        success : function(e) {
+            photo = e.image;
+            $.profile.image = e.image;
+            $.photoCameraView.showRemove();
 
+            Ti.API.debug('[' + $.main.name + ']', 'photo:', photo);
+        },
+        error : function(e) {
+            var message = photocamera.message(e.code);
+
+            Alloy.Notifier.show({
+                message : message,
+                style : 'error',
+                icon : '/images/notifications/image.png',
+                duration : 3000
+            });
+        },
+        cancel : function() {
+        }
+    });
 });
+// << addPhoto
 
-$.camera.addEventListener('touchstart', function() {
-    $.camera.opacity = $.camera.opacityAct;
+// >> openCamera
+$.openCamera.act = function() {
+    this.opacity = this.opacityAct;
+};
+
+$.openCamera.inAct = function() {
+    this.opacity = this.opacityInAct;
+>>>>>>> origin/develop/1.0-tum
+};
+
+ui.setInActAndAct($.openCamera);
+
+$.openCamera.addEventListener('click', function() {
+    photocamera.openCamera({
+        success : function(e) {
+            photo = e.image;
+            $.profile.image = e.image;
+            $.photoCameraView.showRemove();
+
+            Ti.API.debug('[' + $.main.name + ']', 'photo:', photo);
+        },
+        error : function(e) {
+            var message = photocamera.message(e.code);
+
+            Alloy.Notifier.show({
+                message : message,
+                style : 'error',
+                icon : '/images/notifications/camera.png',
+                duration : 3000
+            });
+        },
+        cancel : function() {
+        }
+    });
 });
+// << openCamera
 
-$.camera.addEventListener('touchmove', function() {
-    this.fireEvent('touchstart');
+// >> removePhoto
+$.removePhoto.act = function() {
+    this.opacity = this.opacityAct;
+};
+
+$.removePhoto.inAct = function() {
+    this.opacity = this.opacityInAct;
+};
+
+ui.setInActAndAct($.removePhoto);
+
+$.removePhoto.addEventListener('click', function() {
+    $.photoCameraView.removeProfile();
+
+    Ti.API.debug('[' + $.main.name + ']', 'photo:', photo);
 });
+// << removePhoto
 
-$.camera.addEventListener('touchend', function() {
-    $.camera.opacity = $.camera.opacityInAct;
+// >> firstName
+ui.setTextFieldNormalAndError($.firstName);
+// << firstName
+
+// >> lastName
+ui.setTextFieldNormalAndError($.lastName);
+// << lastName
+
+// >> nextButton
+$.nextButton.act = function() {
+    $.nextLabel.opacity = $.nextLabel.opacityAct;
+};
+
+$.nextButton.inAct = function() {
+    $.nextLabel.opacity = $.nextLabel.opacityInAct;
+};
+
+ui.setInActAndAct($.nextButton);
+
+$.nextButton.addEventListener('click', function() {
+    $.firstName.normal();
+    $.lastName.normal();
+
+    Alloy.Models.register.set({
+        firstName : $.firstName.value,
+        lastName : $.lastName.value
+    });
+
+    var validate = Alloy.Models.register.validStep2();
+
+    if (validate.result) {
+        // TODO submit data and upload photo
+        Alloy.Models.register.save();
+        Alloy.Globals.login.force();
+
+        _.delay(function() {
+            Alloy.Models.register.reset();
+            $.photoCameraView.removeProfile();
+        }, 800);
+    } else {
+        for (var i in validate.fields) {
+            $[validate.fields[i]].error();
+            Alloy.Animation.shake($[validate.fields[i]]);
+        };
+    }
 });
-
-$.camera.addEventListener('touchcancel', function() {
-    this.fireEvent('touchend');
-});
-
-$.camera.addEventListener('click', function() {
-
-});
+// << nextButton
 
 function doBlur(e) {
     if (e.source) {
@@ -95,13 +233,8 @@ function doBlur(e) {
 };
 
 function blur() {
-    $.name.blur();
-    $.surname.blur();
-};
-
-function clean() {
-    $.name.value = '';
-    $.surname.value = '';
+    $.firstName.blur();
+    $.lastName.blur();
 };
 
 function initialize() {
@@ -117,11 +250,16 @@ function initialize() {
     });
 
     $.navbarView.on('left:click', function(e) {
+        $.photoCameraView.removeProfile();
         $.main.close();
     });
 
     $.main.addEventListener('open', function(e) {
         load();
+        $.firstName.normal();
+        $.lastName.normal();
+
+        Alloy.Globals.nologin.stackWindows.push($.main);
 
         var log = '[' + $.main.name + '] ';
         log += e.type;
@@ -133,12 +271,14 @@ function initialize() {
         log += Alloy.Globals.nologin.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
     });
 
     $.main.addEventListener('close', function(e) {
-        unLoad();
-        clean();
+        unload();
+        Alloy.Models.register.resetStep2();
+
+        Alloy.Globals.nologin.stackWindows.pop();
 
         var log = '[' + $.main.name + '] ';
         log += e.type;
@@ -150,34 +290,52 @@ function initialize() {
         log += Alloy.Globals.nologin.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
+    });
+
+    $.main.addEventListener('longpress', function(e) {
+        $.firstName.normal();
+        $.lastName.normal();
+
+        Alloy.Models.register.resetStep2();
+    });
+
+    $.main.addEventListener('doubletap', function(e) {
+        $.firstName.normal();
+        $.lastName.normal();
+
+        Alloy.Models.register.fakeDataStep2();
     });
 };
 
 function load() {
-    Alloy.Logger.debug('[' + $.main.name + '] load');
+    Ti.API.debug('[' + $.main.name + ']', 'load');
 
     loaded = true;
     openedWindow = false;
 };
 
-function unLoad() {
-    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
+function unload() {
+    Ti.API.debug('[' + $.main.name + ']', 'unload');
 
     loaded = false;
     openedWindow = false;
 };
 
-exports.getLoad = function() {
-    return loaded;
-};
-
-exports.load = function() {
-    load();
-};
-
-exports.unLoad = function() {
-    unLoad();
+var _exports = {
+    getLoad : function() {
+        return loaded;
+    },
+    load : function() {
+        load();
+    },
+    unload : function() {
+        unload();
+    }
 };
 
 initialize();
+
+for (var i in _exports) {
+    exports[i] = _exports[i];
+};

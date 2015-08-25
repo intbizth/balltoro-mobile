@@ -6,8 +6,6 @@
  * www.napp.dk
  */
 
-var paginator = require('model/paginator');
-
 function S4() {
     return ((1 + Math.random()) * 65536 | 0).toString(16).substring(1);
 }
@@ -269,8 +267,10 @@ function Sync(method, model, opts) {
 
         apiCall(params, function(_response) {
             if (_response.success) {
-                model = paginator.setFromRestAPI(model, _response);
-                
+                model.trigger("setpaginator", {
+                    response : _response
+                });
+
                 var data = parseJSON(DEBUG, _response, parentNode, model);
                 var values = [];
 

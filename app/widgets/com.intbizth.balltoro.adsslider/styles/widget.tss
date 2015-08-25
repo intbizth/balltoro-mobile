@@ -1,0 +1,65 @@
+'#slider':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    showPagingControl: false
+}
+
+'.logoView':{
+    width: Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
+    layout: 'vertical'
+}
+
+'.icon':{
+    width: 128,
+    height: 128
+}
+
+'.title':{
+    width: Ti.UI.FILL,
+    height: 34,
+    font: {
+        fontSize: 22,
+        fontWeight: 'Bold'
+    },
+    color: '#ffffff',
+    textAlign: 'center'
+}
+
+'.image':{
+    defaultImage: ''
+}
+
+'#pagingControl':{
+    bottom: 0,
+    width: Ti.UI.FILL,
+    height: 20
+}
+
+'#pagingControlSubView':{
+    width: Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
+    layout: 'horizontal'
+}
+
+'.circleView': {
+    width: 16,
+    height: 20
+}
+
+'.circleInAct': {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#ffffff',
+    visible: true
+}
+
+'.circleAct': {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    backgroundColor: '#23527d',
+    visible: true
+}

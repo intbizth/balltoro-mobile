@@ -1,7 +1,3 @@
-Widget.Logger = require('logger');
-
-var log = true;
-
 $.title.width = Ti.Platform.displayCaps.platformWidth - 140;
 
 $.titleView.addEventListener('click', function(e) {
@@ -72,9 +68,15 @@ function setData(value) {
     value = transformData(value);
     $.navbar.set(value);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] setdata:navbar: ' + JSON.stringify($.navbar.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + '] setdata:navbar: ' + JSON.stringify($.navbar.toJSON()));
 };
 
-exports.setData = function(value) {
-    setData(value);
+var _exports = {
+    setData : function(value) {
+        setData(value);
+    }
+};
+
+for (var i in _exports) {
+    exports[i] = _exports[i];
 };

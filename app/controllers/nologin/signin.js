@@ -1,9 +1,19 @@
 var loaded = false;
 var openedWindow = false;
 var args = arguments[0] || {};
+var ui = require('ui');
 
-Alloy.Logger.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
+Ti.API.debug('[' + $.main.name + '] args ' + JSON.stringify(args));
 
+// >> usernameOrEmail
+ui.setTextFieldNormalAndError($.usernameOrEmail);
+// << usernameOrEmail
+
+// >> password
+ui.setTextFieldNormalAndError($.password);
+// << password
+
+// >> signinButton
 $.signinButton.enable = function() {
     this.backgroundColor = this.backgroundColorEnable;
 };
@@ -12,28 +22,43 @@ $.signinButton.disable = function() {
     this.backgroundColor = this.backgroundColorDisable;
 };
 
-// $.nextButton.disable();
-// $.nextButton.enable();
-
-$.signinButton.addEventListener('touchstart', function() {
+$.signinButton.act = function() {
     $.signinLabel.opacity = $.signinLabel.opacityAct;
-});
+};
 
-$.signinButton.addEventListener('touchmove', function() {
-    this.fireEvent('touchstart');
-});
-
-$.signinButton.addEventListener('touchend', function() {
+$.signinButton.inAct = function() {
     $.signinLabel.opacity = $.signinLabel.opacityInAct;
-});
+};
 
-$.signinButton.addEventListener('touchcancel', function() {
-    this.fireEvent('touchend');
-});
+ui.setInActAndAct($.signinButton);
 
 $.signinButton.addEventListener('click', function() {
-    Alloy.Globals.login.force();
+    $.usernameOrEmail.normal();
+    $.password.normal();
+
+    Alloy.Models.signin.set({
+        usernameOrEmail : $.usernameOrEmail.value,
+        password : $.password.value
+    });
+
+    var validate = Alloy.Models.signin.valid();
+
+    if (validate.result) {
+        // TODO submit data
+        Alloy.Models.signin.save();
+        Alloy.Globals.login.force();
+
+        _.delay(function() {
+            Alloy.Models.signin.reset();
+        }, 800);
+    } else {
+        for (var i in validate.fields) {
+            $[validate.fields[i]].error();
+            Alloy.Animation.shake($[validate.fields[i]]);
+        };
+    }
 });
+// << signinButton
 
 function doBlur(e) {
     if (e.source) {
@@ -42,16 +67,8 @@ function doBlur(e) {
 };
 
 function blur() {
-    $.username.blur();
-    $.email.blur();
+    $.usernameOrEmail.blur();
     $.password.blur();
-
-};
-
-function clean() {
-    $.username.value = '';
-    $.email.value = '';
-    $.password.value = '';
 };
 
 function initialize() {
@@ -72,6 +89,10 @@ function initialize() {
 
     $.main.addEventListener('open', function(e) {
         load();
+        $.usernameOrEmail.normal();
+        $.password.normal();
+        
+        Alloy.Globals.nologin.stackWindows.push($.main);
 
         var log = '[' + $.main.name + '] ';
         log += e.type;
@@ -83,12 +104,14 @@ function initialize() {
         log += Alloy.Globals.nologin.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
     });
 
     $.main.addEventListener('close', function(e) {
-        unLoad();
-        clean();
+        unload();
+        Alloy.Models.signin.reset();
+
+        Alloy.Globals.nologin.stackWindows.pop();
 
         var log = '[' + $.main.name + '] ';
         log += e.type;
@@ -100,34 +123,52 @@ function initialize() {
         log += Alloy.Globals.nologin.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
+    });
+
+    $.main.addEventListener('longpress', function(e) {
+        $.usernameOrEmail.normal();
+        $.password.normal();
+
+        Alloy.Models.signin.reset();
+    });
+
+    $.main.addEventListener('doubletap', function(e) {
+        $.usernameOrEmail.normal();
+        $.password.normal();
+
+        Alloy.Models.signin.fakeData();
     });
 };
 
 function load() {
-    Alloy.Logger.debug('[' + $.main.name + '] load');
+    Ti.API.debug('[' + $.main.name + ']', 'load');
 
     loaded = true;
     openedWindow = false;
 };
 
-function unLoad() {
-    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
+function unload() {
+    Ti.API.debug('[' + $.main.name + ']', 'unload');
 
     loaded = false;
     openedWindow = false;
 };
 
-exports.getLoad = function() {
-    return loaded;
-};
-
-exports.load = function() {
-    load();
-};
-
-exports.unLoad = function() {
-    unLoad();
+var _exports = {
+    getLoad : function() {
+        return loaded;
+    },
+    load : function() {
+        load();
+    },
+    unload : function() {
+        unload();
+    }
 };
 
 initialize();
+
+for (var i in _exports) {
+    exports[i] = _exports[i];
+};

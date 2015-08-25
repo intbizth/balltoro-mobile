@@ -33,7 +33,7 @@ function initialize() {
         log += Alloy.Globals.login.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
     });
 
     $.main.addEventListener('close', function(e) {
@@ -47,13 +47,13 @@ function initialize() {
         log += Alloy.Globals.login.stackWindows.length;
         log += ')';
 
-        Alloy.Logger.debug(log);
+        Ti.API.debug(log);
     });
 };
 
 function load() {
-    Alloy.Logger.debug('[' + $.main.name + '] load');
-    Alloy.Logger.debug('[' + $.main.name + '] load:args: ' + JSON.stringify(args));
+    Ti.API.debug('[' + $.main.name + ']', 'load');
+    Ti.API.debug('[' + $.main.name + ']', 'load:args: ' + JSON.stringify(args));
 
     loaded = true;
     openedWindow = false;
@@ -62,12 +62,11 @@ function load() {
     });
     program = program[0].transformDataToLabel();
 
-    Alloy.Logger.debug('[' + $.main.name + '] program: ' + JSON.stringify(program));
+    Ti.API.debug('[' + $.main.name + '] program: ' + JSON.stringify(program));
 
     Alloy.Collections.matchesday.setID(args.programCode);
 
-    Alloy.Collections.matchesday.fetch({
-        timeout : 60000,
+    Alloy.Collections.matchesday.fetchStartPage({
         success : function(model, response) {
             $.activityIndicatorView.visible = false;
             $.contentView.visible = true;
@@ -112,7 +111,6 @@ function load() {
 
     function fetchFirstPage(callback) {
         Alloy.Collections.matchesday.fetchFirstPage({
-            timeout : 60000,
             success : function(model, response) {
                 $.activityIndicatorView.visible = false;
                 $.contentView.visible = true;
@@ -164,7 +162,6 @@ function load() {
 
     function fetchNextPage(callback) {
         Alloy.Collections.matchesday.fetchNextPage({
-            timeout : 60000,
             success : function(model, response) {
                 callback();
 
@@ -195,49 +192,14 @@ function load() {
     };
 };
 
-function unLoad() {
-    Alloy.Logger.debug('[' + $.main.name + '] unLoad');
+function unload() {
+    Ti.API.debug('[' + $.main.name + ']', 'unload');
 
     loaded = false;
     openedWindow = false;
     program = null;
 
     Alloy.Collections.matchesday.removeID();
-};
-
-function fakeData(data) {
-    var placehold = require('placehold.it');
-    var datas = [];
-
-    for (var i = 1; i <= 20; i++) {
-        var datetime = Vendor.Chance.timestamp();
-        datas.push({
-            template : Vendor.Chance.pick(['after', 'before', 'gameafter', 'gamebefore', 'gamelive', 'gamelivehalftime']),
-            leftIcon : placehold.createURL({
-                width : 100,
-                height : 100
-            }).image,
-            leftLabel : Vendor.Chance.word(),
-            rightIcon : placehold.createURL({
-                width : 100,
-                height : 100
-            }).image,
-            rightLabel : Vendor.Chance.word(),
-            scoreLabel : Vendor.Chance.integer({
-                min : 0,
-                max : 99
-            }) + ' - ' + Vendor.Chance.integer({
-                min : 0,
-                max : 99
-            }),
-            startTimeLabel : Alloy.Moment.unix(datetime).format('HH:mm'),
-            startDateLabel : Alloy.Moment.unix(datetime).format('D MMM YYYY')
-        });
-    }
-
-    datas = _.shuffle(datas);
-
-    return data.concat(datas);
 };
 
 exports.getLoad = function() {
@@ -248,8 +210,8 @@ exports.load = function() {
     load();
 };
 
-exports.unLoad = function() {
-    unLoad();
+exports.unload = function() {
+    unload();
 };
 
 initialize();

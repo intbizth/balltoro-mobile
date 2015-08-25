@@ -32,8 +32,16 @@
     top: 10,
     width: '86%',
     height: 36,
-    borderWidth: '1',
+    backgroundColor: '#ffffff',
+    backgroundColorNormal: '#ffffff',
+    backgroundColorError: '#fff6f6',
+    color: '#000000',
+    colorNormal: '#000000',
+    colorError: '#c42424',
+    borderWidth: 1,
     borderColor: '#999999',
+    borderColorNormal: '#999999',
+    borderColorError: '#e0b4b4',
     textAlign: 'center'
 }
 
@@ -65,11 +73,7 @@
     width: '86%',
     height: 36,
     color: '#ffffff',
-    borderWidth: '1',
-    borderColor: '#549af7',
-    backgroundColor: '#549af7',
-    backgroundColorEnable: '#549af7',
-    backgroundColorDisable: '#b2d1fb'
+    backgroundColor: '#549af7'
 }
 
 '#nextLabel':{

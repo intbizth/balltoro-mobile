@@ -1,7 +1,5 @@
 Widget.Collections.programs = Alloy.Collections.instance('programs');
-Widget.Logger = require('logger');
 
-var log = true;
 var loaded = false;
 var itemSelectedIndex = null;
 var itemSelectedName = null;
@@ -9,11 +7,6 @@ var clickTimer = null;
 var clickCount = 0;
 var datas = {
     menus : [{
-        id : 'tester',
-        template : 'itemNoIcon',
-        icon : '',
-        title : 'Tester'
-    }, {
         id : 'profile',
         template : 'item',
         icon : WPATH('images/photo.png'),
@@ -100,8 +93,6 @@ var datas = {
     }]
 };
 
-Widget.Logger.setEnabled(log);
-
 function extendData() {
     var models = Widget.Collections.menus.models;
 
@@ -177,9 +168,9 @@ function itemclick(e) {
     var item = $.section.getItemAt(e.itemIndex);
     e.name = item.properties.name;
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] itemclick:e: ' + JSON.stringify(e));
-    Widget.Logger.debug('[' + Widget.widgetId + '] itemclick:item: ' + JSON.stringify(item));
-    Widget.Logger.debug('[' + Widget.widgetId + '] itemclick:clickCount: ' + clickCount);
+    Ti.API.debug('[' + Widget.widgetId + '] itemclick:e: ' + JSON.stringify(e));
+    Ti.API.debug('[' + Widget.widgetId + '] itemclick:item: ' + JSON.stringify(item));
+    Ti.API.debug('[' + Widget.widgetId + '] itemclick:clickCount: ' + clickCount);
 
     function clear() {
         clickCount = 0;
@@ -253,7 +244,7 @@ function itemclick(e) {
                                     classes : 'insertItemAnimatetion'
                                 });
 
-                                Widget.Logger.debug('[' + Widget.widgetId + '] dataItems: ' + dataItems.length + ' ' + JSON.stringify(dataItems));
+                                Ti.API.debug('[' + Widget.widgetId + '] dataItems: ' + dataItems.length + ' ' + JSON.stringify(dataItems));
 
                                 $.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
                             } else {
@@ -262,8 +253,8 @@ function itemclick(e) {
 
                             selectItem(itemSelectedName);
 
-                            Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-                            Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+                            Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+                            Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
                         },
                         error : function(model, response) {
                             $.trigger('fetched:error', {
@@ -275,8 +266,8 @@ function itemclick(e) {
                             item.properties.accordion.fetching = false;
                             $.section.updateItemAt(e.itemIndex, item);
 
-                            Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-                            Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+                            Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+                            Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
                         }
                     });
                 } else {
@@ -318,7 +309,7 @@ function itemclick(e) {
                             classes : 'insertItemAnimatetion'
                         });
 
-                        Widget.Logger.debug('[' + Widget.widgetId + '] dataItems: ' + dataItems.length + ' ' + JSON.stringify(dataItems));
+                        Ti.API.debug('[' + Widget.widgetId + '] dataItems: ' + dataItems.length + ' ' + JSON.stringify(dataItems));
 
                         $.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
                     } else {
@@ -331,8 +322,8 @@ function itemclick(e) {
 
                     selectItem(itemSelectedName);
 
-                    Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-                    Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+                    Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+                    Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
                 }
 
                 clear();
@@ -362,8 +353,8 @@ function itemclick(e) {
 
                 $.trigger('click', e);
 
-                Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-                Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+                Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+                Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
             }
         }, 400);
     } else {
@@ -441,7 +432,7 @@ function itemclick(e) {
                             classes : 'insertItemAnimatetion'
                         });
 
-                        Widget.Logger.debug('[' + Widget.widgetId + '] dataItems: ' + dataItems.length + ' ' + JSON.stringify(dataItems));
+                        Ti.API.debug('[' + Widget.widgetId + '] dataItems: ' + dataItems.length + ' ' + JSON.stringify(dataItems));
 
                         $.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
                     } else {
@@ -450,8 +441,8 @@ function itemclick(e) {
 
                     selectItem(itemSelectedName);
 
-                    Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-                    Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+                    Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+                    Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
                 },
                 error : function(model, response) {
                     $.trigger('fetched:error', {
@@ -463,8 +454,8 @@ function itemclick(e) {
                     item.properties.accordion.fetching = false;
                     $.section.updateItemAt(e.itemIndex, item);
 
-                    Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-                    Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+                    Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+                    Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
                 }
             });
 
@@ -495,8 +486,8 @@ function itemclick(e) {
 
             $.trigger('dblclick', e);
 
-            Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-            Widget.Logger.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+            Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
+            Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
         }
     }
 };
@@ -504,46 +495,49 @@ function itemclick(e) {
 function load() {
     loaded = true;
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load');
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load');
 
     Widget.Collections.menus.reset(datas.menus);
     Widget.Collections.settings.reset(datas.settings);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:before:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:before:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:before:programs: ' + JSON.stringify(Widget.Collections.programs.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:programs: ' + JSON.stringify(Widget.Collections.programs.toJSON()));
 
     extendData();
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
-    Widget.Logger.debug('[' + Widget.widgetId + '] load:after:programs: ' + JSON.stringify(Widget.Collections.programs.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:programs: ' + JSON.stringify(Widget.Collections.programs.toJSON()));
 };
 
-function unLoad() {
+function unload() {
     loaded = false;
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad');
+    Ti.API.debug('[' + Widget.widgetId + ']', 'unload');
 
     Widget.Collections.menus.reset([]);
     Widget.Collections.settings.reset([]);
 
-    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
-    Widget.Logger.debug('[' + Widget.widgetId + '] unLoad:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'unload:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'unload:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
 };
 
-exports.selectItem = function(value) {
-    selectItem(value);
+var _exports = {
+    selectItem : function(value) {
+        selectItem(value);
+    },
+    getLoad : function() {
+        return loaded;
+    },
+    load : function() {
+        load();
+    },
+    unload : function() {
+        unload();
+    }
 };
 
-exports.getLoad = function() {
-    return loaded;
-};
-
-exports.load = function() {
-    load();
-};
-
-exports.unLoad = function() {
-    unLoad();
+for (var i in _exports) {
+    exports[i] = _exports[i];
 };
