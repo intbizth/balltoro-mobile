@@ -168,9 +168,9 @@ function itemclick(e) {
     var item = $.section.getItemAt(e.itemIndex);
     e.name = item.properties.name;
 
-    Ti.API.debug('[' + Widget.widgetId + '] itemclick:e: ' + JSON.stringify(e));
-    Ti.API.debug('[' + Widget.widgetId + '] itemclick:item: ' + JSON.stringify(item));
-    Ti.API.debug('[' + Widget.widgetId + '] itemclick:clickCount: ' + clickCount);
+    Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:e:', e);
+    Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:item:', item);
+    Ti.API.debug('[' + Widget.widgetId + ']', 'itemclick:clickCount:', clickCount);
 
     function clear() {
         clickCount = 0;
@@ -244,7 +244,7 @@ function itemclick(e) {
                                     classes : 'insertItemAnimatetion'
                                 });
 
-                                Ti.API.debug('[' + Widget.widgetId + '] dataItems: ' + dataItems.length + ' ' + JSON.stringify(dataItems));
+                                Ti.API.debug('[' + Widget.widgetId + ']', 'dataItems:', dataItems.length, dataItems);
 
                                 $.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
                             } else {
@@ -253,8 +253,8 @@ function itemclick(e) {
 
                             selectItem(itemSelectedName);
 
-                            Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-                            Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+                            Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+                            Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
                         },
                         error : function(model, response) {
                             $.trigger('fetched:error', {
@@ -266,8 +266,8 @@ function itemclick(e) {
                             item.properties.accordion.fetching = false;
                             $.section.updateItemAt(e.itemIndex, item);
 
-                            Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-                            Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+                            Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+                            Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
                         }
                     });
                 } else {
@@ -309,7 +309,7 @@ function itemclick(e) {
                             classes : 'insertItemAnimatetion'
                         });
 
-                        Ti.API.debug('[' + Widget.widgetId + '] dataItems: ' + dataItems.length + ' ' + JSON.stringify(dataItems));
+                        Ti.API.debug('[' + Widget.widgetId + ']', 'dataItems:', dataItems.length, dataItems);
 
                         $.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
                     } else {
@@ -322,8 +322,8 @@ function itemclick(e) {
 
                     selectItem(itemSelectedName);
 
-                    Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-                    Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+                    Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+                    Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
                 }
 
                 clear();
@@ -353,8 +353,8 @@ function itemclick(e) {
 
                 $.trigger('click', e);
 
-                Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-                Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+                Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+                Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
             }
         }, 400);
     } else {
@@ -372,17 +372,23 @@ function itemclick(e) {
             item.properties.accordion.fetching = true;
             $.section.updateItemAt(e.itemIndex, item);
 
+            var models = Widget.Collections[item.properties.accordion.collection].models;
             Widget.Collections[item.properties.accordion.collection].fetch({
                 timeout : 60000,
                 success : function(model, response) {
                     if (item.properties.accordion.opened) {
-                        var dataModels = Widget.Collections[item.properties.accordion.collection].models;
+                        Ti.API.debug('[' + Widget.widgetId + ']', 'deleteItems:old:model:length', models.length);
 
-                        var style = $.createStyle({
-                            classes : 'deleteItemsAnimatetion'
-                        });
+                        if (models.length > 0) {
+                            var style = $.createStyle({
+                                classes : 'deleteItemsAnimatetion'
+                            });
 
-                        $.section.deleteItemsAt(e.itemIndex + 1, dataModels.length, style);
+                            $.section.deleteItemsAt(e.itemIndex + 1, models.length, style);
+
+                            Ti.API.debug('[' + Widget.widgetId + ']', 'deleteItems:index:', e.itemIndex + 1);
+                            Ti.API.debug('[' + Widget.widgetId + ']', 'deleteItems:new:model:length', model.length);
+                        }
                     }
 
                     if (datas[item.properties.accordion.collection]) {
@@ -432,7 +438,7 @@ function itemclick(e) {
                             classes : 'insertItemAnimatetion'
                         });
 
-                        Ti.API.debug('[' + Widget.widgetId + '] dataItems: ' + dataItems.length + ' ' + JSON.stringify(dataItems));
+                        Ti.API.debug('[' + Widget.widgetId + ']', 'dataItems:', dataItems.length, dataItems);
 
                         $.section.insertItemsAt(e.itemIndex + 1, dataItems, style);
                     } else {
@@ -441,8 +447,8 @@ function itemclick(e) {
 
                     selectItem(itemSelectedName);
 
-                    Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-                    Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+                    Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+                    Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
                 },
                 error : function(model, response) {
                     $.trigger('fetched:error', {
@@ -454,8 +460,8 @@ function itemclick(e) {
                     item.properties.accordion.fetching = false;
                     $.section.updateItemAt(e.itemIndex, item);
 
-                    Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-                    Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+                    Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+                    Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
                 }
             });
 
@@ -486,8 +492,8 @@ function itemclick(e) {
 
             $.trigger('dblclick', e);
 
-            Ti.API.debug('[' + Widget.widgetId + '] itemSelectedIndex: ' + itemSelectedIndex);
-            Ti.API.debug('[' + Widget.widgetId + '] itemSelectedName: ' + itemSelectedName);
+            Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedIndex:', itemSelectedIndex);
+            Ti.API.debug('[' + Widget.widgetId + ']', 'itemSelectedName:', itemSelectedName);
         }
     }
 };
@@ -500,15 +506,15 @@ function load() {
     Widget.Collections.menus.reset(datas.menus);
     Widget.Collections.settings.reset(datas.settings);
 
-    Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
-    Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
-    Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:programs: ' + JSON.stringify(Widget.Collections.programs.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:menus:', JSON.stringify(Widget.Collections.menus.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:settings:', JSON.stringify(Widget.Collections.settings.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:before:programs:', JSON.stringify(Widget.Collections.programs.toJSON()));
 
     extendData();
 
-    Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
-    Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
-    Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:programs: ' + JSON.stringify(Widget.Collections.programs.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:menus:', JSON.stringify(Widget.Collections.menus.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:settings:', JSON.stringify(Widget.Collections.settings.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load:after:programs:', JSON.stringify(Widget.Collections.programs.toJSON()));
 };
 
 function unload() {
@@ -519,8 +525,8 @@ function unload() {
     Widget.Collections.menus.reset([]);
     Widget.Collections.settings.reset([]);
 
-    Ti.API.debug('[' + Widget.widgetId + ']', 'unload:menus: ' + JSON.stringify(Widget.Collections.menus.toJSON()));
-    Ti.API.debug('[' + Widget.widgetId + ']', 'unload:settings: ' + JSON.stringify(Widget.Collections.settings.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'unload:menus:', JSON.stringify(Widget.Collections.menus.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'unload:settings:', JSON.stringify(Widget.Collections.settings.toJSON()));
 };
 
 var _exports = {
