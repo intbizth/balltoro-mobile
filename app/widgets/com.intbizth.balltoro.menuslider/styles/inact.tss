@@ -1,0 +1,19 @@
+'.inact_itemView':{
+    top: 0,
+    left: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    visible: true
+}
+
+'.inact_itemSubView':{
+    bottom: 0,
+    width: '96%',
+    height: 32,
+    layout: 'horizontal'
+}
+
+'.inact_titleView':{
+    width: Ti.UI.SIZE,
+    height: 32
+}

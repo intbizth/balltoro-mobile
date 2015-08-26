@@ -1,10 +1,24 @@
 <Alloy>
     <Collection src="menus" />
     <ScrollView id="main" dataCollection="menus">
-        <View class="itemView" dataName="{name}" onClick="doClick" onDblclick="doDblclick">
-            <View class="itemSubView">
-                <View class="itemTitleView">
-                    <Label class="title" dataName="{name}" text="{title}" />
+        <View class="itemView" dataIndex="{index}" dataName="{name}" onClick="doClick" onDblclick="doDblclick">
+            <View class="inact_itemView">
+                <View class="inact_itemSubView">
+                    <View class="inact_titleView">
+                        <Label class="title" text="{title}" />
+                    </View>
+                </View>
+            </View>
+            <View class="act_itemView">
+                <View class="act_itemSubView">
+                    <View class="act_titleView">
+                        <Label class="title" text="{title}" />
+                    </View>
+                    <View class="act_angleView">
+                        <View class="act_angleSubView1" />
+                        <View class="act_angleSubView2" />
+                        <View class="act_angleSubView3" transform="Ti.UI.create2DMatrix().rotate(-43)" />
+                    </View>
                 </View>
             </View>
         </View>
