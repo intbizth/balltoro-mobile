@@ -8,9 +8,9 @@
     <string name="openlink">เปิดลิงค์</string>
     <string name="login.profile.title">โปรไฟล์</string>
     <string name="login.homefeed.title">ข่าวน่าสนใจ</string>
-    <string name="login.homefeed.lasted">ข่าวล่าสุด</string>
+    <string name="login.homefeed.latest">ข่าวล่าสุด</string>
     <string name="login.news.title">ข่าว</string>
-    <string name="login.news.lasted">ข่าวล่าสุด</string>
+    <string name="login.news.latest">ข่าวล่าสุด</string>
     <string name="login.leagueGame.title">ลีกเกม</string>
     <string name="login.match.title">รายการแข่งขัน</string>
     <string name="login.signout.title">ล็อกเอาท์</string>
