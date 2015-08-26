@@ -140,6 +140,13 @@ function getArrow(template) {
     return data;
 };
 
+function getSelectItem() {
+    return {
+        index : itemSelectedIndex,
+        name : itemSelectedName
+    };
+};
+
 function selectItem(name) {
     var isExist = false;
 
@@ -542,6 +549,7 @@ function unload() {
 };
 
 var _exports = {
+    getSelectItem : getSelectItem,
     selectItem : selectItem,
     getLoad : getLoad,
     load : load,
