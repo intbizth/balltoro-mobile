@@ -1,8 +1,13 @@
 <Alloy>
-    <NavigationWindow id="navigation" platform="ios">
+    <NavigationWindow id="navigation" module="xp.ui" role="centerWindow" platform="ios">
         <Window id="main">
             <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
-            <View id="content"></View>
+            <View id="content">
+                <View id="contentView"></View>
+                <View id="activityIndicatorView">
+                    <ActivityIndicator id="activityIndicator" />
+                </View>
+            </View>
         </Window>
     </NavigationWindow>
 </Alloy>

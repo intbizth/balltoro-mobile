@@ -1,5 +1,5 @@
 '#main':{
-    name: 'signin',
+    name: 'homefeed',
     width: Ti.UI.FILL,
     height: Ti.UI.FILL,
     backgroundColor: '#0f181e',
@@ -11,204 +11,28 @@
 '#content':{
     top: 0,
     width: Ti.UI.FILL,
+    height: Ti.UI.FILL
+}
+
+'#contentView':{
+    top: 0,
+    width: Ti.UI.FILL,
     height: Ti.UI.FILL,
-    backgroundColor: '#213647',
-    layout: 'vertical'
+    layout: 'vertical',
+    visible: false
 }
 
-'#contentTop':{
+'#activityIndicatorView':{
     top: 0,
     width: Ti.UI.FILL,
-    height: '60%' ,
-    layout: 'vertical'
+    height: Ti.UI.FILL,
+    visible: true
 }
 
-'#contentBottom': {
-    bottom: 0,
-    width: Ti.UI.FILL,
-    height: '40%'
+'#activityIndicator':{
+    visible: true
 }
 
-'#contentBottomLeft': {
-	top: 5,
-    left: 0,
-    bottom: 5,
-    width: '49%',
-    height: '100%',
-    layout: 'vertical'
-}
-
-'#contentBottomRight': {
-	top: 5,
-    right: 0,
-    bottom: 5,
-    width: '49%',
-    height: '100%',
-    layout: 'vertical'
-}
-
-'#scrollTop': {
-    top: 20,
-    left: 0,
-    width: Ti.UI.SIZE,
-    height: '45',
-    layout: 'horizontal',
-    backgroundColor: '#111F28'
-}
-
-'.titleTop': {
-    top: 0,
-    left: 0,
-    height: '45',
-    backgroundColor: '#111F28',
-    color: '#ffffff'
-}
-
-'.menuTop': {
-    left: 20
-}
-
-'#menu1': {
-    width: 170,
-    height: 45
-}
-
-'#menu2': {
-    width: 230,
-    height: 45
-}
-
-'#menu3': {
-    width: 160,
-    height: 45
-}
-
-'#menu4': {
-    width: 140,
-    height: 45
-}
-
-'#menu5': {
-    width: 200,
-    height: 45
-}
-
-'#menu6': {
-    width: 140,
-    height: 45
-}
-
-'#menu7': {
-    width: 140,
-    height: 45
-}
-
-'#menuText1': {
-    text: 'Lastest news'
-}
-
-'#menuText2': {
-    text: 'Thai Premier Leage'
-}
-
-'#menuText3': {
-    text: 'Bundesliga'
-}
-
-'#menuText4': {
-    text: 'Leage 1'
-}
-
-'#menuText5': {
-    text: 'Premiere Leage'
-}
-
-'#menuText6': {
-    text: 'Series A'
-}
-
-'#menuText7': {
-    text: 'LFP'
-}
-
-'#imageTop': {
-    top: 0,
-    width: Ti.UI.FILL,
-    height: '60%',
-    image: 'oak.png',
-    backgroundColor: '#ffffff'
-}
-
-'#imageBottomLeft': {
-    width: Ti.UI.FILL,
-    height: '50%',
-    image: 'oak.png',
-    backgroundColor: '#ffffff'
-}
-
-'#imageBottomRight': {
-    width: Ti.UI.FILL,
-    height: '50%',
-    image: 'oak.png',
-    backgroundColor: '#ffffff'
-}
-
-'.imageProfile': {
-    top: 5,
-    left: 20,
-    width: 24,
-    height: 24,
-    backgroundColor: '#0456A2'
-}
-
-'#viewTextTop': {
-    top: 0,
-    width: Ti.UI.FILL,
-    height: Ti.UI.SIZE,
-    backgroundColor: '#549AF7',
-    layout: 'vertical'
-}
-
-'.viewTextBottom': {
-    top: 0,
-    width: Ti.UI.FILL,
-    height: Ti.UI.SIZE,
-    backgroundColor: '#549AF7',
-    layout: 'vertical'
-}
-
-'.textContent': {
-    top: 5,
-    left: 20,
-    right: 20,
-    font: {
-        fontSize: 10
-    },
-    color: '#ffffff'
-}
-
-'#textContentTop': {
-    text: 'ตำนานที่มี "คุณค่า" การสืบทอดที่ "สมบูรณ์แบบ" ของฝูงฉลาม'
-}
-
-'#textContentLeft': {
-    text: 'พลาดไม่ได้! ฉลาม พบ กิเลน ไทยลีก 28 มิ.ย. นี้'
-}
-
-'#textContentRight': {
-    text: 'ศึกแห่งศักดิ์ศรี ฉลาม-กิเลน ไทยแลนด์กลาซิโก้'
-}
-
-'.textProfile': {
-    top: 10,
-    left: 5,
-    color: '#ffffff',
-    text: 'Toro Mann',
-    font: {
-        fontSize: 10
-    }
-}
-
-'.viewHorizontal': {
-    layout: 'horizontal'
+'#activityIndicator[platform=ios]':{
+    style:Ti.UI.iPhone.ActivityIndicatorStyle.PLAIN
 }

@@ -68,7 +68,7 @@ function setData(value) {
     value = transformData(value);
     $.navbar.set(value);
 
-    Ti.API.debug('[' + Widget.widgetId + '] setdata:navbar: ' + JSON.stringify($.navbar.toJSON()));
+    Ti.API.debug('[' + Widget.widgetId + ']', 'setdata:navbar:', JSON.stringify($.navbar.toJSON()));
 };
 
 var _exports = {

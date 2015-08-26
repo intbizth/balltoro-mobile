@@ -8,8 +8,8 @@ function initialize() {
     }
 
     $.navbarView.setData({
-        id : 'login.menu.match',
-        title : L('login.menu.match'),
+        id : 'login.match',
+        title : L('login.match.title'),
         leftIcon : 'list'
     });
 

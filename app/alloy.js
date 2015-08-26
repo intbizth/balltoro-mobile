@@ -75,5 +75,11 @@ Vendor.placehold = require('placehold.it');
 Alloy.Models.register = Alloy.createModel('register');
 Alloy.Models.signin = Alloy.createModel('signin');
 Alloy.Collections.matches = Alloy.createCollection('matches');
+Alloy.Collections.matches.on('setpaginator', function(response) {
+    this.setPaginator(response);
+});
 Alloy.Collections.programs = Alloy.createCollection('programs');
+Alloy.Collections.programs.on('setpaginator', function(response) {
+    this.setPaginator(response);
+});
 // > collections & models

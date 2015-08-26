@@ -2,22 +2,23 @@ var animating = false;
 
 Alloy.Globals.nologin.mainWindow = $.nologin.getView();
 Alloy.Globals.nologin.stackWindows = [];
+Alloy.Globals.nologin.stackWindowsLogger = function() {
+    Ti.API.debug('nologin:stackWindows:', JSON.stringify(_.pluck(Alloy.Globals.nologin.stackWindows, 'name')), Alloy.Globals.nologin.stackWindows.length);
+};
 Alloy.Globals.login.stackWindows = [];
-Alloy.Globals.login.mainWindow = $.login.getView();
-Alloy.Globals.login.leftWindow = Alloy.createController('login/left/index');
-Alloy.Globals.login.mainWindow.setLeftWindow(Alloy.Globals.login.leftWindow.getView());
+Alloy.Globals.login.stackWindowsLogger = function() {
+    Ti.API.debug('login:stackWindows:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length);
+};
 Alloy.Globals.login.menuWindows = {};
-
+Alloy.Globals.login.mainWindow = $.login.getView();
 Alloy.Globals.login.mainWindow.lock = function() {
     Alloy.Globals.login.mainWindow.openDrawerGestureMode = 'OPEN_MODE_NONE';
 };
-
 Alloy.Globals.login.mainWindow.unlock = function() {
     Alloy.Globals.login.mainWindow.openDrawerGestureMode = 'OPEN_MODE_ALL';
 };
 
 Alloy.Globals.login.mainWindow.setMenu = function(value) {
-    var debug = true;
     var data = {
         name : '',
         args : {},
@@ -27,9 +28,7 @@ Alloy.Globals.login.mainWindow.setMenu = function(value) {
 
     data = _.extend(data, value);
 
-    if (debug) {
-        Ti.API.debug('[setmenu]', 'data:', data);
-    }
+    Ti.API.debug('[setmenu]', 'data:', data);
 
     Alloy.Globals.login.stackWindows = [];
 
@@ -37,25 +36,9 @@ Alloy.Globals.login.mainWindow.setMenu = function(value) {
         Alloy.Globals.login.mainWindow.toggleLeftWindow();
     }
 
-    if (!Alloy.Globals.login.menuWindows[data.name] || data.reload) {
-        if (Alloy.Globals.login.menuWindows[data.name]) {
-            Alloy.Globals.login.menuWindows[data.name].unload();
-        }
-
-        var menuWindow = Alloy.createController('login/center/' + data.name + '/index', data.args);
-        Alloy.Globals.login.menuWindows[data.name] = menuWindow;
-    }
-
+    Alloy.Globals.login.menuWindows[data.name] = Alloy.createController('login/center/' + data.name + '/index', data.args);
     Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[data.name].getView());
     Alloy.Globals.login.menu = data.name;
-
-    if (debug) {
-        Ti.API.debug('[setmenu]', data.name + ':getLoad:', (Alloy.Globals.login.menuWindows[data.name].getLoad()) ? 'true' : 'false');
-    }
-
-    if (!Alloy.Globals.login.menuWindows[data.name].getLoad()) {
-        Alloy.Globals.login.menuWindows[data.name].load();
-    }
 };
 
 $.login.getView().open();
@@ -63,21 +46,29 @@ $.nologin.getView().open();
 
 $.nologin.getView().opacity = 1;
 
-// > event
+// >> login & logout
 Alloy.Globals.login.force = function(fn) {
     if (animating) {
         return;
     }
 
+    Ti.API.debug('[Alloy.Globals.login.force]', '-->|');
+
     animating = true;
 
     Alloy.Globals.login.leftWindow.load();
+    Alloy.Globals.login.leftWindow.selectItem(Alloy.Globals.login.defaultMenu);
+    Alloy.Globals.login.mainWindow.setMenu({
+        name : Alloy.Globals.login.defaultMenu,
+        noToggle : true
+    });
+
     Alloy.Globals.login.mainWindow.unlock();
 
     $.login.getView().opacity = 1;
     $.nologin.getView().opacity = 0;
 
-    if (fn) {
+    if (_.isFunction(fn)) {
         fn();
     }
 
@@ -99,6 +90,8 @@ Alloy.Globals.nologin.force = function(fn) {
         return;
     }
 
+    Ti.API.debug('[Alloy.Globals.nologin.force]', '<--|');
+
     animating = true;
 
     Alloy.Globals.login.menu = Alloy.Globals.login.defaultMenu;
@@ -110,7 +103,7 @@ Alloy.Globals.nologin.force = function(fn) {
         $.login.getView().opacity = 0;
     });
 
-    if (fn) {
+    if (_.isFunction(fn)) {
         fn();
     }
 
@@ -119,9 +112,15 @@ Alloy.Globals.nologin.force = function(fn) {
 
         Alloy.Globals.login.leftWindow.unload();
 
-        for (var i in Alloy.Globals.login.menuWindows) {
-            Alloy.Globals.login.menuWindows[i].unload();
+        for (var i in Alloy.Globals.login.stackWindows) {
+            i = parseInt(i);
+
+            if (i !== 0) {
+                Alloy.Globals.login.stackWindows[i].close();
+            }
         }
     }, 800);
 };
-// < event
+// << login & logout
+
+Alloy.Globals.login.force();
