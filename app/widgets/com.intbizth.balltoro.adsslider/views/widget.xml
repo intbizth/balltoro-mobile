@@ -1,7 +1,7 @@
 <Alloy>
     <Collection src="pages" />
     <View id="main">
-        <ScrollableView id="slider" dataCollection="pages" dataTransform="transformDataSlider" onScroll="doScroll">
+        <ScrollableView id="slider" dataCollection="pages" dataTransform="transformData" onScroll="doScroll">
             <View if="$.template.logo">
                 <View class="logoView">
                     <ImageView class="icon" image="{icon}" />

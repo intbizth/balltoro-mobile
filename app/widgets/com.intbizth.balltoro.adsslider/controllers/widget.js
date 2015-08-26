@@ -1,7 +1,17 @@
+var loaded = false;
+
 $.template = {
     logo : false,
     page : false
 };
+
+$.main.height = parseInt(Ti.Platform.displayCaps.platformHeight - 160);
+
+if (Alloy.Globals.isIos7Plus) {
+    $.main.height -= 20;
+}
+
+showPagingControl();
 
 function doScroll(e) {
     if (Widget.Collections.pages.length > 0) {
@@ -25,7 +35,7 @@ function doDblclick(e) {
     $.trigger('dblclick', e);
 };
 
-function transformDataSlider(model) {
+function transformData(model) {
     var attrs = model.toJSON();
 
     for (var i in $.template) {
@@ -43,32 +53,42 @@ function showPagingControl() {
     }
 };
 
-function initialize() {
-    $.main.height = parseInt(Ti.Platform.displayCaps.platformHeight - 160);
-
-    if (Alloy.Globals.isIos7Plus) {
-        $.main.height -= 20;
+function addData(datas) {
+    if (!values) {
+        values = [];
     }
 
+    Widget.Collections.pages.addData(datas);
     showPagingControl();
 };
 
-var _exports = {
-    addData : function(values) {
-        if (!values) {
-            values = [];
-        }
-
-        Widget.Collections.pages.addData(values);
-        showPagingControl();
-    },
-    load : function() {
-        Widget.Collections.pages.addData([]);
-        showPagingControl();
-    }
+function getLoad() {
+    return loaded;
 };
 
-initialize();
+function load(datas) {
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load', JSON.stringify(datas));
+
+    Widget.Collections.pages.addData([]);
+    showPagingControl();
+};
+
+function unload() {
+    Ti.API.debug('[' + Widget.widgetId + ']', 'unload');
+
+    loaded = false;
+
+    Widget.Collections.pages.reset([]);
+
+    Ti.API.debug('[' + Widget.widgetId + ']', 'unload:pages:', JSON.stringify(Widget.Collections.pages.toJSON()));
+};
+
+var _exports = {
+    addData : addData,
+    getLoad : getLoad,
+    load : load,
+    unload : unload
+};
 
 for (var i in _exports) {
     exports[i] = _exports[i];
