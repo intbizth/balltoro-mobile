@@ -1,0 +1,82 @@
+<Alloy>
+    <Window id="main" >
+        <View id="content">
+            <ScrollView id="scrollTop">
+                <View id="menu1" class="menuTop">
+                    <Label id="menuText1" class="titleTop"></Label>
+                </View>
+                <View id="menu2" class="menuTop">
+                    <Label id="menuText2" class="titleTop"></Label>
+                </View>
+                <View id="menu3" class="menuTop">
+                    <Label id="menuText3" class="titleTop"></Label>
+                </View>
+                <View id="menu4" class="menuTop">
+                    <Label id="menuText4" class="titleTop"></Label>
+                </View>
+                <View id="menu5" class="menuTop">
+                    <Label id="menuText5" class="titleTop"></Label>
+                </View>
+                <View id="menu6" class="menuTop">
+                    <Label id="menuText6" class="titleTop"></Label>
+                </View>
+                <View id="menu7" class="menuTop">
+                    <Label id="menuText7" class="titleTop"></Label>
+                </View>
+            </ScrollView>
+            <ScrollView id="scrollContent">
+                <View class="viewImageTop">
+                    <ImageView id="imageTop" ></ImageView>
+                </View>
+                <View height="36" class="viewHorizontal">
+                    <ImageView class="imageProfile"></ImageView>
+                    <Label id="textProfile"></Label>
+                </View>
+                <View class="viewLineTop" />
+                <View class="viewText">
+                    <Label id="textDate"></Label>
+                </View>
+                <View class="viewLineTop" />
+                <View class="viewText">
+                    <Label id="textUrl"></Label>
+                </View>
+                <View class="viewText">
+                    <Label id="textTopic"></Label>
+                </View>
+                <View class="viewText">
+                    <Label class="textSlash"></Label>
+                </View>
+                <View class="viewText">
+                    <Label id="textItem1"></Label>
+                </View>
+                <View class="viewText">
+                    <Label id="textItem2"></Label>
+                </View>
+                <View class="viewText">
+                    <Label id="textItem3"></Label>
+                </View>
+                <View class="viewText">
+                    <Label class="textSlash"></Label>
+                </View>
+                <View class="viewLineBottom" />
+                <View id="viewBottom">
+                    <View id="bottomLeft">
+                        <Label id="textShare"></Label>
+                        <ImageView id="imageShare" class="bottomImageLeft"></ImageView>
+                    </View>
+                    <View id="bottomRight">
+                        <View class="viewLineBottomVertical"></View>
+                        <ImageView id="imageFacebook" class="bottomImageRight" ></ImageView>
+                        <ImageView id="imageTumblr" class="bottomImageRight" ></ImageView>
+                        <ImageView id="imagePinterest" class="bottomImageRight" ></ImageView>
+                        <ImageView id="imageTwitter" class="bottomImageRight" ></ImageView>
+                    </View>
+                </View>
+                <View class="viewLineBottom" />
+                <View id='footer1'></View>
+                <View id='footer2'></View>
+                <View id='footer3'></View>
+            </ScrollView>
+        </View>
+    </Window>
+</Alloy>

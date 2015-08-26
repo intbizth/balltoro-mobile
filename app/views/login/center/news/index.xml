@@ -15,7 +15,7 @@
                     <Label id="menuText4" class="titleTop"></Label>
                 </View>
                 <View id="menu5" class="menuTop">
-                    <Label id="menuText5" class="titleTp"></Label>
+                    <Label id="menuText5" class="titleTop"></Label>
                 </View>
                 <View id="menu6" class="menuTop">
                     <Label id="menuText6" class="titleTop"></Label>
