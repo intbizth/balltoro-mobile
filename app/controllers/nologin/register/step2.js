@@ -74,19 +74,6 @@ $.nextButton.addEventListener('click', function() {
 });
 // << nextButton
 
-<<<<<<< HEAD
-console.valueOf(doClickCamera);
-
-function doClickCamera(e){
-      Ti.Media.showCamera({
-      	saveToPhotoGallery : true
-      	
-      });
-};
-
-function doClickAddPhoto(e){
-	Ti.Media.openPhotoGallery();
-=======
 // >> addPhoto
 $.addPhoto.act = function() {
     this.opacity = this.opacityAct;
@@ -130,7 +117,6 @@ $.openCamera.act = function() {
 
 $.openCamera.inAct = function() {
     this.opacity = this.opacityInAct;
->>>>>>> origin/develop/1.0-tum
 };
 
 ui.setInActAndAct($.openCamera);
