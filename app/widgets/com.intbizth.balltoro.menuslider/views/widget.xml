@@ -1,7 +1,7 @@
 <Alloy>
     <Collection src="menus" />
     <ScrollView id="main" dataCollection="menus">
-        <View class="itemView" dataIndex="{index}" dataName="{name}" onClick="doClick" onDblclick="doDblclick">
+        <View class="itemView" onClick="doClick" onDblclick="doDblclick">
             <View class="inact_itemView">
                 <View class="inact_itemSubView">
                     <View class="inact_titleView">
@@ -21,6 +21,7 @@
                     </View>
                 </View>
             </View>
+            <View class="itemFakeView" dataIndex="{index}" dataName="{name}" />
         </View>
     </ScrollView>
 </Alloy>

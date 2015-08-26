@@ -17,14 +17,20 @@ function extendData(datas) {
 };
 
 function doClick(e) {
-    e.index = this.dataIndex;
-    e.name = this.dataName;
+    if (itemSelectedName === e.source.dataName) {
+        return;
+    }
+
+    e.index = e.source.dataIndex;
+    e.name = e.source.dataName;
+
     $.trigger('click', e);
 };
 
 function doDblclick(e) {
-    e.index = this.dataIndex;
-    e.name = this.dataName;
+    e.index = e.source.dataIndex;
+    e.name = e.source.dataName;
+
     $.trigger('dblclick', e);
 };
 

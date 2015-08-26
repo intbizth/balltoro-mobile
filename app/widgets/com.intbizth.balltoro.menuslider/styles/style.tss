@@ -25,3 +25,10 @@
     width: '70%',
     height: 45
 }
+
+'.itemFakeView':{
+    top: 0,
+    left: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL
+}
