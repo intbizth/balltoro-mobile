@@ -1,11 +1,10 @@
 // > alloy globals
-Alloy.Globals.grid = false;
 Alloy.Globals.isIos7Plus = (OS_IOS && parseInt(Ti.Platform.version.split('.')[0]) >= 7);
 Alloy.Globals.iPhoneTall = (OS_IOS && Ti.Platform.osname == 'iphone' && Ti.Platform.displayCaps.platformHeight == 568);
 Alloy.Globals.nologin = {};
 Alloy.Globals.login = {};
 Alloy.Globals.login.defaultMenu = 'profile';
-Alloy.Globals.login.menu = 'profile';
+Alloy.Globals.login.menu = null;
 // < alloy globals
 
 // > alloy loading
@@ -80,6 +79,10 @@ Alloy.Collections.matches.on('setpaginator', function(response) {
 });
 Alloy.Collections.programs = Alloy.createCollection('programs');
 Alloy.Collections.programs.on('setpaginator', function(response) {
+    this.setPaginator(response);
+});
+Alloy.Collections.homefeed = Alloy.createCollection('homefeed');
+Alloy.Collections.homefeed.on('setpaginator', function(response) {
     this.setPaginator(response);
 });
 // > collections & models

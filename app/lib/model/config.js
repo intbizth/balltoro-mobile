@@ -31,6 +31,28 @@ var _exports = {
             idAttribute : 'id'
         },
         parentNode : '_embedded.items'
+    },
+    news : {
+        URL : 'http://192.168.10.45:8000/api/news',
+        debug : true,
+        fake : true,
+        adapter : {
+            type : 'restapi',
+            collection_name : 'news',
+            idAttribute : 'id'
+        },
+        parentNode : '_embedded.items'
+    },
+    homefeed : {
+        URL : 'http://192.168.10.45:8000/api/news/homefeed',
+        debug : true,
+        fake : true,
+        adapter : {
+            type : 'restapi',
+            collection_name : 'homefeed',
+            idAttribute : 'id'
+        },
+        parentNode : '_embedded.items'
     }
 };
 

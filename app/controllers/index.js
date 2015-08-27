@@ -32,12 +32,26 @@ Alloy.Globals.login.mainWindow.setMenu = function(value) {
 
     Alloy.Globals.login.stackWindows = [];
 
+    if (!Alloy.Globals.login.menuWindows[data.name]) {
+        Alloy.Globals.login.menuWindows[data.name] = Alloy.createController('login/center/' + data.name + '/index', data.args);
+    }
+
     if (!data.noToggle) {
         Alloy.Globals.login.mainWindow.toggleLeftWindow();
     }
 
-    Alloy.Globals.login.menuWindows[data.name] = Alloy.createController('login/center/' + data.name + '/index', data.args);
-    Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[data.name].getView());
+    if (data.reload) {
+        Alloy.Globals.login.menuWindows[data.name].unload();
+    }
+
+    if (!Alloy.Globals.login.menuWindows[data.name].getLoad()) {
+        Alloy.Globals.login.menuWindows[data.name].load();
+    }
+
+    if (data.name !== Alloy.Globals.login.menu) {
+        Alloy.Globals.login.mainWindow.setCenterWindow(Alloy.Globals.login.menuWindows[data.name].getView());
+    }
+
     Alloy.Globals.login.menu = data.name;
 };
 
