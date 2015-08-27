@@ -4,8 +4,8 @@ Alloy.Globals.isIos7Plus = (OS_IOS && parseInt(Ti.Platform.version.split('.')[0]
 Alloy.Globals.iPhoneTall = (OS_IOS && Ti.Platform.osname == 'iphone' && Ti.Platform.displayCaps.platformHeight == 568);
 Alloy.Globals.nologin = {};
 Alloy.Globals.login = {};
-Alloy.Globals.login.defaultMenu = 'tester';
-Alloy.Globals.login.menu = 'tester';
+Alloy.Globals.login.defaultMenu = 'profile';
+Alloy.Globals.login.menu = 'profile';
 // < alloy globals
 
 // > alloy loading
@@ -17,6 +17,7 @@ Alloy.Moment = require('alloy/moment');
 Alloy.Sha1 = require('alloy/sha1');
 Alloy.Social = require('alloy/social');
 Alloy.String = require('alloy/string');
+
 Alloy.Notifier = Alloy.createWidget('com.caffeinalab.titanium.notifications');
 
 Alloy.Notifier.showError = function(e) {
@@ -71,7 +72,14 @@ Vendor.placehold = require('placehold.it');
 // < vendor loading
 
 // > collections & models
-Alloy.Models.user = Alloy.createModel('user');
+Alloy.Models.register = Alloy.createModel('register');
+Alloy.Models.signin = Alloy.createModel('signin');
 Alloy.Collections.matches = Alloy.createCollection('matches');
+Alloy.Collections.matches.on('setpaginator', function(response) {
+    this.setPaginator(response);
+});
 Alloy.Collections.programs = Alloy.createCollection('programs');
+Alloy.Collections.programs.on('setpaginator', function(response) {
+    this.setPaginator(response);
+});
 // > collections & models

@@ -1,37 +1,44 @@
-var debug = true;
 var loaded = false;
 var openedWindow = false;
+var args = arguments[0] || {};
 
-function initialize() {
-    if (Alloy.Globals.isIos7Plus) {
-        $.navbarView.getView().top = 20;
-    }
+Ti.API.debug('[' + $.main.name + ']', 'args:', args);
 
-    $.navbarView.setData({
-        id : 'login.menu.signout',
-        title : L('login.menu.signout')
-    });
+if (Alloy.Globals.isIos7Plus) {
+    $.navbarView.getView().top = 20;
+}
 
-    $.main.addEventListener('open', function(e) {
-        if (debug) {
-            Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
-        }
-    });
+$.navbarView.setData({
+    id : 'login.signout',
+    title : L('login.signout.title')
+});
 
-    $.main.addEventListener('close', function(e) {
-        if (debug) {
-            Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'login stacks:', JSON.stringify(_.pluck(Alloy.Globals.login.stackWindows, 'name')), Alloy.Globals.login.stackWindows.length, ')');
-        }
-    });
+$.main.addEventListener('open', function(e) {
+    Ti.API.debug('[' + $.main.name + ']', e.type);
+
+    Alloy.Globals.login.stackWindows.push($.main);
+    Alloy.Globals.login.stackWindowsLogger();
+
+    load();
+});
+
+$.main.addEventListener('close', function(e) {
+    Ti.API.debug('[' + $.main.name + ']', e.type);
+
+    Alloy.Globals.login.stackWindows.pop();
+    Alloy.Globals.login.stackWindowsLogger();
+
+    unload();
+});
+
+function getLoad() {
+    return loaded;
 };
 
 function load() {
-    if (debug) {
-        Ti.API.debug('[' + $.main.name + ']', 'load');
-    }
+    Ti.API.debug('[' + $.main.name + ']', 'load');
 
     loaded = true;
-    openedWindow = false;
 
     Alloy.Globals.login.mainWindow.lock();
 
@@ -40,27 +47,18 @@ function load() {
     }, _.random(800, 4000));
 };
 
-function unLoad() {
-    if (debug) {
-        Ti.API.debug('[' + $.main.name + ']', 'unLoad');
-    }
+function unload() {
+    Ti.API.debug('[' + $.main.name + ']', 'unload');
 
     loaded = false;
-    openedWindow = false;
-
-    Alloy.Globals.login.mainWindow.unlock();
 };
 
-exports.getLoad = function() {
-    return loaded;
+var _exports = {
+    getLoad : getLoad,
+    load : load,
+    unload : unload
 };
 
-exports.load = function() {
-    load();
+for (var i in _exports) {
+    exports[i] = _exports[i];
 };
-
-exports.unLoad = function() {
-    unLoad();
-};
-
-initialize();

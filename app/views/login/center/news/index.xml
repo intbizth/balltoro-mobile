@@ -1,0 +1,83 @@
+<Alloy>
+    <Window id="main" >
+        <View id="content">
+            <ScrollView id="scrollTop">
+                <View id="menu1" class="menuTop">
+                    <Label id="menuText1" class="titleTop"></Label>
+                </View>
+                <View id="menu2" class="menuTop">
+                    <Label id="menuText2" class="titleTop"></Label>
+                </View>
+                <View id="menu3" class="menuTop">
+                    <Label id="menuText3" class="titleTop"></Label>
+                </View>
+                <View id="menu4" class="menuTop">
+                    <Label id="menuText4" class="titleTop"></Label>
+                </View>
+                <View id="menu5" class="menuTop">
+                    <Label id="menuText5" class="titleTop"></Label>
+                </View>
+                <View id="menu6" class="menuTop">
+                    <Label id="menuText6" class="titleTop"></Label>
+                </View>
+                <View id="menu7" class="menuTop">
+                    <Label id="menuText7" class="titleTop"></Label>
+                </View>
+            </ScrollView>
+            <ScrollView id="scrollContent">
+                <View class="viewContentSingle_item1">
+                    <ImageView id="imageTop" ></ImageView>
+                    <View id="viewTextTop">
+                        <Label id="textContentTop" class="textContent"></Label>
+                        <View class="viewHorizontal">
+                            <ImageView class="imageProfile"></ImageView>
+                            <Label class="textProfile"></Label>
+                        </View>
+                    </View>
+                </View>
+                <View class="viewContentSingle">
+                    <ImageView id="imageTop" ></ImageView>
+                    <View id="viewTextTop">
+                        <Label id="textContentTop" class="textContent"></Label>
+                        <View class="viewHorizontal">
+                            <ImageView class="imageProfile"></ImageView>
+                            <Label class="textProfile"></Label>
+                        </View>
+                    </View>
+                </View>
+                <View class="viewContentDouble">
+                    <View id="contentLeft" >
+                        <ImageView id="imageLeft"></ImageView>
+                        <View class="viewTextBottom">
+                            <Label id="textContentLeft" class="textContent"></Label>
+                            <View class="viewHorizontal">
+                                <ImageView class="imageProfile"></ImageView>
+                                <Label class="textProfile"></Label>
+                            </View>
+                        </View>
+                    </View>
+                    <View id="contentRight" >
+                        <ImageView id="imageRight"></ImageView>
+                        <View class="viewTextBottom">
+                            <Label id="textContentRight" class="textContent" ></Label>
+                            <View class="viewHorizontal">
+                                <ImageView class="imageProfile"></ImageView>
+                                <Label class="textProfile"></Label>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+                <View class="viewContentSingle">
+                    <ImageView id="imageTop" ></ImageView>
+                    <View id="viewTextTop">
+                        <Label id="textContentTop" class="textContent"></Label>
+                        <View class="viewHorizontal">
+                            <ImageView class="imageProfile"></ImageView>
+                            <Label class="textProfile"></Label>
+                        </View>
+                    </View>
+                </View>
+            </ScrollView>
+        </View>
+    </Window>
+</Alloy>

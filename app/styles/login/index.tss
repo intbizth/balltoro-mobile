@@ -1,6 +1,260 @@
-'#main': {
-    openDrawerGestureMode: 'OPEN_MODE_ALL',
-    closeDrawerGestureMode: 'CLOSE_MODE_ALL',
-    statusBarStyle: 'STATUSBAR_WHITE',
-    drawerLayout: true
+'#main':{
+    name: 'profile',
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    backgroundColor: '#ffffff',
+    navBarHidden: true,
+    statusBarStyle: Ti.UI.iPhone.StatusBar.LIGHT_CONTENT,
+    layout: 'vertical'
 }
+
+'#contentTop':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    backgroundColor: '#ffffff',
+    layout: 'vertical'
+}
+
+'#contentBottom': {
+    top: 'auto',
+    bottom: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    backgroundColor: '#ffffff',
+    layout: 'vertical'
+}
+
+'#profileView': {
+    top: 60,
+    width: 76,
+    height: 76,
+    backgroundColor: '#eff0f0',
+    borderRadius: 38
+}
+
+'#profileSubView': {
+    width: 66,
+    height: 66,
+    backgroundColor: '#1d2f3e',
+    borderRadius: 33
+}
+
+'#profile': {
+    width: 66,
+    height: 66,
+    borderRadius: 33,
+    image: 'images/login/center/profile/profile@2x.png',
+    imageDefault: 'images/login/center/profile/profile.png'
+}
+
+'#textProfileView': {
+    top: 22,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    layout: 'vertical'
+}
+
+'#textUsername': {
+    top: 0,
+    text: 'Liverpool 2015',
+    font: {
+        fontSize: 18,
+        fontWeight: 'bold'
+    },
+    color: '#26A2D8'
+}
+
+'#textName': {
+    top: 4,
+    text: 'Jackson Matinez',
+    font: {
+        fontSize: 12
+    },
+    color: '#26A2D8'
+}
+
+'#textEmail': {
+    top: 4,
+    text: 'Matinez@balltoro.com',
+    font: {
+        fontSize: 12
+    },
+    color: '#26A2D8'
+}
+
+'#viewTextTeamFavorite': {
+    top: 30,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    layout: 'horizontal'
+}
+
+'#viewLineItem1': {
+    right: 55,
+    width: 40,
+    height: 1,
+    backgroundColor: '#C3C3C3'
+}
+
+'#viewTextLeft': {
+    width: '50%',
+    height: 15
+}
+
+'#viewTextRight': {
+    width: Ti.UI.FILL,
+    height: 15
+}
+
+'#viewLineItem2': {
+    left: 55,
+    width: 40,
+    height: 1,
+    backgroundColor: '#C3C3C3'
+}
+
+'#imageFavoriteTeam': {
+    right: 32,
+    width: 15,
+    height: 15,
+    image: 'images/login/center/profile/team_favorites.png'
+}
+
+'#textTeam': {
+    right: 0,
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    text: 'Team',
+    font: {
+        fontSize: 10
+    },
+    color: '#C3C3C3'
+}
+
+'#textFavorite': {
+    left: 2,
+    width: Ti.UI.SIZE,
+    height: Ti.UI.SIZE,
+    text: 'Favorites',
+    font: {
+        fontSize: 10
+    },
+    color: '#C3C3C3'
+}
+
+'#photoFavoriteTeam': {
+    top: 15,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    layout: 'horizontal'
+}
+
+'#photoFavoriteTeamLeft': {
+    width: '50%',
+    height: Ti.UI.SIZE
+}
+
+'#photoFavoriteTeamRight': {
+    left: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    layout: 'horizontal'
+}
+
+'#photoItem1': {
+    right: 105,
+    width: 40,
+    height: 40,
+    backgroundColor: '#F1F2F2',
+    borderRadius: 20,
+    borderColor: '#F1F2F2'
+}
+
+'#photoItem2': {
+    right: 55,
+    width: 40,
+    height: 40,
+    backgroundColor: '#F1F2F2',
+    borderRadius: 20,
+    borderColor: '#F1F2F2'
+}
+
+'#photoItem3': {
+    right: 5,
+    width: 40,
+    height: 40,
+    backgroundColor: '#F1F2F2',
+    borderRadius: 20,
+    borderColor: '#F1F2F2'
+}
+
+'#photoItem4': {
+    left: 5,
+    width: 40,
+    height: 40,
+    backgroundColor: '#F1F2F2',
+    borderRadius: 20,
+    borderColor: '#F1F2F2'
+}
+
+// '.photoItemLeft': {
+// right: 10,
+// width: 40,
+// height: 40,
+// backgroundColor: '#F1F2F2',
+// borderRadius: 20,
+// borderColor: '#F1F2F2'
+// }
+
+'.photoItemRight': {
+    left: 10,
+    width: 40,
+    height: 40,
+    backgroundColor: '#F1F2F2',
+    borderRadius: 20,
+    borderColor: '#F1F2F2'
+}
+
+'#footer': {
+    bottom: 0,
+    width: Ti.UI.FILL,
+    height: 45,
+    backgroundColor: '#F1F2F2'
+}
+
+'#imageFooter': {
+    width: 30,
+    height: 30,
+    image: 'images/login/center/profile/icon-balltoro.png'
+}
+
+'#doneButton': {
+    bottom: 20,
+    width: '90%',
+    height: 36,
+    backgroundColor: '#4E6E90',
+    borderColor: '#4E6E90'
+}
+
+'#doneLabel': {
+    text: 'Done',
+    color: '#808285'
+}
+
+'#chooseButton': {
+    bottom: 10,
+    width: '90%',
+    height: 36,
+    backgroundColor: '#ffffff',
+    borderColor: '#5499F6'
+}
+
+'#chooseLabel': {
+    text: 'Choose',
+    color: '#5499F6',
+    opacity: 1,
+    opacityAct: 0.2,
+    opacityInAct: 1
+}
+

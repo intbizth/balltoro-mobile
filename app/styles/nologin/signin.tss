@@ -12,5 +12,73 @@
     top: 0,
     width: Ti.UI.FILL,
     height: Ti.UI.FILL,
+    backgroundColor: 'ffffff'
+}
+
+'#contentTop':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE ,
     layout: 'vertical'
+}
+
+'#contentBottom': {
+    bottom: 0,
+    width: Ti.UI.FILL,
+    height: 76
+}
+
+'#usernameOrEmail': {
+    top: 20,
+    maxLength: 128,
+    hintText: L( 'nologin.signin.usernameOrEmail')
+}
+
+'#password': {
+    maxLength: 64,
+    hintText: L( 'nologin.signin.password'),
+    passwordMask: true
+}
+
+'.textField': {
+    top: 10,
+    width: '86%',
+    height: 36,
+    backgroundColor: '#ffffff',
+    backgroundColorNormal: '#ffffff',
+    backgroundColorError: '#fff6f6',
+    color: '#000000',
+    colorNormal: '#000000',
+    colorError: '#c42424',
+    borderWidth: 1,
+    borderColor: '#999999',
+    borderColorNormal: '#999999',
+    borderColorError: '#e0b4b4',
+    textAlign: 'center'
+}
+
+'#signinButton':{
+    bottom: 20,
+    width: '86%',
+    height: 36,
+    color: '#ffffff',
+    borderWidth: '1',
+    borderColor: '#549af7',
+    backgroundColor: '#549af7',
+    backgroundColorEnable: '#549af7',
+    backgroundColorDisable: '#b2d1fb'
+}
+
+'#signinLabel':{
+    width: '86%',
+    height: 36,
+    color: '#ffffff',
+    font: {
+        fontSize: 14
+    },
+    text: L( 'nologin.index.button.signin'),
+    textAlign: 'center',
+    opacity: 1,
+    opacityAct: 0.2,
+    opacityInAct: 1
 }

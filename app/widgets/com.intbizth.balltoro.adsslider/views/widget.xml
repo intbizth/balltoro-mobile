@@ -1,0 +1,26 @@
+<Alloy>
+    <Collection src="pages" />
+    <View id="main">
+        <ScrollableView id="slider" dataCollection="pages" dataTransform="transformDataSlider" onScroll="doScroll">
+            <View if="$.template.logo">
+                <View class="logoView">
+                    <ImageView class="icon" image="{icon}" />
+                    <Label class="title" text="{title}" />
+                </View>
+            </View>
+            <View if="$.template.page">
+                <View dataURL="{url}" onClick="doClick" onDblclick="doDblclick">
+                    <ImageView class="image" dataURL="{url}" image="{image}" />
+                </View>
+            </View>
+        </ScrollableView>
+        <View id="pagingControl">
+            <View id="pagingControlSubView" dataCollection="pages">
+                <View class="circleView">
+                    <View class="circleAct" />
+                    <View class="circleInAct" />
+                </View>
+            </View>
+        </View>
+    </View>
+</Alloy>
