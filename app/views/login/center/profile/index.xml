@@ -3,9 +3,51 @@
         <Window id="main">
             <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
             <View id="content">
-                <View id="contentView"></View>
-                <View id="activityIndicatorView">
-                    <ActivityIndicator id="activityIndicator" />
+                <View id="contentTop">
+                    <View id="profileView">
+                        <View id="profileSubView">
+                            <ImageView id="profile" />
+                        </View>
+                    </View>
+                    <View id="textProfileView">
+                        <Label id="textUsername"></Label>
+                        <Label id="textName"></Label>
+                        <Label id="textEmail"></Label>
+                    </View>
+                    <View id="viewTextTeamFavorite">
+                        <View id="viewTextLeft">
+                            <View id="viewLineItem1"></View>
+                            <ImageView id="imageFavoriteTeam"></ImageView>
+                            <Label id="textTeam"></Label>
+                        </View>
+                        <View id="viewTextRight">
+                            <Label id="textFavorite"></Label>
+                            <View id="viewLineItem2"></View>
+                        </View>
+                    </View>
+                    <View id="photoFavoriteTeam">
+                        <View id="photoFavoriteTeamLeft">
+                            <View id="photoItem1" ></View>
+                            <View id="photoItem2" ></View>
+                            <View id="photoItem3" ></View>
+                        </View>
+                        <View id="photoFavoriteTeamRight">
+                            <View id="photoItem4" ></View>
+                            <View id="photoItem5" class="photoItemRight"></View>
+                            <View id="photoItem6" class="photoItemRight"></View>
+                        </View>
+                    </View>
+                </View>
+                <View id="contentBottom">
+                    <View id="chooseButton">
+                        <Label id="chooseLabel"></Label>
+                    </View>
+                    <View id="doneButton">
+                        <Label id="doneLabel"></Label>
+                    </View>
+                    <View id="footer">
+                        <ImageView id="imageFooter"></ImageView>
+                    </View>
                 </View>
             </View>
         </Window>
