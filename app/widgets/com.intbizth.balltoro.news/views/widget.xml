@@ -1,0 +1,50 @@
+<Alloy>
+    <Collection src="news" />
+    <ScrollView id="main" dataCollection="news" dataTransform="transformData">
+        <View if="$.template.a" class="a_template">
+            <View class="a_imageView">
+                <ImageView class="a_image" image="{image}" />
+            </View>
+            <View class="a_detailView">
+                <View class="a_detailSubView">
+                    <Label class="a_headline" text="{headline}" />
+                    <View class="a_userView">
+                        <View class="a_userSubView">
+                            <ImageView class="a_userImage" image="{userImage}" />
+                            <Label class="a_userName" text="{userName}" />
+                        </View>
+                    </View>
+                </View>
+            </View>
+        </View>
+        <View if="$.template.b" class="b_template">
+            <View class="b_left">
+                <View class="b_imageView">
+                    <ImageView class="b_image" />
+                </View>
+                <View class="b_headerView">
+                    <View class="b_headerSubView">
+                        <Label class="b_title" />
+                        <View class="b_avatarView">
+                            <ImageView class="b_avatarImage" />
+                        </View>
+                    </View>
+                </View>
+            </View>
+            <View class="b_right">
+                <View class="b_imageView">
+                    <ImageView class="b_image" />
+                </View>
+                <View class="b_headerView">
+                    <View class="b_headerSubView">
+                        <Label class="b_title" />
+                        <View class="b_avatarView">
+                            <ImageView class="b_avatarImage" />
+                        </View>
+                    </View>
+                </View>
+            </View>
+        </View>
+        <View if="$.template.space" class="space_template" />
+    </ScrollView>
+</Alloy>

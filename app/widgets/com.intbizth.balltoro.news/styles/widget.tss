@@ -1,0 +1,158 @@
+'#main': {
+    width: Ti.UI.FILL,
+    contentWidth: Ti.UI.SIZE,
+    layout: 'vertical'
+}
+'.a_template':{
+    width: Ti.UI.FILL,
+    height: '48%',
+    layout: 'vertical',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.a_imageView':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: '70%',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.a_image':{
+    defaultImage: ''
+}
+
+'.a_detailView':{
+    width: '100%',
+    height: '30%',
+    backgroundColor: '#4a90f6',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.a_detailSubView':{
+    width: '98%',
+    layout: 'vertical',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.a_headline':{
+    width: '100%',
+    height: '60%',
+    textAlign: 'left',
+    font: {
+        fontSize: 14
+    },
+    color: '#ffffff',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.a_userView':{
+    width: '100%',
+    height: '40%',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.a_userSubView':{
+    width: '100%',
+    height: '80%',
+    layout: 'horizontal',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.a_userImage':{
+    width: 20,
+    height: 20,
+    defaultImage: ''
+}
+
+'.a_userName':{
+    left: 4,
+    width: '100%',
+    height: '100%',
+    textAlign: 'left',
+    font: {
+        fontSize: 14
+    },
+    color: '#ffffff',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+'.b_template':{
+    width: Ti.UI.FILL,
+    height: '48%',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.b_left':{
+    left: 0,
+    width: '49%',
+    height: '100%',
+    layout: 'vertical',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.b_right':{
+    right: 0,
+    width: '49%',
+    height: '100%',
+    layout: 'vertical',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.b_imageView':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: '70%',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.b_image':{
+    defaultImage: ''
+}
+
+'.b_headerView':{
+    width: '100%',
+    height: '30%',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.b_headerSubView':{
+    width: '96%',
+    layout: 'vertical',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.b_title':{
+    width: '100%',
+    height: '50%',
+    textAlign: 'left',
+    font: {
+        fontSize: 14
+    },
+    color: '#ffffff',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+
+'.b_avatarView':{
+    width: '100%',
+    height: '50%',
+    borderWidth: 1,
+    borderColor: 'blue'
+}
+'.space_template':{
+    width: Ti.UI.FILL,
+    height: 6
+}
