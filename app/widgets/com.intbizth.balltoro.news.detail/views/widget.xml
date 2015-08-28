@@ -1,0 +1,4 @@
+<Alloy>
+    <Model src="news" />
+    <Label>I'm the default widget</Label>
+</Alloy>
