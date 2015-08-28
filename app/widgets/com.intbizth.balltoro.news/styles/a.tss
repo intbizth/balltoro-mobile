@@ -1,17 +1,21 @@
-'.a_template':{
+'.a_row':{
     width: Ti.UI.FILL,
-    height: '48%',
-    layout: 'vertical',
-    borderWidth: 1,
-    borderColor: 'blue'
+    height: 244,
+    backgroundColor: 'transparent'
+}
+
+'.a_view':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    layout: 'vertical'
 }
 
 '.a_imageView':{
     top: 0,
     width: Ti.UI.FILL,
-    height: '70%',
-    borderWidth: 1,
-    borderColor: 'blue'
+    height: 180,
+    backgroundColor: '#1a4c99'
 }
 
 '.a_image':{
@@ -19,45 +23,37 @@
 }
 
 '.a_detailView':{
-    width: '100%',
-    height: '30%',
-    backgroundColor: '#4a90f6',
-    borderWidth: 1,
-    borderColor: 'blue'
+    top: 0,
+    width: Ti.UI.FILL,
+    height: 60,
+    backgroundColor: '#4a90f6'
 }
 
 '.a_detailSubView':{
     width: '98%',
-    layout: 'vertical',
-    borderWidth: 1,
-    borderColor: 'blue'
+    height: Ti.UI.FILL,
+    layout: 'vertical'
 }
 
 '.a_headline':{
-    width: '100%',
-    height: '60%',
+    width: Ti.UI.FILL,
+    height: 36,
     textAlign: 'left',
     font: {
         fontSize: 14
     },
-    color: '#ffffff',
-    borderWidth: 1,
-    borderColor: 'blue'
+    color: '#ffffff'
 }
 
 '.a_userView':{
-    width: '100%',
-    height: '40%',
-    borderWidth: 1,
-    borderColor: 'blue'
+    width: Ti.UI.FILL,
+    height: 24
 }
 
 '.a_userSubView':{
-    width: '100%',
-    height: '80%',
-    layout: 'horizontal',
-    borderWidth: 1,
-    borderColor: 'blue'
+    width: Ti.UI.FILL,
+    height: 20,
+    layout: 'horizontal'
 }
 
 '.a_userImage':{
@@ -67,14 +63,17 @@
 }
 
 '.a_userName':{
-    left: 4,
-    width: '100%',
-    height: '100%',
+    left: 2,
+    width:  Ti.UI.SIZE,
+    height: 20,
     textAlign: 'left',
     font: {
         fontSize: 14
     },
-    color: '#ffffff',
-    borderWidth: 1,
-    borderColor: 'blue'
+    color: '#ffffff'
+}
+
+'.a_fakeView':{
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL
 }

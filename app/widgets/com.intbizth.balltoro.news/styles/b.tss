@@ -1,69 +1,99 @@
-'.b_template':{
+'.b_row':{
     width: Ti.UI.FILL,
-    height: '48%',
-    borderWidth: 1,
-    borderColor: 'blue'
+    height: 244,
+    backgroundColor: 'transparent'
+}
+
+'.b_view':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE
 }
 
 '.b_left':{
     left: 0,
-    width: '49%',
-    height: '100%',
-    layout: 'vertical',
-    borderWidth: 1,
-    borderColor: 'blue'
+    width: '49.5%',
+    height: Ti.UI.FILL,
+    layout: 'vertical'
 }
 
 '.b_right':{
     right: 0,
-    width: '49%',
-    height: '100%',
-    layout: 'vertical',
-    borderWidth: 1,
-    borderColor: 'blue'
+    width: '49.5%',
+    height:  Ti.UI.FILL,
+    layout: 'vertical'
 }
 
 '.b_imageView':{
     top: 0,
     width: Ti.UI.FILL,
-    height: '70%',
-    borderWidth: 1,
-    borderColor: 'blue'
+    height: 180,
+    backgroundColor: '#1a4c99'
 }
 
 '.b_image':{
     defaultImage: ''
 }
 
-'.b_headerView':{
-    width: '100%',
-    height: '30%',
-    borderWidth: 1,
-    borderColor: 'blue'
+'.b_detailView':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: 60,
+    backgroundColor: '#4a90f6'
 }
 
-'.b_headerSubView':{
+'.b_detailSubView':{
     width: '96%',
-    layout: 'vertical',
-    borderWidth: 1,
-    borderColor: 'blue'
+    height: Ti.UI.FILL,
+    layout: 'vertical'
 }
 
-'.b_title':{
-    width: '100%',
-    height: '50%',
+'.b_headline':{
+    width: Ti.UI.FILL,
+    height: 36,
     textAlign: 'left',
     font: {
         fontSize: 14
     },
-    color: '#ffffff',
-    borderWidth: 1,
-    borderColor: 'blue'
+    color: '#ffffff'
 }
 
-'.b_avatarView':{
-    width: '100%',
-    height: '50%',
-    borderWidth: 1,
-    borderColor: 'blue'
+'.b_userView':{
+    width: Ti.UI.FILL,
+    height: 24
+}
+
+'.b_userSubView':{
+    width: Ti.UI.FILL,
+    height: 20,
+    layout: 'horizontal'
+}
+
+'.b_userImage':{
+    width: 20,
+    height: 20,
+    defaultImage: ''
+}
+
+'.b_userName':{
+    left: 2,
+    width:  Ti.UI.SIZE,
+    height: 20,
+    textAlign: 'left',
+    font: {
+        fontSize: 14
+    },
+    color: '#ffffff'
+}
+
+'.b_fakeLeftView':{
+    left: 0,
+    width: '49.5%',
+    height: Ti.UI.FILL
+}
+
+'.b_fakeRightView':{
+    right: 0,
+    width: '49.5%',
+    height: Ti.UI.FILL
 }

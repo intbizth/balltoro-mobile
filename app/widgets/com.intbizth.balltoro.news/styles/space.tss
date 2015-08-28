@@ -1,4 +1,0 @@
-'.space_template':{
-    width: Ti.UI.FILL,
-    height: 6
-}

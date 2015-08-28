@@ -1,0 +1,16 @@
+'.nodata_row':{
+    width: Ti.UI.FILL,
+    height: 60,
+    backgroundColor: 'transparent'
+}
+
+'.nodata_label':{
+    width: Ti.UI.FILL,
+    height: 60,
+    font: {
+        fontSize: 14
+    },
+    color: '#ffffff',
+    textAlign: 'center',
+    text: L( 'com.intbizth.balltoro.news.nodata')
+}
