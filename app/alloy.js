@@ -85,4 +85,8 @@ Alloy.Collections.homefeed = Alloy.createCollection('homefeed');
 Alloy.Collections.homefeed.on('setpaginator', function(response) {
     this.setPaginator(response);
 });
+Alloy.Collections.news = Alloy.createCollection('news');
+Alloy.Collections.news.on('setpaginator', function(response) {
+    this.setPaginator(response);
+});
 // > collections & models

@@ -21,6 +21,7 @@ $.navbarView.setData({
 });
 
 $.navbarView.on('left:click', function(e) {
+    unload();
     $.main.close();
 });
 
@@ -38,8 +39,6 @@ $.main.addEventListener('close', function(e) {
 
     Alloy.Globals.nologin.stackWindows.pop();
     Alloy.Globals.nologin.stackWindowsLogger();
-
-    unload();
 });
 
 $.main.addEventListener('longpress', function(e) {

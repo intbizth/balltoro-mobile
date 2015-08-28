@@ -18,6 +18,7 @@
         "com.caffeinalab.titanium.notifications": "1.6.0",
         "com.intbizth.balltoro.adsslider": "1.0",
         "com.intbizth.balltoro.menuslider": "1.0",
-        "com.intbizth.balltoro.news": "1.0"
+        "com.intbizth.balltoro.news": "1.0",
+        "com.intbizth.balltoro.news.detail": "1.0"
     }
 }

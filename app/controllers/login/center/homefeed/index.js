@@ -45,6 +45,28 @@ $.menuslider.on('click', function(e) {
 
 $.news.on('click', function(e) {
     console.error(e);
+
+    if (openedWindow) {
+        return;
+    }
+
+    openedWindow = true;
+
+    Alloy.Globals.login.mainWindow.lock();
+
+    var detailWindow = Alloy.createController('login/center/homefeed/detail', {
+        navigation : $.navigation,
+        title : e.title,
+        newsID : e.newsID
+    });
+
+    $.navigation.openWindow(detailWindow.getView());
+
+    detailWindow.getView().addEventListener('close', function(e) {
+        openedWindow = false;
+
+        Alloy.Globals.login.mainWindow.unlock();
+    });
 });
 
 function loadMenu() {
