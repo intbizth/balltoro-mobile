@@ -41,7 +41,7 @@ task('pre:load', function(event, logger) {
     });
 
     var widgetPath = event.dir.project + '/app/widgets/com.intbizth.balltoro.news/styles';
-    var files = [widgetPath + '/style.tss', widgetPath + '/a.tss', widgetPath + '/b.tss', widgetPath + '/space.tss'];
+    var files = [widgetPath + '/style.tss', widgetPath + '/nodata.tss', widgetPath + '/loading.tss', widgetPath + '/a.tss', widgetPath + '/b.tss'];
     var output = widgetPath + '/widget.tss';
 
     concat(files, output, function() {

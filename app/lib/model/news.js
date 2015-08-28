@@ -2,7 +2,7 @@ var manger = require('model/manger');
 
 exports.createModelMethod = function(value) {
     var methods = {
-        transformDataToPage : function() {
+        transformDataToGrid : function() {
             var dataModel = this.toJSON();
 
             var data = {
@@ -28,16 +28,13 @@ exports.createModelMethod = function(value) {
                 }
             }
 
-            var unixtime = Alloy.Moment(data.datetime).unix();
-
             var attrs = {
                 id : data.id,
                 headline : data.headline,
                 image : data.image,
                 userImage : data.userImage,
                 userName : data.userName,
-                timeLabel : Alloy.Moment.unix(unixtime).format('HH:mm'),
-                dateLabel : Alloy.Moment.unix(unixtime).format('D MMM YYYY'),
+                datetime : Alloy.Moment(data.datetime).unix()
             };
 
             return attrs;
@@ -70,9 +67,7 @@ exports.createCollectionMethod = function(value) {
                     for (var k = 0; k < grids[j]; k++) {
                         i += k;
 
-                        dataModel = (dataModels.models[i]) ? dataModels.models[i].transformDataToPage() : null;
-
-                        _data.push(dataModel);
+                        _data.push((dataModels.models[i]) ? dataModels.models[i].transformDataToGrid() : null);
                     }
 
                     data.push(_data);
@@ -80,6 +75,37 @@ exports.createCollectionMethod = function(value) {
             }
 
             return data;
+        },
+        fakeData : function() {
+            var placehold = require('placehold.it');
+            var chance = require('chance.min'),
+                chance = new chance();
+            var data = [];
+
+            for (var i = 1; i <= 20; i++) {
+                data.push({
+                    id : chance.hash(),
+                    headline : chance.sentence(),
+                    userImage : placehold.createURL({
+                        width : 20,
+                        height : 20
+                    }).image,
+                    userName : chance.name(),
+                    datetime : chance.timestamp(),
+                    _links : {
+                        image : {
+                            href : placehold.createURL({
+                                width : 320,
+                                height : 180
+                            }).image
+                        }
+                    }
+                });
+            }
+
+            data = _.sortBy(data, 'datetime').reverse();
+
+            this.reset(data);
         }
     };
 

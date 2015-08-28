@@ -14,8 +14,12 @@ exports.createModelMethod = function(value) {
             for (var i in data) {
                 data[i] = manger.traverseProperties(dataModel, data[i]);
 
-                if (_.isNull(data[i])) {
-                    data[i] = '';
+                if (dataModel[i]) {
+                    data[i] = dataModel[i];
+                } else {
+                    if (_.isNull(data[i])) {
+                        data[i] = '';
+                    }
                 }
             }
 
@@ -39,8 +43,12 @@ exports.createModelMethod = function(value) {
             for (var i in data) {
                 data[i] = manger.traverseProperties(dataModel, data[i]);
 
-                if (_.isNull(data[i])) {
-                    data[i] = '';
+                if (dataModel[i]) {
+                    data[i] = dataModel[i];
+                } else {
+                    if (_.isNull(data[i])) {
+                        data[i] = '';
+                    }
                 }
             }
 
@@ -64,8 +72,12 @@ exports.createModelMethod = function(value) {
             for (var i in data) {
                 data[i] = manger.traverseProperties(dataModel, data[i]);
 
-                if (_.isNull(data[i])) {
-                    data[i] = '';
+                if (dataModel[i]) {
+                    data[i] = dataModel[i];
+                } else {
+                    if (_.isNull(data[i])) {
+                        data[i] = '';
+                    }
                 }
             }
 

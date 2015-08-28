@@ -13,24 +13,6 @@ var fetchFirstPage = function() {
 var fetchNextPage = function() {
 };
 
-$.list.addEventListener('marker', function(e) {
-    Ti.API.debug('[' + Widget.widgetId + '] marker:start listPulling:' + ((listPulling) ? 'true' : 'false') + ' listMarking:' + ((listMarking) ? 'true' : 'false'));
-
-    if (listPulling || listMarking) {
-        return;
-    }
-
-    listMarking = true;
-
-    Ti.API.debug('[' + Widget.widgetId + '] marker ' + JSON.stringify(e));
-
-    fetchNextPage(function() {
-        listMarking = false;
-
-        Ti.API.debug('[' + Widget.widgetId + '] marker:end');
-    });
-});
-
 function extendData(models) {
     if (models.length === 0) {
         models = [models];
@@ -134,6 +116,24 @@ function pullend(e) {
             });
         }
     }, 1000);
+};
+
+function marker(e) {
+    Ti.API.debug('[' + Widget.widgetId + '] marker:start listPulling:' + ((listPulling) ? 'true' : 'false') + ' listMarking:' + ((listMarking) ? 'true' : 'false'));
+
+    if (listPulling || listMarking) {
+        return;
+    }
+
+    listMarking = true;
+
+    Ti.API.debug('[' + Widget.widgetId + '] marker ' + JSON.stringify(e));
+
+    fetchNextPage(function() {
+        listMarking = false;
+
+        Ti.API.debug('[' + Widget.widgetId + '] marker:end');
+    });
 };
 
 function itemclick(e) {

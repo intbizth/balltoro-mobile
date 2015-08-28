@@ -4,7 +4,7 @@ var news = require('model/news');
 exports.createModelMethod = function(value) {
     var methods = {};
 
-    methods = _.extend(methods, news.createModelMethod('transformDataToPage'));
+    methods = _.extend(methods, news.createModelMethod());
 
     methods = manger.filterMethod(methods, value);
 
@@ -14,7 +14,7 @@ exports.createModelMethod = function(value) {
 exports.createCollectionMethod = function(value) {
     var methods = {};
 
-    methods = _.extend(methods, news.createCollectionMethod('transformDataToGrid'));
+    methods = _.extend(methods, news.createCollectionMethod());
 
     methods = manger.filterMethod(methods, value);
 

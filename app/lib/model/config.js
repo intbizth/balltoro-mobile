@@ -24,7 +24,7 @@ var _exports = {
     programs : {
         URL : 'http://demo.balltoro.com/api/programs',
         debug : true,
-        fake : true,
+        fake : false,
         adapter : {
             type : 'restapi',
             collection_name : 'programs',
@@ -33,7 +33,7 @@ var _exports = {
         parentNode : '_embedded.items'
     },
     news : {
-        URL : 'http://192.168.10.45:8000/api/news',
+        URL : 'http://192.168.10.47:8000/api/news',
         debug : true,
         fake : true,
         adapter : {
@@ -44,9 +44,9 @@ var _exports = {
         parentNode : '_embedded.items'
     },
     homefeed : {
-        URL : 'http://192.168.10.45:8000/api/news/homefeed',
+        URL : 'http://192.168.10.47:8000/api/news/homefeed',
         debug : true,
-        fake : true,
+        fake : false,
         adapter : {
             type : 'restapi',
             collection_name : 'homefeed',

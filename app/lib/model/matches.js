@@ -100,7 +100,7 @@ exports.createCollectionMethod = function(value) {
 
             data = _.sortBy(data, 'datetime').reverse();
 
-            Alloy.Collections[this.config.adapter.collection_name].reset(data);
+            this.reset(data);
         }
     };
 

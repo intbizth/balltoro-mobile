@@ -4,8 +4,8 @@
             <Widget id="navbarView" src="com.intbizth.balltoro.navbar" />
             <View id="content">
                 <View id="contentView">
-                    <Widget id="menusliderView" src="com.intbizth.balltoro.menuslider" />
-                    <Widget id="newsView" src="com.intbizth.balltoro.news" />
+                    <Widget id="menuslider" src="com.intbizth.balltoro.menuslider" />
+                    <Widget id="news" src="com.intbizth.balltoro.news" />
                 </View>
                 <View id="activityIndicatorView">
                     <ActivityIndicator id="activityIndicator" />
