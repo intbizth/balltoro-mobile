@@ -150,6 +150,8 @@ function marker(e) {
 
 function doClick(e) {
     e.newsID = e.source.newsID;
+    e.title = e.source.title;
+    delete e.bindId;
     delete e.itemIndex;
     delete e.section;
     delete e.sectionIndex;
@@ -159,6 +161,8 @@ function doClick(e) {
 
 function doDblClick(e) {
     e.newsID = e.source.newsID;
+    e.title = e.source.title;
+    delete e.bindId;
     delete e.itemIndex;
     delete e.section;
     delete e.sectionIndex;

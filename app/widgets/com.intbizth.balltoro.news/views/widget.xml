@@ -73,7 +73,7 @@
                 </View>
             </PullView>
             <ListSection id="section" dataCollection="news" dataTransform="transformData">
-                <ListItem class="listItem" template="{template}" data:newsID="{id}" leftData:newsID="{leftId}" rightData:newsID="{rightId}" image:image="{image}" headline:text="{headline}" userName:text="{userName}" userImage:image="{userImage}" leftImage:image="{leftImage}" leftHeadline:text="{leftHeadline}" leftUserName:text="{leftUserName}" leftUserImage:image="{leftUserImage}" rightImage:image="{rightImage}" rightHeadline:text="{rightHeadline}" rightUserName:text="{rightUserName}" rightUserImage:image="{rightUserImage}" />
+                <ListItem class="listItem" template="{template}" data:newsID="{id}" data:title="{headline}" leftData:newsID="{leftId}" leftData:title="{leftHeadline}" rightData:newsID="{rightId}" rightData:title="{rightHeadline}" image:image="{image}" headline:text="{headline}" userName:text="{userName}" userImage:image="{userImage}" leftImage:image="{leftImage}" leftHeadline:text="{leftHeadline}" leftUserName:text="{leftUserName}" leftUserImage:image="{leftUserImage}" rightImage:image="{rightImage}" rightHeadline:text="{rightHeadline}" rightUserName:text="{rightUserName}" rightUserImage:image="{rightUserImage}" />
             </ListSection>
         </ListView>
     </View>
