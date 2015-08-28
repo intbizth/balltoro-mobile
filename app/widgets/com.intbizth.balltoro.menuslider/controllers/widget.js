@@ -2,18 +2,18 @@ var loaded = false;
 var itemSelectedIndex = null;
 var itemSelectedName = null;
 
-function extendData(datas) {
-    for (var i in datas) {
+function extendData(data) {
+    for (var i in data) {
         i = parseInt(i);
 
-        var data = {
+        var _data = {
             index : i
         };
 
-        datas[i] = _.extend(data, datas[i]);
+        data[i] = _.extend(_data, data[i]);
     }
 
-    return datas;
+    return data;
 };
 
 function doClick(e) {
@@ -88,24 +88,14 @@ function getLoad() {
     return loaded;
 };
 
-function load(datas) {
-    Ti.API.debug('[' + Widget.widgetId + ']', 'load', JSON.stringify(datas));
+function load(data) {
+    Ti.API.debug('[' + Widget.widgetId + ']', 'load', JSON.stringify(data));
 
     loaded = true;
     itemSelectedIndex = null;
     itemSelectedName = null;
 
-    datas = extendData(datas);
-
-    $.main.opacity = $.main.opacityInAct;
-    $.main.animate({
-        opacity : $.main.opacityAct,
-        duration : 1000
-    }, function() {
-        $.main.opacity = $.main.opacityAct;
-    });
-
-    Widget.Collections.menus.reset(datas);
+    Widget.Collections.menus.reset(extendData(data));
 };
 
 function unload() {
@@ -114,8 +104,6 @@ function unload() {
     loaded = false;
     itemSelectedIndex = null;
     itemSelectedName = null;
-
-    $.main.opacity = $.main.opacityInAct;
 
     Widget.Collections.menus.reset([]);
 

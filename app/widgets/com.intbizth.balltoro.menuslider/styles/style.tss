@@ -2,10 +2,7 @@
     width: Ti.UI.SIZE,
     height: 45,
     layout: 'horizontal',
-    backgroundColor: '#121D24',
-    opacity: 0,
-    opacityInAct: 0,
-    opacityAct: 1
+    backgroundColor: '#121D24'
 }
 
 '.title':{
