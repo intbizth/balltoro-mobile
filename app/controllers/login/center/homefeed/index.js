@@ -50,6 +50,12 @@ $.news.on('click', function(e) {
         return;
     }
 
+    var model = Alloy.Collections.homefeed.where({
+        id : e.newsID
+    });
+
+    console.error(JSON.stringify(model));
+
     openedWindow = true;
 
     Alloy.Globals.login.mainWindow.lock();
@@ -72,8 +78,8 @@ $.news.on('click', function(e) {
 function loadMenu() {
     Alloy.Collections.programs.fetch({
         success : function(model, response) {
-            if (Alloy.Collections.programs.models.length > 0) {
-                var data = _.map(Alloy.Collections.programs.models, function(model) {
+            if (model.length > 0) {
+                var data = _.map(model.models, function(model) {
                     return model.transformDataToMenuSlider();
                 });
 
@@ -121,7 +127,7 @@ function loadHomefeed(programCode) {
             });
 
             $.news.load({
-                data : Alloy.Collections.homefeed.transformDataToGrid(grid),
+                data : model.transformDataToGrid(grid),
                 fetchFirstPage : fetchFirstPage,
                 fetchNextPage : fetchNextPage
             });
@@ -151,7 +157,7 @@ function loadHomefeed(programCode) {
                     callback();
 
                     $.news.load({
-                        data : Alloy.Collections.homefeed.transformDataToGrid(grid),
+                        data : model.transformDataToGrid(grid),
                         fetchFirstPage : fetchFirstPage,
                         fetchNextPage : fetchNextPage
                     });
@@ -173,16 +179,29 @@ function loadHomefeed(programCode) {
         var url = Alloy.Collections.homefeed.paginator.next;
 
         if (url) {
+            var length = Alloy.Collections.homefeed.length;
+
+            console.error(length);
+
             Alloy.Collections.homefeed.fetch({
                 url : url,
                 timeout : 60000,
+                add : true,
                 success : function(model, response) {
                     callback();
 
-                    $.news.add({
-                        data : Alloy.Collections.homefeed.transformDataToGrid(grid),
-                        fetchNextPage : fetchNextPage
-                    });
+                    var models = model.models.slice(length, model.models.length);
+
+                    console.error('models.length', models.length);
+
+                    for (var i in models) {
+                        console.error(JSON.stringify(models[i]));
+                    }
+
+                    // $.news.add({
+                    // data : model.models.transformDataToGrid(grid),
+                    // fetchNextPage : fetchNextPage
+                    // });
                 },
                 error : function(model, response) {
                     callback();
