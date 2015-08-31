@@ -1,0 +1,31 @@
+'#main': {
+    width: Ti.UI.SIZE,
+    height: 45,
+    layout: 'horizontal',
+    backgroundColor: '#121D24'
+}
+
+'.title':{
+    bottom: 4,
+    width: Ti.UI.SIZE,
+    height: 28,
+    textAlign: 'left',
+    font: {
+        fontSize: 16,
+        fontWeigth: 'Bold'
+    },
+    color: '#ffffff',
+    backgroundColor: '#121D24'
+}
+
+'.itemView':{
+    width: '70%',
+    height: 45
+}
+
+'.itemFakeView':{
+    top: 0,
+    left: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL
+}

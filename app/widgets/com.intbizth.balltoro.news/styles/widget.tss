@@ -1,0 +1,243 @@
+'#main':{
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL
+}
+
+'#list':{
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    backgroundColor: 'transparent'
+}
+
+'#list[platform=ios]':{
+    separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE
+}
+
+'.listItem[platform=ios]':{
+    selectionStyle:Ti.UI.iPhone.ListViewCellSelectionStyle.NONE
+}
+
+'#pullView':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: 50,
+    backgroundColor: 'transparent'
+}
+
+'#activityIndicator':{
+    visible: true
+}
+
+'#activityIndicator[platform=ios]':{
+    style: Ti.UI.iPhone.ActivityIndicatorStyle.DARK
+}
+'.nodata_row':{
+    width: Ti.UI.FILL,
+    height: 60,
+    backgroundColor: 'transparent'
+}
+
+'.nodata_label':{
+    width: Ti.UI.FILL,
+    height: 60,
+    font: {
+        fontSize: 14
+    },
+    color: '#ffffff',
+    textAlign: 'center',
+    text: L( 'com.intbizth.balltoro.news.nodata')
+}
+'.loading_row':{
+    width: Ti.UI.FILL,
+    height: 40,
+    backgroundColor: 'transparent'
+}
+
+'.loading_label':{
+    width: Ti.UI.FILL,
+    height: 60,
+    font: {
+        fontSize: 14
+    },
+    color: '#ffffff',
+    textAlign: 'center',
+    text: L( 'com.intbizth.balltoro.news.loading')
+}
+'.a_row':{
+    width: Ti.UI.FILL,
+    height: 244,
+    backgroundColor: 'transparent'
+}
+
+'.a_view':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE,
+    layout: 'vertical'
+}
+
+'.a_imageView':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: 180,
+    backgroundColor: '#1a4c99'
+}
+
+'.a_image':{
+    defaultImage: ''
+}
+
+'.a_detailView':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: 60,
+    backgroundColor: '#4a90f6'
+}
+
+'.a_detailSubView':{
+    width: '98%',
+    height: Ti.UI.FILL,
+    layout: 'vertical'
+}
+
+'.a_headline':{
+    width: Ti.UI.FILL,
+    height: 36,
+    textAlign: 'left',
+    font: {
+        fontSize: 14
+    },
+    color: '#ffffff'
+}
+
+'.a_userView':{
+    width: Ti.UI.FILL,
+    height: 24
+}
+
+'.a_userSubView':{
+    width: Ti.UI.FILL,
+    height: 20,
+    layout: 'horizontal'
+}
+
+'.a_userImage':{
+    width: 20,
+    height: 20,
+    defaultImage: ''
+}
+
+'.a_userName':{
+    left: 2,
+    width:  Ti.UI.SIZE,
+    height: 20,
+    textAlign: 'left',
+    font: {
+        fontSize: 14
+    },
+    color: '#ffffff'
+}
+
+'.a_fakeView':{
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL
+}
+'.b_row':{
+    width: Ti.UI.FILL,
+    height: 244,
+    backgroundColor: 'transparent'
+}
+
+'.b_view':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.SIZE
+}
+
+'.b_left':{
+    left: 0,
+    width: '49.5%',
+    height: Ti.UI.FILL,
+    layout: 'vertical'
+}
+
+'.b_right':{
+    right: 0,
+    width: '49.5%',
+    height:  Ti.UI.FILL,
+    layout: 'vertical'
+}
+
+'.b_imageView':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: 180,
+    backgroundColor: '#1a4c99'
+}
+
+'.b_image':{
+    defaultImage: ''
+}
+
+'.b_detailView':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: 60,
+    backgroundColor: '#4a90f6'
+}
+
+'.b_detailSubView':{
+    width: '96%',
+    height: Ti.UI.FILL,
+    layout: 'vertical'
+}
+
+'.b_headline':{
+    width: Ti.UI.FILL,
+    height: 36,
+    textAlign: 'left',
+    font: {
+        fontSize: 14
+    },
+    color: '#ffffff'
+}
+
+'.b_userView':{
+    width: Ti.UI.FILL,
+    height: 24
+}
+
+'.b_userSubView':{
+    width: Ti.UI.FILL,
+    height: 20,
+    layout: 'horizontal'
+}
+
+'.b_userImage':{
+    width: 20,
+    height: 20,
+    defaultImage: ''
+}
+
+'.b_userName':{
+    left: 2,
+    width:  Ti.UI.SIZE,
+    height: 20,
+    textAlign: 'left',
+    font: {
+        fontSize: 14
+    },
+    color: '#ffffff'
+}
+
+'.b_fakeLeftView':{
+    left: 0,
+    width: '49.5%',
+    height: Ti.UI.FILL
+}
+
+'.b_fakeRightView':{
+    right: 0,
+    width: '49.5%',
+    height: Ti.UI.FILL
+}

@@ -1,0 +1,45 @@
+'.act_itemView':{
+    top: 0,
+    left: 0,
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    visible: false
+}
+
+'.act_itemSubView':{
+    bottom: 0,
+    width: '96%',
+    height: 32,
+    layout: 'horizontal'
+}
+
+'.act_titleView':{
+    width: Ti.UI.SIZE,
+    height: 32,
+    backgroundColor: '#296fff'
+}
+
+'.act_angleView':{
+    width: 12,
+    height: 32,
+    backgroundColor: '#296fff'
+}
+
+'.act_angleSubView1':{
+    width: 4,
+    height: 22,
+    backgroundColor: '#111c23'
+}
+
+'.act_angleSubView2':{
+    bottom: 0,
+    width: 12,
+    height: 16,
+    backgroundColor: '#111c23'
+}
+
+'.act_angleSubView3':{
+    width: 12,
+    height: 32,
+    backgroundColor: '#111c23'
+}

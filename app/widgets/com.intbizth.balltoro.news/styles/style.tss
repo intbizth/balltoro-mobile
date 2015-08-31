@@ -1,0 +1,33 @@
+'#main':{
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL
+}
+
+'#list':{
+    width: Ti.UI.FILL,
+    height: Ti.UI.FILL,
+    backgroundColor: 'transparent'
+}
+
+'#list[platform=ios]':{
+    separatorStyle: Ti.UI.iPhone.TableViewSeparatorStyle.NONE
+}
+
+'.listItem[platform=ios]':{
+    selectionStyle:Ti.UI.iPhone.ListViewCellSelectionStyle.NONE
+}
+
+'#pullView':{
+    top: 0,
+    width: Ti.UI.FILL,
+    height: 50,
+    backgroundColor: 'transparent'
+}
+
+'#activityIndicator':{
+    visible: true
+}
+
+'#activityIndicator[platform=ios]':{
+    style: Ti.UI.iPhone.ActivityIndicatorStyle.DARK
+}

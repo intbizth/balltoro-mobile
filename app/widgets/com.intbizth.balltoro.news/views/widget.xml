@@ -1,0 +1,80 @@
+<Alloy>
+    <Collection src="news" />
+    <View id= "main">
+        <ListView id="list" onPull="pull" onPullend="pullend" onMarker="marker">
+            <Templates>
+                <ItemTemplate name="nodata" class="nodata_row">
+                    <Label class="nodata_label" />
+                </ItemTemplate>
+                <ItemTemplate name="loading" class="loading_row">
+                    <Label class="loading_label" />
+                </ItemTemplate>
+                <ItemTemplate name="a" class="a_row">
+                    <View bindId="view" class="a_view">
+                        <View class="a_imageView">
+                            <ImageView bindId="image" class="a_image" />
+                        </View>
+                        <View class="a_detailView">
+                            <View class="a_detailSubView">
+                                <Label bindId="headline" class="a_headline" />
+                                <View class="a_userView">
+                                    <View class="a_userSubView">
+                                        <ImageView bindId="userImage" class="a_userImage" />
+                                        <Label bindId="userName" class="a_userName" />
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+                    </View>
+                    <View bindId="data" class="a_fakeView" onClick="doClick" onDblclick="doDblClick" />
+                </ItemTemplate>
+                <ItemTemplate name="b" class="b_row">
+                    <View bindId="view" class="b_view">
+                        <View class="b_left">
+                            <View class="b_imageView">
+                                <ImageView bindId="leftImage" class="b_image" />
+                            </View>
+                            <View class="b_detailView">
+                                <View class="b_detailSubView">
+                                    <Label bindId="leftHeadline" class="b_headline" />
+                                    <View class="b_userView">
+                                        <View class="b_userSubView">
+                                            <ImageView bindId="leftUserImage" class="b_userImage" />
+                                            <Label bindId="leftUserName" class="b_userName" />
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+                        <View bindId="leftData" class="b_fakeLeftView" onClick="doClick" onDblclick="doDblClick" />
+                        <View class="b_right">
+                            <View class="b_imageView">
+                                <ImageView bindId="rightImage" class="b_image" />
+                            </View>
+                            <View class="b_detailView">
+                                <View class="b_detailSubView">
+                                    <Label bindId="rightHeadline" class="b_headline" />
+                                    <View class="b_userView">
+                                        <View class="b_userSubView">
+                                            <ImageView bindId="rightUserImage" class="b_userImage" />
+                                            <Label bindId="rightUserName" class="b_userName" />
+                                        </View>
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+                        <View bindId="rightData" class="b_fakeRightView" onClick="doClick" onDblclick="doDblClick" />
+                    </View>
+                </ItemTemplate>
+            </Templates>
+            <PullView>
+                <View id="pullView">
+                    <ActivityIndicator id="activityIndicator" />
+                </View>
+            </PullView>
+            <ListSection id="section" dataCollection="news" dataTransform="transformData">
+                <ListItem class="listItem" template="{template}" data:newsID="{id}" data:title="{headline}" leftData:newsID="{leftId}" leftData:title="{leftHeadline}" rightData:newsID="{rightId}" rightData:title="{rightHeadline}" image:image="{image}" headline:text="{headline}" userName:text="{userName}" userImage:image="{userImage}" leftImage:image="{leftImage}" leftHeadline:text="{leftHeadline}" leftUserName:text="{leftUserName}" leftUserImage:image="{leftUserImage}" rightImage:image="{rightImage}" rightHeadline:text="{rightHeadline}" rightUserName:text="{rightUserName}" rightUserImage:image="{rightUserImage}" />
+            </ListSection>
+        </ListView>
+    </View>
+</Alloy>

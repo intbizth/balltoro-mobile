@@ -1,68 +1,150 @@
 var loaded = false;
-var args = {};
 var openedWindow = false;
+var args = arguments[0] || {};
+var ui = require('ui');
 
-function initialize() {
-    if (Alloy.Globals.isIos7Plus) {
-        $.navbarView.getView().top = 20;
-    }
+Ti.API.debug('[' + $.main.name + ']', 'args:', args);
 
-    $.navbarView.setData({
-        id : 'nologin.signin.title',
-        title : L('nologin.signin.title'),
-        leftIcon : 'arrow_left',
-        leftTitle : L('back')
+if (Alloy.Globals.isIos7Plus) {
+    $.navbarView.getView().top = 20;
+}
+
+$.navbarView.setData({
+    id : 'nologin.signin.title',
+    title : L('nologin.signin.title'),
+    leftIcon : 'arrow_left',
+    leftTitle : L('back')
+});
+
+$.navbarView.on('left:click', function(e) {
+    unload();
+    $.main.close();
+});
+
+$.main.addEventListener('open', function(e) {
+    Ti.API.debug('[' + $.main.name + ']', e.type);
+
+    Alloy.Globals.nologin.stackWindows.push($.main);
+    Alloy.Globals.nologin.stackWindowsLogger();
+
+    load();
+});
+
+$.main.addEventListener('close', function(e) {
+    Ti.API.debug('[' + $.main.name + ']', e.type);
+
+    Alloy.Globals.nologin.stackWindows.pop();
+    Alloy.Globals.nologin.stackWindowsLogger();
+});
+
+$.main.addEventListener('longpress', function(e) {
+    normal();
+    Alloy.Models.signin.reset();
+});
+
+$.main.addEventListener('doubletap', function(e) {
+    normal();
+    Alloy.Models.signin.fakeData();
+});
+
+// >> usernameOrEmail
+ui.setTextFieldNormalAndError($.usernameOrEmail);
+// << usernameOrEmail
+
+// >> password
+ui.setTextFieldNormalAndError($.password);
+// << password
+
+// >> signinButton
+$.signinButton.enable = function() {
+    this.backgroundColor = this.backgroundColorEnable;
+};
+
+$.signinButton.disable = function() {
+    this.backgroundColor = this.backgroundColorDisable;
+};
+
+$.signinButton.act = function() {
+    $.signinLabel.opacity = $.signinLabel.opacityAct;
+};
+
+$.signinButton.inAct = function() {
+    $.signinLabel.opacity = $.signinLabel.opacityInAct;
+};
+
+ui.setInActAndAct($.signinButton);
+
+$.signinButton.addEventListener('click', function() {
+    normal();
+
+    Alloy.Models.signin.set({
+        usernameOrEmail : $.usernameOrEmail.value,
+        password : $.password.value
     });
 
-    $.navbarView.on('left:click', function(e) {
-        // $.main.close();
-    });
+    var validate = Alloy.Models.signin.valid();
 
-    $.main.addEventListener('open', function(e) {
-        load();
+    Ti.API.debug('[' + $.main.name + ']', 'validate:', validate);
+
+    if (validate.result) {
+        // TODO submit data
+        Alloy.Models.signin.save();
+        Alloy.Globals.login.force();
 
         _.delay(function() {
-            Alloy.Globals.login.force();
-        }, 1000);
+            Alloy.Models.signin.reset();
+        }, 800);
+    } else {
+        for (var i in validate.fields) {
+            $[validate.fields[i]].error();
+            Alloy.Animation.shake($[validate.fields[i]]);
+        };
+    }
+});
+// << signinButton
 
-        Alloy.Globals.nologin.stackWindows.push($.main);
-
-        Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'nologin stacks:', JSON.stringify(_.pluck(Alloy.Globals.nologin.stackWindows, 'name')), Alloy.Globals.nologin.stackWindows.length, ')');
-    });
-
-    $.main.addEventListener('close', function(e) {
-        unLoad();
-
-        Alloy.Globals.nologin.stackWindows.pop();
-
-        Ti.API.debug('[' + $.main.name + ']', e.type, '(', 'nologin stacks:', JSON.stringify(_.pluck(Alloy.Globals.nologin.stackWindows, 'name')), Alloy.Globals.nologin.stackWindows.length, ')');
-    });
+function doBlur(e) {
+    if (e.source) {
+        blur();
+    }
 };
 
-function load() {
-    loaded = true;
-    openedWindow = false;
+function blur() {
+    $.usernameOrEmail.blur();
+    $.password.blur();
 };
 
-function unLoad() {
-    loaded = false;
-    openedWindow = false;
+function normal() {
+    $.usernameOrEmail.normal();
+    $.password.normal();
 };
 
-exports.getLoad = function() {
+function getLoad() {
     return loaded;
 };
 
-exports.load = function() {
-    load();
+function load() {
+    Ti.API.debug('[' + $.main.name + ']', 'load');
+
+    loaded = true;
+
+    normal();
 };
 
-exports.unLoad = function() {
-    unLoad();
+function unload() {
+    Ti.API.debug('[' + $.main.name + ']', 'unload');
+
+    loaded = false;
+
+    Alloy.Models.signin.reset();
 };
 
-exports.setArgs = function(value) {
-    args = value;
+var _exports = {
+    getLoad : getLoad,
+    load : load,
+    unload : unload
 };
 
-initialize();
+for (var i in _exports) {
+    exports[i] = _exports[i];
+};

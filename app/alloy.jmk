@@ -29,6 +29,26 @@ task('pre:load', function(event, logger) {
             logger.debug('[concat] ' + files[i] + ' => ' + output);
         }
     });
+
+    var widgetPath = event.dir.project + '/app/widgets/com.intbizth.balltoro.menuslider/styles';
+    var files = [widgetPath + '/style.tss', widgetPath + '/inact.tss', widgetPath + '/act.tss'];
+    var output = widgetPath + '/widget.tss';
+
+    concat(files, output, function() {
+        for (var i in files) {
+            logger.debug('[concat] ' + files[i] + ' => ' + output);
+        }
+    });
+
+    var widgetPath = event.dir.project + '/app/widgets/com.intbizth.balltoro.news/styles';
+    var files = [widgetPath + '/style.tss', widgetPath + '/nodata.tss', widgetPath + '/loading.tss', widgetPath + '/a.tss', widgetPath + '/b.tss'];
+    var output = widgetPath + '/widget.tss';
+
+    concat(files, output, function() {
+        for (var i in files) {
+            logger.debug('[concat] ' + files[i] + ' => ' + output);
+        }
+    });
 });
 
 task('pre:compile', function(event, logger) {

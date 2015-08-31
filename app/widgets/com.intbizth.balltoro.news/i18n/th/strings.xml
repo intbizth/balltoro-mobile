@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="com.intbizth.balltoro.news.nodata">ไม่มีข้อมูล</string>
+    <string name="com.intbizth.balltoro.news.loading">กำลังโหลดข้อมูล..</string>
+</resources>
